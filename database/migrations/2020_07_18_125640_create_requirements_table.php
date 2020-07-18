@@ -16,11 +16,15 @@ class CreateRequirementsTable extends Migration
         Schema::create('requirements', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->foreignId('module_id')
+                ->constrained();
             $table->text('description');
             $table->foreignId('requirement_priority_id')
                 ->constrained();
             $table->foreignId('requirement_status_id')
                 ->constrained();
+            $table->string('numbering')
+                ->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
