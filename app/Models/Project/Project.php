@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Project;
 
+use App\Models\Module;
+use App\Models\Requirement\Requirement;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model

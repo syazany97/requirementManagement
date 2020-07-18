@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API\Requirement;
 
 use App\Http\Controllers\Controller;
-use App\Models\Requirement;
+use App\Models\Requirement\Requirement;
 use Illuminate\Http\Request;
 
 class RequirementController extends Controller

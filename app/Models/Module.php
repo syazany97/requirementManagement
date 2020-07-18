@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Project\Project;
+use App\Models\Requirement\Requirement;
 use Illuminate\Database\Eloquent\Model;
 
 class Module extends Model
