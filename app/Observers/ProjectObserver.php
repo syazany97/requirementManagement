@@ -8,7 +8,7 @@ class ProjectObserver
 {
     public function creating(Project $project)
     {
-        $project->user_id = auth()->user()->id;
+//        $project->user_id = auth()->user()->id;
     }
 
     public function created(Project $project)

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::resource('/home', HomeController::class);
+//Route::get('/login', \App\Http\Controllers\Auth\LoginController::)
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('/home', HomeController::class);
+    Route::get('/home', 'HomeController@index');
+});
