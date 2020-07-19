@@ -17,13 +17,13 @@ class Module extends Model
 
     public function requirements()
     {
-        return $this->morphMany(Requirement::class, 'requirementable');
+        return $this->hasMany(Requirement::class, 'module_id');
     }
 
     public function children()
     {
         return $this->hasMany(self::class, 'parent_id')
             ->with('children')
-            ->orderBy('asc', 'numbering');
+            ->orderBy('numbering', 'asc');
     }
 }

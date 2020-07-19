@@ -19,10 +19,15 @@ class CreateRequirementsTable extends Migration
             $table->foreignId('module_id')
                 ->constrained();
             $table->text('description');
-            $table->foreignId('requirement_priority_id')
-                ->constrained();
-            $table->foreignId('requirement_status_id')
-                ->constrained();
+            $table->unsignedBigInteger('requirement_priority_id');
+            $table->foreign('requirement_priority_id')
+                ->references('id')
+                ->on('requirement_priorities');
+            $table->unsignedBigInteger('requirement_status_id')
+                ->nullable();
+            $table->foreign('requirement_status_id')
+                ->references('id')
+                ->on('requirement_statuses');
             $table->unsignedBigInteger('assigned_id')
                 ->nullable();
             $table->unsignedBigInteger('creator_id')

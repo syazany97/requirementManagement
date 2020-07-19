@@ -3,6 +3,9 @@
 use App\Models\Module;
 use App\Models\Project\Project;
 use App\Models\Project\ProjectStatus;
+use App\Models\Requirement\Requirement;
+use App\Models\Requirement\RequirementPriority;
+use App\Models\Requirement\RequirementStatus;
 use App\User;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -23,7 +26,7 @@ class ProjectsTableSeeder extends Seeder
             Project::create([
                 'name' => $faker->catchPhrase,
                 'description' => $faker->realText,
-                'user_id' => rand(0, count($usersId) - 1),
+                'user_id' => $usersId[rand(0, count($usersId) - 1)],
                 'project_status_id' => ProjectStatus::first()->id]);
         }
 
@@ -39,7 +42,7 @@ class ProjectsTableSeeder extends Seeder
         ];
 
         foreach ($projectsId as $id) {
-            $i = 0;
+            $i = 1;
 
             foreach ($parentModulesName as $moduleName) {
                 Module::create([
@@ -57,7 +60,7 @@ class ProjectsTableSeeder extends Seeder
         $parentModulesId = Module::whereNull('parent_id')->select('id', 'project_id', 'numbering')->get();
 
         foreach ($parentModulesId as $parentId) {
-            for ($j = 0; $j < 6; $j++) {
+            for ($j = 1; $j < 7; $j++) {
                 Module::create([
                     'project_id' => $parentId->project_id,
                     'parent_id' => $parentId->id,
@@ -66,6 +69,32 @@ class ProjectsTableSeeder extends Seeder
                 ]);
             }
         }
+
+        $normalModule = Module::whereNotNull('parent_id')->get()
+            ->toArray();
+
+        $priorities = RequirementPriority::pluck('id')
+            ->toArray();
+
+        $requirementStatuses = RequirementStatus::pluck('id')
+            ->toArray();
+
+        foreach($normalModule as $module) {
+            for($i = 1; $i<5; $i++) {
+                Requirement::create([
+                    'module_id' => $module['id'],
+                    'description' => $faker->realText(),
+                    'name' => 'Requirement ' . $i,
+                    'requirement_priority_id' => $priorities[rand(0, count($priorities) - 1)],
+                    'requirement_status_id' => $requirementStatuses[rand(0, count($requirementStatuses) - 1)],
+                    'numbering' => $module['numbering'] . '.' . $i,
+                    'assigned_id' =>  $usersId[rand(0, count($usersId) - 1)],
+                    'creator_id' =>  $usersId[rand(0, count($usersId) - 1)]
+                ]);
+
+            }
+        }
+
 
 
     }

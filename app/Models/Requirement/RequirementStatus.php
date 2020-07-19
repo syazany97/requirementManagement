@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class RequirementStatus extends Model
 {
-    //
+    protected $fillable = ['name'];
 }

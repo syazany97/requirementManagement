@@ -42,7 +42,7 @@ class ProjectController extends Controller
     public function show($project)
     {
         $project = Project::with(['modules.children.requirements', 'modules.requirements'])
-            ->findOrFail($project->id);
+            ->findOrFail($project);
 
         return new ProjectResource($project);
     }

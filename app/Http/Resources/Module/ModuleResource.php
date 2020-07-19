@@ -18,7 +18,10 @@ class ModuleResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'requirements' => RequirementResource::collection($this->whenLoaded('requirements'))
+            'numbering' => $this->numbering,
+            'requirements' => RequirementResource::collection($this->whenLoaded('requirements')),
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at
         ];
     }
 }
