@@ -17,6 +17,7 @@ class RequirementResource extends JsonResource
         return [
             'id' => $this->id,
             'description' => $this->description,
+            'name' => $this->name,
             'module_id' => $this->module_id,
             'numbering' => $this->numbering,
             'assigned' => $this->assigned_id,
