@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\Module;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Module\ModuleResource;
 use App\Models\Module;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,9 @@ class ModuleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Project $project)
     {
-        //
+        return ModuleResource::collection($project->modules);
     }
 
     /**

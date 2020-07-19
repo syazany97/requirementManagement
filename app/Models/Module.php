@@ -19,4 +19,11 @@ class Module extends Model
     {
         return $this->morphMany(Requirement::class, 'requirementable');
     }
+
+    public function children()
+    {
+        return $this->hasMany(self::class, 'parent_id')
+            ->with('children')
+            ->orderBy('asc', 'numbering');
+    }
 }

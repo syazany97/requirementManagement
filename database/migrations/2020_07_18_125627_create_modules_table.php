@@ -17,7 +17,10 @@ class CreateModulesTable extends Migration
             $table->id();
             $table->foreignId('project_id')
                 ->constrained();
+            $table->integer('parent_id')
+                ->nullable();
             $table->string('title');
+            $table->string('numbering');
             $table->timestamps();
         });
     }
