@@ -39,8 +39,9 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return Response
      */
-    public function show(Project $project)
+    public function show($project)
     {
+        $project = Project::with(['modules.requirements'])->findOrFail($project->id);
         return new ProjectResource($project);
     }
 

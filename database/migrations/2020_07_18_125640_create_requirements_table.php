@@ -23,8 +23,18 @@ class CreateRequirementsTable extends Migration
                 ->constrained();
             $table->foreignId('requirement_status_id')
                 ->constrained();
+            $table->unsignedBigInteger('assigned_id')
+                ->nullable();
+            $table->unsignedBigInteger('creator_id')
+                ->nullable();
             $table->string('numbering')
                 ->nullable();
+            $table->foreign('assigned_id')
+                ->references('id')
+                ->on('users');
+            $table->foreign('creator_id')
+                ->references('id')
+                ->on('users');
             $table->timestamps();
             $table->softDeletes();
         });
