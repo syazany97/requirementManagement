@@ -9,12 +9,14 @@ import VueToast from "vue-toast-notification";
 import {routes} from "./routes";
 import VueRouter from "vue-router";
 import Vuex from "vuex";
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
 
 require('./bootstrap');
 
 window.Vue = require('vue');
 
-[VueRouter, dayjs, Vuex, VueToast].forEach((x) => Vue.use(x));
+[VueRouter, dayjs, Vuex, VueToast, Vuetify].forEach((x) => Vue.use(x));
 
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
@@ -27,5 +29,6 @@ const router = new VueRouter({
 })
 const app = new Vue({
     el: '#app',
+    vuetify: new Vuetify(),
     router
 });
