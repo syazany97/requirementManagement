@@ -6,24 +6,26 @@
 
 import dayjs from "dayjs";
 import VueToast from "vue-toast-notification";
+import {routes} from "./routes";
+import VueRouter from "vue-router";
+import Vuex from "vuex";
 
 require('./bootstrap');
 
 window.Vue = require('vue');
 
 [VueRouter, dayjs, Vuex, VueToast].forEach((x) => Vue.use(x));
+
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
+const router = new VueRouter({
+    mode: 'history',
+    routes,
+    linkActiveClass: 'active', // apply active class when url matches the route
+    linkExactActiveClass: 'active'
+})
 const app = new Vue({
     el: '#app',
+    router
 });

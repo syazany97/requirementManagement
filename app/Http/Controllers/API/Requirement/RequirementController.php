@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\API\Requirement;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Requirement\RequirementCreateRequest;
+use App\Http\Resources\Requirement\RequirementResource;
+use App\Models\Module;
 use App\Models\Requirement\Requirement;
 use Illuminate\Http\Request;
 
@@ -21,12 +24,13 @@ class RequirementController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Module $module
+     * @param RequirementCreateRequest $request
+     * @return RequirementResource
      */
-    public function store(Request $request)
+    public function store(Module $module, RequirementCreateRequest $request)
     {
-        //
+        return new RequirementResource($module->requirements()->create($request->validated()));
     }
 
     /**
@@ -37,13 +41,13 @@ class RequirementController extends Controller
      */
     public function show(Requirement $requirement)
     {
-        //
+        return new RequirementResource($requirement);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  \App\Models\Requirement  $requirement
      * @return \Illuminate\Http\Response
      */

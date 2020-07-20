@@ -21,6 +21,11 @@ Auth::routes();
 //Route::get('/login', \App\Http\Controllers\Auth\LoginController::)
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('/home', HomeController::class);
     Route::get('/home', 'HomeController@index');
 });
+
+Route::get('{any}', function () {
+    return view('layouts.app');
+})->where('any', '.*');
+//})->where('any', '.*')->middleware('auth');
+

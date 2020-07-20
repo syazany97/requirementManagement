@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\Project\ProjectController;
+use App\Http\Controllers\API\Requirement\RequirementController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::middleware(['auth:api'])->group(function() {
 });
     Route::apiResource('projects', ProjectController::class);
+    Route::apiResource('modules.requirements', RequirementController::class)->shallow();
+
