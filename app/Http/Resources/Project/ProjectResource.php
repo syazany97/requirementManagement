@@ -20,11 +20,11 @@ class ProjectResource extends JsonResource
             'name' => $this->name,
             'status' => $this->status_id,
             'description' => $this->description,
+            'owner' => $this->whenLoaded('user'),
             'modules_count' => $this->modules_count,
             'modules' =>  ModuleResource::collection($this->whenLoaded('modules')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
-
         ];
     }
 }

@@ -14,6 +14,7 @@
                         <th class="text-left">Name</th>
                         <th class="text-left">Description</th>
                         <th class="text-left">No of modules</th>
+                        <th class="text-left">Owner</th>
                     </tr>
                     </thead>
                     <tbody v-if="projects.length">
@@ -22,6 +23,7 @@
                         <td>{{ project.name }}</td>
                         <td>{{ project.description }}</td>
                         <td>{{ project.modules_count }}</td>
+                        <td>{{ get(project, 'owner.name', null) }}</td>
                     </tr>
                     </tbody>
                 </template>
@@ -50,6 +52,9 @@
                 const response = await axios.get('/api/projects');
                 this.projects = response.data.data;
                 console.log(response.data);
+            },
+            get(data, column, defaultValue) {
+                return _.get(data,column, defaultValue);
             }
         }
     }

@@ -2132,6 +2132,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Index.vue",
   data: function data() {
@@ -2170,6 +2172,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    get: function get(data, column, defaultValue) {
+      return _.get(data, column, defaultValue);
     }
   }
 });
@@ -39493,7 +39498,9 @@ var render = function() {
                       _vm._v(" "),
                       _c("th", { staticClass: "text-left" }, [
                         _vm._v("No of modules")
-                      ])
+                      ]),
+                      _vm._v(" "),
+                      _c("th", { staticClass: "text-left" }, [_vm._v("Owner")])
                     ])
                   ]),
                   _vm._v(" "),
@@ -39508,7 +39515,13 @@ var render = function() {
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(project.description))]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(project.modules_count))])
+                            _c("td", [_vm._v(_vm._s(project.modules_count))]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm._v(
+                                _vm._s(_vm.get(project, "owner.name", null))
+                              )
+                            ])
                           ])
                         }),
                         0
