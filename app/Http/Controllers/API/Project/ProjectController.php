@@ -19,7 +19,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return ProjectResource::collection(Project::paginate(20));
+        return ProjectResource::collection(Project::withCount(['modules'])->paginate(20));
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Models\Requirement;
 
+use App\Models\Comment\Comment;
 use App\Models\Module;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
@@ -24,5 +25,10 @@ class Requirement extends Model
     public function creator()
     {
         return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }

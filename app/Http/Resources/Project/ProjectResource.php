@@ -15,12 +15,12 @@ class ProjectResource extends JsonResource
      */
     public function toArray($request)
     {
-//        return parent::toArray($request);
-
         return [
             'id' => $this->id,
             'name' => $this->name,
             'status' => $this->status_id,
+            'description' => $this->description,
+            'modules_count' => $this->modules_count,
             'modules' =>  ModuleResource::collection($this->whenLoaded('modules')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
