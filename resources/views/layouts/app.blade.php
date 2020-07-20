@@ -21,6 +21,7 @@
 </head>
 <body>
     <div id="app">
+        <app></app>
         <router-view :key="$route.fullPath"></router-view>
     </div>
 </body>
