@@ -19,7 +19,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return ProjectResource::collection(Project::withCount(['modules'])->with(['user:id,name'])->paginate(20));
+        return ProjectResource::collection(Project::withCount(['modules'])
+            ->with(['user:id,name'])
+            ->paginate(20));
     }
 
     /**
