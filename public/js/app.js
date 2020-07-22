@@ -2296,6 +2296,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RequirementList",
@@ -40228,7 +40230,7 @@ var render = function() {
                   attrs: { slot: "delNodeIcon" },
                   slot: "delNodeIcon"
                 },
-                [_vm._v("✂️")]
+                [_vm._v("✂")]
               ),
               _vm._v(" "),
               _c(
@@ -40248,7 +40250,7 @@ var render = function() {
                   attrs: { slot: "treeNodeIcon" },
                   slot: "treeNodeIcon"
                 },
-                [_vm._v("🌲")]
+                [_vm._v("📂")]
               )
             ]
           ),
