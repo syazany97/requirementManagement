@@ -16,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Auth::routes();
+Route::get('/login', function () {
+    return view('layouts.app');
+});
 
-//Route::get('/login', \App\Http\Controllers\Auth\LoginController::)
+Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index');
@@ -26,6 +28,5 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('{any}', function () {
     return view('layouts.app');
-})->where('any', '.*');
-//})->where('any', '.*')->middleware('auth');
+})->where('any', '.*')->middleware('auth:sanctum');
 

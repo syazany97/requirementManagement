@@ -3,6 +3,9 @@
 use App\Models\Module;
 use App\Models\Project\Project;
 use App\Models\Requirement\Requirement;
+use App\Models\Requirement\RequirementPriority;
+use App\Models\Requirement\RequirementStatus;
+use App\User;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 

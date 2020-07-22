@@ -3,12 +3,15 @@
 namespace App\Observers;
 
 use App\Models\Project\Project;
+use Illuminate\Http\Request;
 
 class ProjectObserver
 {
     public function creating(Project $project)
     {
-//        $project->user_id = auth()->user()->id;
+        if (empty($project->user_id)) {
+            $project->user_id = auth()->id();
+        }
     }
 
     public function created(Project $project)

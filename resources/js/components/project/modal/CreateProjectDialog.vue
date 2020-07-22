@@ -17,6 +17,14 @@
                 <v-text-field
                     v-model="projectDescription"
                 ></v-text-field>
+
+                <v-select
+                    v-model="projectStatusId"
+                    :items="projectStatuses"
+                    item-text="title"
+                    item-value="id"
+                    label="Standard"
+                ></v-select>
             </v-form>
         </v-card-text>
 
@@ -32,7 +40,7 @@
 
             <v-btn
                 color="primary"
-                @click="submit()"
+                @click="createProject()"
             >
                 Create
             </v-btn>
@@ -41,20 +49,46 @@
 </template>
 
 <script>
+    import projectRepository from "../../../repositories/projectRepository";
     export default {
         name: "CreateProjectDialog",
         data() {
             return {
-                valid : true,
-                projectName : "",
-                projectDescription : ""
+                valid: true,
+                projectName: "",
+                projectDescription: "",
+                projectStatusId : "",
+                projectStatuses : []
             }
         },
-        methods : {
-            submit() {
-                console.log(this.projectName);
+        created() {
+            this.fetchProjectStatuses()
+        },
+        methods: {
+            createProject() {
+                projectRepository.store({
+                    name : this.projectName,
+                    description : this.projectDescription,
+                    project_status_id : this.projectStatusId
+                }).then(res => {
+                    this.$emit('fetch-projects', 'fetchProjects');
+                    this.projectName = "";
+                    this.projectStatusId = "";
+                    this.projectDescription = "";
+                    const payload = {
+                        variant: "success",
+                        message: "Project Created"
+                    };
+                    this.$store.commit("notification/showNotification", payload);
+                }).catch(err => {
+                    console.log(err.response.data.errors);
+                })
+            },
+            async fetchProjectStatuses() {
+                const response = await projectRepository.getProjectStatuses();
+                this.projectStatuses = response.data;
             }
-        }
+        },
     }
 </script>
 

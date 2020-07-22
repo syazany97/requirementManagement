@@ -3,13 +3,14 @@
         <h1>Projects</h1>
         <v-col class="text-end">
             <v-btn @click.stop="projectDialog = true" color="primary" small>
-                <v-icon left dark>mdi-plus</v-icon>New project
+                <v-icon left dark>mdi-plus</v-icon>
+                New project
             </v-btn>
             <v-dialog
                 v-model="projectDialog"
                 max-width="500"
             >
-                <create-project-dialog></create-project-dialog>
+                <create-project-dialog @fetch-projects="fetchProjects(); projectDialog = false"></create-project-dialog>
             </v-dialog>
 
         </v-col>
@@ -27,6 +28,7 @@
                         <th class="text-left">Description</th>
                         <th class="text-left">No of modules</th>
                         <th class="text-left">Owner</th>
+                        <th class="text-left">Action</th>
                     </tr>
                     </thead>
                     <tbody v-if="projects.length">
@@ -36,6 +38,9 @@
                         <td>{{ project.description }}</td>
                         <td>{{ project.modules_count }}</td>
                         <td>{{ get(project, 'owner.name', null) }}</td>
+                        <td>
+                            <v-btn x-small @click="viewProject(project.id)">View</v-btn>
+                        </td>
                     </tr>
                     </tbody>
                 </template>
@@ -47,6 +52,7 @@
 
 <script>
     import CreateProjectDialog from "../../components/project/modal/CreateProjectDialog";
+
     export default {
         name: "Index.vue",
         components: {CreateProjectDialog},
@@ -56,7 +62,7 @@
                 dense: false,
                 fixedHeader: false,
                 height: 300,
-                projectDialog : false
+                projectDialog: false
             };
         },
         created() {
@@ -69,10 +75,17 @@
                 console.log(response.data);
             },
             get(data, column, defaultValue) {
-                return _.get(data,column, defaultValue);
+                return _.get(data, column, defaultValue);
             },
             test() {
                 console.log('woi');
+            },
+            viewProject(projectId) {
+                this.$router.push({
+                    name: 'project.show', params: {
+                        project: projectId
+                    }
+                });
             }
         }
     }

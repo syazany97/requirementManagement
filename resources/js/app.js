@@ -11,6 +11,7 @@ import VueRouter from "vue-router";
 import Vuex from "vuex";
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import notification from "./vuex-modules/notification";
 
 require('./bootstrap');
 
@@ -27,8 +28,17 @@ const router = new VueRouter({
     linkActiveClass: 'active', // apply active class when url matches the route
     linkExactActiveClass: 'active'
 })
+
+const store = new Vuex.Store({
+    modules: {
+        notification: notification
+    }
+});
+
+
 const app = new Vue({
     el: '#app',
+    store,
     vuetify: new Vuetify(),
     router
 });

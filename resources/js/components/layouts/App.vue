@@ -34,6 +34,7 @@
         </v-app-bar>
 
         <v-main>
+            <toast-notification></toast-notification>
             <router-view :key="$route.fullPath"></router-view>
         </v-main>
         <v-footer
