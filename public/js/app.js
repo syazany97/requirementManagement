@@ -2347,7 +2347,8 @@ __webpack_require__.r(__webpack_exports__);
     setModules: function setModules() {
       if (this.modulesData.length) {
         this.modulesData = new vue_tree_list__WEBPACK_IMPORTED_MODULE_0__["Tree"](replaceKeysDeep(this.modulesData, {
-          requirements: 'children'
+          requirements: 'children',
+          name: 'title'
         }));
         console.log(this.modulesData);
         this.loaded = true;
@@ -40172,11 +40173,12 @@ var render = function() {
                       return [
                         _c("span", [
                           _vm._v(
-                            "\n      " + _vm._s(slotProps.model.name) + " "
-                          ),
-                          _c("span", { staticClass: "muted" }, [
-                            _vm._v("#" + _vm._s(slotProps.model.id))
-                          ])
+                            "\n      " +
+                              _vm._s(slotProps.model.numbering) +
+                              " " +
+                              _vm._s(slotProps.model.title) +
+                              "\n    "
+                          )
                         ])
                       ]
                     }
@@ -40184,7 +40186,7 @@ var render = function() {
                 ],
                 null,
                 false,
-                2114432279
+                2751724208
               )
             },
             [

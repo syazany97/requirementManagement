@@ -13,7 +13,7 @@
         >
             <template v-slot:leafNameDisplay="slotProps">
         <span>
-          {{ slotProps.model.name }} <span class="muted">#{{ slotProps.model.id }}</span>
+          {{slotProps.model.numbering}} {{ slotProps.model.title }}
         </span>
             </template>
             <span class="icon" slot="addTreeNodeIcon">📂</span>
@@ -88,7 +88,8 @@
                 if (this.modulesData.length) {
 
                     this.modulesData = new Tree(replaceKeysDeep(this.modulesData, {
-                        requirements : 'children'
+                        requirements : 'children',
+                        name : 'title'
                     }))
                     console.log(this.modulesData);
 
