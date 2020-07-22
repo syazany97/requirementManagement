@@ -1,35 +1,23 @@
 // initial state
-// shape: [{ id, quantity }]
 const state = () => ({
-    currentRequirement: false,
-    message: 'Notification',
-    variant: 'danger',
-    duration: 3000,
-    dismissable: true
+    currentRequirement: {
+        id : null,
+        description : "",
+        assigned : {}
+    }
 });
 
 // getters
 const getters = {
-    show: (state) => {
-        return state.show;
-    },
-    message: (state) => {
-        return state.message;
-    },
-    variant: (state) => {
-        return state.variant;
-    },
-    duration: (state) => {
-        return state.duration;
+    currentRequirement: (state) => {
+        return state.currentRequirement;
     }
 };
 
 // mutations
 const mutations = {
-    showNotification: (state, payload) => {
-        state.message = payload.message;
-        state.variant = payload.variant;
-        state.show = !state.show;
+    setRequirement: (state, payload) => {
+        state.currentRequirement = payload;
     }
 };
 

@@ -1,6 +1,7 @@
 <template>
+
     <v-container>
-        <h1>Show project</h1>
+
         <v-row v-if="loaded">
             <v-col
                 cols="6"

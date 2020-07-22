@@ -124,7 +124,7 @@
 
             onClick(params) {
                 if (params.type === 'requirement') {
-
+                    this.$store.commit('requirementList/setRequirement', params);
                 }
                 console.log(params.id)
             },
