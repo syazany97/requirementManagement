@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\Project\ProjectController;
 use App\Http\Controllers\API\Project\ProjectStatusController;
+use App\Http\Controllers\API\Requirement\RequirementCommentController;
 use App\Http\Controllers\API\Requirement\RequirementController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,5 +26,7 @@ Route::middleware(['auth:sanctum'])->group(function() {
     Route::apiResource('projects', ProjectController::class);
     Route::any('project-statuses', ProjectStatusController::class);
     Route::apiResource('modules.requirements', RequirementController::class)->shallow();
+    Route::resource('requirements.comments', RequirementCommentController::class)
+        ->only(['index', 'store']);
 });
 

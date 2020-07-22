@@ -8,13 +8,14 @@ use App\Http\Resources\Requirement\RequirementResource;
 use App\Models\Module;
 use App\Models\Requirement\Requirement;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class RequirementController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -36,8 +37,8 @@ class RequirementController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Requirement  $requirement
-     * @return \Illuminate\Http\Response
+     * @param Requirement $requirement
+     * @return RequirementResource
      */
     public function show(Requirement $requirement)
     {
@@ -47,23 +48,24 @@ class RequirementController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param  \App\Models\Requirement  $requirement
-     * @return \Illuminate\Http\Response
+     * @param RequirementCreateRequest $request
+     * @param Requirement $requirement
+     * @return RequirementResource
      */
-    public function update(Request $request, Requirement $requirement)
+    public function update(RequirementCreateRequest $request,  Requirement $requirement)
     {
-        //
+        return new RequirementResource($requirement->update($request->validated()));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Requirement  $requirement
-     * @return \Illuminate\Http\Response
+     * @param Requirement $requirement
+     * @return void
+     * @throws \Exception
      */
     public function destroy(Requirement $requirement)
     {
-        //
+        $requirement->delete();
     }
 }
