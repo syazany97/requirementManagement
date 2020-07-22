@@ -12,12 +12,13 @@ import Vuex from "vuex";
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import notification from "./vuex-modules/notification";
+import VueTreeList from 'vue-tree-list';
 
 require('./bootstrap');
 
 window.Vue = require('vue');
 
-[VueRouter, dayjs, Vuex, VueToast, Vuetify].forEach((x) => Vue.use(x));
+[VueRouter, dayjs, Vuex, VueToast, Vuetify, VueTreeList].forEach((x) => Vue.use(x));
 
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))

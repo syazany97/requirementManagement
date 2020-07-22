@@ -1,5 +1,9 @@
 <template>
+    <div>
     <h1>Show project</h1>
+        <requirement-list></requirement-list>
+
+    </div>
 </template>
 
 <script>
