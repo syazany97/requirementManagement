@@ -4,6 +4,7 @@ namespace App\Http\Resources\Project;
 
 use App\Http\Resources\Module\ModuleResource;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class ProjectResource extends JsonResource
 {
@@ -17,8 +18,9 @@ class ProjectResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'type' => $this->getModelName($this->getTable()),
             'name' => $this->name,
-            'status' => $this->status_id,
+            'status' => $this->model,
             'description' => $this->description,
             'owner' => $this->whenLoaded('user'),
             'modules_count' => $this->modules_count,

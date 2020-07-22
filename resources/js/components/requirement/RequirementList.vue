@@ -1,14 +1,14 @@
 <template>
-    <div>
+    <div v-if="loaded">
         <button @click="addNode">Add Node</button>
         <vue-tree-list
             @click="onClick"
             @change-name="onChangeName"
             @delete-node="onDel"
             @add-node="onAddNode"
-            :model="data"
-            default-tree-node-name="new node"
-            default-leaf-node-name="new leaf"
+            :model="modulesData"
+            default-tree-node-name="new module"
+            default-leaf-node-name="new requirement"
             v-bind:default-expanded="false"
         >
             <template v-slot:leafNameDisplay="slotProps">
@@ -23,27 +23,33 @@
             <span class="icon" slot="leafNodeIcon">🍃</span>
             <span class="icon" slot="treeNodeIcon">🌲</span>
         </vue-tree-list>
-        <button @click="getNewTree">Get new tree</button>
         <pre>
       {{newTree}}
     </pre>
+
     </div>
 </template>
 
 <script>
-    import { VueTreeList, Tree, TreeNode } from 'vue-tree-list';
+    import {VueTreeList, Tree, TreeNode} from 'vue-tree-list';
 
     export default {
         name: "RequirementList",
-        props : {
-            requirements : {
-                type : Array,
-                default : () => []
+        props: {
+            modules: {
+                type: Array,
+                default: () => []
             }
+        },
+        created() {
+            this.setModules();
         },
         data() {
             return {
+                // modulesData: new Tree(JSON.parse(JSON.stringify(this.modules))),
+                modulesData : JSON.parse(JSON.stringify(this.modules)),
                 newTree: {},
+                loaded : false,
                 data: new Tree([
                     {
                         name: 'Node 1',
@@ -77,7 +83,27 @@
                 ])
             }
         },
-        methods : {
+        methods: {
+            setModules() {
+                if (this.modulesData.length) {
+
+                    this.modulesData = new Tree(replaceKeysDeep(this.modulesData, {
+                        requirements : 'children'
+                    }))
+                    console.log(this.modulesData);
+
+                    this.loaded = true;
+                }
+
+                function replaceKeysDeep(obj, keysMap) { // keysMap = { oldKey1: newKey1, oldKey2: newKey2, etc...
+                    return _.transform(obj, function(result, value, key) { // transform to a new object
+
+                        let currentKey = keysMap[key] || key; // if the key is in keysMap use the replacement, if not use the original key
+
+                        result[currentKey] = _.isObject(value) ? replaceKeysDeep(value, keysMap) : value; // if the key is an object run it through the inner function - replaceKeys
+                    });
+                }
+            },
             onDel(node) {
                 console.log(node)
                 node.remove()
@@ -96,12 +122,13 @@
             },
 
             addNode() {
-                var node = new TreeNode({ name: 'new node', isLeaf: false })
+                var node = new TreeNode({name: 'new node', isLeaf: false})
                 if (!this.data.children) this.data.children = []
                 this.data.addChildren(node)
             },
             getNewTree() {
                 var vm = this
+
                 function _dfs(oldNode) {
                     var newNode = {}
 

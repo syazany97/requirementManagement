@@ -17,6 +17,7 @@ class ModuleResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'type' => $this->getModelName($this->getTable()),
             'title' => $this->title,
             'numbering' => $this->numbering,
             'requirements' => RequirementResource::collection($this->whenLoaded('requirements')),

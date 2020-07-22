@@ -1,12 +1,12 @@
 <template>
     <v-container>
         <h1>Show project</h1>
-        <v-row>
+        <v-row v-if="loaded">
             <v-col
                 cols="6"
                 md="4"
             >
-                <requirement-list></requirement-list>
+                <requirement-list :modules="modules"></requirement-list>
 
             </v-col>
             <v-col
@@ -38,6 +38,7 @@
                 project: {},
                 modules: [],
                 requirements: [],
+                loaded : false
             }
         },
         created() {
@@ -45,11 +46,11 @@
         },
         methods: {
             async setProject() {
-                const response = await projectRepository.find(this.projectId)
-                this.project = response.data.data.project;
-
+                const response = await projectRepository.find(this.projectId);
                 console.log(response.data);
-
+                this.project = response.data.data;
+                this.modules = response.data.data.modules;
+                this.loaded = true;
             }
         }
     }

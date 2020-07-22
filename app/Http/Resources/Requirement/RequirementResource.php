@@ -16,6 +16,7 @@ class RequirementResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'type' => $this->getModelName($this->getTable()),
             'description' => $this->description,
             'name' => $this->name,
             'module_id' => $this->module_id,
