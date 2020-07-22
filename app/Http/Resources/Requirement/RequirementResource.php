@@ -21,7 +21,8 @@ class RequirementResource extends JsonResource
             'name' => $this->name,
             'module_id' => $this->module_id,
             'numbering' => $this->numbering,
-            'assigned' => $this->assigned_id,
+            'assigned_id' => $this->assigned_id,
+            'assigned' => $this->whenLoaded('assigned'),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];

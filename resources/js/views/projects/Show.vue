@@ -13,13 +13,7 @@
                 cols="12"
                 md="8"
             >
-                <v-card
-                    class="pa-2"
-                    outlined
-                    tile
-                >
-                    .col-6 .col-md-4
-                </v-card>
+                <show-requirement></show-requirement>
             </v-col>
         </v-row>
 
@@ -47,7 +41,6 @@
         methods: {
             async setProject() {
                 const response = await projectRepository.find(this.projectId);
-                console.log(response.data);
                 this.project = response.data.data;
                 this.modules = response.data.data.modules;
                 this.loaded = true;

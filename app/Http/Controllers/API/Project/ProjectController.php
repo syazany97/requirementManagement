@@ -27,8 +27,8 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
+     * @param ProjectCreateRequest $request
+     * @return ProjectResource
      */
     public function store(ProjectCreateRequest $request)
     {
@@ -43,7 +43,7 @@ class ProjectController extends Controller
      */
     public function show($project)
     {
-        $project = Project::with(['modules.children.requirements', 'modules.requirements'])
+        $project = Project::with(['modules.children.requirements', 'modules.requirements.assigned'])
             ->findOrFail($project);
 
         return new ProjectResource($project);

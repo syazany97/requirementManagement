@@ -123,6 +123,9 @@
             },
 
             onClick(params) {
+                if (params.type === 'requirement') {
+
+                }
                 console.log(params.id)
             },
 
