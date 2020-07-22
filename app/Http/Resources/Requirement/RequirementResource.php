@@ -18,6 +18,8 @@ class RequirementResource extends JsonResource
             'id' => $this->id,
             'type' => $this->getModelName($this->getTable()),
             'description' => $this->description,
+            'priority_id' => $this->requirement_priority_id,
+            'priority' => $this->whenLoaded('priority'),
             'name' => $this->name,
             'module_id' => $this->module_id,
             'numbering' => $this->numbering,

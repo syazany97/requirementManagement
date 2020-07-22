@@ -38,12 +38,14 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Project  $project
+     * @param \App\Models\Project $project
      * @return Response
      */
     public function show($project)
     {
-        $project = Project::with(['modules.children.requirements', 'modules.requirements.assigned'])
+        $project = Project::with(['modules.children',
+            'modules.requirements.assigned',
+            'modules.requirements.priority'])
             ->findOrFail($project);
 
         return new ProjectResource($project);
@@ -52,8 +54,8 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Project  $project
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Project $project
      * @return Response
      */
     public function update(Request $request, Project $project)
@@ -64,7 +66,7 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Project  $project
+     * @param \App\Models\Project $project
      * @return Response
      */
     public function destroy(Project $project)

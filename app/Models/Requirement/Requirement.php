@@ -17,6 +17,11 @@ class Requirement extends Model
         return $this->belongsTo(Module::class);
     }
 
+    public function priority()
+    {
+        return $this->belongsTo(RequirementPriority::class, 'requirement_priority_id');
+    }
+
     public function assigned()
     {
         return $this->belongsTo(User::class, 'assigned_id');

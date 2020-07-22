@@ -2454,6 +2454,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ShowRequirement",
@@ -2466,21 +2481,23 @@ __webpack_require__.r(__webpack_exports__);
     requirement: function requirement() {
       return this.$store.getters['requirementList/currentRequirement'];
     },
-    items: function items() {
+    firstList: function firstList() {
       return {
         assigned: this.get(this.requirement, 'assigned.title', ''),
         created: dayjs__WEBPACK_IMPORTED_MODULE_0___default()(this.requirement.created_at).format('LLL'),
         updated: dayjs__WEBPACK_IMPORTED_MODULE_0___default()(this.requirement.updated_at).format('LLL')
+      };
+    },
+    secondList: function secondList() {
+      return {
+        priority: this.get(this.requirement, 'priority.title', ''),
+        type: this.requirement.type
       };
     }
   },
   methods: {
     get: function get(data, column, defaultValue) {
       return _.get(data, column, defaultValue);
-    },
-    setValue: function setValue(value) {
-      if (value instanceof Date) return dayjs__WEBPACK_IMPORTED_MODULE_0___default()(value).format('LLL');
-      return value;
     }
   }
 });
@@ -40371,34 +40388,71 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._l(_vm.items, function(value, propertyName) {
-        return _c(
-          "v-list-item",
-          { attrs: { "two-line": "" } },
-          [
-            _c(
-              "v-list-item-content",
-              [
-                _c("v-list-item-title", [
-                  _vm._v(_vm._s(_vm._f("titleCase")(propertyName)))
-                ]),
-                _vm._v(" "),
-                _c("v-list-item-subtitle", [
-                  _vm._v(_vm._s(_vm.setValue(value)))
-                ])
-              ],
-              1
-            )
-          ],
-          1
-        )
-      }),
+      _c(
+        "v-row",
+        [
+          _c(
+            "v-col",
+            { attrs: { cols: "6", md: "6" } },
+            _vm._l(_vm.firstList, function(value, propertyName) {
+              return _c(
+                "v-list-item",
+                { key: propertyName, attrs: { "two-line": "" } },
+                [
+                  _c(
+                    "v-list-item-content",
+                    [
+                      _c("v-list-item-title", [
+                        _vm._v(_vm._s(_vm._f("titleCase")(propertyName)))
+                      ]),
+                      _vm._v(" "),
+                      _c("v-list-item-subtitle", [_vm._v(_vm._s(value))])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            }),
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            { attrs: { cols: "6", md: "6" } },
+            _vm._l(_vm.secondList, function(value, propertyName) {
+              return _c(
+                "v-list-item",
+                { key: propertyName, attrs: { "two-line": "" } },
+                [
+                  _c(
+                    "v-list-item-content",
+                    [
+                      _c("v-list-item-title", [
+                        _vm._v(_vm._s(_vm._f("titleCase")(propertyName)))
+                      ]),
+                      _vm._v(" "),
+                      _c("v-list-item-subtitle", [_vm._v(_vm._s(value))])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            }),
+            1
+          )
+        ],
+        1
+      ),
       _vm._v(" "),
       _c("h5", [_vm._v("Description")]),
       _vm._v(" "),
-      _c("span", [_vm._v(_vm._s(_vm.requirement.description))])
+      _c("span", [_vm._v(_vm._s(_vm.requirement.description))]),
+      _vm._v(" "),
+      _c("h5", [_vm._v("Attachments")])
     ],
-    2
+    1
   )
 }
 var staticRenderFns = []
