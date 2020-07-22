@@ -49,9 +49,9 @@
         data() {
             return {
                 // modulesData: new Tree(JSON.parse(JSON.stringify(this.modules))),
-                modulesData : JSON.parse(JSON.stringify(this.modules)),
+                modulesData: JSON.parse(JSON.stringify(this.modules)),
                 newTree: {},
-                loaded : false,
+                loaded: false,
                 data: new Tree([
                     {
                         name: 'Node 1',
@@ -90,8 +90,8 @@
                 if (this.modulesData.length) {
 
                     this.modulesData = new Tree(replaceKeysDeep(this.modulesData, {
-                        requirements : 'children',
-                        name : 'title'
+                        requirements: 'children',
+                        name: 'title'
                     }))
                     console.log(this.modulesData);
 
@@ -99,7 +99,9 @@
                 }
 
                 function replaceKeysDeep(obj, keysMap) { // keysMap = { oldKey1: newKey1, oldKey2: newKey2, etc...
-                    return _.transform(obj, function(result, value, key) { // transform to a new object
+                    return _.transform(obj, function (result, value, key) { // transform to a new object
+
+                        if (result.type === 'requirement') result.isLeaf = true;
 
                         let currentKey = keysMap[key] || key; // if the key is in keysMap use the replacement, if not use the original key
 
@@ -121,7 +123,7 @@
             },
 
             onClick(params) {
-                console.log(params)
+                console.log(params.id)
             },
 
             addNode() {

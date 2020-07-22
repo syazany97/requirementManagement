@@ -2360,6 +2360,7 @@ __webpack_require__.r(__webpack_exports__);
         // keysMap = { oldKey1: newKey1, oldKey2: newKey2, etc...
         return _.transform(obj, function (result, value, key) {
           // transform to a new object
+          if (result.type === 'requirement') result.isLeaf = true;
           var currentKey = keysMap[key] || key; // if the key is in keysMap use the replacement, if not use the original key
 
           result[currentKey] = _.isObject(value) ? replaceKeysDeep(value, keysMap) : value; // if the key is an object run it through the inner function - replaceKeys
@@ -2377,7 +2378,7 @@ __webpack_require__.r(__webpack_exports__);
       console.log(params);
     },
     onClick: function onClick(params) {
-      console.log(params);
+      console.log(params.id);
     },
     addNode: function addNode() {
       var node = new vue_tree_list__WEBPACK_IMPORTED_MODULE_0__["TreeNode"]({
