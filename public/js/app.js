@@ -2626,6 +2626,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Show",
@@ -40496,8 +40517,36 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
-    [_c("h1", [_vm._v("Show project")]), _vm._v(" "), _c("requirement-list")],
+    "v-container",
+    [
+      _c("h1", [_vm._v("Show project")]),
+      _vm._v(" "),
+      _c(
+        "v-row",
+        [
+          _c(
+            "v-col",
+            { attrs: { cols: "6", md: "4" } },
+            [_c("requirement-list")],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-col",
+            { attrs: { cols: "12", md: "8" } },
+            [
+              _c(
+                "v-card",
+                { staticClass: "pa-2", attrs: { outlined: "", tile: "" } },
+                [_vm._v("\n                .col-6 .col-md-4\n            ")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
     1
   )
 }
