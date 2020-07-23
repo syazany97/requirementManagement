@@ -26,7 +26,7 @@ Route::middleware(['auth:sanctum'])->group(function() {
     Route::apiResource('projects', ProjectController::class);
     Route::any('project-statuses', ProjectStatusController::class);
     Route::apiResource('modules.requirements', RequirementController::class)->shallow();
+});
     Route::resource('requirements.comments', RequirementCommentController::class)
         ->only(['index', 'store']);
-});
 

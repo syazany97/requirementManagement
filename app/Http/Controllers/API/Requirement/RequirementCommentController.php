@@ -20,9 +20,7 @@ class RequirementCommentController extends Controller
      */
     public function index(Requirement $requirement)
     {
-        $comments = Comment::where('commentable_type', Requirement::class)
-            ->where('commentable_id', $requirement->id)
-            ->get();
+        $comments = Comment::show($requirement)->get();
 
         return CommentResource::collection($comments);
     }
