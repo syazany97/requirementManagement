@@ -14,6 +14,7 @@ class CreateMediaTable extends Migration
             $table->morphs('model');
             $table->uuid('uuid')->nullable();
             $table->string('collection_name');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('name');
             $table->string('file_name');
             $table->string('mime_type')->nullable();

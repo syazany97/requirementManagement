@@ -32,18 +32,21 @@
 
         <h5>Attachments</h5>
 
-        <v-list-item  v-for="attachment in attachments" v-bind:key="attachment.id">
+        <v-list-item v-for="attachment in attachments" v-bind:key="attachment.id">
             <v-list-item-content>
-                <v-list-item-title><v-btn text>{{attachment.name}}</v-btn></v-list-item-title>
+                <v-list-item-title>
+                    <v-btn :href="attachment.attachment_url" target="_blank" text>{{attachment.name}}</v-btn>
+                </v-list-item-title>
             </v-list-item-content>
         </v-list-item>
 
-        <v-btn x-small>
+        <v-btn @click="$refs.uploadRequirementAttachment.$el.click()" x-small>
             <v-icon left dark>mdi-upload</v-icon>
             Upload a file
         </v-btn>
 
-        <v-file-input v-model="fileUpload" label="File input"></v-file-input>
+        <v-file-input ref="uploadRequirementAttachment" v-model="fileAttachment"
+                      label="Upload a file"></v-file-input>
 
         <h5>Comments</h5>
 
@@ -102,8 +105,8 @@
                 comment: "",
                 showCommentTextField: false,
                 commentsLoaded: false,
-                fileUpload: null,
-                attachments : []
+                fileAttachment: null,
+                attachments: []
             }
         },
         computed: {
@@ -133,8 +136,10 @@
                     this.fetchAttachments();
                 }
             },
-            fileUpload() {
-                this.uploadFile(this.fileUpload);
+            fileAttachment() {
+                if (this.fileAttachment !== null) {
+                    this.uploadFile();
+                }
             }
         },
         methods: {
@@ -164,11 +169,12 @@
                     console.log(e);
                 }
             },
-            async uploadFile(uploadedFile) {
+            async uploadFile() {
                 try {
                     let formData = new FormData;
-                    formData.append('file',uploadedFile);
+                    formData.append('file', this.fileAttachment);
                     const response = await requirementAttachmentRepository.store(this.requirement.id, formData);
+                    this.fileAttachment = null;
                     await this.fetchAttachments();
                 } catch (e) {
                     console.log(e);
@@ -180,9 +186,6 @@
                 this.attachments = response.data.data;
 
                 console.log(this.attachments);
-
-
-
             }
         }
     }

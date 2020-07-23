@@ -2532,6 +2532,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2544,7 +2547,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       comment: "",
       showCommentTextField: false,
       commentsLoaded: false,
-      fileUpload: null,
+      fileAttachment: null,
       attachments: []
     };
   },
@@ -2576,8 +2579,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.fetchAttachments();
       }
     },
-    fileUpload: function fileUpload() {
-      this.uploadFile(this.fileUpload);
+    fileAttachment: function fileAttachment() {
+      if (this.fileAttachment !== null) {
+        this.uploadFile();
+      }
     }
   },
   methods: {
@@ -2683,7 +2688,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3, null, [[0, 9]]);
       }))();
     },
-    uploadFile: function uploadFile(uploadedFile) {
+    uploadFile: function uploadFile() {
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
@@ -2694,30 +2699,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context4.prev = 0;
                 formData = new FormData();
-                formData.append('file', uploadedFile);
+                formData.append('file', _this4.fileAttachment);
                 _context4.next = 5;
                 return _repositories_requirementAttachmentRepository__WEBPACK_IMPORTED_MODULE_3__["default"].store(_this4.requirement.id, formData);
 
               case 5:
                 response = _context4.sent;
-                _context4.next = 8;
+                _this4.fileAttachment = null;
+                _context4.next = 9;
                 return _this4.fetchAttachments();
 
-              case 8:
-                _context4.next = 13;
+              case 9:
+                _context4.next = 14;
                 break;
 
-              case 10:
-                _context4.prev = 10;
+              case 11:
+                _context4.prev = 11;
                 _context4.t0 = _context4["catch"](0);
                 console.log(_context4.t0);
 
-              case 13:
+              case 14:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, null, [[0, 10]]);
+        }, _callee4, null, [[0, 11]]);
       }))();
     },
     fetchAttachments: function fetchAttachments() {
@@ -40711,9 +40717,17 @@ var render = function() {
                     _c(
                       "v-list-item-title",
                       [
-                        _c("v-btn", { attrs: { text: "" } }, [
-                          _vm._v(_vm._s(attachment.name))
-                        ])
+                        _c(
+                          "v-btn",
+                          {
+                            attrs: {
+                              href: attachment.attachment_url,
+                              target: "_blank",
+                              text: ""
+                            }
+                          },
+                          [_vm._v(_vm._s(attachment.name))]
+                        )
                       ],
                       1
                     )
@@ -40727,7 +40741,14 @@ var render = function() {
           _vm._v(" "),
           _c(
             "v-btn",
-            { attrs: { "x-small": "" } },
+            {
+              attrs: { "x-small": "" },
+              on: {
+                click: function($event) {
+                  return _vm.$refs.uploadRequirementAttachment.$el.click()
+                }
+              }
+            },
             [
               _c("v-icon", { attrs: { left: "", dark: "" } }, [
                 _vm._v("mdi-upload")
@@ -40738,13 +40759,14 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("v-file-input", {
-            attrs: { label: "File input" },
+            ref: "uploadRequirementAttachment",
+            attrs: { label: "Upload a file" },
             model: {
-              value: _vm.fileUpload,
+              value: _vm.fileAttachment,
               callback: function($$v) {
-                _vm.fileUpload = $$v
+                _vm.fileAttachment = $$v
               },
-              expression: "fileUpload"
+              expression: "fileAttachment"
             }
           }),
           _vm._v(" "),
