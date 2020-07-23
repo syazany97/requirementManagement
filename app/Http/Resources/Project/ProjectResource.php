@@ -18,7 +18,7 @@ class ProjectResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => $this->getModelName($this->getTable()),
+            'type' => Str::singular($this->getTable()),
             'name' => $this->name,
             'status' => $this->model,
             'parent_id' => $this->parent_id,

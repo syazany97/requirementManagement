@@ -4,6 +4,7 @@ namespace App\Http\Resources\Requirement;
 
 use App\Http\Resources\CommentResource;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class RequirementResource extends JsonResource
 {
@@ -17,7 +18,7 @@ class RequirementResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'type' => $this->getModelName($this->getTable()),
+            'type' => Str::singular($this->getTable()),
             'description' => $this->description,
             'priority_id' => $this->requirement_priority_id,
             'priority' => $this->whenLoaded('priority'),
