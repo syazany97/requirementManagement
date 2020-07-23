@@ -31,10 +31,19 @@
         <span>{{requirement.description}}</span>
 
         <h5>Attachments</h5>
+
+        <v-list-item  v-for="attachment in attachments" v-bind:key="attachment.id">
+            <v-list-item-content>
+                <v-list-item-title><v-btn text>{{attachment.name}}</v-btn></v-list-item-title>
+            </v-list-item-content>
+        </v-list-item>
+
         <v-btn x-small>
             <v-icon left dark>mdi-upload</v-icon>
             Upload a file
         </v-btn>
+
+        <v-file-input v-model="fileUpload" label="File input"></v-file-input>
 
         <h5>Comments</h5>
 
@@ -82,6 +91,7 @@
 <script>
     import requirementCommentRepository from "../../repositories/requirementCommentRepository";
     import dayjs from "dayjs";
+    import requirementAttachmentRepository from "../../repositories/requirementAttachmentRepository";
 
     export default {
         name: "ShowRequirement",
@@ -91,7 +101,9 @@
                 comments: [],
                 comment: "",
                 showCommentTextField: false,
-                commentsLoaded: false
+                commentsLoaded: false,
+                fileUpload: null,
+                attachments : []
             }
         },
         computed: {
@@ -118,7 +130,11 @@
                 this.showCommentTextField = false;
                 if (this.requirement.id !== null) {
                     this.fetchComments();
+                    this.fetchAttachments();
                 }
+            },
+            fileUpload() {
+                this.uploadFile(this.fileUpload);
             }
         },
         methods: {
@@ -147,6 +163,25 @@
                 } catch (e) {
                     console.log(e);
                 }
+            },
+            async uploadFile(uploadedFile) {
+                try {
+                    let formData = new FormData;
+                    formData.append('file',uploadedFile);
+                    const response = await requirementAttachmentRepository.store(this.requirement.id, formData);
+                    await this.fetchAttachments();
+                } catch (e) {
+                    console.log(e);
+                }
+            },
+            async fetchAttachments() {
+                const response = await requirementAttachmentRepository.all(this.requirement.id);
+
+                this.attachments = response.data.data;
+
+                console.log(this.attachments);
+
+
 
             }
         }

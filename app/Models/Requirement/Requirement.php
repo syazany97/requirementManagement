@@ -6,9 +6,13 @@ use App\Models\Comment\Comment;
 use App\Models\Module;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Requirement extends Model
+class Requirement extends Model implements HasMedia
 {
+    use InteractsWithMedia;
+
     protected $fillable = ['name', 'module_id', 'description', 'description',
         'requirement_priority_id', 'requirement_status_id', 'numbering'];
 

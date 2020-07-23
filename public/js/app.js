@@ -2435,6 +2435,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _repositories_requirementCommentRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../repositories/requirementCommentRepository */ "./resources/js/repositories/requirementCommentRepository.js");
 /* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! dayjs */ "./node_modules/dayjs/dayjs.min.js");
 /* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(dayjs__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _repositories_requirementAttachmentRepository__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../repositories/requirementAttachmentRepository */ "./resources/js/repositories/requirementAttachmentRepository.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2522,6 +2523,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2532,7 +2543,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       comments: [],
       comment: "",
       showCommentTextField: false,
-      commentsLoaded: false
+      commentsLoaded: false,
+      fileUpload: null,
+      attachments: []
     };
   },
   computed: {
@@ -2560,7 +2573,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       if (this.requirement.id !== null) {
         this.fetchComments();
+        this.fetchAttachments();
       }
+    },
+    fileUpload: function fileUpload() {
+      this.uploadFile(this.fileUpload);
     }
   },
   methods: {
@@ -2664,6 +2681,68 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee3, null, [[0, 9]]);
+      }))();
+    },
+    uploadFile: function uploadFile(uploadedFile) {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var formData, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                formData = new FormData();
+                formData.append('file', uploadedFile);
+                _context4.next = 5;
+                return _repositories_requirementAttachmentRepository__WEBPACK_IMPORTED_MODULE_3__["default"].store(_this4.requirement.id, formData);
+
+              case 5:
+                response = _context4.sent;
+                _context4.next = 8;
+                return _this4.fetchAttachments();
+
+              case 8:
+                _context4.next = 13;
+                break;
+
+              case 10:
+                _context4.prev = 10;
+                _context4.t0 = _context4["catch"](0);
+                console.log(_context4.t0);
+
+              case 13:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[0, 10]]);
+      }))();
+    },
+    fetchAttachments: function fetchAttachments() {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.next = 2;
+                return _repositories_requirementAttachmentRepository__WEBPACK_IMPORTED_MODULE_3__["default"].all(_this5.requirement.id);
+
+              case 2:
+                response = _context5.sent;
+                _this5.attachments = response.data.data;
+                console.log(_this5.attachments);
+
+              case 5:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
       }))();
     }
   }
@@ -40621,6 +40700,31 @@ var render = function() {
           _vm._v(" "),
           _c("h5", [_vm._v("Attachments")]),
           _vm._v(" "),
+          _vm._l(_vm.attachments, function(attachment) {
+            return _c(
+              "v-list-item",
+              { key: attachment.id },
+              [
+                _c(
+                  "v-list-item-content",
+                  [
+                    _c(
+                      "v-list-item-title",
+                      [
+                        _c("v-btn", { attrs: { text: "" } }, [
+                          _vm._v(_vm._s(attachment.name))
+                        ])
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          }),
+          _vm._v(" "),
           _c(
             "v-btn",
             { attrs: { "x-small": "" } },
@@ -40632,6 +40736,17 @@ var render = function() {
             ],
             1
           ),
+          _vm._v(" "),
+          _c("v-file-input", {
+            attrs: { label: "File input" },
+            model: {
+              value: _vm.fileUpload,
+              callback: function($$v) {
+                _vm.fileUpload = $$v
+              },
+              expression: "fileUpload"
+            }
+          }),
           _vm._v(" "),
           _c("h5", [_vm._v("Comments")]),
           _vm._v(" "),
@@ -40776,7 +40891,7 @@ var render = function() {
               )
             : _vm._e()
         ],
-        1
+        2
       )
     : _vm._e()
 }
@@ -101990,6 +102105,31 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
   },
   getProjectStatuses: function getProjectStatuses() {
     return axios.get('/api/project-statuses');
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/repositories/requirementAttachmentRepository.js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/repositories/requirementAttachmentRepository.js ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var resource = 'requirements';
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all(requirementId) {
+    return axios.get("/api/requirements/".concat(requirementId, "/attachments"));
+  },
+  store: function store(requirementId, payload) {
+    return axios.post("/api/".concat(resource, "/").concat(requirementId, "/attachments"), payload);
+  },
+  "delete": function _delete(id) {
+    return axios["delete"]("/api/comments/".concat(id));
   }
 });
 
