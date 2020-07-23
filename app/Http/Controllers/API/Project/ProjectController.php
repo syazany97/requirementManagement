@@ -4,7 +4,9 @@ namespace App\Http\Controllers\API\Project;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Project\ProjectCreateRequest;
+use App\Http\Resources\Module\ModuleResource;
 use App\Http\Resources\Project\ProjectResource;
+use App\Models\Module;
 use App\Models\Project\Project;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -43,12 +45,14 @@ class ProjectController extends Controller
      */
     public function show($project)
     {
-        $project = Project::with(['modules.children',
-            'modules.requirements.assigned',
-            'modules.requirements.priority'])
-            ->findOrFail($project);
+        $data = Module::where('parent_id', null)->where('project_id', $project)
+            ->with(['children.requirements.assigned',
+                'children.requirements.priority',
+                'children.requirements.comments'])
+            ->get();
 
-        return new ProjectResource($project);
+        return ModuleResource::collection($data);
+
     }
 
     /**

@@ -20,6 +20,7 @@ class ModuleResource extends JsonResource
             'type' => $this->getModelName($this->getTable()),
             'title' => $this->title,
             'numbering' => $this->numbering,
+            'children' => self::collection($this->whenLoaded('children')),
             'requirements' => RequirementResource::collection($this->whenLoaded('requirements')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at

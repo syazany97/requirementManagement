@@ -2787,8 +2787,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 response = _context.sent;
-                _this.project = response.data.data;
-                _this.modules = response.data.data.modules;
+                console.log(response.data); // this.project = response.data.data;
+
+                _this.modules = response.data.data;
                 _this.loaded = true;
 
               case 6:

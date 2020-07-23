@@ -42,8 +42,9 @@
         methods: {
             async setProject() {
                 const response = await projectRepository.find(this.projectId);
-                this.project = response.data.data;
-                this.modules = response.data.data.modules;
+                console.log(response.data);
+                // this.project = response.data.data;
+                this.modules = response.data.data;
                 this.loaded = true;
             }
         }

@@ -21,6 +21,7 @@ class ProjectResource extends JsonResource
             'type' => $this->getModelName($this->getTable()),
             'name' => $this->name,
             'status' => $this->model,
+            'parent_id' => $this->parent_id,
             'description' => $this->description,
             'owner' => $this->whenLoaded('user'),
             'modules_count' => $this->modules_count,
