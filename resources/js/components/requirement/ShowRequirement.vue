@@ -27,7 +27,7 @@
             </v-col>
         </v-row>
 
-        <h5>Description</h5>
+        <h6>Description</h6>
         <span>{{requirement.description}}</span>
 
         <h5>Attachments</h5>
@@ -37,25 +37,43 @@
         </v-btn>
 
         <h5>Comments</h5>
-        <div v-if="comments.length">
+
+        <div v-if="!commentsLoaded" class="text-center">
+            <v-progress-circular
+                :width="2"
+                size="15"
+                color="blue"
+                indeterminate
+            ></v-progress-circular>
+        </div>
+
+        <div v-if="comments.length && commentsLoaded">
             <v-list-item v-for="comment in comments" v-bind:key="comment.id">
                 <v-list-item-content>
                     <v-list-item-title>{{comment.user.name}} {{comment.created_at | formatDateTime}}</v-list-item-title>
                     <span>{{comment.details}}</span>
                 </v-list-item-content>
-                <v-btn @click="deleteComment(comment.id)" x-small danger v-if="comment.meta.allowed_to_delete">Delete</v-btn>
+                <div class="text-right">
+                    <v-btn @click="deleteComment(comment.id)" x-small danger v-if="comment.meta.allowed_to_delete">
+                        Delete
+                    </v-btn>
+                </div>
             </v-list-item>
         </div>
 
+        <span v-if="!comments.length && commentsLoaded">No comment yet for this requirement</span>
+
         <v-btn v-show="!showCommentTextField" x-small text @click="showCommentTextField = true">Add comment</v-btn>
         <div v-if="showCommentTextField">
-        <v-textarea
-            v-model="comment"
-            solo
-            name="input-7-4"
-            label="Solo textarea"
-        ></v-textarea>
-        <v-btn small @click="postComment">Post</v-btn>
+            <v-textarea
+                v-model="comment"
+                solo
+                name="input-7-4"
+                label="Solo textarea"
+            ></v-textarea>
+            <div class="text-right">
+                <v-btn small @click="postComment">Post</v-btn>
+            </div>
         </div>
 
     </v-card>
@@ -72,7 +90,8 @@
                 itemsColumn: ['email', 'assigned'],
                 comments: [],
                 comment: "",
-                showCommentTextField : false
+                showCommentTextField: false,
+                commentsLoaded: false
             }
         },
         computed: {
@@ -95,6 +114,7 @@
         },
         watch: {
             requirement() {
+                this.commentsLoaded = false;
                 this.showCommentTextField = false;
                 if (this.requirement.id !== null) {
                     this.fetchComments();
@@ -108,10 +128,11 @@
             async fetchComments() {
                 const response = await requirementCommentRepository.all(this.requirement.id);
                 this.comments = response.data.data;
+                this.commentsLoaded = true;
             },
             async postComment() {
                 try {
-                    const response = await requirementCommentRepository.store(this.requirement.id, {details : this.comment});
+                    const response = await requirementCommentRepository.store(this.requirement.id, {details: this.comment});
                     this.comment = "";
                     await this.fetchComments();
                 } catch (e) {

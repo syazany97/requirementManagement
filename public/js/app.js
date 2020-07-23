@@ -2504,6 +2504,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2513,7 +2531,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       itemsColumn: ['email', 'assigned'],
       comments: [],
       comment: "",
-      showCommentTextField: false
+      showCommentTextField: false,
+      commentsLoaded: false
     };
   },
   computed: {
@@ -2536,6 +2555,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   watch: {
     requirement: function requirement() {
+      this.commentsLoaded = false;
       this.showCommentTextField = false;
 
       if (this.requirement.id !== null) {
@@ -2562,8 +2582,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 response = _context.sent;
                 _this.comments = response.data.data;
+                _this.commentsLoaded = true;
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -40594,7 +40615,7 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("h5", [_vm._v("Description")]),
+          _c("h6", [_vm._v("Description")]),
           _vm._v(" "),
           _c("span", [_vm._v(_vm._s(_vm.requirement.description))]),
           _vm._v(" "),
@@ -40614,7 +40635,25 @@ var render = function() {
           _vm._v(" "),
           _c("h5", [_vm._v("Comments")]),
           _vm._v(" "),
-          _vm.comments.length
+          !_vm.commentsLoaded
+            ? _c(
+                "div",
+                { staticClass: "text-center" },
+                [
+                  _c("v-progress-circular", {
+                    attrs: {
+                      width: 2,
+                      size: "15",
+                      color: "blue",
+                      indeterminate: ""
+                    }
+                  })
+                ],
+                1
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.comments.length && _vm.commentsLoaded
             ? _c(
                 "div",
                 _vm._l(_vm.comments, function(comment) {
@@ -40640,26 +40679,41 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
-                      comment.meta.allowed_to_delete
-                        ? _c(
-                            "v-btn",
-                            {
-                              attrs: { "x-small": "", danger: "" },
-                              on: {
-                                click: function($event) {
-                                  return _vm.deleteComment(comment.id)
-                                }
-                              }
-                            },
-                            [_vm._v("Delete")]
-                          )
-                        : _vm._e()
+                      _c(
+                        "div",
+                        { staticClass: "text-right" },
+                        [
+                          comment.meta.allowed_to_delete
+                            ? _c(
+                                "v-btn",
+                                {
+                                  attrs: { "x-small": "", danger: "" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.deleteComment(comment.id)
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                    Delete\n                "
+                                  )
+                                ]
+                              )
+                            : _vm._e()
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
                 }),
                 1
               )
+            : _vm._e(),
+          _vm._v(" "),
+          !_vm.comments.length && _vm.commentsLoaded
+            ? _c("span", [_vm._v("No comment yet for this requirement")])
             : _vm._e(),
           _vm._v(" "),
           _c(
@@ -40703,9 +40757,19 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c(
-                    "v-btn",
-                    { attrs: { small: "" }, on: { click: _vm.postComment } },
-                    [_vm._v("Post")]
+                    "div",
+                    { staticClass: "text-right" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { small: "" },
+                          on: { click: _vm.postComment }
+                        },
+                        [_vm._v("Post")]
+                      )
+                    ],
+                    1
                   )
                 ],
                 1
