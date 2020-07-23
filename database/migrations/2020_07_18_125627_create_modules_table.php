@@ -19,7 +19,7 @@ class CreateModulesTable extends Migration
                 ->constrained();
             $table->integer('parent_id')
                 ->nullable();
-            $table->string('title');
+            $table->string('name');
             $table->string('numbering');
             $table->timestamps();
         });

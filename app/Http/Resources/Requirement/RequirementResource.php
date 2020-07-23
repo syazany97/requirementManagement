@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Requirement;
 
+use App\Http\Resources\CommentResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class RequirementResource extends JsonResource
@@ -25,6 +26,7 @@ class RequirementResource extends JsonResource
             'numbering' => $this->numbering,
             'assigned_id' => $this->assigned_id,
             'assigned' => $this->whenLoaded('assigned'),
+            'comments' => CommentResource::collection($this->whenLoaded('comments')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];

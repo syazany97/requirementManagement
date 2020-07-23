@@ -13,7 +13,7 @@
         >
             <template v-slot:leafNameDisplay="slotProps">
         <span>
-          {{slotProps.model.numbering}} {{ slotProps.model.title }}
+          {{slotProps.model.numbering}} {{ slotProps.model.name }}
         </span>
             </template>
             <span class="icon" slot="addTreeNodeIcon">📂</span>
@@ -90,9 +90,9 @@
                 if (this.modulesData.length) {
 
                     this.modulesData = new Tree(replaceKeysDeep(this.modulesData, {
-                        requirements: 'children',
-                        name: 'title'
+                        requirements: 'children'
                     }))
+                    
                     console.log(this.modulesData);
 
                     this.loaded = true;
@@ -126,7 +126,7 @@
                 if (params.type === 'requirement') {
                     this.$store.commit('requirementList/setRequirement', params);
                 }
-                console.log(params.id)
+                console.log(params)
             },
 
             addNode() {

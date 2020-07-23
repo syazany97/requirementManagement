@@ -2349,8 +2349,7 @@ __webpack_require__.r(__webpack_exports__);
     setModules: function setModules() {
       if (this.modulesData.length) {
         this.modulesData = new vue_tree_list__WEBPACK_IMPORTED_MODULE_0__["Tree"](replaceKeysDeep(this.modulesData, {
-          requirements: 'children',
-          name: 'title'
+          requirements: 'children'
         }));
         console.log(this.modulesData);
         this.loaded = true;
@@ -2382,7 +2381,7 @@ __webpack_require__.r(__webpack_exports__);
         this.$store.commit('requirementList/setRequirement', params);
       }
 
-      console.log(params.id);
+      console.log(params);
     },
     addNode: function addNode() {
       var node = new vue_tree_list__WEBPACK_IMPORTED_MODULE_0__["TreeNode"]({
@@ -2431,8 +2430,44 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! dayjs */ "./node_modules/dayjs/dayjs.min.js");
-/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(dayjs__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _repositories_requirementCommentRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../repositories/requirementCommentRepository */ "./resources/js/repositories/requirementCommentRepository.js");
+/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! dayjs */ "./node_modules/dayjs/dayjs.min.js");
+/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(dayjs__WEBPACK_IMPORTED_MODULE_2__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2470,11 +2505,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ShowRequirement",
   data: function data() {
     return {
-      itemsColumn: ['email', 'assigned']
+      itemsColumn: ['email', 'assigned'],
+      comments: [],
+      comment: "",
+      showCommentTextField: false
     };
   },
   computed: {
@@ -2483,9 +2522,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     firstList: function firstList() {
       return {
-        assigned: this.get(this.requirement, 'assigned.title', ''),
-        created: dayjs__WEBPACK_IMPORTED_MODULE_0___default()(this.requirement.created_at).format('LLL'),
-        updated: dayjs__WEBPACK_IMPORTED_MODULE_0___default()(this.requirement.updated_at).format('LLL')
+        assigned: this.get(this.requirement, 'assigned.name', ''),
+        created: dayjs__WEBPACK_IMPORTED_MODULE_2___default()(this.requirement.created_at).format('LLL'),
+        updated: dayjs__WEBPACK_IMPORTED_MODULE_2___default()(this.requirement.updated_at).format('LLL')
       };
     },
     secondList: function secondList() {
@@ -2495,9 +2534,116 @@ __webpack_require__.r(__webpack_exports__);
       };
     }
   },
+  watch: {
+    requirement: function requirement() {
+      this.showCommentTextField = false;
+
+      if (this.requirement.id !== null) {
+        this.fetchComments();
+      }
+    }
+  },
   methods: {
     get: function get(data, column, defaultValue) {
       return _.get(data, column, defaultValue);
+    },
+    fetchComments: function fetchComments() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _repositories_requirementCommentRepository__WEBPACK_IMPORTED_MODULE_1__["default"].all(_this.requirement.id);
+
+              case 2:
+                response = _context.sent;
+                _this.comments = response.data.data;
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    postComment: function postComment() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return _repositories_requirementCommentRepository__WEBPACK_IMPORTED_MODULE_1__["default"].store(_this2.requirement.id, {
+                  details: _this2.comment
+                });
+
+              case 3:
+                response = _context2.sent;
+                _this2.comment = "";
+                _context2.next = 7;
+                return _this2.fetchComments();
+
+              case 7:
+                _context2.next = 12;
+                break;
+
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](0);
+                console.log(_context2.t0);
+
+              case 12:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 9]]);
+      }))();
+    },
+    deleteComment: function deleteComment(commentId) {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return _repositories_requirementCommentRepository__WEBPACK_IMPORTED_MODULE_1__["default"]["delete"](commentId);
+
+              case 3:
+                response = _context3.sent;
+                _this3.comment = "";
+                _context3.next = 7;
+                return _this3.fetchComments();
+
+              case 7:
+                _context3.next = 12;
+                break;
+
+              case 9:
+                _context3.prev = 9;
+                _context3.t0 = _context3["catch"](0);
+                console.log(_context3.t0);
+
+              case 12:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 9]]);
+      }))();
     }
   }
 });
@@ -40272,7 +40418,7 @@ var render = function() {
                             "\n      " +
                               _vm._s(slotProps.model.numbering) +
                               " " +
-                              _vm._s(slotProps.model.title) +
+                              _vm._s(slotProps.model.name) +
                               "\n    "
                           )
                         ])
@@ -40282,7 +40428,7 @@ var render = function() {
                 ],
                 null,
                 false,
-                2751724208
+                1958013399
               )
             },
             [
@@ -40377,84 +40523,198 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "v-card",
-    { staticClass: "pa-2", attrs: { outlined: "", tile: "" } },
-    [
-      _c("h6", [
-        _vm._v(
-          _vm._s(_vm.requirement.numbering) +
-            " " +
-            _vm._s(_vm.requirement.title)
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "v-row",
+  return _vm.requirement.id !== null
+    ? _c(
+        "v-card",
+        { staticClass: "pa-2", attrs: { outlined: "", tile: "" } },
         [
+          _c("h6", [
+            _vm._v(
+              _vm._s(_vm.requirement.numbering) +
+                " " +
+                _vm._s(_vm.requirement.name)
+            )
+          ]),
+          _vm._v(" "),
           _c(
-            "v-col",
-            { attrs: { cols: "6", md: "6" } },
-            _vm._l(_vm.firstList, function(value, propertyName) {
-              return _c(
-                "v-list-item",
-                { key: propertyName, attrs: { "two-line": "" } },
-                [
-                  _c(
-                    "v-list-item-content",
+            "v-row",
+            [
+              _c(
+                "v-col",
+                { attrs: { cols: "6", md: "6" } },
+                _vm._l(_vm.firstList, function(value, propertyName) {
+                  return _c(
+                    "v-list-item",
+                    { key: propertyName, attrs: { "two-line": "" } },
                     [
-                      _c("v-list-item-title", [
-                        _vm._v(_vm._s(_vm._f("titleCase")(propertyName)))
-                      ]),
-                      _vm._v(" "),
-                      _c("v-list-item-subtitle", [_vm._v(_vm._s(value))])
+                      _c(
+                        "v-list-item-content",
+                        [
+                          _c("v-list-item-title", [
+                            _vm._v(_vm._s(_vm._f("titleCase")(propertyName)))
+                          ]),
+                          _vm._v(" "),
+                          _c("v-list-item-subtitle", [_vm._v(_vm._s(value))])
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
-                ],
+                }),
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                { attrs: { cols: "6", md: "6" } },
+                _vm._l(_vm.secondList, function(value, propertyName) {
+                  return _c(
+                    "v-list-item",
+                    { key: propertyName, attrs: { "two-line": "" } },
+                    [
+                      _c(
+                        "v-list-item-content",
+                        [
+                          _c("v-list-item-title", [
+                            _vm._v(_vm._s(_vm._f("titleCase")(propertyName)))
+                          ]),
+                          _vm._v(" "),
+                          _c("v-list-item-subtitle", [_vm._v(_vm._s(value))])
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                }),
                 1
               )
-            }),
+            ],
             1
           ),
           _vm._v(" "),
+          _c("h5", [_vm._v("Description")]),
+          _vm._v(" "),
+          _c("span", [_vm._v(_vm._s(_vm.requirement.description))]),
+          _vm._v(" "),
+          _c("h5", [_vm._v("Attachments")]),
+          _vm._v(" "),
           _c(
-            "v-col",
-            { attrs: { cols: "6", md: "6" } },
-            _vm._l(_vm.secondList, function(value, propertyName) {
-              return _c(
-                "v-list-item",
-                { key: propertyName, attrs: { "two-line": "" } },
-                [
-                  _c(
-                    "v-list-item-content",
+            "v-btn",
+            { attrs: { "x-small": "" } },
+            [
+              _c("v-icon", { attrs: { left: "", dark: "" } }, [
+                _vm._v("mdi-upload")
+              ]),
+              _vm._v("\n        Upload a file\n    ")
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("h5", [_vm._v("Comments")]),
+          _vm._v(" "),
+          _vm.comments.length
+            ? _c(
+                "div",
+                _vm._l(_vm.comments, function(comment) {
+                  return _c(
+                    "v-list-item",
+                    { key: comment.id },
                     [
-                      _c("v-list-item-title", [
-                        _vm._v(_vm._s(_vm._f("titleCase")(propertyName)))
-                      ]),
+                      _c(
+                        "v-list-item-content",
+                        [
+                          _c("v-list-item-title", [
+                            _vm._v(
+                              _vm._s(comment.user.name) +
+                                " " +
+                                _vm._s(
+                                  _vm._f("formatDateTime")(comment.created_at)
+                                )
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(comment.details))])
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
-                      _c("v-list-item-subtitle", [_vm._v(_vm._s(value))])
+                      comment.meta.allowed_to_delete
+                        ? _c(
+                            "v-btn",
+                            {
+                              attrs: { "x-small": "", danger: "" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deleteComment(comment.id)
+                                }
+                              }
+                            },
+                            [_vm._v("Delete")]
+                          )
+                        : _vm._e()
                     ],
                     1
+                  )
+                }),
+                1
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "v-btn",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: !_vm.showCommentTextField,
+                  expression: "!showCommentTextField"
+                }
+              ],
+              attrs: { "x-small": "", text: "" },
+              on: {
+                click: function($event) {
+                  _vm.showCommentTextField = true
+                }
+              }
+            },
+            [_vm._v("Add comment")]
+          ),
+          _vm._v(" "),
+          _vm.showCommentTextField
+            ? _c(
+                "div",
+                [
+                  _c("v-textarea", {
+                    attrs: {
+                      solo: "",
+                      name: "input-7-4",
+                      label: "Solo textarea"
+                    },
+                    model: {
+                      value: _vm.comment,
+                      callback: function($$v) {
+                        _vm.comment = $$v
+                      },
+                      expression: "comment"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    { attrs: { small: "" }, on: { click: _vm.postComment } },
+                    [_vm._v("Post")]
                   )
                 ],
                 1
               )
-            }),
-            1
-          )
+            : _vm._e()
         ],
         1
-      ),
-      _vm._v(" "),
-      _c("h5", [_vm._v("Description")]),
-      _vm._v(" "),
-      _c("span", [_vm._v(_vm._s(_vm.requirement.description))]),
-      _vm._v(" "),
-      _c("h5", [_vm._v("Attachments")])
-    ],
-    1
-  )
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -101675,6 +101935,34 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
 
 /***/ }),
 
+/***/ "./resources/js/repositories/requirementCommentRepository.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/repositories/requirementCommentRepository.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var resource = 'requirements';
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all(requirementId) {
+    return axios.get("/api/requirements/".concat(requirementId, "/comments"));
+  },
+  store: function store(requirementId, payload) {
+    return axios.post("/api/".concat(resource, "/").concat(requirementId, "/comments"), payload);
+  },
+  find: function find(id) {
+    return axios.get("/api/comments/".concat(id));
+  },
+  "delete": function _delete(id) {
+    return axios["delete"]("/api/comments/".concat(id));
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/routes.js":
 /*!********************************!*\
   !*** ./resources/js/routes.js ***!
@@ -101977,7 +102265,8 @@ var state = function state() {
     currentRequirement: {
       id: null,
       description: "",
-      assigned: {}
+      assigned: {},
+      comments: []
     }
   };
 }; // getters

@@ -3,7 +3,8 @@ const state = () => ({
     currentRequirement: {
         id : null,
         description : "",
-        assigned : {}
+        assigned : {},
+        comments : []
     }
 });
 

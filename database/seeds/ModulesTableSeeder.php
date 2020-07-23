@@ -37,7 +37,7 @@ class ModulesTableSeeder extends Seeder
             foreach ($parentModulesName as $moduleName) {
                 Module::create([
                     'project_id' => $id,
-                    'title' => $moduleName,
+                    'name' => $moduleName,
                     'numbering' => 1 . $i
                 ]);
                 $i++;
@@ -54,7 +54,7 @@ class ModulesTableSeeder extends Seeder
                 Module::create([
                     'project_id' => $parentId->project_id,
                     'parent_id' => $parentId->id,
-                    'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
+                    'name' => $faker->sentence($nbWords = 6, $variableNbWords = true),
                     'numbering' => $parentId->numbering . '.' . $j
                 ]);
             }
