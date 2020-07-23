@@ -1,17 +1,12 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 import dayjs from "dayjs";
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
 import VueToast from "vue-toast-notification";
 import {routes} from "./routes";
 import VueRouter from "vue-router";
 import Vuex from "vuex";
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css'
+// import Vuetify from 'vuetify/lib';
+import Vuetify from "vuetify";
+import 'vuetify/dist/vuetify.min.css';
 import notification from "./vuex-modules/notification";
 import VueTreeList from 'vue-tree-list';
 import requirementList from "./vuex-modules/requirementList";
@@ -25,6 +20,7 @@ window.Vue = require('vue');
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 dayjs.extend(LocalizedFormat);
+
 const router = new VueRouter({
     mode: 'history',
     routes,
