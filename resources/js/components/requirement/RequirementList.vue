@@ -39,12 +39,8 @@
     export default {
         name: "RequirementList",
         components: {CreateNewModule},
-        created() {
-            // this.setModules();
-        },
         data() {
             return {
-                // data: JSON.parse(JSON.stringify(this.modules)),
                 newTree: {},
                 loaded: false
             }

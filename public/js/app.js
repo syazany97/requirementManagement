@@ -2429,11 +2429,8 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     CreateNewModule: _modules_dialog_CreateNewModule__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  created: function created() {// this.setModules();
-  },
   data: function data() {
     return {
-      // data: JSON.parse(JSON.stringify(this.modules)),
       newTree: {},
       loaded: false
     };
