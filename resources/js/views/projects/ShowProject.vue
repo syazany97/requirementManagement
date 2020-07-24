@@ -7,19 +7,19 @@
         </div>
         <!-- // create new module dialog -->
 
-        <v-row v-if="loaded">
+        <v-row v-if="modules.length">
             <v-col
                 cols="6"
                 md="4"
             >
-                <requirement-list :modules="modules"></requirement-list>
+                <requirement-list></requirement-list>
 
             </v-col>
             <v-col
                 cols="12"
                 md="8"
             >
-            <show-requirement></show-requirement>
+                <show-requirement></show-requirement>
             </v-col>
         </v-row>
 
@@ -37,21 +37,17 @@
             return {
                 projectId: this.$route.params.project,
                 project: {},
-                modules: [],
                 requirements: [],
-                loaded : false
+                loaded: false
             }
         },
         created() {
-            this.setProject();
+            this.$store.dispatch('requirementList/setRequirementList',
+                {project_id: this.projectId});
         },
-        methods: {
-            async setProject() {
-                const response = await moduleRepository.all(this.projectId);
-                console.log(response.data);
-                // this.project = response.data.data;
-                this.modules = response.data.data;
-                this.loaded = true;
+        computed: {
+            modules() {
+                return this.$store.getters['requirementList/requirementList'];
             }
         }
     }

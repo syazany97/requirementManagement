@@ -2203,7 +2203,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -2215,7 +2214,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 3:
-                response = _context.sent;
+                _this.$store.dispatch('requirementList/setRequirementList', {
+                  project_id: _this.$route.params.project
+                });
+
                 _this.dialog = false;
                 _context.next = 10;
                 break;
@@ -2427,23 +2429,20 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     CreateNewModule: _modules_dialog_CreateNewModule__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  props: {
-    modules: {
-      type: Array,
-      "default": function _default() {
-        return [];
-      }
-    }
-  },
   created: function created() {
     this.setModules();
   },
   data: function data() {
     return {
-      data: JSON.parse(JSON.stringify(this.modules)),
+      // data: JSON.parse(JSON.stringify(this.modules)),
       newTree: {},
       loaded: false
     };
+  },
+  computed: {
+    data: function data() {
+      return JSON.parse(JSON.stringify(this.$store.getters['requirementList/requirementList']));
+    }
   },
   methods: {
     setModules: function setModules() {
@@ -3076,16 +3075,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../repositories/projectRepository */ "./resources/js/repositories/projectRepository.js");
-/* harmony import */ var _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../repositories/moduleRepository */ "./resources/js/repositories/moduleRepository.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+/* harmony import */ var _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../repositories/projectRepository */ "./resources/js/repositories/projectRepository.js");
+/* harmony import */ var _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../repositories/moduleRepository */ "./resources/js/repositories/moduleRepository.js");
 //
 //
 //
@@ -3123,41 +3114,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       projectId: this.$route.params.project,
       project: {},
-      modules: [],
       requirements: [],
       loaded: false
     };
   },
   created: function created() {
-    this.setProject();
+    this.$store.dispatch('requirementList/setRequirementList', {
+      project_id: this.projectId
+    });
   },
-  methods: {
-    setProject: function setProject() {
-      var _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_2__["default"].all(_this.projectId);
-
-              case 2:
-                response = _context.sent;
-                console.log(response.data); // this.project = response.data.data;
-
-                _this.modules = response.data.data;
-                _this.loaded = true;
-
-              case 6:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
+  computed: {
+    modules: function modules() {
+      return this.$store.getters['requirementList/requirementList'];
     }
   }
 });
@@ -41446,14 +41414,14 @@ var render = function() {
     [
       _c("div", { staticClass: "text-right" }, [_c("create-new-module")], 1),
       _vm._v(" "),
-      _vm.loaded
+      _vm.modules.length
         ? _c(
             "v-row",
             [
               _c(
                 "v-col",
                 { attrs: { cols: "6", md: "4" } },
-                [_c("requirement-list", { attrs: { modules: _vm.modules } })],
+                [_c("requirement-list")],
                 1
               ),
               _vm._v(" "),
@@ -102424,7 +102392,7 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
   all: function all(projectId) {
     return axios.get("/api/projects/".concat(projectId, "/").concat(resource));
   },
-  store: function store(payload, projectId) {
+  store: function store(projectId, payload) {
     return axios.post("/api/projects/".concat(projectId, "/").concat(resource), payload);
   },
   find: function find(id) {
@@ -102808,7 +102776,18 @@ var mutations = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../repositories/moduleRepository */ "./resources/js/repositories/moduleRepository.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 // initial state
+
+
 var state = function state() {
   return {
     currentRequirement: {
@@ -102816,7 +102795,8 @@ var state = function state() {
       description: "",
       assigned: {},
       comments: []
-    }
+    },
+    requirementList: []
   };
 }; // getters
 
@@ -102824,19 +102804,50 @@ var state = function state() {
 var getters = {
   currentRequirement: function currentRequirement(state) {
     return state.currentRequirement;
+  },
+  requirementList: function requirementList(state) {
+    return state.requirementList;
   }
 }; // mutations
 
 var mutations = {
   setRequirement: function setRequirement(state, payload) {
     state.currentRequirement = payload;
+  },
+  setRequirementList: function setRequirementList(state, payload) {
+    Vue.set(state, 'requirementList', payload);
+  }
+};
+var actions = {
+  setRequirementList: function setRequirementList(state, payload) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_1__["default"].all(payload.project_id);
+
+            case 2:
+              response = _context.sent;
+              state.commit('setRequirementList', response.data.data);
+
+            case 4:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
   namespaced: true,
   state: state,
   getters: getters,
-  mutations: mutations
+  mutations: mutations,
+  actions: actions
 });
 
 /***/ }),

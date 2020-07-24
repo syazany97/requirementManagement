@@ -18,7 +18,16 @@ class ProjectModuleController extends Controller
 
     public function store(Project $project, ModuleCreateRequest $request)
     {
-        return new ModuleResource($project->modules()->create($request->validated()));
+        $latesModule = $project->modules->sortByDesc('numbering')->first();
+
+        if($latesModule) {
+            $numbering = intval($latesModule->numbering) + 1;
+        } else {
+            $numbering = 1.0;
+        }
+
+        return new ModuleResource($project->modules()->create(array_merge($request->validated(),
+            ['numbering' => $numbering])));
     }
 
     public function show(Module $module)

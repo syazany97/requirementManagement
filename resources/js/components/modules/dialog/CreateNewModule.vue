@@ -66,11 +66,15 @@
         methods: {
             async addModule() {
                 try {
-                    const response = await moduleRepository.store(this.$route.params.project, {
+                    await moduleRepository.store(this.$route.params.project, {
                         name: this.moduleName
                     })
 
+                    this.$store.dispatch('requirementList/setRequirementList',
+                        {project_id: this.$route.params.project});
+
                     this.dialog = false;
+
 
                 } catch (e) {
                     console.log(e);

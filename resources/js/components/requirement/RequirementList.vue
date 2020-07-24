@@ -39,21 +39,20 @@
     export default {
         name: "RequirementList",
         components: {CreateNewModule},
-        props: {
-            modules: {
-                type: Array,
-                default: () => []
-            }
-        },
         created() {
             this.setModules();
         },
         data() {
             return {
-                data: JSON.parse(JSON.stringify(this.modules)),
+                // data: JSON.parse(JSON.stringify(this.modules)),
                 newTree: {},
                 loaded: false
             }
+        },
+        computed : {
+          data() {
+              return JSON.parse(JSON.stringify(this.$store.getters['requirementList/requirementList']))
+          }
         },
         methods: {
             setModules() {

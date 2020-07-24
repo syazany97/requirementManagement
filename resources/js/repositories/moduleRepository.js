@@ -6,7 +6,7 @@ export default {
     all(projectId) {
         return axios.get(`/api/projects/${projectId}/${resource}`)
     },
-    store(payload, projectId) {
+    store(projectId,payload) {
         return axios.post(`/api/projects/${projectId}/${resource}`, payload)
     },
     find(id) {
