@@ -1,6 +1,6 @@
 <template>
-    <div v-if="loaded">
-<!--        <button @click="addNode">Add New Module</button>-->
+    <div>
+        <!--        <button @click="addNode">Add New Module</button>-->
         <vue-tree-list
             @click="onClick"
             @change-name="onChangeName"
@@ -40,7 +40,7 @@
         name: "RequirementList",
         components: {CreateNewModule},
         created() {
-            this.setModules();
+            // this.setModules();
         },
         data() {
             return {
@@ -49,23 +49,12 @@
                 loaded: false
             }
         },
-        computed : {
-          data() {
-              return JSON.parse(JSON.stringify(this.$store.getters['requirementList/requirementList']))
-          }
-        },
-        methods: {
-            setModules() {
-                if (this.data.length) {
-
-                    this.data = new Tree(replaceKeysDeep(this.data, {
+        computed: {
+            data() {
+                return new Tree(replaceKeysDeep(
+                    JSON.parse(JSON.stringify(this.$store.getters['requirementList/requirementList'])), {
                         requirements: 'children'
                     }))
-
-                    console.log(this.data);
-
-                    this.loaded = true;
-                }
 
                 function replaceKeysDeep(obj, keysMap) { // keysMap = { oldKey1: newKey1, oldKey2: newKey2, etc...
                     return _.transform(obj, function (result, value, key) { // transform to a new object
@@ -77,7 +66,9 @@
                         result[currentKey] = _.isObject(value) ? replaceKeysDeep(value, keysMap) : value; // if the key is an object run it through the inner function - replaceKeys
                     });
                 }
-            },
+            }
+        },
+        methods: {
             onDel(node) {
                 console.log(node)
                 node.remove()

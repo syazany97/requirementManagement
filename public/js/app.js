@@ -2429,8 +2429,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     CreateNewModule: _modules_dialog_CreateNewModule__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  created: function created() {
-    this.setModules();
+  created: function created() {// this.setModules();
   },
   data: function data() {
     return {
@@ -2441,18 +2440,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     data: function data() {
-      return JSON.parse(JSON.stringify(this.$store.getters['requirementList/requirementList']));
-    }
-  },
-  methods: {
-    setModules: function setModules() {
-      if (this.data.length) {
-        this.data = new vue_tree_list__WEBPACK_IMPORTED_MODULE_0__["Tree"](replaceKeysDeep(this.data, {
-          requirements: 'children'
-        }));
-        console.log(this.data);
-        this.loaded = true;
-      }
+      return new vue_tree_list__WEBPACK_IMPORTED_MODULE_0__["Tree"](replaceKeysDeep(JSON.parse(JSON.stringify(this.$store.getters['requirementList/requirementList'])), {
+        requirements: 'children'
+      }));
 
       function replaceKeysDeep(obj, keysMap) {
         // keysMap = { oldKey1: newKey1, oldKey2: newKey2, etc...
@@ -2464,7 +2454,9 @@ __webpack_require__.r(__webpack_exports__);
           result[currentKey] = _.isObject(value) ? replaceKeysDeep(value, keysMap) : value; // if the key is an object run it through the inner function - replaceKeys
         });
       }
-    },
+    }
+  },
+  methods: {
     onDel: function onDel(node) {
       console.log(node);
       node.remove();
@@ -40691,118 +40683,111 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.loaded
-    ? _c(
-        "div",
-        [
-          _c(
-            "vue-tree-list",
+  return _c(
+    "div",
+    [
+      _c(
+        "vue-tree-list",
+        {
+          attrs: {
+            model: _vm.data,
+            "default-tree-node-name": "new module",
+            "default-leaf-node-name": "new requirement",
+            "default-expanded": false
+          },
+          on: {
+            click: _vm.onClick,
+            "change-name": _vm.onChangeName,
+            "delete-node": _vm.onDel,
+            "add-node": _vm.onAddNode
+          },
+          scopedSlots: _vm._u([
             {
-              attrs: {
-                model: _vm.data,
-                "default-tree-node-name": "new module",
-                "default-leaf-node-name": "new requirement",
-                "default-expanded": false
-              },
-              on: {
-                click: _vm.onClick,
-                "change-name": _vm.onChangeName,
-                "delete-node": _vm.onDel,
-                "add-node": _vm.onAddNode
-              },
-              scopedSlots: _vm._u(
-                [
-                  {
-                    key: "leafNameDisplay",
-                    fn: function(slotProps) {
-                      return [
-                        _c("span", [
-                          _vm._v(
-                            "\n          " +
-                              _vm._s(slotProps.model.numbering) +
-                              " " +
-                              _vm._s(slotProps.model.name) +
-                              "\n        "
-                          )
-                        ])
-                      ]
-                    }
-                  }
-                ],
-                null,
-                false,
-                678848215
-              )
+              key: "leafNameDisplay",
+              fn: function(slotProps) {
+                return [
+                  _c("span", [
+                    _vm._v(
+                      "\n      " +
+                        _vm._s(slotProps.model.numbering) +
+                        " " +
+                        _vm._s(slotProps.model.name) +
+                        "\n    "
+                    )
+                  ])
+                ]
+              }
+            }
+          ])
+        },
+        [
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              staticClass: "icon",
+              attrs: { slot: "addTreeNodeIcon" },
+              slot: "addTreeNodeIcon"
             },
-            [
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticClass: "icon",
-                  attrs: { slot: "addTreeNodeIcon" },
-                  slot: "addTreeNodeIcon"
-                },
-                [_vm._v("📂")]
-              ),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticClass: "icon",
-                  attrs: { slot: "addLeafNodeIcon" },
-                  slot: "addLeafNodeIcon"
-                },
-                [_vm._v("＋")]
-              ),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticClass: "icon",
-                  attrs: { slot: "editNodeIcon" },
-                  slot: "editNodeIcon"
-                },
-                [_vm._v("📃")]
-              ),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticClass: "icon",
-                  attrs: { slot: "delNodeIcon" },
-                  slot: "delNodeIcon"
-                },
-                [_vm._v("✂")]
-              ),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticClass: "icon",
-                  attrs: { slot: "leafNodeIcon" },
-                  slot: "leafNodeIcon"
-                },
-                [_vm._v("🍃")]
-              ),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticClass: "icon",
-                  attrs: { slot: "treeNodeIcon" },
-                  slot: "treeNodeIcon"
-                },
-                [_vm._v("📂")]
-              )
-            ]
+            [_vm._v("📂")]
           ),
           _vm._v(" "),
-          _c("pre", [_vm._v("      " + _vm._s(_vm.newTree) + "\n    ")])
-        ],
-        1
-      )
-    : _vm._e()
+          _c(
+            "span",
+            {
+              staticClass: "icon",
+              attrs: { slot: "addLeafNodeIcon" },
+              slot: "addLeafNodeIcon"
+            },
+            [_vm._v("＋")]
+          ),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              staticClass: "icon",
+              attrs: { slot: "editNodeIcon" },
+              slot: "editNodeIcon"
+            },
+            [_vm._v("📃")]
+          ),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              staticClass: "icon",
+              attrs: { slot: "delNodeIcon" },
+              slot: "delNodeIcon"
+            },
+            [_vm._v("✂")]
+          ),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              staticClass: "icon",
+              attrs: { slot: "leafNodeIcon" },
+              slot: "leafNodeIcon"
+            },
+            [_vm._v("🍃")]
+          ),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              staticClass: "icon",
+              attrs: { slot: "treeNodeIcon" },
+              slot: "treeNodeIcon"
+            },
+            [_vm._v("📂")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("pre", [_vm._v("  " + _vm._s(_vm.newTree) + "\n")])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
