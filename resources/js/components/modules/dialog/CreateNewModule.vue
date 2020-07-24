@@ -28,7 +28,7 @@
                         <v-btn
                             color="green darken-1"
                             text
-                            @click="dialog = false"
+                            @click="moduleName = '';dialog = false"
                         >
                             Cancel
                         </v-btn>
@@ -72,6 +72,8 @@
 
                     this.$store.dispatch('requirementList/setRequirementList',
                         {project_id: this.$route.params.project});
+
+                    this.moduleName = "";
 
                     this.dialog = false;
 

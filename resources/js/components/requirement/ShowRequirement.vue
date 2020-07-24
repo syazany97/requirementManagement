@@ -162,7 +162,7 @@
             },
             async deleteComment(commentId) {
                 try {
-                    const response = await requirementCommentRepository.delete(commentId);
+                    await requirementCommentRepository.delete(commentId);
                     this.comment = "";
                     await this.fetchComments();
                 } catch (e) {
@@ -173,7 +173,7 @@
                 try {
                     let formData = new FormData;
                     formData.append('file', this.fileAttachment);
-                    const response = await requirementAttachmentRepository.store(this.requirement.id, formData);
+                    await requirementAttachmentRepository.store(this.requirement.id, formData);
                     this.fileAttachment = null;
                     await this.fetchAttachments();
                 } catch (e) {

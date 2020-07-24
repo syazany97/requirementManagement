@@ -39,16 +39,42 @@
     export default {
         name: "RequirementList",
         components: {CreateNewModule},
+        props: {
+            modules: Array
+        },
+        created() {
+            this.setModules();
+        },
         data() {
             return {
+                data: [],
                 newTree: {},
                 loaded: false
             }
         },
-        computed: {
-            data() {
-                return new Tree(replaceKeysDeep(
-                    JSON.parse(JSON.stringify(this.$store.getters['requirementList/requirementList'])), {
+        // computed: {
+        //     data() {
+        //         return new Tree(replaceKeysDeep(
+        //             JSON.parse(JSON.stringify(this.$store.getters['requirementList/requirementList'])), {
+        //                 requirements: 'children'
+        //             }))
+        //
+        //         function replaceKeysDeep(obj, keysMap) { // keysMap = { oldKey1: newKey1, oldKey2: newKey2, etc...
+        //             return _.transform(obj, function (result, value, key) { // transform to a new object
+        //
+        //                 if (result.type === 'requirement') result.isLeaf = true;
+        //
+        //                 let currentKey = keysMap[key] || key; // if the key is in keysMap use the replacement, if not use the original key
+        //
+        //                 result[currentKey] = _.isObject(value) ? replaceKeysDeep(value, keysMap) : value; // if the key is an object run it through the inner function - replaceKeys
+        //             });
+        //         }
+        //     }
+        // },
+        methods: {
+            setModules() {
+               this.data =  new Tree(replaceKeysDeep(
+                    JSON.parse(JSON.stringify(this.modules)), {
                         requirements: 'children'
                     }))
 
@@ -62,9 +88,9 @@
                         result[currentKey] = _.isObject(value) ? replaceKeysDeep(value, keysMap) : value; // if the key is an object run it through the inner function - replaceKeys
                     });
                 }
-            }
-        },
-        methods: {
+
+            },
+
             onDel(node) {
                 console.log(node)
                 node.remove()
@@ -90,6 +116,7 @@
                 if (!this.data.children) this.data.children = []
                 this.data.addChildren(node)
             },
+
             getNewTree() {
                 var vm = this
 

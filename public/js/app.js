@@ -2218,21 +2218,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   project_id: _this.$route.params.project
                 });
 
+                _this.moduleName = "";
                 _this.dialog = false;
-                _context.next = 10;
+                _context.next = 11;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 8:
+                _context.prev = 8;
                 _context.t0 = _context["catch"](0);
                 console.log(_context.t0);
 
-              case 10:
+              case 11:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[0, 8]]);
       }))();
     }
   }
@@ -2429,15 +2430,41 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     CreateNewModule: _modules_dialog_CreateNewModule__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
+  props: {
+    modules: Array
+  },
+  created: function created() {
+    this.setModules();
+  },
   data: function data() {
     return {
+      data: [],
       newTree: {},
       loaded: false
     };
   },
-  computed: {
-    data: function data() {
-      return new vue_tree_list__WEBPACK_IMPORTED_MODULE_0__["Tree"](replaceKeysDeep(JSON.parse(JSON.stringify(this.$store.getters['requirementList/requirementList'])), {
+  // computed: {
+  //     data() {
+  //         return new Tree(replaceKeysDeep(
+  //             JSON.parse(JSON.stringify(this.$store.getters['requirementList/requirementList'])), {
+  //                 requirements: 'children'
+  //             }))
+  //
+  //         function replaceKeysDeep(obj, keysMap) { // keysMap = { oldKey1: newKey1, oldKey2: newKey2, etc...
+  //             return _.transform(obj, function (result, value, key) { // transform to a new object
+  //
+  //                 if (result.type === 'requirement') result.isLeaf = true;
+  //
+  //                 let currentKey = keysMap[key] || key; // if the key is in keysMap use the replacement, if not use the original key
+  //
+  //                 result[currentKey] = _.isObject(value) ? replaceKeysDeep(value, keysMap) : value; // if the key is an object run it through the inner function - replaceKeys
+  //             });
+  //         }
+  //     }
+  // },
+  methods: {
+    setModules: function setModules() {
+      this.data = new vue_tree_list__WEBPACK_IMPORTED_MODULE_0__["Tree"](replaceKeysDeep(JSON.parse(JSON.stringify(this.modules)), {
         requirements: 'children'
       }));
 
@@ -2451,9 +2478,7 @@ __webpack_require__.r(__webpack_exports__);
           result[currentKey] = _.isObject(value) ? replaceKeysDeep(value, keysMap) : value; // if the key is an object run it through the inner function - replaceKeys
         });
       }
-    }
-  },
-  methods: {
+    },
     onDel: function onDel(node) {
       console.log(node);
       node.remove();
@@ -2744,7 +2769,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
@@ -2754,33 +2778,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _repositories_requirementCommentRepository__WEBPACK_IMPORTED_MODULE_1__["default"]["delete"](commentId);
 
               case 3:
-                response = _context3.sent;
                 _this3.comment = "";
-                _context3.next = 7;
+                _context3.next = 6;
                 return _this3.fetchComments();
 
-              case 7:
-                _context3.next = 12;
+              case 6:
+                _context3.next = 11;
                 break;
 
-              case 9:
-                _context3.prev = 9;
+              case 8:
+                _context3.prev = 8;
                 _context3.t0 = _context3["catch"](0);
                 console.log(_context3.t0);
 
-              case 12:
+              case 11:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 9]]);
+        }, _callee3, null, [[0, 8]]);
       }))();
     },
     uploadFile: function uploadFile() {
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        var formData, response;
+        var formData;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
@@ -2792,26 +2815,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _repositories_requirementAttachmentRepository__WEBPACK_IMPORTED_MODULE_3__["default"].store(_this4.requirement.id, formData);
 
               case 5:
-                response = _context4.sent;
                 _this4.fileAttachment = null;
-                _context4.next = 9;
+                _context4.next = 8;
                 return _this4.fetchAttachments();
 
-              case 9:
-                _context4.next = 14;
+              case 8:
+                _context4.next = 13;
                 break;
 
-              case 11:
-                _context4.prev = 11;
+              case 10:
+                _context4.prev = 10;
                 _context4.t0 = _context4["catch"](0);
                 console.log(_context4.t0);
 
-              case 14:
+              case 13:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, null, [[0, 11]]);
+        }, _callee4, null, [[0, 10]]);
       }))();
     },
     fetchAttachments: function fetchAttachments() {
@@ -40495,6 +40517,7 @@ var render = function() {
                           attrs: { color: "green darken-1", text: "" },
                           on: {
                             click: function($event) {
+                              _vm.moduleName = ""
                               _vm.dialog = false
                             }
                           }
@@ -41403,7 +41426,7 @@ var render = function() {
               _c(
                 "v-col",
                 { attrs: { cols: "6", md: "4" } },
-                [_c("requirement-list")],
+                [_c("requirement-list", { attrs: { modules: _vm.modules } })],
                 1
               ),
               _vm._v(" "),
