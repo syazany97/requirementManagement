@@ -39,9 +39,6 @@
     export default {
         name: "RequirementList",
         components: {CreateNewModule},
-        props: {
-            modules: Array
-        },
         created() {
             this.setModules();
         },

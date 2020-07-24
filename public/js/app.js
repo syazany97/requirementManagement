@@ -2430,9 +2430,6 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     CreateNewModule: _modules_dialog_CreateNewModule__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  props: {
-    modules: Array
-  },
   created: function created() {
     this.setModules();
   },
@@ -41420,7 +41417,7 @@ var render = function() {
               _c(
                 "v-col",
                 { attrs: { cols: "6", md: "4" } },
-                [_c("requirement-list", { attrs: { modules: _vm.modules } })],
+                [_c("requirement-list")],
                 1
               ),
               _vm._v(" "),

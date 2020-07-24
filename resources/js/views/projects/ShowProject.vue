@@ -12,7 +12,7 @@
                 cols="6"
                 md="4"
             >
-                <requirement-list :modules="modules"></requirement-list>
+                <requirement-list></requirement-list>
 
             </v-col>
             <v-col
