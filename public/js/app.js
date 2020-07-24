@@ -41213,6 +41213,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-container",
+    { attrs: { fluid: "" } },
     [
       _vm.loaded
         ? _c(
