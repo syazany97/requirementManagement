@@ -1,6 +1,11 @@
 <template>
 
     <v-container fluid>
+        <!-- create new module dialog -->
+        <div class="text-right">
+            <create-new-module></create-new-module>
+        </div>
+        <!-- // create new module dialog -->
 
         <v-row v-if="loaded">
             <v-col
@@ -24,6 +29,7 @@
 
 <script>
     import projectRepository from "../../repositories/projectRepository";
+    import moduleRepository from "../../repositories/moduleRepository";
 
     export default {
         name: "Show",
@@ -41,7 +47,7 @@
         },
         methods: {
             async setProject() {
-                const response = await projectRepository.find(this.projectId);
+                const response = await moduleRepository.all(this.projectId);
                 console.log(response.data);
                 // this.project = response.data.data;
                 this.modules = response.data.data;

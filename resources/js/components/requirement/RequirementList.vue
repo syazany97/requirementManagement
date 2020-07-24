@@ -1,12 +1,12 @@
 <template>
     <div v-if="loaded">
-        <button @click="addNode">Add Node</button>
+<!--        <button @click="addNode">Add New Module</button>-->
         <vue-tree-list
             @click="onClick"
             @change-name="onChangeName"
             @delete-node="onDel"
             @add-node="onAddNode"
-            :model="modulesData"
+            :model="data"
             default-tree-node-name="new module"
             default-leaf-node-name="new requirement"
             v-bind:default-expanded="false"
@@ -34,9 +34,11 @@
 
 <script>
     import {VueTreeList, Tree, TreeNode} from 'vue-tree-list';
+    import CreateNewModule from "../modules/dialog/CreateNewModule";
 
     export default {
         name: "RequirementList",
+        components: {CreateNewModule},
         props: {
             modules: {
                 type: Array,
@@ -48,52 +50,20 @@
         },
         data() {
             return {
-                // modulesData: new Tree(JSON.parse(JSON.stringify(this.modules))),
-                modulesData: JSON.parse(JSON.stringify(this.modules)),
+                data: JSON.parse(JSON.stringify(this.modules)),
                 newTree: {},
-                loaded: false,
-                data: new Tree([
-                    {
-                        name: 'Node 1',
-                        id: 1,
-                        pid: 0,
-                        dragDisabled: true,
-                        addTreeNodeDisabled: true,
-                        addLeafNodeDisabled: true,
-                        editNodeDisabled: true,
-                        delNodeDisabled: true,
-                        children: [
-                            {
-                                name: 'Node 1-2',
-                                id: 2,
-                                isLeaf: true,
-                                pid: 1
-                            }
-                        ]
-                    },
-                    {
-                        name: 'Node 2',
-                        id: 3,
-                        pid: 0,
-                        disabled: true
-                    },
-                    {
-                        name: 'Node 3',
-                        id: 4,
-                        pid: 0
-                    }
-                ])
+                loaded: false
             }
         },
         methods: {
             setModules() {
-                if (this.modulesData.length) {
+                if (this.data.length) {
 
-                    this.modulesData = new Tree(replaceKeysDeep(this.modulesData, {
+                    this.data = new Tree(replaceKeysDeep(this.data, {
                         requirements: 'children'
                     }))
-                    
-                    console.log(this.modulesData);
+
+                    console.log(this.data);
 
                     this.loaded = true;
                 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Module\ProjectModuleController;
 use App\Http\Controllers\API\Project\ProjectController;
 use App\Http\Controllers\API\Project\ProjectStatusController;
 use App\Http\Controllers\API\Requirement\RequirementAttachmentController;
@@ -31,5 +32,6 @@ Route::middleware(['auth:sanctum'])->group(function() {
         ->only(['index', 'store', 'destroy'])->shallow();
     Route::resource('requirements.attachments', RequirementAttachmentController::class)
         ->only(['index', 'store']);
+    Route::apiResource('projects.modules', ProjectModuleController::class);
 });
 

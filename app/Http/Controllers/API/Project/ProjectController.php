@@ -45,14 +45,7 @@ class ProjectController extends Controller
      */
     public function show($project)
     {
-        $data = Module::where('parent_id', null)->where('project_id', $project)
-            ->with(['children.requirements.assigned',
-                'children.requirements.priority',
-                'children.requirements.comments.user'])
-            ->get();
-
-        return ModuleResource::collection($data);
-
+        return new ProjectResource($project);
     }
 
     /**

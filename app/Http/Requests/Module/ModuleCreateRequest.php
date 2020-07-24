@@ -24,7 +24,7 @@ class ModuleCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required']
+            'name' => ['required']
         ];
     }
 }
