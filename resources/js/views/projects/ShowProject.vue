@@ -14,7 +14,7 @@
                 cols="12"
                 md="8"
             >
-                <show-requirement></show-requirement>
+            <show-requirement></show-requirement>
             </v-col>
         </v-row>
 

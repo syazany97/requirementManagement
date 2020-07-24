@@ -13,6 +13,6 @@ export const routes = [
     {
         path: '/projects/:project',
         name: 'project.show',
-        component: require('./views/projects/Show.vue').default
+        component: require('./views/projects/ShowProject.vue').default
     }
 ];
