@@ -2443,28 +2443,22 @@ __webpack_require__.r(__webpack_exports__);
       loaded: false
     };
   },
-  // computed: {
-  //     data() {
-  //         return new Tree(replaceKeysDeep(
-  //             JSON.parse(JSON.stringify(this.$store.getters['requirementList/requirementList'])), {
-  //                 requirements: 'children'
-  //             }))
-  //
-  //         function replaceKeysDeep(obj, keysMap) { // keysMap = { oldKey1: newKey1, oldKey2: newKey2, etc...
-  //             return _.transform(obj, function (result, value, key) { // transform to a new object
-  //
-  //                 if (result.type === 'requirement') result.isLeaf = true;
-  //
-  //                 let currentKey = keysMap[key] || key; // if the key is in keysMap use the replacement, if not use the original key
-  //
-  //                 result[currentKey] = _.isObject(value) ? replaceKeysDeep(value, keysMap) : value; // if the key is an object run it through the inner function - replaceKeys
-  //             });
-  //         }
-  //     }
-  // },
+  computed: {
+    requirementList: function requirementList() {
+      // vue tree list wont change if we use the computed property for this data
+      // so we need to listen for changes and then retrieve the new requirement list if it
+      // changes. The only way is to set a computed property and listen for changes
+      return this.$store.getters['requirementList/requirementList'];
+    }
+  },
+  watch: {
+    requirementList: function requirementList() {
+      this.setModules();
+    }
+  },
   methods: {
     setModules: function setModules() {
-      this.data = new vue_tree_list__WEBPACK_IMPORTED_MODULE_0__["Tree"](replaceKeysDeep(JSON.parse(JSON.stringify(this.modules)), {
+      this.data = new vue_tree_list__WEBPACK_IMPORTED_MODULE_0__["Tree"](replaceKeysDeep(JSON.parse(JSON.stringify(this.$store.getters['requirementList/requirementList'])), {
         requirements: 'children'
       }));
 
