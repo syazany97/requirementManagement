@@ -2446,8 +2446,8 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     requirementList: function requirementList() {
       // vue tree list wont change if we use the computed property for this data
-      // so we need to listen for changes and then retrieve the new requirement list if it
-      // changes. The only way is to set a computed property and listen for changes
+      // so we need to listen for changes and then retrieve the new requirement list
+      // if it changes
       return this.$store.getters['requirementList/requirementList'];
     }
   },
