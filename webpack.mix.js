@@ -17,3 +17,7 @@ mix.js('resources/js/app.js', 'public/js')
 
 // mix.js('resources/js/app.js', 'public/js').vuetify('vuetify-loader');
 
+mix
+    .js('resources/js/app.js', 'public/js')
+    .less('resources/less/app.less', 'public/css')
+    .tailwind();
