@@ -2492,6 +2492,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       console.log(params);
     },
     onAddNode: function onAddNode(params) {
+      console.log('on add node');
       console.log(params);
     },
     onClick: function onClick(params) {
@@ -2502,6 +2503,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       console.log(params);
     },
     addNode: function addNode() {
+      console.log('add node');
       var node = new vue_tree_list__WEBPACK_IMPORTED_MODULE_1__["TreeNode"]({
         name: 'new node',
         isLeaf: false
@@ -40791,27 +40793,20 @@ var render = function() {
             drop: _vm.onDrop,
             "drop-before": _vm.onDropBefore,
             "drop-after": _vm.onDropAfter
-          },
-          scopedSlots: _vm._u([
-            {
-              key: "leafNameDisplay",
-              fn: function(slotProps) {
-                return [
-                  _c("span", [
-                    _vm._v(
-                      "\n      " +
-                        _vm._s(slotProps.model.numbering) +
-                        " " +
-                        _vm._s(slotProps.model.name) +
-                        "\n    "
-                    )
-                  ])
-                ]
-              }
-            }
-          ])
+          }
         },
         [
+          [
+            _c("span", [
+              _vm._v(
+                "\n      " +
+                  _vm._s(_vm.slotProps.model.numbering) +
+                  " " +
+                  _vm._s(_vm.slotProps.model.name) +
+                  "\n    "
+              )
+            ])
+          ],
           _vm._v(" "),
           _c(
             "span",
@@ -40872,7 +40867,8 @@ var render = function() {
             },
             [_vm._v("📂")]
           )
-        ]
+        ],
+        2
       ),
       _vm._v(" "),
       _c("pre", [_vm._v("  " + _vm._s(_vm.newTree) + "\n")])

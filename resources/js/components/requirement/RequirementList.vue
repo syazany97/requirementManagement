@@ -14,7 +14,7 @@
             default-leaf-node-name="new requirement"
             v-bind:default-expanded="false"
         >
-            <template v-slot:leafNameDisplay="slotProps">
+            <template u8jv-slot:leafNameDisplay="slotProps">
         <span>
           {{slotProps.model.numbering}} {{ slotProps.model.name }}
         </span>
@@ -97,6 +97,7 @@
             },
 
             onAddNode(params) {
+                console.log('on add node');
                 console.log(params)
             },
 
@@ -108,6 +109,7 @@
             },
 
             addNode() {
+                console.log('add node');
                 var node = new TreeNode({name: 'new node', isLeaf: false})
                 if (!this.data.children) this.data.children = []
                 this.data.addChildren(node)
