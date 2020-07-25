@@ -8,6 +8,7 @@ use App\Models\Requirement\RequirementStatus;
 use App\User;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\DB;
 
 class ModulesTableSeeder extends Seeder
 {
@@ -20,7 +21,7 @@ class ModulesTableSeeder extends Seeder
     {
         $projectsId = Project::pluck('id')->toArray();
 
-        $usersId = User::pluck('id')->toArray();
+        $usersId = User::pluck('id');
 
         // create parent module
         $parentModulesName = [
@@ -69,8 +70,8 @@ class ModulesTableSeeder extends Seeder
         $requirementStatuses = RequirementStatus::pluck('id')
             ->toArray();
 
-        foreach($normalModule as $module) {
-            for($i = 1; $i<5; $i++) {
+        foreach ($normalModule as $module) {
+            for ($i = 1; $i < 5; $i++) {
                 Requirement::create([
                     'module_id' => $module['id'],
                     'description' => $faker->realText(),
@@ -78,11 +79,39 @@ class ModulesTableSeeder extends Seeder
                     'requirement_priority_id' => $priorities[rand(0, count($priorities) - 1)],
                     'requirement_status_id' => $requirementStatuses[rand(0, count($requirementStatuses) - 1)],
                     'numbering' => $module['numbering'] . '.' . $i,
-                    'assigned_id' =>  $usersId[rand(0, count($usersId) - 1)],
-                    'creator_id' =>  $usersId[rand(0, count($usersId) - 1)]
+                    'creator_id' => $usersId->random()
                 ]);
 
             }
         }
+
+        $requirementsId = Requirement::pluck('id');
+
+//        $requirementAssignees = collect($usersId)->map(function ($value) use ($requirementsId) {
+//            return [
+//                'user_id' => $value,
+//                'requirement_id' => $requirementsId->random(),
+//                'created_at' => now(),
+//                'updated_at' => now()
+//            ];
+//        });
+
+        $requirementAssignees = $requirementsId->map(function ($value) use ($usersId) {
+            $assignees = [];
+            $loop = collect([2, 4])->random();
+            for ($i = 0; $i < $loop; $i++) {
+                array_push($assignees, [
+                    'assignee_id' => $usersId->random(),
+                    'requirement_id' => $value,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
+            }
+            return $assignees;
+        })->flatten(1)->values()->all();
+
+        DB::table('requirement_assignees')->insert($requirementAssignees);
+
+
     }
 }

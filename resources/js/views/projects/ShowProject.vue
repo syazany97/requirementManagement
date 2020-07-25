@@ -48,6 +48,7 @@
         },
         computed: {
             modules() {
+                console.log(this.$store.getters['requirement/requirementList']);
                 return this.$store.getters['requirement/requirementList'];
             }
         }

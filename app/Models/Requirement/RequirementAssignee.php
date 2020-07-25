@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class RequirementAssignee extends Pivot
 {
+    protected $table = 'requirement_assignees';
+
     public function requirement()
     {
         return $this->belongsTo(Requirement::class, 'requirement_id');

@@ -17,9 +17,9 @@ class CreateRequirementAssigneesTable extends Migration
             $table->id();
             $table->foreignId('requirement_id')
                 ->constrained('requirements');
-            $table->unsignedBigInteger('assigned_id')
+            $table->unsignedBigInteger('assignee_id')
                 ->nullable();
-            $table->foreign('assigned_id')
+            $table->foreign('assignee_id')
                 ->references('id')
                 ->on('users');
             $table->timestamps();

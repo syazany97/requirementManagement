@@ -3337,6 +3337,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     modules: function modules() {
+      console.log(this.$store.getters['requirement/requirementList']);
       return this.$store.getters['requirement/requirementList'];
     }
   }

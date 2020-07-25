@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Requirement;
 
 use App\Http\Resources\CommentResource;
+use App\Http\Resources\User\UserResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Str;
 
@@ -25,8 +26,7 @@ class RequirementResource extends JsonResource
             'name' => $this->name,
             'module_id' => $this->module_id,
             'numbering' => $this->numbering,
-            'assigned_id' => $this->assigned_id,
-            'assigned' => $this->whenLoaded('assigned'),
+            'assignees' => UserResource::collection($this->whenLoaded('assignees')),
             'comments' => CommentResource::collection($this->whenLoaded('comments')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at

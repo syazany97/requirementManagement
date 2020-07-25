@@ -30,7 +30,7 @@ class Module extends Model
     public function scopeCompleteInformation($query, $projectId )
     {
         return $query->where('parent_id', null)->where('project_id', $projectId)
-            ->with(['children.requirements.assigned',
+            ->with(['children.requirements.assignees',
                 'children.requirements.priority',
                 'children.requirements.comments.user']);
     }
