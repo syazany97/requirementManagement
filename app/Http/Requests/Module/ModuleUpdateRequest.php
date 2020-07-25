@@ -25,7 +25,8 @@ class ModuleUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'parent_id' => ['exists:modules,id']
+            // parent id allowed nullable since it is a top level module
+            'parent_id' => ['nullable', 'exists:modules,id']
         ];
     }
 }

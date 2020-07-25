@@ -145,7 +145,7 @@
                     let payload = {
                         id: params.node.id,
                         name: params.node.name,
-                        parent_id: params.target.parent_id
+                        parent_id: params.target.id
                     }
                     this.updateModuleAfterDrop(payload);
                 }
