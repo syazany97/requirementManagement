@@ -6,6 +6,7 @@ use App\Http\Controllers\API\Project\ProjectStatusController;
 use App\Http\Controllers\API\Requirement\RequirementAttachmentController;
 use App\Http\Controllers\API\Requirement\RequirementCommentController;
 use App\Http\Controllers\API\Requirement\RequirementController;
+use App\Http\Controllers\API\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,5 +34,9 @@ Route::middleware(['auth:sanctum'])->group(function() {
     Route::resource('requirements.attachments', RequirementAttachmentController::class)
         ->only(['index', 'store']);
     Route::apiResource('projects.modules', ProjectModuleController::class)->shallow();
+    Route::resource('users', UserController::class)->only([
+       'index', 'show'
+    ]);
+
 });
 
