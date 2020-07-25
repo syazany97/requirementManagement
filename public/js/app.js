@@ -2231,7 +2231,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 3:
-                _this.$store.dispatch('requirementList/setRequirementList', {
+                _this.$store.dispatch('requirement/setRequirementList', {
                   project_id: _this.$route.params.project
                 });
 
@@ -2476,7 +2476,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       // vue tree list wont change if we use the computed property for this data
       // so we need to listen for changes and then retrieve the new requirement list
       // if it changes
-      return this.$store.getters['requirementList/requirementList'];
+      return this.$store.getters['requirement/requirementList'];
     }
   },
   watch: {
@@ -2486,7 +2486,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     setModules: function setModules() {
-      this.data = new vue_tree_list__WEBPACK_IMPORTED_MODULE_1__["Tree"](replaceKeysDeep(JSON.parse(JSON.stringify(this.$store.getters['requirementList/requirementList'])), {
+      this.data = new vue_tree_list__WEBPACK_IMPORTED_MODULE_1__["Tree"](replaceKeysDeep(JSON.parse(JSON.stringify(this.$store.getters['requirement/requirementList'])), {
         requirements: 'children'
       }));
 
@@ -2514,7 +2514,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     onClick: function onClick(params) {
       if (params.type === 'requirement') {
-        this.$store.commit('requirementList/setRequirement', params);
+        this.$store.commit('requirement/setRequirement', params);
       }
 
       console.log(params);
@@ -2596,7 +2596,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_3__["default"].update(payload.id, payload);
 
               case 3:
-                _this.$store.dispatch('requirementList/setRequirementList', {
+                _this.$store.dispatch('requirement/setRequirementList', {
                   project_id: _this.projectId
                 });
 
@@ -2753,7 +2753,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   computed: {
     requirement: function requirement() {
-      return this.$store.getters['requirementList/currentRequirement'];
+      return this.$store.getters['requirement/currentRequirement'];
     },
     firstList: function firstList() {
       return {
@@ -3036,7 +3036,7 @@ __webpack_require__.r(__webpack_exports__);
       return this.$store.getters['user/users'];
     },
     modules: function modules() {
-      var modules = this.$store.getters['requirementList/requirementList'];
+      var modules = this.$store.getters['requirement/requirementList'];
       return modules.filter(function (element) {
         return element.parent_id === null;
       });
@@ -3052,7 +3052,8 @@ __webpack_require__.r(__webpack_exports__);
         this.$store.dispatch('user/setUsers');
       }
     },
-    fetchRequirementStatuses: function fetchRequirementStatuses() {},
+    fetchRequirementStatuses: function fetchRequirementStatuses() {// if(this.$store.getters['req'])
+    },
     addRequirement: function addRequirement() {},
     closeDialog: function closeDialog() {
       this.requirement.name = '';
@@ -3330,13 +3331,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    this.$store.dispatch('requirementList/setRequirementList', {
+    this.$store.dispatch('requirement/setRequirementList', {
       project_id: this.projectId
     });
   },
   computed: {
     modules: function modules() {
-      return this.$store.getters['requirementList/requirementList'];
+      return this.$store.getters['requirement/requirementList'];
     }
   }
 });
@@ -102109,7 +102110,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vuex_modules_notification__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./vuex-modules/notification */ "./resources/js/vuex-modules/notification.js");
 /* harmony import */ var vue_tree_list__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-tree-list */ "./node_modules/vue-tree-list/dist/vue-tree-list.umd.min.js");
 /* harmony import */ var vue_tree_list__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(vue_tree_list__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _vuex_modules_requirementList__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./vuex-modules/requirementList */ "./resources/js/vuex-modules/requirementList.js");
+/* harmony import */ var _vuex_modules_requirement__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./vuex-modules/requirement */ "./resources/js/vuex-modules/requirement.js");
 /* harmony import */ var _vuex_modules_user__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./vuex-modules/user */ "./resources/js/vuex-modules/user.js");
 
 
@@ -102148,7 +102149,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__["default"]({
 var store = new vuex__WEBPACK_IMPORTED_MODULE_5__["default"].Store({
   modules: {
     notification: _vuex_modules_notification__WEBPACK_IMPORTED_MODULE_8__["default"],
-    requirementList: _vuex_modules_requirementList__WEBPACK_IMPORTED_MODULE_10__["default"],
+    requirement: _vuex_modules_requirement__WEBPACK_IMPORTED_MODULE_10__["default"],
     user: _vuex_modules_user__WEBPACK_IMPORTED_MODULE_11__["default"]
   }
 });
@@ -103250,10 +103251,10 @@ var mutations = {
 
 /***/ }),
 
-/***/ "./resources/js/vuex-modules/requirementList.js":
-/*!******************************************************!*\
-  !*** ./resources/js/vuex-modules/requirementList.js ***!
-  \******************************************************/
+/***/ "./resources/js/vuex-modules/requirement.js":
+/*!**************************************************!*\
+  !*** ./resources/js/vuex-modules/requirement.js ***!
+  \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -103279,7 +103280,8 @@ var state = function state() {
       assigned: {},
       comments: []
     },
-    requirementList: []
+    requirementList: [],
+    statuses: []
   };
 }; // getters
 
@@ -103290,6 +103292,9 @@ var getters = {
   },
   requirementList: function requirementList(state) {
     return state.requirementList;
+  },
+  statuses: function statuses(state) {
+    return state.statuses;
   }
 }; // mutations
 

@@ -59,7 +59,7 @@
                 // vue tree list wont change if we use the computed property for this data
                 // so we need to listen for changes and then retrieve the new requirement list
                 // if it changes
-                return this.$store.getters['requirementList/requirementList'];
+                return this.$store.getters['requirement/requirementList'];
             }
         },
         watch: {
@@ -70,7 +70,7 @@
         methods: {
             setModules() {
                 this.data = new Tree(replaceKeysDeep(
-                    JSON.parse(JSON.stringify(this.$store.getters['requirementList/requirementList'])), {
+                    JSON.parse(JSON.stringify(this.$store.getters['requirement/requirementList'])), {
                         requirements: 'children'
                     }))
 
@@ -103,7 +103,7 @@
 
             onClick(params) {
                 if (params.type === 'requirement') {
-                    this.$store.commit('requirementList/setRequirement', params);
+                    this.$store.commit('requirement/setRequirement', params);
                 }
                 console.log(params)
             },
@@ -178,7 +178,7 @@
                 try {
                     await moduleRepository.update(payload.id, payload)
 
-                    this.$store.dispatch('requirementList/setRequirementList', {project_id: this.projectId});
+                    this.$store.dispatch('requirement/setRequirementList', {project_id: this.projectId});
 
 
                 } catch (e) {

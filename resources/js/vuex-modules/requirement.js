@@ -8,7 +8,8 @@ const state = () => ({
         assigned : {},
         comments : []
     },
-    requirementList : []
+    requirementList : [],
+    statuses : []
 });
 
 // getters
@@ -18,6 +19,9 @@ const getters = {
     },
     requirementList : (state) => {
         return state.requirementList;
+    },
+    statuses : (state) => {
+        return state.statuses
     }
 };
 

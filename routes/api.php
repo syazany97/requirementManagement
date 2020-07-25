@@ -38,6 +38,6 @@ Route::middleware(['auth:sanctum'])->group(function() {
     Route::resource('users', UserController::class)->only([
        'index', 'show'
     ]);
-    Route::any('requirement-statuses', RequirementStatusController::class)''
+    Route::any('requirement-statuses', RequirementStatusController::class);
 });
 

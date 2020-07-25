@@ -73,7 +73,7 @@
                 return this.$store.getters['user/users'];
             },
             modules() {
-                let modules = this.$store.getters['requirementList/requirementList'];
+                let modules = this.$store.getters['requirement/requirementList'];
 
                 return modules.filter(element => element.parent_id === null);
             }
@@ -89,6 +89,7 @@
                 }
             },
             fetchRequirementStatuses() {
+                // if(this.$store.getters['req'])
 
             },
             addRequirement() {

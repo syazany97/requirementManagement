@@ -84,7 +84,7 @@
                         name: this.moduleName
                     })
 
-                    this.$store.dispatch('requirementList/setRequirementList',
+                    this.$store.dispatch('requirement/setRequirementList',
                         {project_id: this.$route.params.project});
 
                     this.moduleName = "";

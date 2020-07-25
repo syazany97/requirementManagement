@@ -111,7 +111,7 @@
         },
         computed: {
             requirement() {
-                return this.$store.getters['requirementList/currentRequirement']
+                return this.$store.getters['requirement/currentRequirement']
             },
             firstList() {
                 return {

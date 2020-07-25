@@ -43,12 +43,12 @@
             }
         },
         created() {
-            this.$store.dispatch('requirementList/setRequirementList',
+            this.$store.dispatch('requirement/setRequirementList',
                 {project_id: this.projectId});
         },
         computed: {
             modules() {
-                return this.$store.getters['requirementList/requirementList'];
+                return this.$store.getters['requirement/requirementList'];
             }
         }
     }

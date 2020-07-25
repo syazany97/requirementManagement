@@ -9,7 +9,7 @@ import Vuetify from "vuetify";
 import 'vuetify/dist/vuetify.min.css';
 import notification from "./vuex-modules/notification";
 import VueTreeList from 'vue-tree-list';
-import requirementList from "./vuex-modules/requirementList";
+import requirement from "./vuex-modules/requirement";
 import user from "./vuex-modules/user";
 require('./bootstrap');
 
@@ -31,7 +31,7 @@ const router = new VueRouter({
 const store = new Vuex.Store({
     modules: {
         notification: notification,
-        requirementList : requirementList,
+        requirement : requirement,
         user : user
     }
 });
