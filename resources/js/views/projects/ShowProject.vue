@@ -5,6 +5,7 @@
         <div class="text-right">
             <create-new-module></create-new-module>
         </div>
+
         <!-- // create new module dialog -->
 
         <v-row v-if="modules.length">

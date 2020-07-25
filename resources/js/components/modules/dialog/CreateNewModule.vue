@@ -11,11 +11,17 @@
             Module
         </v-btn>
 
+        <v-btn @click.stop="requirementDialog = true" small>
+            <v-icon>mdi-plus</v-icon>
+            Requirement
+        </v-btn>
+
+       <create-requirement-dialog :requirement-dialog.sync="requirementDialog"></create-requirement-dialog>
+
         <v-dialog
             v-model="dialog"
             max-width="400"
         >
-
             <v-card>
                 <v-container>
                     <v-card-title class="headline">Create new module</v-card-title>
@@ -36,7 +42,7 @@
                         <v-btn
                             color="green darken-1"
                             text
-                            @click="addModule"
+                            @click="addModule()"
                         >
                             Create
                         </v-btn>
@@ -49,8 +55,10 @@
 
 <script>
     import moduleRepository from "../../../repositories/moduleRepository";
+    import CreateRequirementDialog from "../../requirement/dialog/CreateRequirementDialog";
 
     export default {
+        components: {CreateRequirementDialog},
         props: {
             module: {
                 type: Object,
@@ -60,10 +68,16 @@
         data() {
             return {
                 dialog: false,
-                moduleName: ""
+                moduleName: "",
+                requirementDialog: false,
+                requirement: {
+                    name: "",
+                    assigned: [],
+                    description: ""
+                }
             }
         },
-        methods: {
+       methods: {
             async addModule() {
                 try {
                     await moduleRepository.store(this.$route.params.project, {

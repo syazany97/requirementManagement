@@ -2129,6 +2129,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../repositories/moduleRepository */ "./resources/js/repositories/moduleRepository.js");
+/* harmony import */ var _requirement_dialog_CreateRequirementDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../requirement/dialog/CreateRequirementDialog */ "./resources/js/components/requirement/dialog/CreateRequirementDialog.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2184,8 +2185,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    CreateRequirementDialog: _requirement_dialog_CreateRequirementDialog__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
   props: {
     module: {
       type: Object,
@@ -2195,7 +2206,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       dialog: false,
-      moduleName: ""
+      moduleName: "",
+      requirementDialog: false,
+      requirement: {
+        name: "",
+        assigned: [],
+        description: ""
+      }
     };
   },
   methods: {
@@ -2936,6 +2953,118 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/requirement/dialog/CreateRequirementDialog.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/requirement/dialog/CreateRequirementDialog.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "CreateRequirementDialog",
+  props: {
+    requirementDialog: Boolean
+  },
+  data: function data() {
+    return {
+      requirement: {
+        name: "",
+        description: "",
+        assigned: []
+      }
+    };
+  },
+  computed: {
+    users: function users() {
+      return this.$store.getters['user/users'];
+    },
+    modules: function modules() {
+      var modules = this.$store.getters['requirementList/requirementList'];
+      return modules.filter(function (element) {
+        return element.parent_id === null;
+      });
+    }
+  },
+  created: function created() {
+    this.fetchUsers();
+    this.fetchRequirementStatuses();
+  },
+  methods: {
+    fetchUsers: function fetchUsers() {
+      if (!this.$store.getters['users']) {
+        this.$store.dispatch('user/setUsers');
+      }
+    },
+    fetchRequirementStatuses: function fetchRequirementStatuses() {},
+    addRequirement: function addRequirement() {},
+    closeDialog: function closeDialog() {
+      this.requirement.name = '';
+      this.requirement.description = '';
+      this.requirement.assigned = [];
+      this.$emit('update:requirementDialog', false);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/auth/Login.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/auth/Login.vue?vue&type=script&lang=js& ***!
@@ -3158,6 +3287,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../repositories/projectRepository */ "./resources/js/repositories/projectRepository.js");
 /* harmony import */ var _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../repositories/moduleRepository */ "./resources/js/repositories/moduleRepository.js");
+//
 //
 //
 //
@@ -40543,6 +40673,36 @@ var render = function() {
       ),
       _vm._v(" "),
       _c(
+        "v-btn",
+        {
+          attrs: { small: "" },
+          on: {
+            click: function($event) {
+              $event.stopPropagation()
+              _vm.requirementDialog = true
+            }
+          }
+        },
+        [
+          _c("v-icon", [_vm._v("mdi-plus")]),
+          _vm._v("\n        Requirement\n    ")
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("create-requirement-dialog", {
+        attrs: { "requirement-dialog": _vm.requirementDialog },
+        on: {
+          "update:requirementDialog": function($event) {
+            _vm.requirementDialog = $event
+          },
+          "update:requirement-dialog": function($event) {
+            _vm.requirementDialog = $event
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c(
         "v-dialog",
         {
           attrs: { "max-width": "400" },
@@ -40603,7 +40763,11 @@ var render = function() {
                         "v-btn",
                         {
                           attrs: { color: "green darken-1", text: "" },
-                          on: { click: _vm.addModule }
+                          on: {
+                            click: function($event) {
+                              return _vm.addModule()
+                            }
+                          }
                         },
                         [
                           _vm._v(
@@ -40793,20 +40957,27 @@ var render = function() {
             drop: _vm.onDrop,
             "drop-before": _vm.onDropBefore,
             "drop-after": _vm.onDropAfter
-          }
+          },
+          scopedSlots: _vm._u([
+            {
+              key: "leafNameDisplay",
+              fn: function(slotProps) {
+                return [
+                  _c("span", [
+                    _vm._v(
+                      "\n      " +
+                        _vm._s(slotProps.model.numbering) +
+                        " " +
+                        _vm._s(slotProps.model.name) +
+                        "\n    "
+                    )
+                  ])
+                ]
+              }
+            }
+          ])
         },
         [
-          [
-            _c("span", [
-              _vm._v(
-                "\n      " +
-                  _vm._s(_vm.slotProps.model.numbering) +
-                  " " +
-                  _vm._s(_vm.slotProps.model.name) +
-                  "\n    "
-              )
-            ])
-          ],
           _vm._v(" "),
           _c(
             "span",
@@ -40867,8 +41038,7 @@ var render = function() {
             },
             [_vm._v("📂")]
           )
-        ],
-        2
+        ]
       ),
       _vm._v(" "),
       _c("pre", [_vm._v("  " + _vm._s(_vm.newTree) + "\n")])
@@ -41185,6 +41355,149 @@ var render = function() {
         2
       )
     : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/requirement/dialog/CreateRequirementDialog.vue?vue&type=template&id=4c39efbf&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/requirement/dialog/CreateRequirementDialog.vue?vue&type=template&id=4c39efbf&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-dialog",
+    {
+      attrs: { "max-width": "400" },
+      model: {
+        value: _vm.requirementDialog,
+        callback: function($$v) {
+          _vm.requirementDialog = $$v
+        },
+        expression: "requirementDialog"
+      }
+    },
+    [
+      _c(
+        "v-card",
+        [
+          _c(
+            "v-container",
+            [
+              _c("v-card-title", { staticClass: "headline" }, [
+                _vm._v("Create new requirement")
+              ]),
+              _vm._v(" "),
+              _c("v-text-field", {
+                attrs: { label: "Name" },
+                model: {
+                  value: _vm.requirement.name,
+                  callback: function($$v) {
+                    _vm.$set(_vm.requirement, "name", $$v)
+                  },
+                  expression: "requirement.name"
+                }
+              }),
+              _vm._v(" "),
+              _c("v-select", {
+                attrs: {
+                  items: _vm.modules,
+                  label: "Under which module",
+                  "item-text": "name",
+                  "item-value": "id",
+                  "persistent-hint": ""
+                },
+                model: {
+                  value: _vm.requirement.module_id,
+                  callback: function($$v) {
+                    _vm.$set(_vm.requirement, "module_id", $$v)
+                  },
+                  expression: "requirement.module_id"
+                }
+              }),
+              _vm._v(" "),
+              _c("v-textarea", {
+                attrs: { label: "description" },
+                model: {
+                  value: _vm.requirement.description,
+                  callback: function($$v) {
+                    _vm.$set(_vm.requirement, "description", $$v)
+                  },
+                  expression: "requirement.description"
+                }
+              }),
+              _vm._v(" "),
+              _c("v-select", {
+                attrs: {
+                  items: _vm.users,
+                  label: "Name",
+                  "item-text": "name",
+                  "item-value": "id",
+                  multiple: "",
+                  chips: "",
+                  hint: "Users assigned for this requirement",
+                  "persistent-hint": ""
+                },
+                model: {
+                  value: _vm.requirement.assigned,
+                  callback: function($$v) {
+                    _vm.$set(_vm.requirement, "assigned", $$v)
+                  },
+                  expression: "requirement.assigned"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "green darken-1", text: "" },
+                      on: {
+                        click: function($event) {
+                          return _vm.closeDialog()
+                        }
+                      }
+                    },
+                    [_vm._v("\n                    Cancel\n                ")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "green darken-1", text: "" },
+                      on: { click: _vm.addRequirement }
+                    },
+                    [_vm._v("\n                    Create\n                ")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -101743,6 +102056,7 @@ var map = {
 	"./components/project/modal/CreateProjectDialog.vue": "./resources/js/components/project/modal/CreateProjectDialog.vue",
 	"./components/requirement/RequirementList.vue": "./resources/js/components/requirement/RequirementList.vue",
 	"./components/requirement/ShowRequirement.vue": "./resources/js/components/requirement/ShowRequirement.vue",
+	"./components/requirement/dialog/CreateRequirementDialog.vue": "./resources/js/components/requirement/dialog/CreateRequirementDialog.vue",
 	"./views/auth/Login.vue": "./resources/js/views/auth/Login.vue",
 	"./views/projects/Index.vue": "./resources/js/views/projects/Index.vue",
 	"./views/projects/ShowProject.vue": "./resources/js/views/projects/ShowProject.vue"
@@ -101796,12 +102110,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_tree_list__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-tree-list */ "./node_modules/vue-tree-list/dist/vue-tree-list.umd.min.js");
 /* harmony import */ var vue_tree_list__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(vue_tree_list__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _vuex_modules_requirementList__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./vuex-modules/requirementList */ "./resources/js/vuex-modules/requirementList.js");
+/* harmony import */ var _vuex_modules_user__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./vuex-modules/user */ "./resources/js/vuex-modules/user.js");
 
 
 
 
 
  // import Vuetify from 'vuetify/lib';
+
 
 
 
@@ -101832,7 +102148,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_4__["default"]({
 var store = new vuex__WEBPACK_IMPORTED_MODULE_5__["default"].Store({
   modules: {
     notification: _vuex_modules_notification__WEBPACK_IMPORTED_MODULE_8__["default"],
-    requirementList: _vuex_modules_requirementList__WEBPACK_IMPORTED_MODULE_10__["default"]
+    requirementList: _vuex_modules_requirementList__WEBPACK_IMPORTED_MODULE_10__["default"],
+    user: _vuex_modules_user__WEBPACK_IMPORTED_MODULE_11__["default"]
   }
 });
 Vue.filter('formatDateTime', function (value) {
@@ -102449,6 +102766,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/requirement/dialog/CreateRequirementDialog.vue":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/requirement/dialog/CreateRequirementDialog.vue ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CreateRequirementDialog_vue_vue_type_template_id_4c39efbf_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateRequirementDialog.vue?vue&type=template&id=4c39efbf&scoped=true& */ "./resources/js/components/requirement/dialog/CreateRequirementDialog.vue?vue&type=template&id=4c39efbf&scoped=true&");
+/* harmony import */ var _CreateRequirementDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateRequirementDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/requirement/dialog/CreateRequirementDialog.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CreateRequirementDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CreateRequirementDialog_vue_vue_type_template_id_4c39efbf_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CreateRequirementDialog_vue_vue_type_template_id_4c39efbf_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "4c39efbf",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/requirement/dialog/CreateRequirementDialog.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/requirement/dialog/CreateRequirementDialog.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/requirement/dialog/CreateRequirementDialog.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRequirementDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CreateRequirementDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/requirement/dialog/CreateRequirementDialog.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRequirementDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/requirement/dialog/CreateRequirementDialog.vue?vue&type=template&id=4c39efbf&scoped=true&":
+/*!***************************************************************************************************************************!*\
+  !*** ./resources/js/components/requirement/dialog/CreateRequirementDialog.vue?vue&type=template&id=4c39efbf&scoped=true& ***!
+  \***************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRequirementDialog_vue_vue_type_template_id_4c39efbf_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./CreateRequirementDialog.vue?vue&type=template&id=4c39efbf&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/requirement/dialog/CreateRequirementDialog.vue?vue&type=template&id=4c39efbf&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRequirementDialog_vue_vue_type_template_id_4c39efbf_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CreateRequirementDialog_vue_vue_type_template_id_4c39efbf_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/repositories/moduleRepository.js":
 /*!*******************************************************!*\
   !*** ./resources/js/repositories/moduleRepository.js ***!
@@ -102550,6 +102936,28 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
   },
   "delete": function _delete(id) {
     return axios["delete"]("/api/comments/".concat(id));
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/repositories/userRepository.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/repositories/userRepository.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var resource = 'users';
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all(userId) {
+    return axios.get("/api/users");
+  },
+  find: function find(id) {
+    return axios.get("/api/users/".concat(id));
   }
 });
 
@@ -102909,6 +103317,82 @@ var actions = {
               state.commit('setRequirementList', response.data.data);
 
             case 4:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
+  state: state,
+  getters: getters,
+  mutations: mutations,
+  actions: actions
+});
+
+/***/ }),
+
+/***/ "./resources/js/vuex-modules/user.js":
+/*!*******************************************!*\
+  !*** ./resources/js/vuex-modules/user.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../repositories/moduleRepository */ "./resources/js/repositories/moduleRepository.js");
+/* harmony import */ var _repositories_userRepository__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../repositories/userRepository */ "./resources/js/repositories/userRepository.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+// initial state
+
+
+
+var state = function state() {
+  return {
+    users: []
+  };
+}; // getters
+
+
+var getters = {
+  users: function users(state) {
+    return state.users;
+  }
+}; // mutations
+
+var mutations = {
+  setUsers: function setUsers(state, payload) {
+    state.users = payload;
+  }
+};
+var actions = {
+  setUsers: function setUsers(state, payload) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return _repositories_userRepository__WEBPACK_IMPORTED_MODULE_2__["default"].all();
+
+            case 2:
+              response = _context.sent;
+              console.log(response.data);
+              state.commit('setUsers', response.data.data);
+
+            case 5:
             case "end":
               return _context.stop();
           }

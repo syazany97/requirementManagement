@@ -14,7 +14,7 @@
             default-leaf-node-name="new requirement"
             v-bind:default-expanded="false"
         >
-            <template u8jv-slot:leafNameDisplay="slotProps">
+            <template v-slot:leafNameDisplay="slotProps">
         <span>
           {{slotProps.model.numbering}} {{ slotProps.model.name }}
         </span>
