@@ -26,9 +26,10 @@ class Requirement extends Model implements HasMedia
         return $this->belongsTo(RequirementPriority::class, 'requirement_priority_id');
     }
 
-    public function assigned()
+    public function assignees()
     {
-        return $this->belongsTo(User::class, 'assigned_id');
+        return $this->belongsToMany(RequirementAssignee::class,
+            'requirement_id');
     }
 
     public function creator()

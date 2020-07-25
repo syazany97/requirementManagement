@@ -4,15 +4,16 @@ namespace App\Models\Requirement;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class RequirementAssigned extends Model
+class RequirementAssignee extends Pivot
 {
     public function requirement()
     {
         return $this->belongsTo(Requirement::class, 'requirement_id');
     }
 
-    public function assigned()
+    public function assignee()
     {
         return $this->belongsTo(User::class, 'assigned_id');
     }

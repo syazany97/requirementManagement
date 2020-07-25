@@ -28,15 +28,10 @@ class CreateRequirementsTable extends Migration
             $table->foreign('requirement_status_id')
                 ->references('id')
                 ->on('requirement_statuses');
-            $table->unsignedBigInteger('assigned_id')
-                ->nullable();
             $table->unsignedBigInteger('creator_id')
                 ->nullable();
             $table->string('numbering')
                 ->nullable();
-            $table->foreign('assigned_id')
-                ->references('id')
-                ->on('users');
             $table->foreign('creator_id')
                 ->references('id')
                 ->on('users');
