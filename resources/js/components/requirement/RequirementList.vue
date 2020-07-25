@@ -7,8 +7,8 @@
             @delete-node="onDel"
             @add-node="onAddNode"
             @drop="onDrop"
-            @drop-before="onDrop"
-            @drop-after="onDrop"
+            @drop-before="onDropBefore"
+            @drop-after="onDropAfter"
             :model="data"
             default-tree-node-name="new module"
             default-leaf-node-name="new requirement"
@@ -51,7 +51,7 @@
                 data: [],
                 newTree: {},
                 loaded: false,
-                projectId : this.$route.params.project
+                projectId: this.$route.params.project
             }
         },
         computed: {
@@ -138,20 +138,45 @@
             },
 
             onDrop(params) {
-                this.updateModuleAfterDrop(params);
-                console.log(params);
-                console.log('ON DROP');
+                // if the target and source node are the same, dont update the data
+                // since the node doesnt change its position
+                if (params.node.id !== params.target.id) {
+                    console.log('VALID ON DROP');
+                    let payload = {
+                        id: params.node.id,
+                        name: params.node.name,
+                        parent_id: params.target.parent_id
+                    }
+                    this.updateModuleAfterDrop(payload);
+                }
+                console.log('ON DROP', params);
             },
 
-            async updateModuleAfterDrop(params) {
+            onDropAfter(params) {
+                // this.updateModuleAfterDrop(params);
+                console.log('ON DROP AFTER', params);
+            },
+
+            onDropBefore(params) {
+                // if node is placed as top level node then set parent id to null
+                // otherwise, use the parent id node
+                let parent_id = params.target.parent_id !== null ? params.target.parent_id : null;
+
+                this.updateModuleAfterDrop({
+                    id: params.node.id,
+                    name: params.node.name,
+                    parent_id: parent_id
+                });
+                console.log('ON DROP BEFORE', params);
+            },
+
+
+            async updateModuleAfterDrop(payload) {
 
                 try {
-                    await moduleRepository.update(params.node.id, {
-                        parent_id: params.target.id,
-                        name : params.node.name
-                    })
+                    await moduleRepository.update(payload.id, payload)
 
-                    this.$store.dispatch('requirementList/setRequirementList', {project_id : this.projectId} );
+                    this.$store.dispatch('requirementList/setRequirementList', {project_id: this.projectId});
 
 
                 } catch (e) {

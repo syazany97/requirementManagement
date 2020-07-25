@@ -2535,11 +2535,36 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       vm.newTree = _dfs(vm.data);
     },
     onDrop: function onDrop(params) {
-      this.updateModuleAfterDrop(params);
-      console.log(params);
-      console.log('ON DROP');
+      // if the target and source node are the same, dont update the data
+      // since the node doesnt change its position
+      if (params.node.id !== params.target.id) {
+        console.log('VALID ON DROP');
+        var payload = {
+          id: params.node.id,
+          name: params.node.name,
+          parent_id: params.target.parent_id
+        };
+        this.updateModuleAfterDrop(payload);
+      }
+
+      console.log('ON DROP', params);
     },
-    updateModuleAfterDrop: function updateModuleAfterDrop(params) {
+    onDropAfter: function onDropAfter(params) {
+      // this.updateModuleAfterDrop(params);
+      console.log('ON DROP AFTER', params);
+    },
+    onDropBefore: function onDropBefore(params) {
+      // if node is placed as top level node then set parent id to null
+      // otherwise, use the parent id node
+      var parent_id = params.target.parent_id !== null ? params.target.parent_id : null;
+      this.updateModuleAfterDrop({
+        id: params.node.id,
+        name: params.node.name,
+        parent_id: parent_id
+      });
+      console.log('ON DROP BEFORE', params);
+    },
+    updateModuleAfterDrop: function updateModuleAfterDrop(payload) {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -2549,10 +2574,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_3__["default"].update(params.node.id, {
-                  parent_id: params.target.id,
-                  name: params.node.name
-                });
+                return _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_3__["default"].update(payload.id, payload);
 
               case 3:
                 _this.$store.dispatch('requirementList/setRequirementList', {
@@ -40767,8 +40789,8 @@ var render = function() {
             "delete-node": _vm.onDel,
             "add-node": _vm.onAddNode,
             drop: _vm.onDrop,
-            "drop-before": _vm.onDrop,
-            "drop-after": _vm.onDrop
+            "drop-before": _vm.onDropBefore,
+            "drop-after": _vm.onDropAfter
           },
           scopedSlots: _vm._u([
             {
