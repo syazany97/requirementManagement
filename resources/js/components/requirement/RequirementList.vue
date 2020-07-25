@@ -7,8 +7,8 @@
             @delete-node="onDel"
             @add-node="onAddNode"
             @drop="onDrop"
-            @drop-before="onDropBefore"
-            @drop-after="onDropAfter"
+            @drop-before="onDrop"
+            @drop-after="onDrop"
             :model="data"
             default-tree-node-name="new module"
             default-leaf-node-name="new requirement"
@@ -38,6 +38,7 @@
 <script>
     import {VueTreeList, Tree, TreeNode} from 'vue-tree-list';
     import CreateNewModule from "../modules/dialog/CreateNewModule";
+    import moduleRepository from "../../repositories/moduleRepository";
 
     export default {
         name: "RequirementList",
@@ -49,25 +50,26 @@
             return {
                 data: [],
                 newTree: {},
-                loaded: false
+                loaded: false,
+                projectId : this.$route.params.project
             }
         },
-        computed : {
-          requirementList () {
-              // vue tree list wont change if we use the computed property for this data
-              // so we need to listen for changes and then retrieve the new requirement list
-              // if it changes
-              return this.$store.getters['requirementList/requirementList'];
-          }
+        computed: {
+            requirementList() {
+                // vue tree list wont change if we use the computed property for this data
+                // so we need to listen for changes and then retrieve the new requirement list
+                // if it changes
+                return this.$store.getters['requirementList/requirementList'];
+            }
         },
-        watch : {
-          requirementList() {
-              this.setModules();
-          }
+        watch: {
+            requirementList() {
+                this.setModules();
+            }
         },
         methods: {
             setModules() {
-               this.data =  new Tree(replaceKeysDeep(
+                this.data = new Tree(replaceKeysDeep(
                     JSON.parse(JSON.stringify(this.$store.getters['requirementList/requirementList'])), {
                         requirements: 'children'
                     }))
@@ -136,18 +138,27 @@
             },
 
             onDrop(params) {
+                this.updateModuleAfterDrop(params);
                 console.log(params);
                 console.log('ON DROP');
             },
 
-            onDropBefore(params) {
-                console.log(params);
-                console.log('ON DROP BEFORE');
-            },
+            async updateModuleAfterDrop(params) {
 
-            onDropAfter(params) {
-                console.log(params);
-                console.log('ON DROP AFTER');
+                try {
+                    await moduleRepository.update(params.node.id, {
+                        parent_id: params.target.id,
+                        name : params.node.name
+                    })
+
+                    this.$store.dispatch('requirementList/setRequirementList', {project_id : this.projectId} );
+
+
+                } catch (e) {
+                    console.log(e);
+                }
+
+
             }
         }
     }

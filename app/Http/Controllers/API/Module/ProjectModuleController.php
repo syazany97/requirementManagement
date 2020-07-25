@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Module;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Module\ModuleCreateRequest;
+use App\Http\Requests\Module\ModuleUpdateRequest;
 use App\Http\Resources\Module\ModuleResource;
 use App\Models\Module;
 use App\Models\Project\Project;
@@ -18,10 +19,10 @@ class ProjectModuleController extends Controller
 
     public function store(Project $project, ModuleCreateRequest $request)
     {
-        $latesModule = $project->modules->sortByDesc('numbering')->first();
+        $latestModule = $project->modules->sortByDesc('numbering')->first();
 
-        if($latesModule) {
-            $numbering = intval($latesModule->numbering) + 1;
+        if($latestModule) {
+            $numbering = intval($latestModule->numbering) + 1;
         } else {
             $numbering = 1.0;
         }
@@ -35,9 +36,10 @@ class ProjectModuleController extends Controller
         return new ModuleResource($module);
     }
 
-    public function update(ModuleCreateRequest $request, Module $module)
+    public function update(ModuleUpdateRequest $request, Module $module)
     {
-        return new ModuleResource($module->update($request->validated()));
+        $module->update($request->validated());
+        return new ModuleResource($module);
     }
 
     public function destroy(Module $module)

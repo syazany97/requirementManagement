@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+return $request->user();
 });
 
 Route::middleware(['auth:sanctum'])->group(function() {
@@ -32,6 +32,6 @@ Route::middleware(['auth:sanctum'])->group(function() {
         ->only(['index', 'store', 'destroy'])->shallow();
     Route::resource('requirements.attachments', RequirementAttachmentController::class)
         ->only(['index', 'store']);
-    Route::apiResource('projects.modules', ProjectModuleController::class);
+    Route::apiResource('projects.modules', ProjectModuleController::class)->shallow();
 });
 

@@ -2386,9 +2386,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_tree_list__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-tree-list */ "./node_modules/vue-tree-list/dist/vue-tree-list.umd.min.js");
-/* harmony import */ var vue_tree_list__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_tree_list__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _modules_dialog_CreateNewModule__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/dialog/CreateNewModule */ "./resources/js/components/modules/dialog/CreateNewModule.vue");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_tree_list__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-tree-list */ "./node_modules/vue-tree-list/dist/vue-tree-list.umd.min.js");
+/* harmony import */ var vue_tree_list__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_tree_list__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _modules_dialog_CreateNewModule__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/dialog/CreateNewModule */ "./resources/js/components/modules/dialog/CreateNewModule.vue");
+/* harmony import */ var _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../repositories/moduleRepository */ "./resources/js/repositories/moduleRepository.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -2426,12 +2435,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RequirementList",
   components: {
-    CreateNewModule: _modules_dialog_CreateNewModule__WEBPACK_IMPORTED_MODULE_1__["default"]
+    CreateNewModule: _modules_dialog_CreateNewModule__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   created: function created() {
     this.setModules();
@@ -2440,7 +2450,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       data: [],
       newTree: {},
-      loaded: false
+      loaded: false,
+      projectId: this.$route.params.project
     };
   },
   computed: {
@@ -2458,7 +2469,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     setModules: function setModules() {
-      this.data = new vue_tree_list__WEBPACK_IMPORTED_MODULE_0__["Tree"](replaceKeysDeep(JSON.parse(JSON.stringify(this.$store.getters['requirementList/requirementList'])), {
+      this.data = new vue_tree_list__WEBPACK_IMPORTED_MODULE_1__["Tree"](replaceKeysDeep(JSON.parse(JSON.stringify(this.$store.getters['requirementList/requirementList'])), {
         requirements: 'children'
       }));
 
@@ -2491,7 +2502,7 @@ __webpack_require__.r(__webpack_exports__);
       console.log(params);
     },
     addNode: function addNode() {
-      var node = new vue_tree_list__WEBPACK_IMPORTED_MODULE_0__["TreeNode"]({
+      var node = new vue_tree_list__WEBPACK_IMPORTED_MODULE_1__["TreeNode"]({
         name: 'new node',
         isLeaf: false
       });
@@ -2524,16 +2535,45 @@ __webpack_require__.r(__webpack_exports__);
       vm.newTree = _dfs(vm.data);
     },
     onDrop: function onDrop(params) {
+      this.updateModuleAfterDrop(params);
       console.log(params);
       console.log('ON DROP');
     },
-    onDropBefore: function onDropBefore(params) {
-      console.log(params);
-      console.log('ON DROP BEFORE');
-    },
-    onDropAfter: function onDropAfter(params) {
-      console.log(params);
-      console.log('ON DROP AFTER');
+    updateModuleAfterDrop: function updateModuleAfterDrop(params) {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_3__["default"].update(params.node.id, {
+                  parent_id: params.target.id,
+                  name: params.node.name
+                });
+
+              case 3:
+                _this.$store.dispatch('requirementList/setRequirementList', {
+                  project_id: _this.projectId
+                });
+
+                _context.next = 9;
+                break;
+
+              case 6:
+                _context.prev = 6;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+              case 9:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 6]]);
+      }))();
     }
   }
 });
@@ -40727,8 +40767,8 @@ var render = function() {
             "delete-node": _vm.onDel,
             "add-node": _vm.onAddNode,
             drop: _vm.onDrop,
-            "drop-before": _vm.onDropBefore,
-            "drop-after": _vm.onDropAfter
+            "drop-before": _vm.onDrop,
+            "drop-after": _vm.onDrop
           },
           scopedSlots: _vm._u([
             {
@@ -102411,6 +102451,9 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
   },
   find: function find(id) {
     return axios.get("/api/".concat(resource, "/").concat(id));
+  },
+  update: function update(id, payload) {
+    return axios.patch("/api/".concat(resource, "/").concat(id), payload);
   }
 });
 

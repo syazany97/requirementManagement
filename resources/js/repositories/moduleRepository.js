@@ -11,5 +11,8 @@ export default {
     },
     find(id) {
         return axios.get(`/api/${resource}/${id}`)
+    },
+    update(id, payload) {
+        return axios.patch(`/api/${resource}/${id}`, payload)
     }
 }
