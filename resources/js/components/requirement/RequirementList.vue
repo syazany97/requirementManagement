@@ -6,6 +6,9 @@
             @change-name="onChangeName"
             @delete-node="onDel"
             @add-node="onAddNode"
+            @drop="onDrop"
+            @drop-before="onDropBefore"
+            @drop-after="onDropAfter"
             :model="data"
             default-tree-node-name="new module"
             default-leaf-node-name="new requirement"
@@ -130,6 +133,21 @@
                 }
 
                 vm.newTree = _dfs(vm.data)
+            },
+
+            onDrop(params) {
+                console.log(params);
+                console.log('ON DROP');
+            },
+
+            onDropBefore(params) {
+                console.log(params);
+                console.log('ON DROP BEFORE');
+            },
+
+            onDropAfter(params) {
+                console.log(params);
+                console.log('ON DROP AFTER');
             }
         }
     }

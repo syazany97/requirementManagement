@@ -2423,6 +2423,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2519,6 +2522,18 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       vm.newTree = _dfs(vm.data);
+    },
+    onDrop: function onDrop(params) {
+      console.log(params);
+      console.log('ON DROP');
+    },
+    onDropBefore: function onDropBefore(params) {
+      console.log(params);
+      console.log('ON DROP BEFORE');
+    },
+    onDropAfter: function onDropAfter(params) {
+      console.log(params);
+      console.log('ON DROP AFTER');
     }
   }
 });
@@ -40710,7 +40725,10 @@ var render = function() {
             click: _vm.onClick,
             "change-name": _vm.onChangeName,
             "delete-node": _vm.onDel,
-            "add-node": _vm.onAddNode
+            "add-node": _vm.onAddNode,
+            drop: _vm.onDrop,
+            "drop-before": _vm.onDropBefore,
+            "drop-after": _vm.onDropAfter
           },
           scopedSlots: _vm._u([
             {
