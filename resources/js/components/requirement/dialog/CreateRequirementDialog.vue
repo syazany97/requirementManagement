@@ -7,6 +7,15 @@
                 <v-text-field label="Name" v-model="requirement.name"></v-text-field>
 
                 <v-select
+                    v-model="requirement.requirement_priority_id"
+                    :items="priorities"
+                    label="Priority"
+                    item-text="name"
+                    item-value="id"
+                    persistent-hint
+                ></v-select>
+
+                <v-select
                     v-model="requirement.module_id"
                     :items="modules"
                     label="Under which module"
@@ -15,10 +24,19 @@
                     persistent-hint
                 ></v-select>
 
+                <v-select
+                    v-model="requirement.requirement_status_id"
+                    :items="statuses"
+                    label="Status"
+                    item-text="name"
+                    item-value="id"
+                    persistent-hint
+                ></v-select>
+
                 <v-textarea label="description" v-model="requirement.description"></v-textarea>
 
                 <v-select
-                    v-model="requirement.assigned"
+                    v-model="requirement.assignees"
                     :items="users"
                     label="Name"
                     item-text="name"
@@ -48,12 +66,16 @@
                         Create
                     </v-btn>
                 </v-card-actions>
+
             </v-container>
         </v-card>
     </v-dialog>
 </template>
 
 <script>
+
+    import requirementRepository from "../../../repositories/requirementRepository";
+
     export default {
         name: "CreateRequirementDialog",
         props: {
@@ -64,7 +86,10 @@
                 requirement: {
                     name: "",
                     description: "",
-                    assigned: []
+                    assignees: [],
+                    requirement_status_id: null,
+                    requirement_priority_id: null,
+                    module_id: null
                 }
             }
         },
@@ -73,10 +98,15 @@
                 return this.$store.getters['user/users'];
             },
             modules() {
-                let modules = this.$store.getters['requirement/requirementList'];
-
-                return modules.filter(element => element.parent_id === null);
-            }
+                return this.$store.getters['requirement/requirementList']
+                    .filter(element => element.parent_id === null);
+            },
+            statuses() {
+                return this.$store.getters['requirement/statuses'];
+            },
+            priorities() {
+                return this.$store.getters['requirement/priorities'];
+            },
         },
         created() {
             this.fetchUsers();
@@ -89,11 +119,23 @@
                 }
             },
             fetchRequirementStatuses() {
-                // if(this.$store.getters['req'])
 
+                if (!this.$store.getters['requirement/statuses'].length) {
+                    this.$store.dispatch('requirement/setRequirementStatuses');
+                }
+
+                if (!this.$store.getters['requirement/priorities'].length) {
+                    this.$store.dispatch('requirement/setPriorities');
+                }
             },
-            addRequirement() {
-
+            async addRequirement() {
+                try {
+                    await requirementRepository.store(this.requirement.module_id, this.requirement);
+                    this.$store.dispatch('requirement/setRequirementList');
+                    this.closeDialog();
+                } catch (e) {
+                    console.log(e);
+                }
             },
             closeDialog() {
                 this.requirement.name = '';

@@ -31,7 +31,15 @@ class RequirementController extends Controller
      */
     public function store(Module $module, RequirementCreateRequest $request)
     {
-        return new RequirementResource($module->requirements()->create($request->validated()));
+        $requirement = $module->requirements()->create($request->validated());
+
+        if (!empty($request->validated()['assignees'])) {
+            foreach ($request->validated()['assignees'] as $assignee) {
+                $requirement->assignees()->attach(['assignee_id' => $assignee]);
+            }
+        }
+
+        return new RequirementResource($requirement);
     }
 
     /**
@@ -52,7 +60,7 @@ class RequirementController extends Controller
      * @param Requirement $requirement
      * @return RequirementResource
      */
-    public function update(RequirementCreateRequest $request,  Requirement $requirement)
+    public function update(RequirementCreateRequest $request, Requirement $requirement)
     {
         return new RequirementResource($requirement->update($request->validated()));
     }

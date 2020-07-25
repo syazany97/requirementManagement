@@ -2962,6 +2962,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _repositories_requirementRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../repositories/requirementRepository */ "./resources/js/repositories/requirementRepository.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -3017,6 +3026,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CreateRequirementDialog",
   props: {
@@ -3027,7 +3056,10 @@ __webpack_require__.r(__webpack_exports__);
       requirement: {
         name: "",
         description: "",
-        assigned: []
+        assignees: [],
+        requirement_status_id: null,
+        requirement_priority_id: null,
+        module_id: null
       }
     };
   },
@@ -3036,10 +3068,15 @@ __webpack_require__.r(__webpack_exports__);
       return this.$store.getters['user/users'];
     },
     modules: function modules() {
-      var modules = this.$store.getters['requirement/requirementList'];
-      return modules.filter(function (element) {
+      return this.$store.getters['requirement/requirementList'].filter(function (element) {
         return element.parent_id === null;
       });
+    },
+    statuses: function statuses() {
+      return this.$store.getters['requirement/statuses'];
+    },
+    priorities: function priorities() {
+      return this.$store.getters['requirement/priorities'];
     }
   },
   created: function created() {
@@ -3052,9 +3089,48 @@ __webpack_require__.r(__webpack_exports__);
         this.$store.dispatch('user/setUsers');
       }
     },
-    fetchRequirementStatuses: function fetchRequirementStatuses() {// if(this.$store.getters['req'])
+    fetchRequirementStatuses: function fetchRequirementStatuses() {
+      if (!this.$store.getters['requirement/statuses'].length) {
+        this.$store.dispatch('requirement/setRequirementStatuses');
+      }
+
+      if (!this.$store.getters['requirement/priorities'].length) {
+        this.$store.dispatch('requirement/setPriorities');
+      }
     },
-    addRequirement: function addRequirement() {},
+    addRequirement: function addRequirement() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return _repositories_requirementRepository__WEBPACK_IMPORTED_MODULE_1__["default"].store(_this.requirement.module_id, _this.requirement);
+
+              case 3:
+                _this.$store.dispatch('requirement/setRequirementList');
+
+                _this.closeDialog();
+
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.log(_context.t0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
+    },
     closeDialog: function closeDialog() {
       this.requirement.name = '';
       this.requirement.description = '';
@@ -3288,7 +3364,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../repositories/projectRepository */ "./resources/js/repositories/projectRepository.js");
 /* harmony import */ var _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../repositories/moduleRepository */ "./resources/js/repositories/moduleRepository.js");
-//
 //
 //
 //
@@ -41416,6 +41491,23 @@ var render = function() {
               _vm._v(" "),
               _c("v-select", {
                 attrs: {
+                  items: _vm.priorities,
+                  label: "Priority",
+                  "item-text": "name",
+                  "item-value": "id",
+                  "persistent-hint": ""
+                },
+                model: {
+                  value: _vm.requirement.requirement_priority_id,
+                  callback: function($$v) {
+                    _vm.$set(_vm.requirement, "requirement_priority_id", $$v)
+                  },
+                  expression: "requirement.requirement_priority_id"
+                }
+              }),
+              _vm._v(" "),
+              _c("v-select", {
+                attrs: {
                   items: _vm.modules,
                   label: "Under which module",
                   "item-text": "name",
@@ -41428,6 +41520,23 @@ var render = function() {
                     _vm.$set(_vm.requirement, "module_id", $$v)
                   },
                   expression: "requirement.module_id"
+                }
+              }),
+              _vm._v(" "),
+              _c("v-select", {
+                attrs: {
+                  items: _vm.statuses,
+                  label: "Status",
+                  "item-text": "name",
+                  "item-value": "id",
+                  "persistent-hint": ""
+                },
+                model: {
+                  value: _vm.requirement.requirement_status_id,
+                  callback: function($$v) {
+                    _vm.$set(_vm.requirement, "requirement_status_id", $$v)
+                  },
+                  expression: "requirement.requirement_status_id"
                 }
               }),
               _vm._v(" "),
@@ -41454,11 +41563,11 @@ var render = function() {
                   "persistent-hint": ""
                 },
                 model: {
-                  value: _vm.requirement.assigned,
+                  value: _vm.requirement.assignees,
                   callback: function($$v) {
-                    _vm.$set(_vm.requirement, "assigned", $$v)
+                    _vm.$set(_vm.requirement, "assignees", $$v)
                   },
-                  expression: "requirement.assigned"
+                  expression: "requirement.assignees"
                 }
               }),
               _vm._v(" "),
@@ -102943,6 +103052,67 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
 
 /***/ }),
 
+/***/ "./resources/js/repositories/requirementPriorities.js":
+/*!************************************************************!*\
+  !*** ./resources/js/repositories/requirementPriorities.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all() {
+    return axios.get('/api/requirement-priorities');
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/repositories/requirementRepository.js":
+/*!************************************************************!*\
+  !*** ./resources/js/repositories/requirementRepository.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+var resource = 'requirements';
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all(moduleId) {
+    return axios.get("/api/modules/".concat(moduleId, "/").concat(resource));
+  },
+  store: function store(moduleId, payload) {
+    return axios.post("/api/modules/".concat(moduleId, "/").concat(resource), payload);
+  },
+  find: function find(requirementId) {
+    return axios.get("/api/".concat(resource, "/").concat(requirementId));
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/repositories/requirementStatusRepository.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/repositories/requirementStatusRepository.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all() {
+    return axios.get('/api/requirement-statuses');
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/repositories/userRepository.js":
 /*!*****************************************************!*\
   !*** ./resources/js/repositories/userRepository.js ***!
@@ -103264,6 +103434,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../repositories/moduleRepository */ "./resources/js/repositories/moduleRepository.js");
+/* harmony import */ var _repositories_requirementStatusRepository__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../repositories/requirementStatusRepository */ "./resources/js/repositories/requirementStatusRepository.js");
+/* harmony import */ var _repositories_requirementPriorities__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../repositories/requirementPriorities */ "./resources/js/repositories/requirementPriorities.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -103271,6 +103443,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 // initial state
+
+
 
 
 var state = function state() {
@@ -103282,7 +103456,8 @@ var state = function state() {
       comments: []
     },
     requirementList: [],
-    statuses: []
+    statuses: [],
+    priorities: []
   };
 }; // getters
 
@@ -103296,6 +103471,9 @@ var getters = {
   },
   statuses: function statuses(state) {
     return state.statuses;
+  },
+  priorities: function priorities(state) {
+    return state.priorities;
   }
 }; // mutations
 
@@ -103305,6 +103483,12 @@ var mutations = {
   },
   setRequirementList: function setRequirementList(state, payload) {
     Vue.set(state, 'requirementList', payload);
+  },
+  setRequirementStatuses: function setRequirementStatuses(state, payload) {
+    Vue.set(state, 'statuses', payload);
+  },
+  setPriorities: function setPriorities(state, payload) {
+    Vue.set(state, 'priorities', payload);
   }
 };
 var actions = {
@@ -103328,6 +103512,52 @@ var actions = {
           }
         }
       }, _callee);
+    }))();
+  },
+  setRequirementStatuses: function setRequirementStatuses(state, payload) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      var response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return _repositories_requirementStatusRepository__WEBPACK_IMPORTED_MODULE_2__["default"].all();
+
+            case 2:
+              response = _context2.sent;
+              // console.log('statuses', response.data);
+              state.commit('setRequirementStatuses', response.data);
+
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }))();
+  },
+  setPriorities: function setPriorities(state, payload) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+      var response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return _repositories_requirementPriorities__WEBPACK_IMPORTED_MODULE_3__["default"].all();
+
+            case 2:
+              response = _context3.sent;
+              // console.log('priorities', response.data);
+              state.commit('setPriorities', response.data);
+
+            case 4:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
     }))();
   }
 };

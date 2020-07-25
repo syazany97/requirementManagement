@@ -6,6 +6,7 @@ use App\Http\Controllers\API\Project\ProjectStatusController;
 use App\Http\Controllers\API\Requirement\RequirementAttachmentController;
 use App\Http\Controllers\API\Requirement\RequirementCommentController;
 use App\Http\Controllers\API\Requirement\RequirementController;
+use App\Http\Controllers\API\Requirement\RequirementPriorityController;
 use App\Http\Controllers\API\Requirement\RequirementStatusController;
 use App\Http\Controllers\API\User\UserController;
 use Illuminate\Http\Request;
@@ -39,5 +40,6 @@ Route::middleware(['auth:sanctum'])->group(function() {
        'index', 'show'
     ]);
     Route::any('requirement-statuses', RequirementStatusController::class);
+    Route::any('requirement-priorities', RequirementPriorityController::class);
 });
 

@@ -26,9 +26,11 @@ class RequirementCreateRequest extends FormRequest
         return [
             'name' => ['required'],
             'description' => ['required'],
-            'numbering' => ['required'],
+//            'numbering' => ['required'],
             'assignees' => ['array', 'present'],
-            'assignees.id' => ['exists:users,id']
+            'assignees.id' => ['exists:users,id'],
+            'requirement_priority_id' => ['required', 'exists:requirement_priorities,id'],
+            'requirement_status_id' => ['required', 'exists:requirement_statuses,id']
         ];
     }
 }

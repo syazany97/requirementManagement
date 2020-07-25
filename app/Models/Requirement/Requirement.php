@@ -29,8 +29,8 @@ class Requirement extends Model implements HasMedia
     public function assignees()
     {
         return $this->belongsToMany(User::class, RequirementAssignee::class,
-            'assignee_id',
-            'requirement_id');
+            'requirement_id', 'assignee_id'
+            );
     }
 
     public function creator()

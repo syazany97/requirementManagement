@@ -3,6 +3,6 @@ window.axios = require('axios');
 
 export default {
     all() {
-        return axios.get('/api/requirement-statuses');
+        return axios.get('/api/requirement-priorities');
     }
 }

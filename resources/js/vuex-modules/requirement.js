@@ -1,5 +1,7 @@
 // initial state
 import moduleRepository from "../repositories/moduleRepository";
+import requirementStatusRepository from "../repositories/requirementStatusRepository";
+import requirementPriorities from "../repositories/requirementPriorities";
 
 const state = () => ({
     currentRequirement: {
@@ -9,7 +11,8 @@ const state = () => ({
         comments : []
     },
     requirementList : [],
-    statuses : []
+    statuses : [],
+    priorities : []
 });
 
 // getters
@@ -22,6 +25,9 @@ const getters = {
     },
     statuses : (state) => {
         return state.statuses
+    },
+    priorities : (state) => {
+        return state.priorities
     }
 };
 
@@ -32,6 +38,12 @@ const mutations = {
     },
     setRequirementList: (state, payload) => {
         Vue.set(state, 'requirementList', payload);
+    },
+    setRequirementStatuses: (state, payload) => {
+        Vue.set(state, 'statuses', payload);
+    },
+    setPriorities : (state, payload) => {
+        Vue.set(state, 'priorities', payload);
     }
 };
 
@@ -39,6 +51,16 @@ const actions = {
     async setRequirementList(state, payload) {
         const response = await moduleRepository.all(payload.project_id);
         state.commit('setRequirementList', response.data.data);
+    },
+    async setRequirementStatuses(state, payload) {
+        const response = await requirementStatusRepository.all();
+        // console.log('statuses', response.data);
+        state.commit('setRequirementStatuses', response.data);
+    },
+    async setPriorities(state, payload) {
+        const response = await requirementPriorities.all();
+        // console.log('priorities', response.data);
+        state.commit('setPriorities', response.data);
     }
 }
 
