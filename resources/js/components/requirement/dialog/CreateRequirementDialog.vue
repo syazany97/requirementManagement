@@ -97,7 +97,7 @@
             users() {
                 return this.$store.getters['user/users'];
             },
-            modules() {
+            modules() { 
                 return this.$store.getters['requirement/requirementList']
                     .filter(element => element.parent_id === null);
             },
