@@ -103504,9 +103504,10 @@ var actions = {
 
             case 2:
               response = _context.sent;
+              console.log('response modules', response.data);
               state.commit('setRequirementList', response.data.data);
 
-            case 4:
+            case 5:
             case "end":
               return _context.stop();
           }

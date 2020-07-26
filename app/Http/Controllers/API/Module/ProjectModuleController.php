@@ -9,19 +9,48 @@ use App\Http\Resources\Module\ModuleResource;
 use App\Models\Module;
 use App\Models\Project\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProjectModuleController extends Controller
 {
     public function index(Project $project)
     {
-        return ModuleResource::collection(Module::completeInformation($project->id)->get());
+//        $query = DB::table('requirements')
+//            ->unionAll(
+//                DB::table('requirements')
+//                    ->select('requirements.*')
+//                    ->join('modules', 'modules.id', '=', 'requirements.module_id')
+//            );
+//
+//        return DB::table('modules')
+//            ->withRecursiveExpression('modules', $query)
+//            ->get();
+
+//        return ModuleResource::collection(Module::completeInformation($project->id)->get());
+
+
+//        $data = DB::select('WITH RECURSIVE MyCTE AS (
+//                    SELECT id, parent_id, numbering, created_at FROM modules WHERE parent_id IS NULL
+//                    UNION
+//                    SELECT modules.id, modules.parent_id, modules.numbering, modules.created_at FROM modules JOIN MyCTE
+//                    ON modules.parent_id = MyCTE.id
+//                    )
+//                    SELECT * FROM MyCTE;');
+
+
+//
+//         $data = DB::table('modules');
+//
+         return $data;
+
+//         return response()->json(['data' => 'd']);
     }
 
     public function store(Project $project, ModuleCreateRequest $request)
     {
         $latestModule = $project->modules->sortByDesc('numbering')->first();
 
-        if($latestModule) {
+        if ($latestModule) {
             $numbering = intval($latestModule->numbering) + 1;
         } else {
             $numbering = 1.0;

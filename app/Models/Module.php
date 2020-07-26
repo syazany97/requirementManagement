@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Project\Project;
 use App\Models\Requirement\Requirement;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Module extends Model
 {
@@ -29,9 +30,13 @@ class Module extends Model
 
     public function scopeCompleteInformation($query, $projectId )
     {
-        return $query->where('parent_id', null)->where('project_id', $projectId)
-            ->with(['children.requirements.assignees',
+        return $query->where('parent_id', null)
+            ->where('project_id', $projectId)
+            ->with([
+                'children.requirements.assignees',
                 'children.requirements.priority',
-                'children.requirements.comments.user']);
+                'children.requirements.comments.user'
+            ]);
     }
+
 }
