@@ -29,13 +29,13 @@ class ProjectModuleController extends Controller
 //        return ModuleResource::collection(Module::completeInformation($project->id)->get());
 
 
-//        $data = DB::select('WITH RECURSIVE MyCTE AS (
-//                    SELECT id, parent_id, numbering, created_at FROM modules WHERE parent_id IS NULL
-//                    UNION
-//                    SELECT modules.id, modules.parent_id, modules.numbering, modules.created_at FROM modules JOIN MyCTE
-//                    ON modules.parent_id = MyCTE.id
-//                    )
-//                    SELECT * FROM MyCTE;');
+        $data = DB::select('WITH RECURSIVE MyCTE AS (
+                    SELECT id, parent_id, numbering, created_at FROM modules WHERE parent_id IS NULL
+                    UNION
+                    SELECT modules.id, modules.parent_id, modules.numbering, modules.created_at FROM modules JOIN MyCTE
+                    ON modules.parent_id = MyCTE.id
+                    )
+                    SELECT * FROM MyCTE;');
 
 
 //
