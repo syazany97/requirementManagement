@@ -29,21 +29,16 @@ class ProjectModuleController extends Controller
 //        return ModuleResource::collection(Module::completeInformation($project->id)->get());
 
 
-        $data = DB::select('WITH RECURSIVE MyCTE AS (
-                    SELECT id, parent_id, numbering, created_at FROM modules WHERE parent_id IS NULL
+        return DB::select('WITH RECURSIVE MyCTE AS (
+                    SELECT id, parent_id,name, numbering, project_id, created_at
+                    FROM modules WHERE parent_id IS NULL
                     UNION
-                    SELECT modules.id, modules.parent_id, modules.numbering, modules.created_at FROM modules JOIN MyCTE
+                    SELECT modules.id, modules.parent_id, modules.name, modules.project_id,
+                    modules.numbering, modules.created_at
+                    FROM modules JOIN MyCTE
                     ON modules.parent_id = MyCTE.id
                     )
                     SELECT * FROM MyCTE;');
-
-
-//
-//         $data = DB::table('modules');
-//
-         return $data;
-
-//         return response()->json(['data' => 'd']);
     }
 
     public function store(Project $project, ModuleCreateRequest $request)
