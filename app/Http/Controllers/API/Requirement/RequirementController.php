@@ -39,7 +39,7 @@ class RequirementController extends Controller
             }
         }
 
-        return new RequirementResource($requirement);
+        return new RequirementResource($requirement->refresh());
     }
 
     /**
