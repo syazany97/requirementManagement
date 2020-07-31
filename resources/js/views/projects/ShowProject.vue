@@ -44,11 +44,19 @@
         created() {
             this.$store.dispatch('requirement/setRequirementList',
                 {project_id: this.projectId});
+            this.setQueryParameter();
         },
         computed: {
             modules() {
-                console.log(this.$store.getters['requirement/requirementList']);
                 return this.$store.getters['requirement/requirementList'];
+            }
+        },
+        methods: {
+            setQueryParameter() {
+                if (this.$route.query.requirement) {
+                    // if there is a query parameter on url then set display it
+                    this.$store.dispatch('requirement/setRequirement', this.$route.query.requirement);
+                }
             }
         }
     }

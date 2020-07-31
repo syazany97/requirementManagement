@@ -109,6 +109,13 @@
                 attachments: []
             }
         },
+        created() {
+            // if url contains query parameter requirement then set data
+            if (this.requirement.id !== null) {
+                this.fetchComments();
+                this.fetchAttachments();
+            }
+        },
         computed: {
             requirement() {
                 return this.$store.getters['requirement/currentRequirement']
@@ -131,6 +138,7 @@
             requirement() {
                 this.commentsLoaded = false;
                 this.showCommentTextField = false;
+
                 if (this.requirement.id !== null) {
                     this.fetchComments();
                     this.fetchAttachments();

@@ -48,8 +48,10 @@ class RequirementController extends Controller
      * @param Requirement $requirement
      * @return RequirementResource
      */
-    public function show(Requirement $requirement)
+    public function show($requirement)
     {
+        $requirement = Requirement::with(['assignees', 'comments', 'priority'])
+            ->findOrFail($requirement);
         return new RequirementResource($requirement);
     }
 

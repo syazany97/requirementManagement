@@ -2514,10 +2514,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     onClick: function onClick(params) {
       if (params.type === 'requirement') {
+        console.log(this.$route);
+        history.replaceState({
+          requirement: params.id
+        }, null, '?requirement=' + params.id);
         this.$store.commit('requirement/setRequirement', params);
       }
-
-      console.log(params);
     },
     addNode: function addNode() {
       console.log('add node');
@@ -2750,6 +2752,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       fileAttachment: null,
       attachments: []
     };
+  },
+  created: function created() {
+    // if url contains query parameter requirement then set data
+    if (this.requirement.id !== null) {
+      this.fetchComments();
+      this.fetchAttachments();
+    }
   },
   computed: {
     requirement: function requirement() {
@@ -3409,11 +3418,19 @@ __webpack_require__.r(__webpack_exports__);
     this.$store.dispatch('requirement/setRequirementList', {
       project_id: this.projectId
     });
+    this.setQueryParameter();
   },
   computed: {
     modules: function modules() {
-      console.log(this.$store.getters['requirement/requirementList']);
       return this.$store.getters['requirement/requirementList'];
+    }
+  },
+  methods: {
+    setQueryParameter: function setQueryParameter() {
+      if (this.$route.query.requirement) {
+        // if there is a query parameter on url then set display it
+        this.$store.dispatch('requirement/setRequirement', this.$route.query.requirement);
+      }
     }
   }
 });
@@ -103436,6 +103453,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../repositories/moduleRepository */ "./resources/js/repositories/moduleRepository.js");
 /* harmony import */ var _repositories_requirementStatusRepository__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../repositories/requirementStatusRepository */ "./resources/js/repositories/requirementStatusRepository.js");
 /* harmony import */ var _repositories_requirementPriorities__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../repositories/requirementPriorities */ "./resources/js/repositories/requirementPriorities.js");
+/* harmony import */ var _repositories_requirementRepository__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../repositories/requirementRepository */ "./resources/js/repositories/requirementRepository.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -103443,6 +103461,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 // initial state
+
 
 
 
@@ -103479,7 +103498,7 @@ var getters = {
 
 var mutations = {
   setRequirement: function setRequirement(state, payload) {
-    state.currentRequirement = payload;
+    state.currentRequirement = payload; // Vue.set(state, 'currentRequirement', payload);
   },
   setRequirementList: function setRequirementList(state, payload) {
     Vue.set(state, 'requirementList', payload);
@@ -103526,7 +103545,6 @@ var actions = {
 
             case 2:
               response = _context2.sent;
-              // console.log('statuses', response.data);
               state.commit('setRequirementStatuses', response.data);
 
             case 4:
@@ -103549,7 +103567,6 @@ var actions = {
 
             case 2:
               response = _context3.sent;
-              // console.log('priorities', response.data);
               state.commit('setPriorities', response.data);
 
             case 4:
@@ -103558,6 +103575,28 @@ var actions = {
           }
         }
       }, _callee3);
+    }))();
+  },
+  setRequirement: function setRequirement(state, requirementId) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+      var response;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return _repositories_requirementRepository__WEBPACK_IMPORTED_MODULE_4__["default"].find(requirementId);
+
+            case 2:
+              response = _context4.sent;
+              state.commit('setRequirement', response.data.data);
+
+            case 4:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
     }))();
   }
 };

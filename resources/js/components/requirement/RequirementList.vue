@@ -103,9 +103,14 @@
 
             onClick(params) {
                 if (params.type === 'requirement') {
+                    console.log(this.$route);
+                    history.replaceState(
+                        {requirement : params.id},
+                        null,
+                        '?requirement=' + params.id
+                    )
                     this.$store.commit('requirement/setRequirement', params);
                 }
-                console.log(params)
             },
 
             addNode() {
@@ -179,7 +184,6 @@
                     await moduleRepository.update(payload.id, payload)
 
                     this.$store.dispatch('requirement/setRequirementList', {project_id: this.projectId});
-
 
                 } catch (e) {
                     console.log(e);

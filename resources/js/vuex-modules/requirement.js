@@ -2,17 +2,18 @@
 import moduleRepository from "../repositories/moduleRepository";
 import requirementStatusRepository from "../repositories/requirementStatusRepository";
 import requirementPriorities from "../repositories/requirementPriorities";
+import requirementRepository from "../repositories/requirementRepository";
 
 const state = () => ({
     currentRequirement: {
-        id : null,
-        description : "",
-        assigned : {},
-        comments : []
+        id: null,
+        description: "",
+        assigned: {},
+        comments: []
     },
-    requirementList : [],
-    statuses : [],
-    priorities : []
+    requirementList: [],
+    statuses: [],
+    priorities: []
 });
 
 // getters
@@ -20,13 +21,13 @@ const getters = {
     currentRequirement: (state) => {
         return state.currentRequirement;
     },
-    requirementList : (state) => {
+    requirementList: (state) => {
         return state.requirementList;
     },
-    statuses : (state) => {
+    statuses: (state) => {
         return state.statuses
     },
-    priorities : (state) => {
+    priorities: (state) => {
         return state.priorities
     }
 };
@@ -35,6 +36,7 @@ const getters = {
 const mutations = {
     setRequirement: (state, payload) => {
         state.currentRequirement = payload;
+        // Vue.set(state, 'currentRequirement', payload);
     },
     setRequirementList: (state, payload) => {
         Vue.set(state, 'requirementList', payload);
@@ -42,7 +44,7 @@ const mutations = {
     setRequirementStatuses: (state, payload) => {
         Vue.set(state, 'statuses', payload);
     },
-    setPriorities : (state, payload) => {
+    setPriorities: (state, payload) => {
         Vue.set(state, 'priorities', payload);
     }
 };
@@ -54,13 +56,15 @@ const actions = {
     },
     async setRequirementStatuses(state, payload) {
         const response = await requirementStatusRepository.all();
-        // console.log('statuses', response.data);
         state.commit('setRequirementStatuses', response.data);
     },
     async setPriorities(state, payload) {
         const response = await requirementPriorities.all();
-        // console.log('priorities', response.data);
         state.commit('setPriorities', response.data);
+    },
+    async setRequirement(state, requirementId) {
+        const response = await requirementRepository.find(requirementId);
+        state.commit('setRequirement', response.data.data);
     }
 }
 
