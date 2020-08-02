@@ -4,6 +4,7 @@ namespace App\Models\Requirement;
 
 use App\Models\Comment\Comment;
 use App\Models\Module;
+use App\Models\TestCase\TestCase;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
@@ -41,5 +42,15 @@ class Requirement extends Model implements HasMedia
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    public function testCases()
+    {
+        return $this->hasMany(TestCase::class);
+    }
+
+    public function scopeShow($query)
+    {
+        return $query->with(['assignees', 'comments', 'priority']);
     }
 }

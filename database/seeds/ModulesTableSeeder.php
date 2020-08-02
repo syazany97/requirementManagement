@@ -87,15 +87,6 @@ class ModulesTableSeeder extends Seeder
 
         $requirementsId = Requirement::pluck('id');
 
-//        $requirementAssignees = collect($usersId)->map(function ($value) use ($requirementsId) {
-//            return [
-//                'user_id' => $value,
-//                'requirement_id' => $requirementsId->random(),
-//                'created_at' => now(),
-//                'updated_at' => now()
-//            ];
-//        });
-
         $requirementAssignees = $requirementsId->map(function ($value) use ($usersId) {
             $assignees = [];
             $loop = collect([2, 4])->random();

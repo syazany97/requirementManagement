@@ -14,5 +14,10 @@ export const routes = [
         path: '/projects/:project',
         name: 'project.show',
         component: require('./views/projects/ShowProject.vue').default
+    },
+    {
+        path: '/requirements/:requirement/test-cases/create',
+        name: 'test-case.create',
+        component: require('./views/requirements/Create.vue').default
     }
 ];

@@ -8,6 +8,7 @@ use App\Http\Controllers\API\Requirement\RequirementCommentController;
 use App\Http\Controllers\API\Requirement\RequirementController;
 use App\Http\Controllers\API\Requirement\RequirementPriorityController;
 use App\Http\Controllers\API\Requirement\RequirementStatusController;
+use App\Http\Controllers\API\Requirement\RequirementTestCaseController;
 use App\Http\Controllers\API\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,18 +29,40 @@ return $request->user();
 });
 
 Route::middleware(['auth:sanctum'])->group(function() {
+
+    // projects
     Route::apiResource('projects', ProjectController::class);
+
     Route::any('project-statuses', ProjectStatusController::class);
-    Route::apiResource('modules.requirements', RequirementController::class)->shallow();
+
+    // modules and requirements
+    Route::resource('modules.requirements', RequirementController::class)->shallow()
+        ->only(['store', 'show', 'update', 'destroy']);
+
+    // modules and comments
     Route::resource('requirements.comments', RequirementCommentController::class)
         ->only(['index', 'store', 'destroy'])->shallow();
+
+    // requirements and attachments
     Route::resource('requirements.attachments', RequirementAttachmentController::class)
         ->only(['index', 'store']);
+
+    // project and modules
     Route::apiResource('projects.modules', ProjectModuleController::class)->shallow();
+
+    // users
     Route::resource('users', UserController::class)->only([
        'index', 'show'
     ]);
+
+    Route::resource('requirements.test-cases', RequirementTestCaseController::class)
+        ->shallow()
+        ->parameters([
+           'requirements' => 'requirement', 'test-cases' => 'testCase'
+        ]);
+
     Route::any('requirement-statuses', RequirementStatusController::class);
+
     Route::any('requirement-priorities', RequirementPriorityController::class);
 });
 

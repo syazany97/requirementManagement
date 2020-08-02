@@ -1,22 +1,41 @@
 <template>
     <div>
+        <button @click.stop="dialog = true"
+                class="primary-btn">
+            <svg fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                      clip-rule="evenodd"></path>
+            </svg>
+            <span>Add module</span>
+        </button>
 
-        <v-btn
-            small
-            color="primary"
-            dark
-            @click.stop="dialog = true"
-        >
-            <v-icon>mdi-plus</v-icon>
-            Module
-        </v-btn>
+        <button @click.stop="requirementDialog = true" class="secondary-btn">
+            <svg fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                      clip-rule="evenodd"></path>
+            </svg>
+            <span>Add requirement</span>
+        </button>
 
-        <v-btn @click.stop="requirementDialog = true" small>
-            <v-icon>mdi-plus</v-icon>
-            Requirement
-        </v-btn>
+        <button @click.stop="testDialog = !testDialog" class="secondary-btn">
+            <svg fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd"
+                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+                      clip-rule="evenodd"></path>
+            </svg>
+            <span>Test dialog</span>
+        </button>
 
-       <create-requirement-dialog :requirement-dialog.sync="requirementDialog"></create-requirement-dialog>
+        <v-dialog v-model="testDialog">
+            <test-dialog></test-dialog>
+        </v-dialog>
+
+
+        <v-dialog v-model="requirementDialog" max-width="500">
+            <create-requirement-dialog :requirement-dialog.sync="requirementDialog"></create-requirement-dialog>
+        </v-dialog>
 
         <v-dialog
             v-model="dialog"
@@ -74,10 +93,11 @@
                     name: "",
                     assigned: [],
                     description: ""
-                }
+                },
+                testDialog: false
             }
         },
-       methods: {
+        methods: {
             async addModule() {
                 try {
                     await moduleRepository.store(this.$route.params.project, {
@@ -102,5 +122,16 @@
 </script>
 
 <style scoped>
+    .btn {
+        @apply font-bold py-2 px-4 rounded;
+    }
+
+    .btn-blue {
+        @apply bg-blue-500 text-white;
+    }
+
+    .btn-blue:hover {
+        @apply bg-blue-700;
+    }
 
 </style>

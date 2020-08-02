@@ -12,12 +12,6 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class RequirementCommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @param Requirement $requirement
-     * @return AnonymousResourceCollection
-     */
     public function index(Requirement $requirement)
     {
         $comments = Comment::show($requirement)->get();
@@ -25,22 +19,11 @@ class RequirementCommentController extends Controller
         return CommentResource::collection($comments);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Requirement $requirement
-     * @param CommentCreateRequest $request
-     * @return CommentResource
-     */
     public function store(Requirement $requirement, CommentCreateRequest $request)
     {
         return new CommentResource($requirement->comments()->create($request->validated()));
     }
 
-    /** Delete comment
-     * @param Comment $comment
-     * @return bool|null
-     */
     public function destroy(Comment $comment) {
 
         try {

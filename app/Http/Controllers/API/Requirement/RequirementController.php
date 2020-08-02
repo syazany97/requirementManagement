@@ -12,23 +12,6 @@ use Illuminate\Http\Response;
 
 class RequirementController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Module $module
-     * @param RequirementCreateRequest $request
-     * @return RequirementResource
-     */
     public function store(Module $module, RequirementCreateRequest $request)
     {
         $requirement = $module->requirements()->create($request->validated());
@@ -42,38 +25,16 @@ class RequirementController extends Controller
         return new RequirementResource($requirement->refresh());
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param Requirement $requirement
-     * @return RequirementResource
-     */
     public function show($requirement)
     {
-        $requirement = Requirement::with(['assignees', 'comments', 'priority'])
-            ->findOrFail($requirement);
-        return new RequirementResource($requirement);
+        return new RequirementResource(Requirement::show()->findOrFail($requirement));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param RequirementCreateRequest $request
-     * @param Requirement $requirement
-     * @return RequirementResource
-     */
     public function update(RequirementCreateRequest $request, Requirement $requirement)
     {
         return new RequirementResource($requirement->update($request->validated()));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Requirement $requirement
-     * @return void
-     * @throws \Exception
-     */
     public function destroy(Requirement $requirement)
     {
         $requirement->delete();

@@ -6,16 +6,19 @@ import VueRouter from "vue-router";
 import Vuex from "vuex";
 // import Vuetify from 'vuetify/lib';
 import Vuetify from "vuetify";
-import 'vuetify/dist/vuetify.min.css';
+// import 'vuetify/dist/vuetify.min.css';
 import notification from "./vuex-modules/notification";
 import VueTreeList from 'vue-tree-list';
 import requirement from "./vuex-modules/requirement";
 import user from "./vuex-modules/user";
+import vSelect from 'vue-select'
 require('./bootstrap');
 
 window.Vue = require('vue');
 
 [VueRouter, dayjs, Vuex, VueToast, Vuetify, VueTreeList].forEach((x) => Vue.use(x));
+
+Vue.component('vue-select', vSelect);
 
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))

@@ -14,11 +14,6 @@ use Illuminate\Http\Response;
 
 class ProjectController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return AnonymousResourceCollection
-     */
     public function index()
     {
         return ProjectResource::collection(Project::withCount(['modules'])
@@ -26,46 +21,21 @@ class ProjectController extends Controller
             ->paginate(20));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param ProjectCreateRequest $request
-     * @return ProjectResource
-     */
     public function store(ProjectCreateRequest $request)
     {
         return new ProjectResource(Project::create($request->validated()));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\Project $project
-     * @return Response
-     */
-    public function show($project)
+    public function show(Project $project)
     {
         return new ProjectResource($project);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Project $project
-     * @return Response
-     */
     public function update(Request $request, Project $project)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\Project $project
-     * @return Response
-     */
     public function destroy(Project $project)
     {
         //

@@ -26,8 +26,9 @@
     },
     "dependencies": {
         "dayjs": "^1.8.29",
-        "tailwindcss": "^1.5.2",
+        "tailwindcss": "^1.6.0",
         "vue-router": "^3.3.4",
+        "vue-select": "^3.10.7",
         "vue-toast-notification": "^0.4.1",
         "vue-tree-list": "^1.4.6",
         "vuetify": "^2.3.4",
