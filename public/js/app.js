@@ -3544,7 +3544,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   created: function created() {
-    this.fetchTestCases();
+    if (this.requirement.id !== null) this.fetchTestCases();
+  },
+  computed: {
+    requirement: function requirement() {
+      return this.$store.getters['requirement/currentRequirement'];
+    }
+  },
+  watch: {
+    requirement: function requirement() {
+      if (this.requirement.id !== null) {
+        this.fetchTestCases();
+      }
+    }
   },
   methods: {
     fetchTestCases: function fetchTestCases() {
@@ -3562,9 +3574,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 response = _context.sent;
                 _this.testCases = response.data.data;
-                console.log(response.data.data);
 
-              case 5:
+              case 4:
               case "end":
                 return _context.stop();
             }

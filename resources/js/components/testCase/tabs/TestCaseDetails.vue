@@ -23,10 +23,10 @@
             </thead>
             <tbody>
             <tr v-for="(test, index) in testCases" v-bind:key="test.id" :class="index % 0 === 0 ? 'bg-gray-100' : ''">
-                <td class="border px-4 py-2">{{index + 1}}</td>
-                <td class="border px-4 py-2">{{test.description}}</td>
-                <td class="border px-4 py-2">{{test.user.name}}</td>
-                <td class="border px-4 py-2">{{test.created_at | formatDateTime}}</td>
+                <td class="border px-4 py-2">{{ index + 1 }}</td>
+                <td class="border px-4 py-2">{{ test.description }}</td>
+                <td class="border px-4 py-2">{{ test.user.name }}</td>
+                <td class="border px-4 py-2">{{ test.created_at | formatDateTime }}</td>
             </tr>
             </tbody>
         </table>
@@ -35,6 +35,7 @@
 
 <script>
 import requirementTestCaseRepository from "../../../repositories/requirement/requirementTestCaseRepository";
+
 export default {
     name: "TestCaseDetails",
     data() {
@@ -43,17 +44,32 @@ export default {
         }
     },
     created() {
-        this.fetchTestCases();
+        if (this.requirement.id !== null) this.fetchTestCases()
+    },
+    computed: {
+        requirement() {
+            return this.$store.getters['requirement/currentRequirement'];
+        }
+    },
+    watch: {
+        requirement() {
+            if (this.requirement.id !== null) {
+                this.fetchTestCases();
+            }
+        }
     },
     methods: {
         async fetchTestCases() {
             const response = await requirementTestCaseRepository.all(this.$store.getters['requirement/currentRequirement'].id);
             this.testCases = response.data.data;
-            console.log(response.data.data);
         },
         redirectToTestCasePage() {
-            this.$router.push({ name: 'test-case.create', params: { requirement:
-                    this.$store.getters['requirement/currentRequirement'].id } })
+            this.$router.push({
+                name: 'test-case.create', params: {
+                    requirement:
+                    this.$store.getters['requirement/currentRequirement'].id
+                }
+            })
         }
     }
 }
