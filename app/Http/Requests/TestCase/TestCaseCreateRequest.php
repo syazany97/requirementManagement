@@ -13,7 +13,7 @@ class TestCaseCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,18 @@ class TestCaseCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'test_case' => ['required', 'array'],
+            'test-case.*.title' => 'required',
+            'test-case.*.description' => ['nullable', 'sometimes'],
+            'test-case.*.preconditions' => ['nullable', 'sometimes'],
+//            'test-case.*.priority_id' => ['required', 'exists:requirement_priorities,id'],
+            'steps' => ['required', 'array'],
+            'steps.*.description' => ['required'],
+            'steps.*.input' => ['nullable'],
+            'steps.*.expected_result' => ['nullable'],
+            'steps.*.result' => ['nullable'],
+            'steps.*.comment' => ['nullable'],
+            'steps.*.is_passed' => ['required', 'boolean']
         ];
     }
 }

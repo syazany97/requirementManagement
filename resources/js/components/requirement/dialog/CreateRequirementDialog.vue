@@ -154,7 +154,8 @@
                 try {
                     this.addingRequirement = true;
                     await requirementRepository.store(this.requirement.module_id, this.requirement);
-                    this.$store.dispatch('requirement/setRequirementList');
+                    await this.$store.dispatch('requirement/setRequirementList',
+                        {project_id : this.$route.params.project});
                     this.closeDialog();
                 } catch (e) {
                     console.log(e);

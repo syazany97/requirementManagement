@@ -5,46 +5,46 @@
         outlined
         tile
     >
-        <v-tabs v-model="tab">
-            <keep-alive v-for="tab in items" v-bind:key="tab.component">
-                <v-tab>{{tab.tab}}</v-tab>
-            </keep-alive>
+        <ul class="nav nav-pills">
+            <li v-for="tab in items" class="nav-item">
+                <a :class="'nav-link ' +  (currentTab === tab.component ? 'active' : '')"
+                   href="#" @click.prevent="currentTab= tab.component">{{tab.tab}}</a>
+            </li>
+        </ul>
 
-            <v-tabs-items v-model="tab">
-                <v-tab-item v-for="tab in items" v-bind:key="tab.component">
-                    <component v-bind:is="tab.component"></component>
-                </v-tab-item>
-            </v-tabs-items>
+        <div v-for="tab in items" v-bind:key="tab.component">
+            <component v-show="currentTab === tab.component"  v-bind:is="tab.component"></component>
+        </div>
 
-        </v-tabs>
     </v-card>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                tab: null,
-                items: [
-                    {
-                        tab: 'Requirement', component: 'requirement-details'
-                    },
-                    {
-                        tab: 'Test Case', component: 'test-case-details'
-                    },
-                    {
-                        tab: 'History', component: 'requirement-history'
-                    }
-                ]
-            }
-        },
-        computed: {
-            requirement() {
-                return this.$store.getters['requirement/currentRequirement']
-            }
+export default {
+    data() {
+        return {
+            tab: null,
+            items: [
+                {
+                    tab: 'Requirement', component: 'requirement-details'
+                },
+                {
+                    tab: 'Test Case', component: 'test-case-details'
+                },
+                {
+                    tab: 'History', component: 'requirement-history'
+                }
+            ],
+            currentTab: 'requirement-details'
         }
-
+    },
+    computed: {
+        requirement() {
+            return this.$store.getters['requirement/currentRequirement']
+        }
     }
+
+}
 
 </script>
 

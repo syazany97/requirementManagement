@@ -25,9 +25,11 @@ class CreateTestCasesTable extends Migration
             $table->mediumText('description');
             $table->mediumText('preconditions')
                 ->nullable();
-            $table->foreignId('priority_id')
-                ->constrained('requirement_priorities')
+            $table->unsignedBigInteger('priority_id')
                 ->nullable();
+            $table->foreign('priority_id')
+                ->references('id')
+                ->on('requirement_priorities');
             $table->dateTime('execution_date')
                 ->nullable();
             $table->timestamps();

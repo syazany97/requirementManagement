@@ -52,6 +52,7 @@ const mutations = {
 const actions = {
     async setRequirementList(state, payload) {
         const response = await moduleRepository.all(payload.project_id);
+        console.log('data', response.data.data);
         state.commit('setRequirementList', response.data.data);
     },
     async setRequirementStatuses(state, payload) {

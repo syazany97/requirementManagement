@@ -27,11 +27,14 @@ class Module extends Model
             ->orderBy('numbering', 'asc');
     }
 
-    public function scopeCompleteInformation($query, $projectId )
+    public function scopeCompleteInformation($query, $projectId)
     {
         return $query->where('parent_id', null)
             ->where('project_id', $projectId)
-            ->with(['children.requirements.assignees',
-                'children.requirements.priority']);
+            ->with([
+                'children.requirements.assignees',
+                'children.requirements.priority',
+                'requirements.assignees',
+                'requirements.priority']);
     }
 }

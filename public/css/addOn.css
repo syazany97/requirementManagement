@@ -51,6 +51,36 @@
     display:inline-block;
 }
 
+.primary-tabs {
+    font-size: 0.9rem;
+    border-radius: 0;
+    padding: 0.75rem 1.25rem;
+    color: #e2edf4;
+}
+
+.nav-pills .nav-link.active {
+    background: none;
+    color: #4040c8;
+    border-bottom: solid 2px #4040c8;
+}
+
+.nav-pills .nav-link {
+    font-size: 0.9rem;
+    border-radius: 0;
+    padding: 0.5rem 1.25rem;
+    color: #120f12;
+}
+
+.nav {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
 /*.primary-btn:focus {*/
 /*    @apply bg-white, outline*/
 /*}*/

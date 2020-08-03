@@ -24,13 +24,17 @@ class UsersTableSeeder extends Seeder
 
         $users = [];
 
+        $password = Hash::make('popo97');
+
         for ($i = 0; $i < 40; $i++) {
             $name = $faker->name;
 
             $user = [
                 'name' => $name,
                 'email' => sprintf('%s@%s', $name, $faker->safeEmailDomain),
-                'password' => Hash::make('popo97')
+                'password' => $password,
+                'created_at' => now(),
+                'updated_at' => now()
             ];
 
             array_push($users, $user);

@@ -18,6 +18,6 @@ export const routes = [
     {
         path: '/requirements/:requirement/test-cases/create',
         name: 'test-case.create',
-        component: require('./views/requirements/Create.vue').default
+        component: require('./views/testCase/Create.vue').default
     }
 ];

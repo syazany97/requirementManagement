@@ -23,7 +23,8 @@ class RequirementTestCaseController extends Controller
 
     public function store(TestCaseCreateRequest $request, Requirement $requirement)
     {
-        $testCase = $requirement->testCases()->create($request->validated());
+        $testCase = $requirement->testCases()
+            ->create(array_merge($request->validated()['test_case'], ['user_id' => auth()->user()->id]));
 
         $testSteps = collect($request->validated()['steps'])->map(function ($item) use ($testCase) {
             return [

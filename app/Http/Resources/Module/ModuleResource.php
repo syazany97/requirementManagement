@@ -22,7 +22,7 @@ class ModuleResource extends JsonResource
             'parent_id' => $this->parent_id,
             'name' => $this->name,
             'numbering' => $this->numbering,
-            'children' => self::collection($this->whenLoaded('children')),
+            'modules' => self::collection($this->whenLoaded('children')),
             'requirements' => RequirementResource::collection($this->whenLoaded('requirements')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
