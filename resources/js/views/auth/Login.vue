@@ -58,13 +58,6 @@
                     .catch(err => {
                         console.log(err);
                     })
-
-                // Login...
-                // axios.get('/sanctum/csrf-cookie').then(response => {
-                //
-                // });
-
-
             }
         },
     }

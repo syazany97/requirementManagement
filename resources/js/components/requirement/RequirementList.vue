@@ -1,6 +1,15 @@
 <template>
     <div>
         <!--        <button @click="addNode">Add New Module</button>-->
+
+        <label class="primary-label" for="search-requirement">
+            Search requirement and module
+        </label>
+
+        <input class="primary-input"
+               v-model="searchRequirement"
+               id="search-requirement" type="text" placeholder="Name">
+
         <vue-tree-list
             @click="onClick"
             @change-name="onChangeName"
@@ -39,6 +48,7 @@
 import {VueTreeList, Tree, TreeNode} from 'vue-tree-list';
 import CreateNewModule from "../modules/dialog/CreateNewModule";
 import moduleRepository from "../../repositories/moduleRepository";
+import requirementRepository from "../../repositories/requirementRepository";
 
 export default {
     name: "RequirementList",
@@ -51,7 +61,8 @@ export default {
             data: [],
             newTree: {},
             loaded: false,
-            projectId: this.$route.params.project
+            projectId: this.$route.params.project,
+            searchRequirement: ""
         }
     },
     computed: {
@@ -65,22 +76,37 @@ export default {
     watch: {
         requirementList() {
             this.setModules();
+        },
+        searchRequirement() {
+            if (this.searchRequirement === "") this.setModules();
+            else {
+
+                let data = _.filter(JSON.parse(JSON.stringify(this.$store.getters['requirement/requirementList'])),
+                    {'name': this.searchRequirement});
+
+                console.log('data', data);
+                console.log('search requirement', this.searchRequirement);
+
+                // this.data = new Tree(_.filter(this.$store.getters['requirement/currentRequirement'],
+                //     {'name': this.searchRequirement}));
+            }
         }
     },
     methods: {
         setModules() {
-            let requirementList = JSON.parse(JSON.stringify(this.$store.getters['requirement/requirementList'])).map(element => {
-                return {
-                    id: element.id,
-                    name: element.name,
-                    children: element.modules.concat(element.requirements),
-                    type : element.type,
-                    parent_id: element.parent_id,
-                    numbering : element.numbering,
-                    created_at: element.created_at,
-                    updated_at: element.created_at
-                }
-            });
+            let requirementList = JSON.parse(JSON.stringify(this.$store.getters['requirement/requirementList']))
+                .map(element => {
+                    return {
+                        id: element.id,
+                        name: element.name,
+                        children: element.modules.concat(element.requirements),
+                        type: element.type,
+                        parent_id: element.parent_id,
+                        numbering: element.numbering,
+                        created_at: element.created_at,
+                        updated_at: element.created_at
+                    }
+                });
 
             // requirement under parent module doesnt work when we change the key
             // for requirements/modules to children since both of them will replace each other
@@ -168,15 +194,19 @@ export default {
         onDrop(params) {
             // if the target and source node are the same, dont update the data
             // since the node doesnt change its position
-            if (params.node.id !== params.target.id) {
-                console.log('VALID ON DROP');
-                let payload = {
+            if (params.node.uuid !== params.target.uuid) {
+
+                const payload = {
                     id: params.node.id,
                     name: params.node.name,
                     parent_id: params.target.id
                 }
-                this.updateModuleAfterDrop(payload);
+
+                params.node.type === 'requirement' ?
+                    this.updateRequirementAfterDrop(payload) :
+                    this.updateModuleAfterDrop(payload);
             }
+
             console.log('ON DROP', params);
         },
 
@@ -188,7 +218,7 @@ export default {
         onDropBefore(params) {
             // if node is placed as top level node then set parent id to null
             // otherwise, use the parent id node
-            let parent_id = params.target.parent_id !== null ? params.target.parent_id : null;
+            const parent_id = params.target.parent_id !== null ? params.target.parent_id : null;
 
             this.updateModuleAfterDrop({
                 id: params.node.id,
@@ -198,20 +228,36 @@ export default {
             console.log('ON DROP BEFORE', params);
         },
 
-
         async updateModuleAfterDrop(payload) {
 
             try {
-                await moduleRepository.update(payload.id, payload)
+                await moduleRepository.update(payload.id, payload);
 
-                this.$store.dispatch('requirement/setRequirementList', {project_id: this.projectId});
+                await this.$store.dispatch('requirement/setRequirementList',
+                    {project_id: this.projectId});
 
             } catch (e) {
                 console.log(e);
             }
+        },
+
+        async updateRequirementAfterDrop(payload) {
+
+            payload.module_id = payload.parent_id;
+            delete payload.parent_id;
+
+            try {
+                await requirementRepository.updateParentId(payload.id, payload);
+
+                await this.$store.dispatch('requirement/setRequirementList',
+                    {project_id: this.projectId});
+
+            } catch (e) {
+                console.log(e);
+            }
+        },
 
 
-        }
     }
 }
 </script>

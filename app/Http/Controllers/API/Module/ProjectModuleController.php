@@ -9,6 +9,7 @@ use App\Http\Resources\Module\ModuleResource;
 use App\Models\Module;
 use App\Models\Project\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProjectModuleController extends Controller
 {

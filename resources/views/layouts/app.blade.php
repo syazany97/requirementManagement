@@ -24,7 +24,9 @@
 </head>
 <body>
     <div id="app">
+{{--            @guest--}}
 {{--            @yield('content')--}}
+{{--            @endguest--}}
         <app>
         </app>
     </div>

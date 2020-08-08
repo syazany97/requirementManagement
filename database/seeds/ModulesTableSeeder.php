@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class ModulesTableSeeder extends Seeder
 {
@@ -38,13 +39,12 @@ class ModulesTableSeeder extends Seeder
             foreach ($parentModulesName as $moduleName) {
                 Module::create([
                     'project_id' => $id,
+                    'uuid' => Str::uuid()->toString(),
                     'name' => $moduleName,
                     'numbering' => 1 . $i
                 ]);
                 $i++;
             }
-
-
         }
 
         //create module
@@ -54,6 +54,7 @@ class ModulesTableSeeder extends Seeder
             for ($j = 1; $j < 7; $j++) {
                 Module::create([
                     'project_id' => $parentId->project_id,
+                    'uuid' => Str::uuid()->toString(),
                     'parent_id' => $parentId->id,
                     'name' => $faker->sentence($nbWords = 6, $variableNbWords = true),
                     'numbering' => $parentId->numbering . '.' . $j
@@ -74,6 +75,7 @@ class ModulesTableSeeder extends Seeder
             for ($i = 1; $i < 5; $i++) {
                 Requirement::create([
                     'module_id' => $module['id'],
+                    'uuid' => Str::uuid()->toString(),
                     'description' => $faker->realText(),
                     'name' => 'Requirement ' . $i,
                     'requirement_priority_id' => $priorities[rand(0, count($priorities) - 1)],

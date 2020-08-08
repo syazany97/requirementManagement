@@ -2504,6 +2504,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_tree_list__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_tree_list__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _modules_dialog_CreateNewModule__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/dialog/CreateNewModule */ "./resources/js/components/modules/dialog/CreateNewModule.vue");
 /* harmony import */ var _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../repositories/moduleRepository */ "./resources/js/repositories/moduleRepository.js");
+/* harmony import */ var _repositories_requirementRepository__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../repositories/requirementRepository */ "./resources/js/repositories/requirementRepository.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2547,6 +2548,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -2563,7 +2574,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       data: [],
       newTree: {},
       loaded: false,
-      projectId: this.$route.params.project
+      projectId: this.$route.params.project,
+      searchRequirement: ""
     };
   },
   computed: {
@@ -2577,6 +2589,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   watch: {
     requirementList: function requirementList() {
       this.setModules();
+    },
+    searchRequirement: function searchRequirement() {
+      if (this.searchRequirement === "") this.setModules();else {
+        var data = _.filter(JSON.parse(JSON.stringify(this.$store.getters['requirement/requirementList'])), {
+          'name': this.searchRequirement
+        });
+
+        console.log('data', data);
+        console.log('search requirement', this.searchRequirement); // this.data = new Tree(_.filter(this.$store.getters['requirement/currentRequirement'],
+        //     {'name': this.searchRequirement}));
+      }
     }
   },
   methods: {
@@ -2671,14 +2694,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     onDrop: function onDrop(params) {
       // if the target and source node are the same, dont update the data
       // since the node doesnt change its position
-      if (params.node.id !== params.target.id) {
-        console.log('VALID ON DROP');
+      if (params.node.uuid !== params.target.uuid) {
         var payload = {
           id: params.node.id,
           name: params.node.name,
           parent_id: params.target.id
         };
-        this.updateModuleAfterDrop(payload);
+        params.node.type === 'requirement' ? this.updateRequirementAfterDrop(payload) : this.updateModuleAfterDrop(payload);
       }
 
       console.log('ON DROP', params);
@@ -2711,24 +2733,63 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_3__["default"].update(payload.id, payload);
 
               case 3:
-                _this.$store.dispatch('requirement/setRequirementList', {
+                _context.next = 5;
+                return _this.$store.dispatch('requirement/setRequirementList', {
                   project_id: _this.projectId
                 });
 
-                _context.next = 9;
+              case 5:
+                _context.next = 10;
                 break;
 
-              case 6:
-                _context.prev = 6;
+              case 7:
+                _context.prev = 7;
                 _context.t0 = _context["catch"](0);
                 console.log(_context.t0);
 
-              case 9:
+              case 10:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 6]]);
+        }, _callee, null, [[0, 7]]);
+      }))();
+    },
+    updateRequirementAfterDrop: function updateRequirementAfterDrop(payload) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                payload.module_id = payload.parent_id;
+                delete payload.parent_id;
+                _context2.prev = 2;
+                _context2.next = 5;
+                return _repositories_requirementRepository__WEBPACK_IMPORTED_MODULE_4__["default"].updateParentId(payload.id, payload);
+
+              case 5:
+                _context2.next = 7;
+                return _this2.$store.dispatch('requirement/setRequirementList', {
+                  project_id: _this2.projectId
+                });
+
+              case 7:
+                _context2.next = 12;
+                break;
+
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](2);
+                console.log(_context2.t0);
+
+              case 12:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[2, 9]]);
       }))();
     }
   }
@@ -3664,10 +3725,7 @@ __webpack_require__.r(__webpack_exports__);
         });
       })["catch"](function (err) {
         console.log(err);
-      }); // Login...
-      // axios.get('/sanctum/csrf-cookie').then(response => {
-      //
-      // });
+      });
     }
   }
 });
@@ -41954,6 +42012,34 @@ var render = function() {
   return _c(
     "div",
     [
+      _c(
+        "label",
+        { staticClass: "primary-label", attrs: { for: "search-requirement" } },
+        [_vm._v("\n        Search requirement and module\n    ")]
+      ),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.searchRequirement,
+            expression: "searchRequirement"
+          }
+        ],
+        staticClass: "primary-input",
+        attrs: { id: "search-requirement", type: "text", placeholder: "Name" },
+        domProps: { value: _vm.searchRequirement },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.searchRequirement = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
       _c(
         "vue-tree-list",
         {
@@ -105180,8 +105266,14 @@ var resource = 'requirements';
   store: function store(moduleId, payload) {
     return axios.post("/api/modules/".concat(moduleId, "/").concat(resource), payload);
   },
+  update: function update(id, payload) {
+    return axios.patch("/api/requirements/".concat(id), payload);
+  },
   find: function find(requirementId) {
     return axios.get("/api/".concat(resource, "/").concat(requirementId));
+  },
+  updateParentId: function updateParentId(id, payload) {
+    return axios.patch("/api/".concat(resource, "/").concat(id, "/update-parent-id"), payload);
   }
 });
 
@@ -105624,7 +105716,8 @@ var state = function state() {
     },
     requirementList: [],
     statuses: [],
-    priorities: []
+    priorities: [],
+    filteredRequirementList: []
   };
 }; // getters
 
@@ -105635,6 +105728,9 @@ var getters = {
   },
   requirementList: function requirementList(state) {
     return state.requirementList;
+  },
+  filteredRequirementList: function filteredRequirementList(state) {
+    return state.filteredRequirementList;
   },
   statuses: function statuses(state) {
     return state.statuses;
@@ -105656,6 +105752,11 @@ var mutations = {
   },
   setPriorities: function setPriorities(state, payload) {
     Vue.set(state, 'priorities', payload);
+  },
+  setFilteredRequirementList: function setFilteredRequirementList(state, payload) {
+    state.filteredRequirementList = _.filter(state.filteredRequirementList, {
+      'name': payload
+    });
   }
 };
 var actions = {

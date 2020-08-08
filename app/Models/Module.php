@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Module extends Model
 {
-    protected $fillable = ['name', 'numbering', 'parent_id'];
+    protected $fillable = ['name', 'numbering', 'parent_id', 'uuid'];
 
     public function project()
     {

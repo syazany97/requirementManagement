@@ -10,7 +10,13 @@ export default {
     store(moduleId, payload) {
         return axios.post(`/api/modules/${moduleId}/${resource}`, payload);
     },
+    update(id, payload) {
+        return axios.patch(`/api/requirements/${id}`, payload);
+    },
     find(requirementId) {
         return axios.get(`/api/${resource}/${requirementId}`);
+    },
+    updateParentId(id, payload) {
+        return axios.patch(`/api/${resource}/${id}/update-parent-id`, payload);
     }
 }

@@ -18,6 +18,7 @@ class ModuleResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'uuid' => $this->uuid,
             'type' => Str::singular($this->getTable()),
             'parent_id' => $this->parent_id,
             'name' => $this->name,

@@ -13,7 +13,8 @@ const state = () => ({
     },
     requirementList: [],
     statuses: [],
-    priorities: []
+    priorities: [],
+    filteredRequirementList: []
 });
 
 // getters
@@ -23,6 +24,9 @@ const getters = {
     },
     requirementList: (state) => {
         return state.requirementList;
+    },
+    filteredRequirementList: (state) => {
+        return state.filteredRequirementList;
     },
     statuses: (state) => {
         return state.statuses
@@ -46,6 +50,9 @@ const mutations = {
     },
     setPriorities: (state, payload) => {
         Vue.set(state, 'priorities', payload);
+    },
+    setFilteredRequirementList: (state, payload) => {
+        state.filteredRequirementList = _.filter(state.filteredRequirementList, {'name': payload});
     }
 };
 

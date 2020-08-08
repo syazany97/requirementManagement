@@ -10,6 +10,7 @@ use App\Http\Controllers\API\Requirement\RequirementPriorityController;
 use App\Http\Controllers\API\Requirement\RequirementStatusController;
 use App\Http\Controllers\API\Requirement\RequirementTestCaseController;
 use App\Http\Controllers\API\User\UserController;
+use App\Http\Controllers\Requirment\UpdateRequiremenParentIdController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -64,5 +65,7 @@ Route::middleware(['auth:sanctum'])->group(function() {
     Route::any('requirement-statuses', RequirementStatusController::class);
 
     Route::any('requirement-priorities', RequirementPriorityController::class);
+
+    Route::patch('requirements/{requirement}/update-parent-id', UpdateRequiremenParentIdController::class);
 });
 

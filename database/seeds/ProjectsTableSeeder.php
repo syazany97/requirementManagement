@@ -9,6 +9,7 @@ use App\Models\Requirement\RequirementStatus;
 use App\User;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 class ProjectsTableSeeder extends Seeder
 {
@@ -25,6 +26,7 @@ class ProjectsTableSeeder extends Seeder
         for ($i = 0; $i < 3; $i++) {
             Project::create([
                 'name' => $faker->catchPhrase,
+                'uuid' => Str::uuid()->toString(),
                 'description' => $faker->realText,
                 'user_id' => $usersId[rand(0, count($usersId) - 1)],
                 'project_status_id' => ProjectStatus::first()->id]);

@@ -19,6 +19,7 @@ class RequirementResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'uuid' => $this->uuid,
             'type' => Str::singular($this->getTable()),
             'description' => $this->description,
             'priority_id' => $this->requirement_priority_id,

@@ -15,7 +15,7 @@ class Requirement extends Model implements HasMedia
     use InteractsWithMedia;
 
     protected $fillable = ['name', 'module_id', 'description', 'description',
-        'requirement_priority_id', 'requirement_status_id', 'numbering'];
+        'requirement_priority_id', 'requirement_status_id', 'numbering', 'module_id'];
 
     public function module()
     {
