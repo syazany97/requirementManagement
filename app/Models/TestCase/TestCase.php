@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class TestCase extends Model
 {
-    protected $guarded = [];
+    protected $fillable = ['user_id', 'title', 'title', 'description',
+        'preconditions', 'priority_id'];
 
     public const relationships = ['requirement', 'steps', 'user'];
 

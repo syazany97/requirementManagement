@@ -12,6 +12,9 @@ export default {
     find(id, withRelationship = "") {
         return axios.get(`/api/test-cases/${id}?with=${withRelationship}`)
     },
+    update(id, payload) {
+        return axios.patch(`/api/test-cases/${id}`, payload)
+    },
     delete(id) {
         return axios.delete(`/api/test-cases/${id}`);
     }

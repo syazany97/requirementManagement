@@ -3969,6 +3969,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _repositories_requirement_requirementTestCaseRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../repositories/requirement/requirementTestCaseRepository */ "./resources/js/repositories/requirement/requirementTestCaseRepository.js");
+/* harmony import */ var quill_dist_quill_core_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! quill/dist/quill.core.css */ "./node_modules/quill/dist/quill.core.css");
+/* harmony import */ var quill_dist_quill_core_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(quill_dist_quill_core_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var quill_dist_quill_snow_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! quill/dist/quill.snow.css */ "./node_modules/quill/dist/quill.snow.css");
+/* harmony import */ var quill_dist_quill_snow_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(quill_dist_quill_snow_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var quill_dist_quill_bubble_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! quill/dist/quill.bubble.css */ "./node_modules/quill/dist/quill.bubble.css");
+/* harmony import */ var quill_dist_quill_bubble_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(quill_dist_quill_bubble_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var vue_quill_editor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-quill-editor */ "./node_modules/vue-quill-editor/dist/vue-quill-editor.js");
+/* harmony import */ var vue_quill_editor__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_quill_editor__WEBPACK_IMPORTED_MODULE_5__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -4062,21 +4070,38 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Create.vue",
   created: function created() {
     if (this.$route.name !== 'test-cases.create') {
       this.isEditMode = true;
+      this.testCaseId = this.$route.params.testCase;
       this.fetchTestCase();
     } else {
       this.$store.dispatch('requirement/setRequirement', this.$route.params.requirement);
     }
   },
+  components: {
+    quillEditor: vue_quill_editor__WEBPACK_IMPORTED_MODULE_5__["quillEditor"]
+  },
   data: function data() {
     return {
       steps: [],
       isEditMode: false,
+      testCaseId: null,
       testPassedOptions: [{
         'label': 'Yes',
         'value': true
@@ -4092,9 +4117,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       items: [{
         tab: 'Comments',
         component: 'requirement-details'
-      }, {
-        tab: 'Test Case',
-        component: 'test-case-details'
       }, {
         tab: 'History',
         component: 'requirement-history'
@@ -4122,36 +4144,53 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var payload, params;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
-                _context.next = 3;
-                return _repositories_requirement_requirementTestCaseRepository__WEBPACK_IMPORTED_MODULE_1__["default"].store(_this.requirement.id, {
+                payload = {
                   test_case: _this.testCase,
                   steps: _this.steps
-                });
+                };
+                params = _this.isEditMode ? _this.testCaseId : _this.requirement.id;
 
-              case 3:
-                _context.next = 8;
+                if (!_this.isEditMode) {
+                  _context.next = 8;
+                  break;
+                }
+
+                _context.next = 6;
+                return _repositories_requirement_requirementTestCaseRepository__WEBPACK_IMPORTED_MODULE_1__["default"].update(params, payload);
+
+              case 6:
+                _context.next = 10;
                 break;
 
-              case 5:
-                _context.prev = 5;
+              case 8:
+                _context.next = 10;
+                return _repositories_requirement_requirementTestCaseRepository__WEBPACK_IMPORTED_MODULE_1__["default"].store(params, payload);
+
+              case 10:
+                _context.next = 15;
+                break;
+
+              case 12:
+                _context.prev = 12;
                 _context.t0 = _context["catch"](0);
                 console.log(_context.t0);
 
-              case 8:
-                _context.prev = 8;
-                return _context.finish(8);
+              case 15:
+                _context.prev = 15;
+                return _context.finish(15);
 
-              case 10:
+              case 17:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 5, 8, 10]]);
+        }, _callee, null, [[0, 12, 15, 17]]);
       }))();
     },
     fetchTestCase: function fetchTestCase() {
@@ -57248,7 +57287,7 @@ var render = function() {
           _c(
             "label",
             { staticClass: "primary-label", attrs: { for: "test-case-title" } },
-            [_vm._v("\n            Title\n        ")]
+            [_vm._v("\n        Title\n    ")]
           ),
           _vm._v(" "),
           _c("input", {
@@ -57283,28 +57322,18 @@ var render = function() {
               staticClass: "primary-label",
               attrs: { for: "test-case-description" }
             },
-            [_vm._v("\n            Description\n        ")]
+            [_vm._v("\n        Description\n    ")]
           ),
           _vm._v(" "),
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.testCase.description,
-                expression: "testCase.description"
-              }
-            ],
-            staticClass: "primary-input",
-            attrs: { id: "test-case-description", type: "text" },
-            domProps: { value: _vm.testCase.description },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.testCase, "description", $event.target.value)
-              }
+          _c("quill-editor", {
+            staticClass: "primary-text-area text-input",
+            attrs: { id: "test-case-description" },
+            model: {
+              value: _vm.testCase.description,
+              callback: function($$v) {
+                _vm.$set(_vm.testCase, "description", $$v)
+              },
+              expression: "testCase.description"
             }
           }),
           _vm._v(" "),
@@ -57314,7 +57343,7 @@ var render = function() {
               staticClass: "primary-label",
               attrs: { for: "test-case-preconditions" }
             },
-            [_vm._v("\n            Preconditions\n        ")]
+            [_vm._v("\n        Preconditions\n    ")]
           ),
           _vm._v(" "),
           _c("textarea", {
@@ -57350,6 +57379,8 @@ var render = function() {
               _c("tr", [
                 _c("th", { staticClass: "px-4 py-2" }, [_vm._v("No")]),
                 _vm._v(" "),
+                _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Id")]),
+                _vm._v(" "),
                 _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Step")]),
                 _vm._v(" "),
                 _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Input")]),
@@ -57377,6 +57408,10 @@ var render = function() {
                   [
                     _c("td", { staticClass: "border px-4 py-2" }, [
                       _vm._v(_vm._s(index + 1))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "border px-4 py-2" }, [
+                      _vm._v(_vm._s(step.id))
                     ]),
                     _vm._v(" "),
                     _c("td", { staticClass: "border px-4 py-2" }, [
@@ -119109,6 +119144,9 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
   find: function find(id) {
     var withRelationship = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
     return axios.get("/api/test-cases/".concat(id, "?with=").concat(withRelationship));
+  },
+  update: function update(id, payload) {
+    return axios.patch("/api/test-cases/".concat(id), payload);
   },
   "delete": function _delete(id) {
     return axios["delete"]("/api/test-cases/".concat(id));

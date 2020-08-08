@@ -13,8 +13,14 @@
             Description
         </label>
 
-        <textarea class="primary-input" v-model="testCase.description"
-                  id="test-case-description" type="text"></textarea>
+
+        <quill-editor v-model="testCase.description"
+                      id="test-case-description" class="primary-text-area text-input">
+
+        </quill-editor>
+
+        <!--        <textarea class="primary-input" v-model="testCase.description"-->
+        <!--                  id="test-case-description" type="text"></textarea>-->
 
         <label class="primary-label" for="test-case-preconditions">
             Preconditions
@@ -29,6 +35,7 @@
             <thead>
             <tr>
                 <th class="px-4 py-2">No</th>
+                <th class="px-4 py-2">Id</th>
                 <th class="px-4 py-2">Step</th>
                 <th class="px-4 py-2">Input</th>
                 <th class="px-4 py-2">Expected results</th>
@@ -41,6 +48,7 @@
             <tbody>
             <tr v-for="(step, index) in steps" v-bind:key="index" :class="index % 2 !== 0 ? '' : 'bg-gray-100' ">
                 <td class="border px-4 py-2">{{ index + 1 }}</td>
+                <td class="border px-4 py-2">{{ step.id }}</td>
                 <td class="border px-4 py-2">
                     <textarea class="primary-input" v-model="step.description" type="text"></textarea>
                 </td>
@@ -71,12 +79,12 @@
         <ul class="nav nav-pills">
             <li v-for="tab in items" class="nav-item">
                 <a :class="'nav-link ' +  (currentTab === tab.component ? 'active' : '')"
-                   href="#" @click.prevent="currentTab= tab.component">{{tab.tab}}</a>
+                   href="#" @click.prevent="currentTab = tab.component">{{ tab.tab }}</a>
             </li>
         </ul>
 
         <div v-for="tab in items" v-bind:key="tab.component">
-<!--            <component v-show="currentTab === tab.component"  v-bind:is="tab.component"></component>-->
+            <!--            <component v-show="currentTab === tab.component"  v-bind:is="tab.component"></component>-->
         </div>
 
         <button v-if="steps.length" class="primary-btn" @click="submitTestCase()">Submit</button>
@@ -87,21 +95,30 @@
 
 <script>
 import requirementTestCaseRepository from "../../repositories/requirement/requirementTestCaseRepository";
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+import {quillEditor} from 'vue-quill-editor'
 
 export default {
     name: "Create.vue",
     created() {
         if (this.$route.name !== 'test-cases.create') {
             this.isEditMode = true;
+            this.testCaseId = this.$route.params.testCase;
             this.fetchTestCase();
         } else {
             this.$store.dispatch('requirement/setRequirement', this.$route.params.requirement);
         }
     },
+    components: {
+        quillEditor
+    },
     data() {
         return {
             steps: [],
             isEditMode: false,
+            testCaseId : null,
             testPassedOptions: [{
                 'label': 'Yes',
                 'value': true
@@ -117,9 +134,6 @@ export default {
             items: [
                 {
                     tab: 'Comments', component: 'requirement-details'
-                },
-                {
-                    tab: 'Test Case', component: 'test-case-details'
                 },
                 {
                     tab: 'History', component: 'requirement-history'
@@ -146,10 +160,20 @@ export default {
         },
         async submitTestCase() {
             try {
-                await requirementTestCaseRepository.store(this.requirement.id, {
+
+                const payload = {
                     test_case: this.testCase,
                     steps: this.steps
-                });
+                }
+
+                const params = this.isEditMode ? this.testCaseId : this.requirement.id;
+
+                if (this.isEditMode) {
+                    await requirementTestCaseRepository.update(params, payload)
+                } else {
+                    await requirementTestCaseRepository.store(params, payload);
+                }
+
             } catch (e) {
                 console.log(e);
             } finally {
