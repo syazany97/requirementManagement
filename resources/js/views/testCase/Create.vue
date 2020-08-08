@@ -23,7 +23,7 @@
         <textarea class="primary-input" v-model="testCase.preconditions"
                   id="test-case-preconditions" type="text"></textarea>
 
-                <button class="primary-btn" @click="addStep">Add step</button>
+        <button class="primary-btn" @click="addStep">Add step</button>
 
         <table class="table-auto">
             <thead>
@@ -68,6 +68,17 @@
             </tbody>
         </table>
 
+        <ul class="nav nav-pills">
+            <li v-for="tab in items" class="nav-item">
+                <a :class="'nav-link ' +  (currentTab === tab.component ? 'active' : '')"
+                   href="#" @click.prevent="currentTab= tab.component">{{tab.tab}}</a>
+            </li>
+        </ul>
+
+        <div v-for="tab in items" v-bind:key="tab.component">
+<!--            <component v-show="currentTab === tab.component"  v-bind:is="tab.component"></component>-->
+        </div>
+
         <button v-if="steps.length" class="primary-btn" @click="submitTestCase()">Submit</button>
 
     </v-container>
@@ -80,11 +91,17 @@ import requirementTestCaseRepository from "../../repositories/requirement/requir
 export default {
     name: "Create.vue",
     created() {
-        this.$store.dispatch('requirement/setRequirement', this.$route.params.requirement);
+        if (this.$route.name !== 'test-cases.create') {
+            this.isEditMode = true;
+            this.fetchTestCase();
+        } else {
+            this.$store.dispatch('requirement/setRequirement', this.$route.params.requirement);
+        }
     },
     data() {
         return {
             steps: [],
+            isEditMode: false,
             testPassedOptions: [{
                 'label': 'Yes',
                 'value': true
@@ -96,7 +113,19 @@ export default {
                 title: "",
                 description: "",
                 preconditions: ""
-            }
+            },
+            items: [
+                {
+                    tab: 'Comments', component: 'requirement-details'
+                },
+                {
+                    tab: 'Test Case', component: 'test-case-details'
+                },
+                {
+                    tab: 'History', component: 'requirement-history'
+                }
+            ],
+            currentTab: 'requirement-details'
         }
     },
     computed: {
@@ -126,9 +155,18 @@ export default {
             } finally {
 
             }
+        },
+        async fetchTestCase() {
+            // get test case with the requirement
+            const response = await requirementTestCaseRepository.find(this.$route.params.testCase, 'requirement,steps');
+            await this.$store.dispatch('requirement/setRequirement', response.data.data.requirement_id);
+            this.steps = _.get(response, 'data.data.relationships.steps', []);
+            this.testCase = response.data.data;
+            console.log(response.data);
         }
 
     }
+
 }
 </script>
 

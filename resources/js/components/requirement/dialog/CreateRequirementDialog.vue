@@ -55,11 +55,11 @@
             </label>
 
             <div class="description">
-                <textarea id="grid-description"
-                          v-model="requirement.description"
-                          class="primary-text-area text-input">
+                <quill-editor id="grid-description"
+                              v-model="requirement.description"
+                              class="primary-text-area text-input" >
 
-                </textarea>
+                </quill-editor>
             </div>
 
             <label class="primary-label" for="grid-assignees">
@@ -96,11 +96,18 @@
 
     import requirementRepository from "../../../repositories/requirementRepository";
     import vSelect from 'vue-select';
+    import 'quill/dist/quill.core.css'
+    import 'quill/dist/quill.snow.css'
+    import 'quill/dist/quill.bubble.css'
+    import { quillEditor } from 'vue-quill-editor'
 
     export default {
         name: "CreateRequirementDialog",
         props: {
             requirementDialog: Boolean
+        },
+        components : {
+            quillEditor
         },
         data() {
             return {

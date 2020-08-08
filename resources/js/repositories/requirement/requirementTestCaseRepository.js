@@ -9,8 +9,8 @@ export default {
     store(requirementId, payload) {
         return axios.post(`/api/${resource}/${requirementId}/test-cases`, payload)
     },
-    find(id) {
-        return axios.get(`/api/test-cases/${id}`)
+    find(id, withRelationship = "") {
+        return axios.get(`/api/test-cases/${id}?with=${withRelationship}`)
     },
     delete(id) {
         return axios.delete(`/api/test-cases/${id}`);

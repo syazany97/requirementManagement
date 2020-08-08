@@ -31,7 +31,7 @@
         </v-row>
 
         <h6>Description</h6>
-        <span>{{ requirement.description }}</span>
+        <span v-html="requirement.description"></span>
 
         <!-- Attachments -->
         <h5>Attachments</h5>

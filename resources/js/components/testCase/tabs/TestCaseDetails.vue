@@ -27,6 +27,8 @@
                 <td class="border px-4 py-2">{{ test.description }}</td>
                 <td class="border px-4 py-2">{{ test.user.name }}</td>
                 <td class="border px-4 py-2">{{ test.created_at | formatDateTime }}</td>
+                <td class="border px-4 py-2"><router-link :to="{name : 'test-case.edit' ,params : {testCase : test.id}}"
+                                                          tag="button" class="primary-btn">View</router-link></td>
             </tr>
             </tbody>
         </table>

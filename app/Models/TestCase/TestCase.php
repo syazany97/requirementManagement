@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class TestCase extends Model
 {
     protected $guarded = [];
+
+    public const relationships = ['requirement', 'steps', 'user'];
+
     public function requirement()
     {
         return $this->belongsTo(Requirement::class);

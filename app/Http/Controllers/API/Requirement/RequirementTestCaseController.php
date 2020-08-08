@@ -42,9 +42,11 @@ class RequirementTestCaseController extends Controller
         return new TestCaseResource($testCase);
     }
 
-    public function show($testCase)
+    public function show(Request $request, $testCase)
     {
-        return new TestCaseResource(TestCase::with(['steps'])->findOrFail($testCase));
+        $with = $request->has('with') ? explode(',', $request->with) : [];
+
+        return new TestCaseResource(TestCase::with($with)->findOrFail($testCase));
     }
 
     public function update(Request $request, TestCase $testCase)
