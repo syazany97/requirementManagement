@@ -34,7 +34,9 @@ class RequirementTestCaseController extends Controller
                 'expected_result' => $item['expected_result'],
                 'is_passed' => $item['is_passed'],
                 'comment' => $item['comment'],
-                'test_case_id' => $testCase->id
+                'test_case_id' => $testCase->id,
+                'created_at' => now(),
+                'updated_at' => now()
             ];
         })->values()->all();
 

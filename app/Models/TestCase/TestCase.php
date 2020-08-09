@@ -6,11 +6,16 @@ use App\Models\Comment\Comment;
 use App\Models\Requirement\Requirement;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class TestCase extends Model
 {
+    use LogsActivity;
+
     protected $fillable = ['user_id', 'title', 'title', 'description',
         'preconditions', 'priority_id'];
+
+    protected static $logFillable = true;
 
     public const relationships = ['requirement', 'steps', 'user'];
 

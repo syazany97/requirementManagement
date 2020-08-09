@@ -7,15 +7,18 @@ use App\Models\Module;
 use App\Models\TestCase\TestCase;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Requirement extends Model implements HasMedia
 {
-    use InteractsWithMedia;
+    use InteractsWithMedia, LogsActivity;
 
     protected $fillable = ['name', 'module_id', 'description', 'description',
         'requirement_priority_id', 'requirement_status_id', 'numbering', 'module_id'];
+
+    protected static $logFillable = true;
 
     public function module()
     {
