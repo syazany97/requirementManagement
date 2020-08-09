@@ -12,7 +12,7 @@
             <div v-for="comment in comments" v-bind:key="comment.id">
                 <div class="flex justify-between mb-1">
                     <p class="text-grey-darkest leading-normal text-lg">{{comment.details}}</p>
-                    <button v-if="comment.meta.allowed_to_delete"
+                    <button v-if="comment.meta.permissions.delete"
                             class="text-red hover:bg-red hover:text-white
                             py-2 px-4 rounded tracking-wide mb-2 md:mb-0
                             md:ml-auto" @click="deleteComment(comment.id)">Delete
@@ -90,6 +90,8 @@
                 const response = await requirementCommentRepository.all(this.requirement.id);
                 this.comments = response.data.data;
                 this.commentsLoaded = true;
+
+                console.log(this.comments);
             },
         }
 

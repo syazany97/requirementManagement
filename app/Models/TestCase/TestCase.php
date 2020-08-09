@@ -2,6 +2,7 @@
 
 namespace App\Models\TestCase;
 
+use App\Models\Comment\Comment;
 use App\Models\Requirement\Requirement;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
@@ -26,5 +27,10 @@ class TestCase extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }

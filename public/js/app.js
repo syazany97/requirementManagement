@@ -3401,8 +3401,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 response = _context3.sent;
                 _this3.comments = response.data.data;
                 _this3.commentsLoaded = true;
+                console.log(_this3.comments);
 
-              case 5:
+              case 6:
               case "end":
                 return _context3.stop();
             }
@@ -56512,7 +56513,7 @@ var render = function() {
                     [_vm._v(_vm._s(comment.details))]
                   ),
                   _vm._v(" "),
-                  comment.meta.allowed_to_delete
+                  comment.meta.permissions.delete
                     ? _c(
                         "button",
                         {
@@ -56872,10 +56873,14 @@ var render = function() {
                     _vm._v(_vm._s(index + 1))
                   ]),
                   _vm._v(" "),
-                  _c("td", {
-                    staticClass: "border px-4 py-2",
-                    domProps: { innerHTML: _vm._s(test.description) }
-                  }),
+                  _c(
+                    "td",
+                    {
+                      staticClass: "border px-4 py-2",
+                      domProps: { innerHTML: _vm._s(test.description) }
+                    },
+                    [_vm._v("a")]
+                  ),
                   _vm._v(" "),
                   _c("td", { staticClass: "border px-4 py-2" }, [
                     _vm._v(_vm._s(test.user.name))
