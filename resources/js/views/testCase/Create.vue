@@ -1,5 +1,5 @@
 <template>
-    <v-container v-if="requirement.id !== null">
+    <v-container v-if="requirement.id !== null && dataLoaded">
         <h1>{{ requirement.name }}</h1>
 
         <label class="primary-label" for="test-case-title">
@@ -78,13 +78,13 @@
 
         <ul class="nav nav-pills">
             <li v-for="tab in items" class="nav-item">
-                <a :class="'nav-link ' +  (currentTab === tab.component ? 'active' : '')"
-                   href="#" @click.prevent="currentTab = tab.component">{{ tab.tab }}</a>
+                <a :class="'nav-link ' +  (currentTab === tab.props.is ? 'active' : '')"
+                   href="#" @click.prevent="currentTab = tab.props.is">{{ tab.tab }}</a>
             </li>
         </ul>
 
-        <div v-for="tab in items" v-bind:key="tab.component">
-            <!--            <component v-show="currentTab === tab.component"  v-bind:is="tab.component"></component>-->
+        <div v-for="tab in items" v-bind:key="tab.props.is">
+            <component v-show="currentTab === tab.props.is" v-bind="tab.props"></component>
         </div>
 
         <button v-if="steps.length" class="primary-btn" @click="submitTestCase()">Submit</button>
@@ -118,28 +118,22 @@ export default {
         return {
             steps: [],
             isEditMode: false,
-            testCaseId : null,
+            testCaseId: null,
             testPassedOptions: [{
-                'label': 'Yes',
-                'value': true
+                label: 'Yes',
+                value: true
             }, {
-                'label': 'No',
-                'value': false
+                label: 'No',
+                value: false
             }],
             testCase: {
                 title: "",
                 description: "",
                 preconditions: ""
             },
-            items: [
-                {
-                    tab: 'Comments', component: 'requirement-details'
-                },
-                {
-                    tab: 'History', component: 'requirement-history'
-                }
-            ],
-            currentTab: 'requirement-details'
+            items: [],
+            currentTab: 'comment-list',
+            dataLoaded: false
         }
     },
     computed: {
@@ -150,11 +144,11 @@ export default {
     methods: {
         addStep() {
             let step = {
-                'comment': "",
-                'description': "",
-                'input': "",
-                'expected_result': "",
-                'is_pass': false
+                comment: "",
+                description: "",
+                input: "",
+                expected_result: "",
+                is_passed: false
             }
             this.steps.push(step);
         },
@@ -182,11 +176,33 @@ export default {
         },
         async fetchTestCase() {
             // get test case with the requirement
-            const response = await requirementTestCaseRepository.find(this.$route.params.testCase, 'requirement,steps');
+            const response = await requirementTestCaseRepository.find(this.$route.params.testCase,
+                'requirement,steps');
             await this.$store.dispatch('requirement/setRequirement', response.data.data.requirement_id);
             this.steps = _.get(response, 'data.data.relationships.steps', []);
             this.testCase = response.data.data;
-            console.log(response.data);
+            this.setItems();
+            this.dataLoaded = true;
+            console.log(this.testCase);
+        },
+        setItems() {
+            this.items = [
+                {
+                    tab: 'Comments',
+                    props: {
+                        'test-case': this.testCase,
+                        'is': 'comment-list',
+                        'repository-type': 'test-case'
+                    }
+                },
+                {
+                    tab: 'History',
+                    props: {
+                        'is': 'histories-list',
+                    }
+                }
+            ]
+
         }
 
     }
