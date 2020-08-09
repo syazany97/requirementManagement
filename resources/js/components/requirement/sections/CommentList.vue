@@ -44,7 +44,12 @@
     export default {
         name: 'comment-list',
         props: {
-            requirement: Object
+            requirement: Object,
+            // determine which repository to retrieve the comments
+            repositoryType : {
+                type : String,
+                default : 'requirement'
+            }
         },
         data() {
             return {
@@ -62,7 +67,6 @@
                 if (this.requirement.id !== null) {
                     this.fetchComments();
                 }
-
             }
         },
         created() {
@@ -91,7 +95,6 @@
                 const response = await requirementCommentRepository.all(this.requirement.id);
                 this.comments = response.data.data;
                 this.commentsLoaded = true;
-
                 console.log(this.comments);
             },
         }

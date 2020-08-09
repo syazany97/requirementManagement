@@ -3291,7 +3291,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'comment-list',
   props: {
-    requirement: Object
+    requirement: Object,
+    // determine which repository to retrieve the comments
+    repositoryType: {
+      type: String,
+      "default": 'requirement'
+    }
   },
   data: function data() {
     return {
@@ -3529,7 +3534,7 @@ __webpack_require__.r(__webpack_exports__);
       };
     },
     capitalize: function capitalize(value) {
-      return '';
+      if (!value) return '';
       return _.capitalize(value);
     }
   },
@@ -56777,7 +56782,12 @@ var render = function() {
             _vm._v("Comments")
           ]),
           _vm._v(" "),
-          _c("comment-list", { attrs: { requirement: _vm.requirement } })
+          _c("comment-list", {
+            attrs: {
+              requirement: _vm.requirement,
+              "repository-type": "requirement"
+            }
+          })
         ],
         1
       )
@@ -119227,12 +119237,6 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
   },
   store: function store(requirementId, payload) {
     return axios.post("/api/".concat(resource, "/").concat(requirementId, "/comments"), payload);
-  },
-  find: function find(id) {
-    return axios.get("/api/comments/".concat(id));
-  },
-  "delete": function _delete(id) {
-    return axios["delete"]("/api/comments/".concat(id));
   }
 });
 
