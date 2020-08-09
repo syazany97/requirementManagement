@@ -24,7 +24,7 @@
             <tbody>
             <tr v-for="(test, index) in testCases" v-bind:key="test.id" :class="index % 0 === 0 ? 'bg-gray-100' : ''">
                 <td class="border px-4 py-2">{{ index + 1 }}</td>
-                <td class="border px-4 py-2">{{ test.description }}</td>
+                <td class="border px-4 py-2" v-html="test.description"></td>
                 <td class="border px-4 py-2">{{ test.user.name }}</td>
                 <td class="border px-4 py-2">{{ test.created_at | formatDateTime }}</td>
                 <td class="border px-4 py-2"><router-link :to="{name : 'test-case.edit' ,params : {testCase : test.id}}"

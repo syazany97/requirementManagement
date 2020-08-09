@@ -56872,9 +56872,10 @@ var render = function() {
                     _vm._v(_vm._s(index + 1))
                   ]),
                   _vm._v(" "),
-                  _c("td", { staticClass: "border px-4 py-2" }, [
-                    _vm._v(_vm._s(test.description))
-                  ]),
+                  _c("td", {
+                    staticClass: "border px-4 py-2",
+                    domProps: { innerHTML: _vm._s(test.description) }
+                  }),
                   _vm._v(" "),
                   _c("td", { staticClass: "border px-4 py-2" }, [
                     _vm._v(_vm._s(test.user.name))
