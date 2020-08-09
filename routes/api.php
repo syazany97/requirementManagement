@@ -9,6 +9,7 @@ use App\Http\Controllers\API\Requirement\RequirementController;
 use App\Http\Controllers\API\Requirement\RequirementPriorityController;
 use App\Http\Controllers\API\Requirement\RequirementStatusController;
 use App\Http\Controllers\API\Requirement\RequirementTestCaseController;
+use App\Http\Controllers\API\TestCase\TestCaseCommentController;
 use App\Http\Controllers\API\User\UserController;
 use App\Http\Controllers\Requirment\UpdateRequiremenParentIdController;
 use Illuminate\Http\Request;
@@ -26,10 +27,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-return $request->user();
+    return $request->user();
 });
 
-Route::middleware(['auth:sanctum'])->group(function() {
+Route::middleware(['auth:sanctum'])->group(function () {
 
     // projects
     Route::apiResource('projects', ProjectController::class);
@@ -53,14 +54,18 @@ Route::middleware(['auth:sanctum'])->group(function() {
 
     // users
     Route::resource('users', UserController::class)->only([
-       'index', 'show'
+        'index', 'show'
     ]);
 
     Route::resource('requirements.test-cases', RequirementTestCaseController::class)
         ->shallow()
         ->parameters([
-           'requirements' => 'requirement', 'test-cases' => 'testCase'
+            'requirements' => 'requirement', 'test-cases' => 'testCase'
         ]);
+
+    Route::resource('test-cases.comments', TestCaseCommentController::class)->only([
+        'index', 'store'
+    ]);
 
     Route::any('requirement-statuses', RequirementStatusController::class);
 

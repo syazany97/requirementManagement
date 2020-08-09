@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class TestCaseSteps extends Model
 {
-    protected $guarded = [];
+    protected $fillable = ['id', 'comment',
+        'description',
+        'input',
+        'expected_result',
+        'is_passed'];
 
     protected $casts = [
         'is_passed' => 'boolean'

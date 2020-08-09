@@ -31,7 +31,7 @@
         </v-row>
 
         <h6>Description</h6>
-        <span>{{ requirement.description }}</span>
+        <span v-html="requirement.description"></span>
 
         <!-- Attachments -->
         <h5>Attachments</h5>
@@ -47,7 +47,7 @@
 
         <div v-show="currentTab === 'comments'">
             <h5 class="text-black text-xl font-bold">Comments</h5>
-            <comment-list :requirement="requirement"/>
+            <comment-list :requirement="requirement" repository-type="requirement"/>
         </div>
     </div>
 
@@ -92,7 +92,7 @@ export default {
             }
         },
         capitalize(value) {
-            return '';
+            if (!value) return '';
             return _.capitalize(value)
         }
     },

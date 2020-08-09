@@ -7,6 +7,7 @@ use App\Http\Requests\TestCase\TestCaseCreateRequest;
 use App\Http\Resources\TestCase\TestCaseResource;
 use App\Models\Requirement\Requirement;
 use App\Models\TestCase\TestCase;
+use App\Models\TestCase\TestCaseSteps;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -42,14 +43,28 @@ class RequirementTestCaseController extends Controller
         return new TestCaseResource($testCase);
     }
 
-    public function show($testCase)
+    public function show(Request $request, $testCase)
     {
-        return new TestCaseResource(TestCase::with(['steps'])->findOrFail($testCase));
+        $with = $request->has('with') ? explode(',', $request->with) : [];
+
+        return new TestCaseResource(TestCase::with($with)->findOrFail($testCase));
     }
 
-    public function update(Request $request, TestCase $testCase)
+    public function update(TestCaseCreateRequest $request, TestCase $testCase)
     {
-        //
+        $testCase->update($request->validated()['test_case']);
+
+        // TODO : delete steps that was deleted
+        if ($request->has('steps')) {
+            foreach ($request->validated()['steps'] as $step) {
+                if (!isset($step['id'])) {
+                    $testCase->steps()->create($step);
+                } else {
+                    $instance = TestCaseSteps::findOrFail($step['id']);
+                    $instance->update($step);
+                }
+            }
+        }
     }
 
     public function destroy(TestCase $testCase)
