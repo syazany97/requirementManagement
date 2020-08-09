@@ -39,6 +39,7 @@
 </template>
 <script>
     import requirementCommentRepository from "../../../repositories/requirementCommentRepository";
+    import commentRepository from "../../../repositories/comment/commentRepository";
 
     export default {
         name: 'comment-list',
@@ -79,7 +80,7 @@
             },
             async deleteComment(commentId) {
                 try {
-                    await requirementCommentRepository.delete(commentId);
+                    await commentRepository.delete(commentId);
                     this.comment = "";
                     await this.fetchComments();
                 } catch (e) {

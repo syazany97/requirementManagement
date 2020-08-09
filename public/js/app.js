@@ -3240,6 +3240,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _repositories_requirementCommentRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../repositories/requirementCommentRepository */ "./resources/js/repositories/requirementCommentRepository.js");
+/* harmony import */ var _repositories_comment_commentRepository__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../repositories/comment/commentRepository */ "./resources/js/repositories/comment/commentRepository.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -3285,6 +3286,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'comment-list',
@@ -3361,7 +3363,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return _repositories_requirementCommentRepository__WEBPACK_IMPORTED_MODULE_1__["default"]["delete"](commentId);
+                return _repositories_comment_commentRepository__WEBPACK_IMPORTED_MODULE_2__["default"]["delete"](commentId);
 
               case 3:
                 _this2.comment = "";
@@ -119073,6 +119075,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TestCaseDetails_vue_vue_type_template_id_f496f5be_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/repositories/comment/commentRepository.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/repositories/comment/commentRepository.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var resource = 'comments';
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony default export */ __webpack_exports__["default"] = ({
+  find: function find(id) {
+    return axios.get("/api/".concat(resource, "/").concat(id));
+  },
+  "delete": function _delete(id) {
+    return axios["delete"]("/api/".concat(resource, "/").concat(id));
+  }
+});
 
 /***/ }),
 
