@@ -10,8 +10,9 @@ use App\Http\Controllers\API\Requirement\RequirementPriorityController;
 use App\Http\Controllers\API\Requirement\RequirementStatusController;
 use App\Http\Controllers\API\Requirement\RequirementTestCaseController;
 use App\Http\Controllers\API\TestCase\TestCaseCommentController;
+use App\Http\Controllers\API\TestCase\TestCaseLogController;
 use App\Http\Controllers\API\User\UserController;
-use App\Http\Controllers\Requirment\UpdateRequiremenParentIdController;
+use App\Http\Controllers\Requirement\UpdateRequirementParentIdController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -67,10 +68,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
         'index', 'store'
     ]);
 
+    Route::get('test-cases/{testCase}/logs', TestCaseLogController::class);
+
     Route::any('requirement-statuses', RequirementStatusController::class);
 
     Route::any('requirement-priorities', RequirementPriorityController::class);
 
-    Route::patch('requirements/{requirement}/update-parent-id', UpdateRequiremenParentIdController::class);
+    Route::patch('requirements/{requirement}/update-parent-id', UpdateRequirementParentIdController::class);
 });
 

@@ -4,10 +4,15 @@ namespace App\Models\Comment;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Comment extends Model
 {
+    use LogsActivity;
+
     protected $fillable = ['details', 'user_id'];
+
+    protected static $logFillable = true;
 
     public function commentable()
     {
