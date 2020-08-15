@@ -1970,6 +1970,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HistoriesList",
@@ -55182,7 +55185,11 @@ var render = function() {
           _c("h1", [_vm._v("Histories List")]),
           _vm._v(" "),
           _vm._l(_vm.histories, function(history) {
-            return _c("span", { key: history.id }, [_vm._v(_vm._s(history))])
+            return _c("div", { key: history.id }, [
+              _c("span", [_vm._v(_vm._s(history.description))]),
+              _vm._v(" "),
+              _c("span", [_vm._v(_vm._s(history.user))])
+            ])
           })
         ],
         2
@@ -57433,7 +57440,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _vm.requirement.id !== null && _vm.dataLoaded
     ? _c(
-        "v-container",
+        "div",
+        { staticClass: "container" },
         [
           _c("h1", [_vm._v(_vm._s(_vm.requirement.name))]),
           _vm._v(" "),
@@ -57528,29 +57536,7 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("table", { staticClass: "table-auto" }, [
-            _c("thead", [
-              _c("tr", [
-                _c("th", { staticClass: "px-4 py-2" }, [_vm._v("No")]),
-                _vm._v(" "),
-                _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Id")]),
-                _vm._v(" "),
-                _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Step")]),
-                _vm._v(" "),
-                _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Input")]),
-                _vm._v(" "),
-                _c("th", { staticClass: "px-4 py-2" }, [
-                  _vm._v("Expected results")
-                ]),
-                _vm._v(" "),
-                _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Result")]),
-                _vm._v(" "),
-                _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Comment")]),
-                _vm._v(" "),
-                _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Test passed")]),
-                _vm._v(" "),
-                _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Actions")])
-              ])
-            ]),
+            _vm._m(0),
             _vm._v(" "),
             _c(
               "tbody",
@@ -57717,11 +57703,7 @@ var render = function() {
                       1
                     ),
                     _vm._v(" "),
-                    _c("td", { staticClass: "border px-4 py-2" }, [
-                      _c("button", { staticClass: "primary-btn" }, [
-                        _vm._v("Add Step")
-                      ])
-                    ])
+                    _vm._m(1, true)
                   ]
                 )
               }),
@@ -57802,7 +57784,42 @@ var render = function() {
       )
     : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { staticClass: "px-4 py-2" }, [_vm._v("No")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Id")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Step")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Input")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Expected results")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Result")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Comment")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Test passed")]),
+        _vm._v(" "),
+        _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Actions")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "border px-4 py-2" }, [
+      _c("button", { staticClass: "primary-btn" }, [_vm._v("Add Step")])
+    ])
+  }
+]
 render._withStripped = true
 
 

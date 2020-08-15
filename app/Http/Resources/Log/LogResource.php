@@ -41,7 +41,7 @@ class LogResource extends JsonResource
                     return
                         sprintf('%s from %s to %s', $key ,$item, $oldAttribute)
                     ;
-                })->implode(' ');
+                })->implode(', ');
         }
 
         return "";

@@ -1,5 +1,5 @@
 <template>
-    <v-container v-if="requirement.id !== null && dataLoaded">
+    <div class="container" v-if="requirement.id !== null && dataLoaded">
         <h1>{{ requirement.name }}</h1>
 
         <label class="primary-label" for="test-case-title">
@@ -89,7 +89,7 @@
 
         <button v-if="steps.length" class="primary-btn" @click="submitTestCase()">Submit</button>
 
-    </v-container>
+    </div>
 
 </template>
 

@@ -1,7 +1,10 @@
 <template>
     <div v-if="histories.length">
         <h1>Histories List</h1>
-        <span v-for="history in histories" v-bind:key="history.id">{{ history }}</span>
+        <div v-for="history in histories" v-bind:key="history.id">
+            <span>{{ history.description }}</span>
+            <span>{{ history.user }}</span>
+        </div>
     </div>
 
 </template>

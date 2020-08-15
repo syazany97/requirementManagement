@@ -18,6 +18,7 @@ class ProjectResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'uuid' => $this->uuid,
             'type' => Str::singular($this->getTable()),
             'name' => $this->name,
             'status' => $this->model,
