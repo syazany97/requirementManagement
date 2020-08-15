@@ -15,6 +15,8 @@ class TestCase extends Model
     protected $fillable = ['user_id', 'title', 'title', 'description',
         'preconditions', 'priority_id'];
 
+    protected static $logOnlyDirty = true;
+
     protected static $logFillable = true;
 
     public const relationships = ['requirement', 'steps', 'user'];

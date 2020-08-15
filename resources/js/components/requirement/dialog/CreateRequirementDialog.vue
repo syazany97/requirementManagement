@@ -78,7 +78,7 @@
             <v-card-actions>
                 <v-spacer></v-spacer>
 
-                <button @click="closeDialog()" class="secondary-btn">
+                <button @click="closeDialog()" class="tertiary-btn">
                     <span>Cancel</span>
                 </button>
                 <div class="divider"></div>

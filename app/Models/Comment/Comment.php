@@ -14,6 +14,8 @@ class Comment extends Model
 
     protected static $logFillable = true;
 
+    protected static $logOnlyDirty = true;
+
     public function commentable()
     {
         return $this->morphTo();

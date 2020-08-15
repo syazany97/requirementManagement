@@ -168,6 +168,8 @@ export default {
                     await requirementTestCaseRepository.store(params, payload);
                 }
 
+                location.reload();
+
             } catch (e) {
                 console.log(e);
             } finally {

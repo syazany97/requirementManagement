@@ -1953,12 +1953,62 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _repositories_testCase_logs_testCaseLogRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../repositories/testCase/logs/testCaseLogRepository */ "./resources/js/repositories/testCase/logs/testCaseLogRepository.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
 //
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "HistoriesList"
+  name: "HistoriesList",
+  data: function data() {
+    return {
+      testCaseId: this.$route.params.testCase,
+      histories: []
+    };
+  },
+  created: function created() {
+    this.fetchLogs();
+  },
+  methods: {
+    fetchLogs: function fetchLogs() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _repositories_testCase_logs_testCaseLogRepository__WEBPACK_IMPORTED_MODULE_1__["default"].all(_this.testCaseId);
+
+              case 2:
+                response = _context.sent;
+                _this.histories = response.data.data;
+                console.log(response);
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    }
+  }
 });
 
 /***/ }),
@@ -4210,24 +4260,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _repositories_requirement_requirementTestCaseRepository__WEBPACK_IMPORTED_MODULE_1__["default"].store(params, payload);
 
               case 10:
-                _context.next = 15;
+                location.reload();
+                _context.next = 16;
                 break;
 
-              case 12:
-                _context.prev = 12;
+              case 13:
+                _context.prev = 13;
                 _context.t0 = _context["catch"](0);
                 console.log(_context.t0);
 
-              case 15:
-                _context.prev = 15;
-                return _context.finish(15);
+              case 16:
+                _context.prev = 16;
+                return _context.finish(16);
 
-              case 17:
+              case 18:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 12, 15, 17]]);
+        }, _callee, null, [[0, 13, 16, 18]]);
       }))();
     },
     fetchTestCase: function fetchTestCase() {
@@ -55124,7 +55175,19 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Histories List")])
+  return _vm.histories.length
+    ? _c(
+        "div",
+        [
+          _c("h1", [_vm._v("Histories List")]),
+          _vm._v(" "),
+          _vm._l(_vm.histories, function(history) {
+            return _c("span", { key: history.id }, [_vm._v(_vm._s(history))])
+          })
+        ],
+        2
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -56405,7 +56468,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "secondary-btn",
+                  staticClass: "tertiary-btn",
                   on: {
                     click: function($event) {
                       return _vm.closeDialog()
@@ -119492,6 +119555,25 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
   },
   store: function store(requirementId, payload) {
     return axios.post("/api/".concat(resource, "/").concat(requirementId, "/comments"), payload);
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/repositories/testCase/logs/testCaseLogRepository.js":
+/*!**************************************************************************!*\
+  !*** ./resources/js/repositories/testCase/logs/testCaseLogRepository.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var resource = 'test-cases';
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all(id) {
+    return axios.get("/api/".concat(resource, "/").concat(id, "/logs"));
   }
 });
 

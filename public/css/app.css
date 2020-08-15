@@ -758,6 +758,26 @@ video {
   background-color: rgba(203, 213, 224, var(--bg-opacity));
 }
 
+.tertiary-btn {
+  --text-opacity: 1;
+  color: #2d3748;
+  color: rgba(45, 55, 72, var(--text-opacity));
+  border-radius: 0.25rem;
+  font-weight: 400;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: inline-flex;
+  align-items: center;
+}
+
+.tertiary-btn:hover {
+  --bg-opacity: 1;
+  background-color: #cbd5e0;
+  background-color: rgba(203, 213, 224, var(--bg-opacity));
+}
+
 .primary-input {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -794,7 +814,7 @@ video {
   font-size: 0.75rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  padding-top: 0.5rem;
+  padding-top: 1rem;
 }
 
 .primary-text-area {
