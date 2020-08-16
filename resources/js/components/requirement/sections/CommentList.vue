@@ -1,13 +1,9 @@
 <template>
     <div>
-        <div v-if="!commentsLoaded" class="text-center">
-            <v-progress-circular
-                :width="2"
-                size="15"
-                color="blue"
-                indeterminate
-            ></v-progress-circular>
+        <div class="text-center">
+            <div class="w-5 h-5 border-2 border-teal-600 rounded-full loader"></div>
         </div>
+
         <div v-if="comments.length && commentsLoaded">
             <div v-for="comment in comments" v-bind:key="comment.id">
                 <div class="flex justify-between mb-1">
@@ -27,14 +23,15 @@
             </div>
         </div>
         <span v-if="!comments.length && commentsLoaded">No comment yet for this requirement</span>
-        <v-btn v-show="!showCommentTextField" x-small text @click="showCommentTextField = true">Add comment</v-btn>
+        <button class="secondary-btn" v-show="!showCommentTextField" @click="showCommentTextField = true">Add comment
+        </button>
         <div v-if="showCommentTextField">
              <textarea v-model="comment"
                        placeholder="Add comment"
                        class="bg-grey-dark rounded leading-normal resize-none w-full h-24 py-2 px-3">
             </textarea>
             <div class="text-right">
-                <v-btn small @click="postComment">Post</v-btn>
+                <button class="secondary-btn" @click="postComment">Post</button>
             </div>
         </div>
     </div>
@@ -53,7 +50,7 @@ export default {
             type: String,
             default: 'requirement'
         },
-        testCase : Object
+        testCase: Object
     },
     data() {
         return {
@@ -61,8 +58,8 @@ export default {
             comments: [],
             commentsLoaded: false,
             showCommentTextField: false,
-            repository : null,
-            params : {}
+            repository: null,
+            params: {}
         }
     },
     watch: {
@@ -111,10 +108,30 @@ export default {
             this.comments = response.data.data;
             this.commentsLoaded = true;
         },
-        get(data,  parameters, defaultValue) {
-            return _.get(data,  parameters, defaultValue);
+        get(data, parameters, defaultValue) {
+            return _.get(data, parameters, defaultValue);
         }
     }
 
 }
 </script>
+
+<style>
+
+@keyframes loader-rotate {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loader {
+    border-right-color: transparent;
+    animation: loader-rotate 1s linear infinite;
+}
+
+</style>
+
+
