@@ -1973,13 +1973,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HistoriesList",
   data: function data() {
     return {
       testCaseId: this.$route.params.testCase,
-      histories: []
+      histories: [],
+      modal: {
+        visible: false
+      }
     };
   },
   created: function created() {
@@ -3781,6 +3803,58 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -55193,13 +55267,89 @@ var render = function() {
               _vm._v(" "),
               _c("span", [_vm._v(_vm._s(_vm.get(history, "user", "")))])
             ])
-          })
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "primary-btn",
+              on: {
+                click: function($event) {
+                  _vm.modal.visible = !_vm.modal.visible
+                }
+              }
+            },
+            [_vm._v("Open Modal")]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "h-screen w-full flex flex-col items-center justify-center bg-teal-lightest font-sans"
+            },
+            [
+              _vm.modal.visible
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "h-screen w-full absolute flex items-center justify-center bg-modal",
+                      on: {
+                        click: function($event) {
+                          if ($event.target !== $event.currentTarget) {
+                            return null
+                          }
+                          _vm.modal.visible = false
+                        }
+                      }
+                    },
+                    [_vm._m(0)]
+                  )
+                : _vm._e()
+            ]
+          )
         ],
         2
       )
     : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "bg-white rounded shadow p-8 m-4 max-w-xs max-h-full text-center overflow-y-scroll"
+      },
+      [
+        _c("div", { staticClass: "mb-4" }, [_c("h1", [_vm._v("Welcome!")])]),
+        _vm._v(" "),
+        _c("div", { staticClass: "mb-8" }, [
+          _c("p", [
+            _vm._v(
+              "Ready to get started? Keep scrolling to see some great components."
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "flex justify-center" }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "flex-no-shrink text-white py-2 px-4 rounded bg-teal hover:bg-teal-dark"
+            },
+            [_vm._v("Let's Go")]
+          )
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -57116,81 +57266,314 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "v-card",
-    [
-      _c("v-card-title", { staticClass: "headline" }, [_vm._v("Login")]),
-      _vm._v(" "),
-      _c(
-        "v-card-text",
-        [
-          _c(
-            "v-form",
-            {
-              ref: "form",
-              attrs: { "lazy-validation": "" },
-              model: {
-                value: _vm.valid,
-                callback: function($$v) {
-                  _vm.valid = $$v
-                },
-                expression: "valid"
+  return _c("div", [
+    _c("div", { staticClass: "text-center mt-24" }, [
+      _c("div", { staticClass: "flex items-center justify-center" }, [
+        _c(
+          "svg",
+          {
+            staticClass: "w-12 h-12 text-blue-500",
+            attrs: {
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor"
+            }
+          },
+          [
+            _c("path", {
+              attrs: {
+                "stroke-linecap": "round",
+                "stroke-linejoin": "round",
+                "stroke-width": "2",
+                d:
+                  "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
               }
-            },
-            [
-              _c("v-text-field", {
-                attrs: { label: "Email", required: "" },
-                model: {
-                  value: _vm.email,
-                  callback: function($$v) {
-                    _vm.email = $$v
-                  },
-                  expression: "email"
-                }
-              }),
+            })
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("h2", { staticClass: "text-4xl tracking-tight" }, [
+        _vm._v("\n             Sign in into your account\n         ")
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "flex justify-center my-2 mx-4 md:mx-0" }, [
+      _c(
+        "form",
+        { staticClass: "w-full max-w-xl bg-white rounded-lg shadow-md p-6" },
+        [
+          _c("div", { staticClass: "flex flex-wrap -mx-3 mb-6" }, [
+            _c("div", { staticClass: "w-full md:w-full px-3 mb-6" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+                  attrs: { for: "email" }
+                },
+                [_vm._v("Email\n                         address")]
+              ),
               _vm._v(" "),
-              _c("v-text-field", {
-                attrs: { label: "Password", type: "password" },
-                model: {
-                  value: _vm.password,
-                  callback: function($$v) {
-                    _vm.password = $$v
-                  },
-                  expression: "password"
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.email,
+                    expression: "email"
+                  }
+                ],
+                staticClass:
+                  "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none",
+                attrs: {
+                  type: "email",
+                  name: "email",
+                  id: "email",
+                  required: ""
+                },
+                domProps: { value: _vm.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.email = $event.target.value
+                  }
                 }
               })
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "v-card-actions",
-        [
-          _c("v-spacer"),
-          _vm._v(" "),
-          _c(
-            "v-btn",
-            {
-              attrs: { color: "primary" },
-              on: {
-                click: function($event) {
-                  return _vm.login()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-full md:w-full px-3 mb-6" }, [
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+                  attrs: { for: "password" }
+                },
+                [_vm._v("Password")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.password,
+                    expression: "password"
+                  }
+                ],
+                staticClass:
+                  "appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none",
+                attrs: {
+                  type: "password",
+                  name: "password",
+                  id: "password",
+                  required: ""
+                },
+                domProps: { value: _vm.password },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.password = $event.target.value
+                  }
                 }
-              }
-            },
-            [_vm._v("\n            Login\n        ")]
-          )
-        ],
-        1
+              })
+            ]),
+            _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-full md:w-full px-3 mb-6" }, [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "appearance-none block w-full bg-blue-600 text-gray-100 font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-blue-500 focus:outline-none focus:bg-white focus:border-gray-500",
+                  on: {
+                    click: function($event) {
+                      return _vm.login()
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                         Sign in\n                     "
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "flex items-center w-full mt-2" }, [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "w-full md:w-1/3 px-3 pt-4 mx-2 border-t border-gray-400"
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "appearance-none flex items-center justify-center block w-full bg-gray-100 text-gray-700 shadow border border-gray-500 rounded-lg py-3 px-3 leading-tight hover:bg-gray-200 hover:text-gray-700 focus:outline-none"
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "h-6 w-6 fill-current text-gray-700",
+                          attrs: { viewBox: "0 0 512 512" }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M455.27,32H56.73A24.74,24.74,0,0,0,32,56.73V455.27A24.74,24.74,0,0,0,56.73,480H256V304H202.45V240H256V189c0-57.86,40.13-89.36,91.82-89.36,24.73,0,51.33,1.86,57.51,2.68v60.43H364.15c-28.12,0-33.48,13.3-33.48,32.9V240h67l-8.75,64H330.67V480h124.6A24.74,24.74,0,0,0,480,455.27V56.73A24.74,24.74,0,0,0,455.27,32Z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "w-full md:w-1/3 px-3 pt-4 mx-2" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "appearance-none flex items-center justify-center block w-full bg-gray-100 text-gray-700 shadow border border-gray-500 rounded-lg py-3 px-3 leading-tight hover:bg-gray-200 hover:text-gray-700 focus:outline-none"
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "h-6 w-6 fill-current text-gray-700",
+                        attrs: { viewBox: "0 0 512 512" }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M444.17,32H70.28C49.85,32,32,46.7,32,66.89V441.61C32,461.91,49.85,480,70.28,480H444.06C464.6,480,480,461.79,480,441.61V66.89C480.12,46.7,464.6,32,444.17,32ZM170.87,405.43H106.69V205.88h64.18ZM141,175.54h-.46c-20.54,0-33.84-15.29-33.84-34.43,0-19.49,13.65-34.42,34.65-34.42s33.85,14.82,34.31,34.42C175.65,160.25,162.35,175.54,141,175.54ZM405.43,405.43H341.25V296.32c0-26.14-9.34-44-32.56-44-17.74,0-28.24,12-32.91,23.69-1.75,4.2-2.22,9.92-2.22,15.76V405.43H209.38V205.88h64.18v27.77c9.34-13.3,23.93-32.44,57.88-32.44,42.13,0,74,27.77,74,87.64Z"
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "w-full md:w-1/3 px-3 pt-4 mx-2 border-t border-gray-400"
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "appearance-none flex items-center justify-center block w-full bg-gray-100 text-gray-700 shadow border border-gray-500 rounded-lg py-3 px-3 leading-tight hover:bg-gray-200 hover:text-gray-700 focus:outline-none"
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "h-6 w-6 fill-current text-gray-700",
+                          attrs: { viewBox: "0 0 512 512" }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M496,109.5a201.8,201.8,0,0,1-56.55,15.3,97.51,97.51,0,0,0,43.33-53.6,197.74,197.74,0,0,1-62.56,23.5A99.14,99.14,0,0,0,348.31,64c-54.42,0-98.46,43.4-98.46,96.9a93.21,93.21,0,0,0,2.54,22.1,280.7,280.7,0,0,1-203-101.3A95.69,95.69,0,0,0,36,130.4C36,164,53.53,193.7,80,211.1A97.5,97.5,0,0,1,35.22,199v1.2c0,47,34,86.1,79,95a100.76,100.76,0,0,1-25.94,3.4,94.38,94.38,0,0,1-18.51-1.8c12.51,38.5,48.92,66.5,92.05,67.3A199.59,199.59,0,0,1,39.5,405.6,203,203,0,0,1,16,404.2,278.68,278.68,0,0,0,166.74,448c181.36,0,280.44-147.7,280.44-275.8,0-4.2-.11-8.4-.31-12.5A198.48,198.48,0,0,0,496,109.5Z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          ])
+        ]
       )
-    ],
-    1
-  )
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "text-sm" }, [
+      _vm._v("or "),
+      _c("a", { staticClass: "text-blue-500", attrs: { href: "#" } }, [
+        _vm._v("\n      register a new account\n   ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "w-full flex items-center justify-between px-3 mb-3 " },
+      [
+        _c(
+          "label",
+          {
+            staticClass: "flex items-center w-1/2",
+            attrs: { for: "remember" }
+          },
+          [
+            _c("input", {
+              staticClass: "mr-1 bg-white shadow",
+              attrs: { type: "checkbox", name: "remember", id: "remember" }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: "text-sm text-gray-700 pt-1" }, [
+              _vm._v("Remember Me")
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "w-1/2 text-right" }, [
+          _c(
+            "a",
+            {
+              staticClass: "text-blue-500 text-sm tracking-tight",
+              attrs: { href: "#" }
+            },
+            [_vm._v("Forget your password?")]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mx-auto -mb-6 pb-1" }, [
+      _c("span", { staticClass: "text-center text-xs text-gray-700" }, [
+        _vm._v("or sign up with")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
