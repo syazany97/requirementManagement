@@ -31,19 +31,11 @@
         <!--        </v-row>-->
 
 
-        <div class="flex">
-
-            <div v-for="(value, propertyName) in firstList" v-bind:key="propertyName" class="flex-1 pl-1 mr-16">
-                <div v-if="propertyName !== 'assignees'">
+        <div v-if="lists.length" class="flex">
+            <div v-for="(list, index) in lists" v-bind:key="index" class="flex-1 pl-1 mr-16">
+                <div v-for="(value, propertyName) in list" v-bind:key="propertyName" class="flex-1 pl-1 mr-16">
                     <div class="font-medium">{{ propertyName | titleCase }}</div>
                     <div class="text-gray-600 text-sm">{{ value }}</div>
-                </div>
-
-                <div v-else>
-                    <div v-if="propertyName === 'assignees'" class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-blue-700
-                bg-blue-100 border border-blue-300 ">
-                        <div class="text-xs font-normal leading-none max-w-full flex-initial">{{ name }}</div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -62,9 +54,7 @@
                     {{ tab | titleCase }}
                 </a>
             </div>
-
         </nav>
-
 
         <div v-show="currentTab === 'comments'">
             <comment-list :requirement="requirement" repository-type="requirement"/>
@@ -111,7 +101,7 @@ export default {
                 type: this.requirement.type
             }
         },
-        list() {
+        lists() {
             return [this.firstList, this.secondList]
         },
         capitalize(value) {
