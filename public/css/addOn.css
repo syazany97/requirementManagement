@@ -1,5 +1,5 @@
 .base-button {
-   @apply font-medium py-1 px-4 rounded inline-flex items-center
+   @apply font-medium py-1 px-4 rounded inline-flex items-center text-sm
 }
 
 .primary-btn {
