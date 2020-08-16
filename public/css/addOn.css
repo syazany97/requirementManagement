@@ -1,13 +1,25 @@
+.base-button {
+   @apply font-medium py-1 px-4 rounded inline-flex items-center
+}
+
 .primary-btn {
-    @apply bg-blue-500 text-white font-normal py-1 px-4 rounded inline-flex items-center;
+    background-color: rgb(84, 105, 212);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.12) 0px 1px 1px 0px,
+    rgb(84, 105, 212) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
+    @apply .base-button text-white ;
 }
 
 .primary-btn:hover {
-    @apply bg-blue-700
+    @apply bg-blue-700 .base-button
 }
 
 .secondary-btn {
-    @apply bg-gray-300 text-gray-800 font-normal py-1 px-4 rounded inline-flex items-center
+    @apply bg-gray-300 text-gray-800 .base-button
 }
 
 
@@ -16,7 +28,7 @@
 }
 
 .tertiary-btn {
-    @apply text-gray-800 rounded font-normal py-1 px-4 inline-flex items-center
+    @apply text-gray-800 .base-button
 }
 
 .tertiary-btn:hover {

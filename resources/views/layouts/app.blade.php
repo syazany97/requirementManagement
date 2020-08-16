@@ -28,8 +28,11 @@
         @yield('content')
     @endguest
     @auth
-        <app>
-        </app>
+        @include('layouts.topBar')
+        <toast-notification></toast-notification>
+        <div class="pt-16">
+            <router-view :key="$route.fullPath"></router-view>
+        </div>
     @endauth
 
 </div>

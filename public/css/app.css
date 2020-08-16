@@ -710,14 +710,8 @@ video {
   }
 }
 
-.primary-btn {
-  --bg-opacity: 1;
-  background-color: #4299e1;
-  background-color: rgba(66, 153, 225, var(--bg-opacity));
-  --text-opacity: 1;
-  color: #fff;
-  color: rgba(255, 255, 255, var(--text-opacity));
-  font-weight: 400;
+.base-button {
+  font-weight: 500;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   padding-left: 1rem;
@@ -727,10 +721,34 @@ video {
   align-items: center;
 }
 
+.primary-btn {
+  background-color: rgb(84, 105, 212);
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgb(84, 105, 212) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
+  font-weight: 500;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
+}
+
 .primary-btn:hover {
   --bg-opacity: 1;
   background-color: #2b6cb0;
   background-color: rgba(43, 108, 176, var(--bg-opacity));
+  font-weight: 500;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 0.25rem;
+  display: inline-flex;
+  align-items: center;
 }
 
 .secondary-btn {
@@ -740,7 +758,7 @@ video {
   --text-opacity: 1;
   color: #2d3748;
   color: rgba(45, 55, 72, var(--text-opacity));
-  font-weight: 400;
+  font-weight: 500;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   padding-left: 1rem;
@@ -760,12 +778,12 @@ video {
   --text-opacity: 1;
   color: #2d3748;
   color: rgba(45, 55, 72, var(--text-opacity));
-  border-radius: 0.25rem;
-  font-weight: 400;
+  font-weight: 500;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  border-radius: 0.25rem;
   display: inline-flex;
   align-items: center;
 }

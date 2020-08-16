@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto" v-if="requirement.id !== null && dataLoaded">
+    <div class="container mx-auto px-4" v-if="requirement.id !== null && dataLoaded">
         <h1>{{ requirement.name }}</h1>
 
         <label class="primary-label" for="test-case-title">
