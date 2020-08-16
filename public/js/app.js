@@ -2234,17 +2234,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -55451,8 +55440,7 @@ var render = function() {
           staticClass: "primary-btn",
           on: {
             click: function($event) {
-              $event.stopPropagation()
-              _vm.dialog = true
+              return _vm.$modal.show("moduleDialog")
             }
           }
         },
@@ -55527,21 +55515,6 @@ var render = function() {
       ),
       _vm._v(" "),
       _c(
-        "v-dialog",
-        {
-          model: {
-            value: _vm.testDialog,
-            callback: function($$v) {
-              _vm.testDialog = $$v
-            },
-            expression: "testDialog"
-          }
-        },
-        [_c("test-dialog")],
-        1
-      ),
-      _vm._v(" "),
-      _c(
         "modal",
         {
           attrs: {
@@ -55568,91 +55541,69 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c(
-        "v-dialog",
-        {
-          attrs: { "max-width": "400" },
-          model: {
-            value: _vm.dialog,
-            callback: function($$v) {
-              _vm.dialog = $$v
-            },
-            expression: "dialog"
-          }
-        },
-        [
+      _c("modal", { attrs: { name: "moduleDialog" } }, [
+        _c("div", { staticClass: "container mx-auto" }, [
+          _c("h1", [_vm._v("Create new module")]),
+          _vm._v(" "),
           _c(
-            "v-card",
-            [
-              _c(
-                "v-container",
-                [
-                  _c("v-card-title", { staticClass: "headline" }, [
-                    _vm._v("Create new module")
-                  ]),
-                  _vm._v(" "),
-                  _c("v-text-field", {
-                    attrs: { label: "Name" },
-                    model: {
-                      value: _vm.moduleName,
-                      callback: function($$v) {
-                        _vm.moduleName = $$v
-                      },
-                      expression: "moduleName"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-actions",
-                    [
-                      _c("v-spacer"),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: { color: "green darken-1", text: "" },
-                          on: {
-                            click: function($event) {
-                              _vm.moduleName = ""
-                              _vm.dialog = false
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        Cancel\n                    "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: { color: "green darken-1", text: "" },
-                          on: {
-                            click: function($event) {
-                              return _vm.addModule()
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                        Create\n                    "
-                          )
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
+            "label",
+            { staticClass: "primary-label", attrs: { for: "moduleName" } },
+            [_vm._v("Module")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.moduleName,
+                expression: "moduleName"
+              }
             ],
-            1
-          )
-        ],
-        1
-      )
+            staticClass: "primary-input",
+            attrs: { id: "moduleName", type: "text", placeholder: "Name" },
+            domProps: { value: _vm.moduleName },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.moduleName = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "inline-flex text-right pt-4" }, [
+            _c(
+              "button",
+              {
+                staticClass: "tertiary-btn pr-3",
+                on: {
+                  click: function($event) {
+                    return _vm.$modal.hide("moduleDialog")
+                  }
+                }
+              },
+              [_c("span", [_vm._v("Cancel")])]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "divider" }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "primary-btn",
+                on: {
+                  click: function($event) {
+                    return _vm.addModule()
+                  }
+                }
+              },
+              [_c("span", [_vm._v("Create")])]
+            )
+          ])
+        ])
+      ])
     ],
     1
   )
