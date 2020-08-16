@@ -23,12 +23,15 @@
 
 </head>
 <body>
-    <div id="app">
-{{--            @guest--}}
-{{--            @yield('content')--}}
-{{--            @endguest--}}
+<div id="app">
+    @guest
+        @yield('content')
+    @endguest
+    @auth
         <app>
         </app>
-    </div>
+    @endauth
+
+</div>
 </body>
 </html>

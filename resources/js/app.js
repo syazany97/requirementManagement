@@ -6,6 +6,7 @@ import VueRouter from "vue-router";
 import Vuex from "vuex";
 // import Vuetify from 'vuetify/lib';
 import Vuetify from "vuetify";
+import VModal from 'vue-js-modal'
 // import 'vuetify/dist/vuetify.min.css';
 import notification from "./vuex-modules/notification";
 import VueTreeList from 'vue-tree-list';
@@ -16,7 +17,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-[VueRouter, dayjs, Vuex, VueToast, Vuetify, VueTreeList].forEach((x) => Vue.use(x));
+[VueRouter, dayjs, Vuex, VueToast, Vuetify, VueTreeList, VModal].forEach((x) => Vue.use(x));
 
 Vue.component('vue-select', vSelect);
 

@@ -2,26 +2,20 @@
 
     <v-container fluid>
         <!-- create new module dialog -->
-        <div class="text-right">
+        <div class="text-right pb-2">
             <create-new-module></create-new-module>
         </div>
         <!-- // create new module dialog -->
 
-        <v-row v-if="modules.length">
-            <v-col
-                cols="6"
-                md="4"
-            >
+        <div class="flex mb-4" v-if="modules.length">
+            <div class="w-1/4 pr-5">
                 <requirement-list></requirement-list>
+            </div>
 
-            </v-col>
-            <v-col
-                cols="12"
-                md="8"
-            >
+            <div class="w-3/4">
                 <show-requirement></show-requirement>
-            </v-col>
-        </v-row>
+            </div>
+        </div>
 
     </v-container>
 

@@ -10,7 +10,7 @@
             <span>Add module</span>
         </button>
 
-        <button @click.stop="requirementDialog = true" class="secondary-btn">
+        <button @click.stop="$modal.show('requirementDialog')" class="secondary-btn">
             <svg fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd"
                       d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
@@ -28,14 +28,13 @@
             <span>Test dialog</span>
         </button>
 
-        <v-dialog v-model="testDialog">
+                <v-dialog v-model="testDialog">
             <test-dialog></test-dialog>
         </v-dialog>
 
-
-        <v-dialog v-model="requirementDialog" max-width="500">
-            <create-requirement-dialog :requirement-dialog.sync="requirementDialog"></create-requirement-dialog>
-        </v-dialog>
+       <modal name="requirementDialog" :adaptive="true"  width="50%" :scrollable="true" height="auto">
+           <create-requirement-dialog :requirement-dialog.sync="requirementDialog"></create-requirement-dialog>
+       </modal>
 
         <v-dialog
             v-model="dialog"
