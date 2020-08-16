@@ -8,11 +8,11 @@
         <!-- // create new module dialog -->
 
         <div class="flex mb-4" v-if="modules.length">
-            <div class="w-1/4 pr-5">
+            <div class="flex-none px-5">
                 <requirement-list></requirement-list>
             </div>
 
-            <div class="w-3/4">
+            <div class="flex-none">
                 <show-requirement></show-requirement>
             </div>
         </div>

@@ -10707,7 +10707,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, ".btn[data-v-b8b3c888] {\n  font-weight: 700;\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n  padding-left: 1rem;\n  padding-right: 1rem;\n  border-radius: 0.25rem;\n}\n.btn-blue[data-v-b8b3c888] {\n  --bg-opacity: 1;\n  background-color: #4299e1;\n  background-color: rgba(66, 153, 225, var(--bg-opacity));\n  --text-opacity: 1;\n  color: #fff;\n  color: rgba(255, 255, 255, var(--text-opacity));\n}\n.btn-blue[data-v-b8b3c888]:hover {\n  --bg-opacity: 1;\n  background-color: #2b6cb0;\n  background-color: rgba(43, 108, 176, var(--bg-opacity));\n}\n\n", ""]);
+exports.push([module.i, ".btn[data-v-b8b3c888] {\n  font-weight: 700;\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n  padding-left: 1rem;\n  padding-right: 1rem;\n  border-radius: 0.25rem;\n}\n.btn-blue[data-v-b8b3c888] {\n  --bg-opacity: 1;\n  background-color: #4299e1;\n  background-color: rgba(66, 153, 225, var(--bg-opacity));\n  --text-opacity: 1;\n  color: #fff;\n  color: rgba(255, 255, 255, var(--text-opacity));\n}\n.btn-blue[data-v-b8b3c888]:hover {\n  --bg-opacity: 1;\n  background-color: #2b6cb0;\n  background-color: rgba(43, 108, 176, var(--bg-opacity));\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -10726,7 +10726,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "@-webkit-keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n.loader {\n  border-right-color: transparent;\n  -webkit-animation: loader-rotate 1s linear infinite;\n          animation: loader-rotate 1s linear infinite;\n}\n\n", ""]);
+exports.push([module.i, "@-webkit-keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n.loader {\n  border-right-color: transparent;\n  -webkit-animation: loader-rotate 1s linear infinite;\n          animation: loader-rotate 1s linear infinite;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -55964,7 +55964,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container mx-auto" },
+    { staticClass: "container mx-auto px-4 py-4 overflow-y-auto" },
     [
       _c("h1", { staticClass: "headline text-left" }, [
         _vm._v("Create new requirement")
@@ -57194,9 +57194,14 @@ var render = function() {
     _vm._v(" "),
     _vm.modules.length
       ? _c("div", { staticClass: "flex mb-4" }, [
-          _c("div", { staticClass: "w-1/4 pr-5" }, [_c("requirement-list")], 1),
+          _c(
+            "div",
+            { staticClass: "flex-none px-5" },
+            [_c("requirement-list")],
+            1
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "w-3/4" }, [_c("show-requirement")], 1)
+          _c("div", { staticClass: "flex-none" }, [_c("show-requirement")], 1)
         ])
       : _vm._e()
   ])
@@ -74177,8 +74182,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var vue_js_modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-js-modal */ "./node_modules/vue-js-modal/dist/index.js");
-/* harmony import */ var vue_js_modal__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_js_modal__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var vue_js_modal__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vue-js-modal */ "./node_modules/vue-js-modal/dist/index.js");
+/* harmony import */ var vue_js_modal__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(vue_js_modal__WEBPACK_IMPORTED_MODULE_12__);
 /* harmony import */ var _vuex_modules_notification__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./vuex-modules/notification */ "./resources/js/vuex-modules/notification.js");
 /* harmony import */ var vue_tree_list__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-tree-list */ "./node_modules/vue-tree-list/dist/vue-tree-list.umd.min.js");
 /* harmony import */ var vue_tree_list__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vue_tree_list__WEBPACK_IMPORTED_MODULE_8__);
@@ -74205,7 +74210,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-[vue_router__WEBPACK_IMPORTED_MODULE_4__["default"], dayjs__WEBPACK_IMPORTED_MODULE_0___default.a, vuex__WEBPACK_IMPORTED_MODULE_5__["default"], vue_toast_notification__WEBPACK_IMPORTED_MODULE_2___default.a, vue_tree_list__WEBPACK_IMPORTED_MODULE_8___default.a, vue_js_modal__WEBPACK_IMPORTED_MODULE_6___default.a].forEach(function (x) {
+[vue_router__WEBPACK_IMPORTED_MODULE_4__["default"], dayjs__WEBPACK_IMPORTED_MODULE_0___default.a, vuex__WEBPACK_IMPORTED_MODULE_5__["default"], vue_toast_notification__WEBPACK_IMPORTED_MODULE_2___default.a, vue_tree_list__WEBPACK_IMPORTED_MODULE_8___default.a, vue_js_modal__WEBPACK_IMPORTED_MODULE_12___default.a].forEach(function (x) {
   return Vue.use(x);
 });
 Vue.component('vue-select', vue_select__WEBPACK_IMPORTED_MODULE_11___default.a);

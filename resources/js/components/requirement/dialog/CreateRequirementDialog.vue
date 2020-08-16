@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto">
+    <div class="container mx-auto px-4 py-4 overflow-y-auto">
 
         <h1 class="headline text-left">Create new requirement</h1>
 
