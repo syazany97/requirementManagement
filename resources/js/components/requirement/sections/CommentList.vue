@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="text-center">
+        <div v-if="!commentsLoaded" class="text-center">
             <div class="w-5 h-5 border-2 border-teal-600 rounded-full loader"></div>
         </div>
 

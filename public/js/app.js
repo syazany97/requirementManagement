@@ -56281,7 +56281,13 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    !_vm.commentsLoaded
+      ? _c("div", { staticClass: "text-center" }, [
+          _c("div", {
+            staticClass: "w-5 h-5 border-2 border-teal-600 rounded-full loader"
+          })
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _vm.comments.length && _vm.commentsLoaded
       ? _c(
@@ -56388,18 +56394,7 @@ var render = function() {
       : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
-      _c("div", {
-        staticClass: "w-5 h-5 border-2 border-teal-600 rounded-full loader"
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
