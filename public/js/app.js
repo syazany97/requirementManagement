@@ -2010,6 +2010,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    get: function get(key, attributes, defaultValue) {
+      return _.get(key, attributes, defaultValue);
     }
   }
 });
@@ -55188,7 +55191,7 @@ var render = function() {
             return _c("div", { key: history.id }, [
               _c("span", [_vm._v(_vm._s(history.description))]),
               _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(history.user))])
+              _c("span", [_vm._v(_vm._s(_vm.get(history, "user", "")))])
             ])
           })
         ],
