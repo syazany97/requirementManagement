@@ -2,7 +2,7 @@
 
     <div>
         <div class="text-right">
-            <button @click="redirectToTestCasePage()" class="primary-btn">
+            <button @click="redirectToTestCasePage()" class="btn-primary">
                 <svg fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd"
                           d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
@@ -28,7 +28,7 @@
                 <td class="border px-4 py-2">{{ test.user.name }}</td>
                 <td class="border px-4 py-2">{{ test.created_at | formatDateTime }}</td>
                 <td class="border px-4 py-2"><router-link :to="{name : 'test-case.edit' ,params : {testCase : test.id}}"
-                                                          tag="button" class="primary-btn">View</router-link></td>
+                                                          tag="button" class="btn-primary">View</router-link></td>
             </tr>
             </tbody>
         </table>

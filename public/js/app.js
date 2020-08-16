@@ -55220,7 +55220,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "primary-btn",
+          staticClass: "btn-primary",
           on: {
             click: function($event) {
               return _vm.$modal.show("moduleDialog")
@@ -55246,7 +55246,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "secondary-btn",
+          staticClass: "btn-secondary",
           on: {
             click: function($event) {
               $event.stopPropagation()
@@ -55273,7 +55273,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "secondary-btn",
+          staticClass: "btn-secondary",
           on: {
             click: function($event) {
               $event.stopPropagation()
@@ -55360,7 +55360,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "tertiary-btn pr-3",
+                staticClass: "btn-tertiary pr-3",
                 on: {
                   click: function($event) {
                     return _vm.$modal.hide("moduleDialog")
@@ -55375,7 +55375,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "primary-btn",
+                staticClass: "btn-primary",
                 on: {
                   click: function($event) {
                     return _vm.addModule()
@@ -56133,7 +56133,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "tertiary-btn pr-3",
+            staticClass: "btn-tertiary pr-3",
             on: {
               click: function($event) {
                 return _vm.closeDialog()
@@ -56148,7 +56148,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "primary-btn",
+            staticClass: "btn-primary",
             on: {
               click: function($event) {
                 return _vm.addRequirement()
@@ -56348,7 +56348,7 @@ var render = function() {
             expression: "!showCommentTextField"
           }
         ],
-        staticClass: "secondary-btn",
+        staticClass: "btn-secondary",
         on: {
           click: function($event) {
             _vm.showCommentTextField = true
@@ -56386,7 +56386,7 @@ var render = function() {
           _c("div", { staticClass: "text-right" }, [
             _c(
               "button",
-              { staticClass: "secondary-btn", on: { click: _vm.postComment } },
+              { staticClass: "btn-secondary", on: { click: _vm.postComment } },
               [_vm._v("Post")]
             )
           ])
@@ -56540,7 +56540,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "primary-btn",
+          staticClass: "btn-primary",
           on: {
             click: function($event) {
               return _vm.redirectToTestCasePage()
@@ -56603,7 +56603,7 @@ var render = function() {
                       _c(
                         "router-link",
                         {
-                          staticClass: "primary-btn",
+                          staticClass: "btn-primary",
                           attrs: {
                             to: {
                               name: "test-case.edit",
@@ -57297,7 +57297,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "button",
-            { staticClass: "primary-btn", on: { click: _vm.addStep } },
+            { staticClass: "btn-primary", on: { click: _vm.addStep } },
             [_vm._v("Add step")]
           ),
           _vm._v(" "),
@@ -57535,7 +57535,7 @@ var render = function() {
             ? _c(
                 "button",
                 {
-                  staticClass: "primary-btn",
+                  staticClass: "btn-primary",
                   on: {
                     click: function($event) {
                       return _vm.submitTestCase()
@@ -57582,7 +57582,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", { staticClass: "border px-4 py-2" }, [
-      _c("button", { staticClass: "primary-btn" }, [_vm._v("Add Step")])
+      _c("button", { staticClass: "btn-primary" }, [_vm._v("Add Step")])
     ])
   }
 ]

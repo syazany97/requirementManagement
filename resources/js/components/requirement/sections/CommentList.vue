@@ -23,7 +23,7 @@
             </div>
         </div>
         <span v-if="!comments.length && commentsLoaded">No comment yet for this requirement</span>
-        <button class="secondary-btn" v-show="!showCommentTextField" @click="showCommentTextField = true">Add comment
+        <button class="btn-secondary" v-show="!showCommentTextField" @click="showCommentTextField = true">Add comment
         </button>
         <div v-if="showCommentTextField">
              <textarea v-model="comment"
@@ -31,7 +31,7 @@
                        class="bg-grey-dark rounded leading-normal resize-none w-full h-24 py-2 px-3">
             </textarea>
             <div class="text-right">
-                <button class="secondary-btn" @click="postComment">Post</button>
+                <button class="btn-secondary" @click="postComment">Post</button>
             </div>
         </div>
     </div>

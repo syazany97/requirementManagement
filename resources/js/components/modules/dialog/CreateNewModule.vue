@@ -2,7 +2,7 @@
     <div>
 
         <button @click="$modal.show('moduleDialog')"
-                class="primary-btn">
+                class="btn-primary">
             <svg fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd"
                       d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
@@ -11,7 +11,7 @@
             <span>Add module</span>
         </button>
 
-        <button @click.stop="$modal.show('requirementDialog')" class="secondary-btn">
+        <button @click.stop="$modal.show('requirementDialog')" class="btn-secondary">
             <svg fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd"
                       d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
@@ -20,7 +20,7 @@
             <span>Add requirement</span>
         </button>
 
-        <button @click.stop="testDialog = !testDialog" class="secondary-btn">
+        <button @click.stop="testDialog = !testDialog" class="btn-secondary">
             <svg fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd"
                       d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
@@ -44,11 +44,11 @@
                        id="moduleName" type="text" placeholder="Name">
 
                 <div class="inline-flex text-right pt-4">
-                    <button @click="$modal.hide('moduleDialog')" class="tertiary-btn pr-3">
+                    <button @click="$modal.hide('moduleDialog')" class="btn-tertiary pr-3">
                         <span>Cancel</span>
                     </button>
                     <div class="divider"></div>
-                    <button @click="addModule()" class="primary-btn">
+                    <button @click="addModule()" class="btn-primary">
                         <span>Create</span>
                     </button>
                 </div>

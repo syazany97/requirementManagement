@@ -1,8 +1,8 @@
-.base-button {
+.btn {
    @apply font-medium py-1 px-4 rounded inline-flex items-center text-sm
 }
 
-.primary-btn {
+.btn-primary {
     background-color: rgb(84, 105, 212);
     box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0) 0px 0px 0px 0px,
@@ -11,27 +11,26 @@
     rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
-    @apply .base-button text-white ;
+    @apply .btn text-white ;
 }
 
-.primary-btn:hover {
-    @apply bg-blue-700 .base-button
+.btn-primary:hover {
+    @apply bg-blue-700 .btn
 }
 
-.secondary-btn {
-    @apply bg-gray-300 text-gray-800 .base-button
+.btn-secondary {
+    @apply bg-gray-300 text-gray-800 .btn
 }
 
-
-.secondary-btn:hover {
+.btn-secondary:hover {
     @apply bg-gray-400
 }
 
-.tertiary-btn {
-    @apply text-gray-800 .base-button
+.btn-tertiary {
+    @apply text-gray-800 .btn
 }
 
-.tertiary-btn:hover {
+.btn-tertiary:hover {
     @apply bg-gray-400
 }
 
