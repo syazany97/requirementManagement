@@ -95,6 +95,14 @@
     list-style: none;
 }
 
-/*.primary-btn:focus {*/
-/*    @apply bg-white, outline*/
-/*}*/
+.tab {
+    @apply no-underline text-gray-700 border-b-2 border-transparent tracking-wide font-bold text-xs py-3 mr-8
+}
+
+.active-tab {
+    @apply .tab border-purple-700
+}
+
+.tab:hover {
+    @apply border-gray-500
+}

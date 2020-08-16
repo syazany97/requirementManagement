@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <button @click.stop="dialog = true"
                 class="primary-btn">
             <svg fill="currentColor" viewBox="0 0 20 20">

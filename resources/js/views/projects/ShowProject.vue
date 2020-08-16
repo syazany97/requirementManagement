@@ -1,6 +1,6 @@
 <template>
 
-    <v-container fluid>
+    <div class="lg:container lg:mx-auto">
         <!-- create new module dialog -->
         <div class="text-right pb-2">
             <create-new-module></create-new-module>
@@ -17,7 +17,7 @@
             </div>
         </div>
 
-    </v-container>
+    </div>
 
 </template>
 

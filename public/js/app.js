@@ -2284,6 +2284,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3520,6 +3521,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(dayjs__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _sections_AttachmentList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../sections/AttachmentList */ "./resources/js/components/requirement/sections/AttachmentList.vue");
 /* harmony import */ var _sections_CommentList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../sections/CommentList */ "./resources/js/components/requirement/sections/CommentList.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -56830,6 +56848,8 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
       _c(
         "v-row",
         [
@@ -56974,7 +56994,32 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("nav", { staticClass: "bg-white px-8 pt-2 shadow-md" }, [
+      _c("div", { staticClass: "-mb-px flex justify-center" }, [
+        _c("a", { staticClass: "tab", attrs: { href: "#" } }, [
+          _vm._v("\n                Home\n            ")
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "tab", attrs: { href: "#" } }, [
+          _vm._v("\n                Products\n            ")
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "active-tab", attrs: { href: "#" } }, [
+          _vm._v("\n                Discounts\n            ")
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "tab last-tab", attrs: { href: "#" } }, [
+          _vm._v("\n                Customers\n            ")
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -57655,7 +57700,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("v-container", { attrs: { fluid: "" } }, [
+  return _c("div", { staticClass: "lg:container lg:mx-auto" }, [
     _c("div", { staticClass: "text-right pb-2" }, [_c("create-new-module")], 1),
     _vm._v(" "),
     _vm.modules.length
