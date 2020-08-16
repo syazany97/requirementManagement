@@ -3424,6 +3424,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -55873,7 +55893,7 @@ var render = function() {
         "div",
         { staticClass: "pa-2", attrs: { outlined: "", tile: "" } },
         [
-          _c("nav", { staticClass: "px-8 pt-2" }, [
+          _c("nav", { staticClass: "px-1 pt-2" }, [
             _c(
               "div",
               { staticClass: "-mb-px flex justify-left" },
@@ -56401,158 +56421,78 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("h6", { staticClass: "text-black text-xl pt-4" }, [
-        _vm._v(
-          _vm._s(_vm.requirement.numbering) + " " + _vm._s(_vm.requirement.name)
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "v-row",
-        [
-          _c(
-            "v-col",
-            { attrs: { cols: "6", md: "6" } },
-            _vm._l(_vm.firstList, function(value, propertyName) {
-              return _c(
-                "v-list-item",
-                { key: propertyName, attrs: { "two-line": "" } },
-                [
-                  _c(
-                    "v-list-item-content",
-                    [
-                      _c("v-list-item-title", [
-                        _vm._v(_vm._s(_vm._f("titleCase")(propertyName)))
-                      ]),
-                      _vm._v(" "),
-                      propertyName !== "assignees"
-                        ? _c("v-list-item-subtitle", [_vm._v(_vm._s(value))])
-                        : _vm._l(value, function(name) {
-                            return _c("div", [
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-blue-700 bg-blue-100 border border-blue-300 "
-                                },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "text-xs font-normal leading-none max-w-full flex-initial"
-                                    },
-                                    [_vm._v(_vm._s(name))]
-                                  )
-                                ]
-                              )
-                            ])
-                          })
-                    ],
-                    2
-                  )
-                ],
-                1
-              )
-            }),
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-col",
-            { attrs: { cols: "6", md: "6" } },
-            _vm._l(_vm.secondList, function(value, propertyName) {
-              return _c(
-                "v-list-item",
-                { key: propertyName, attrs: { "two-line": "" } },
-                [
-                  _c(
-                    "v-list-item-content",
-                    [
-                      _c("v-list-item-title", [
-                        _vm._v(_vm._s(_vm._f("titleCase")(propertyName)))
-                      ]),
-                      _vm._v(" "),
-                      _c("v-list-item-subtitle", [_vm._v(_vm._s(value))])
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            }),
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("h6", [_vm._v("Description")]),
-      _vm._v(" "),
-      _c("span", {
-        domProps: { innerHTML: _vm._s(_vm.requirement.description) }
-      }),
-      _vm._v(" "),
-      _c("h5", [_vm._v("Attachments")]),
-      _vm._v(" "),
-      _c("attachment-list", { attrs: { requirement: _vm.requirement } }),
-      _vm._v(" "),
-      _c(
-        "ul",
-        { staticClass: "nav nav-pills" },
-        _vm._l(_vm.tabs, function(tab) {
-          return _c("li", { key: tab, staticClass: "nav-item" }, [
-            _c(
-              "a",
-              {
-                class: "nav-link " + (_vm.currentTab === tab ? "active" : ""),
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    _vm.currentTab = tab
-                  }
-                }
-              },
-              [_vm._v(_vm._s(_vm._f("titleCase")(tab)))]
-            )
-          ])
-        }),
-        0
-      ),
-      _vm._v(" "),
+  return _c("div", [
+    _c("h6", { staticClass: "text-black text-xl pt-4" }, [
+      _vm._v(
+        _vm._s(_vm.requirement.numbering) + " " + _vm._s(_vm.requirement.name)
+      )
+    ]),
+    _vm._v(" "),
+    _c("h6", [_vm._v("Description")]),
+    _vm._v(" "),
+    _c("span", {
+      domProps: { innerHTML: _vm._s(_vm.requirement.description) }
+    }),
+    _vm._v(" "),
+    _c("h5", [_vm._v("Attachments")]),
+    _vm._v(" "),
+    _c("nav", { staticClass: "px-1 pt-2" }, [
       _c(
         "div",
-        {
-          directives: [
+        { staticClass: "-mb-px flex justify-left" },
+        _vm._l(_vm.tabs, function(tab) {
+          return _c(
+            "a",
             {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.currentTab === "comments",
-              expression: "currentTab === 'comments'"
-            }
-          ]
-        },
-        [
-          _c("h5", { staticClass: "text-black text-xl font-bold" }, [
-            _vm._v("Comments")
-          ]),
-          _vm._v(" "),
-          _c("comment-list", {
-            attrs: {
-              requirement: _vm.requirement,
-              "repository-type": "requirement"
-            }
-          })
-        ],
-        1
+              class: _vm.currentTab === tab ? "active-tab" : "tab",
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  _vm.currentTab = tab
+                }
+              }
+            },
+            [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm._f("titleCase")(tab)) +
+                  "\n            "
+              )
+            ]
+          )
+        }),
+        0
       )
-    ],
-    1
-  )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.currentTab === "comments",
+            expression: "currentTab === 'comments'"
+          }
+        ]
+      },
+      [
+        _c("h5", { staticClass: "text-black text-xl font-bold" }, [
+          _vm._v("Comments")
+        ]),
+        _vm._v(" "),
+        _c("comment-list", {
+          attrs: {
+            requirement: _vm.requirement,
+            "repository-type": "requirement"
+          }
+        })
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -57235,7 +57175,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "lg:container lg:mx-auto" }, [
+  return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "text-right pb-2" }, [_c("create-new-module")], 1),
     _vm._v(" "),
     _vm.modules.length

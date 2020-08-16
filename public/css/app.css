@@ -803,6 +803,7 @@ video {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  display: none;
   border-width: 1px;
   display: block;
   width: 100%;
@@ -813,9 +814,6 @@ video {
   color: #4a5568;
   color: rgba(74, 85, 104, var(--text-opacity));
   border-width: 1px;
-  --border-opacity: 1;
-  border-color: #f56565;
-  border-color: rgba(245, 101, 101, var(--border-opacity));
   border-radius: 0.25rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -823,6 +821,12 @@ video {
   padding-right: 1rem;
   margin-bottom: 0.75rem;
   line-height: 1.25;
+}
+
+.primary-input:focus {
+  --bg-opacity: 1;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, var(--bg-opacity));
 }
 
 .primary-label {
@@ -863,6 +867,12 @@ video {
   width: 100%;
   min-height: 75px;
   border: 1px solid grey;
+}
+
+.text-input:focus {
+  --bg-opacity: 1;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, var(--bg-opacity));
 }
 
 .divider {
@@ -944,6 +954,32 @@ video {
   --border-opacity: 1;
   border-color: #a0aec0;
   border-color: rgba(160, 174, 192, var(--border-opacity));
+}
+
+.search-textfield {
+  display: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 0.875rem;
+  --text-opacity: 1;
+  color: #718096;
+  color: rgba(113, 128, 150, var(--text-opacity));
+  border-width: 2px;
+  border-radius: 0.25rem;
+  display: block;
+}
+
+.search-textfield:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.search-textfield:hover {
+  --bg-opacity: 1;
+  background-color: #f7fafc;
+  background-color: rgba(247, 250, 252, var(--bg-opacity));
 }
 
 .space-y-0 > :not(template) ~ :not(template){

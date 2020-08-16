@@ -3,47 +3,67 @@
 
         <h6 class="text-black text-xl pt-4">{{ requirement.numbering }} {{ requirement.name }}</h6>
 
-        <v-row>
-            <v-col cols="6" md="6">
-                <v-list-item v-for="(value, propertyName) in firstList" v-bind:key="propertyName" two-line>
-                    <v-list-item-content>
-                        <v-list-item-title>{{ propertyName | titleCase }}</v-list-item-title>
-                        <v-list-item-subtitle v-if="propertyName !== 'assignees'">{{ value }}</v-list-item-subtitle>
-                        <div v-else v-for="name in value">
-                            <div
-                                class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-blue-700 bg-blue-100 border border-blue-300 ">
-                                <div class="text-xs font-normal leading-none max-w-full flex-initial">{{ name }}</div>
-                            </div>
-                        </div>
+        <!--        <v-row>-->
+        <!--            <v-col cols="6" md="6">-->
+        <!--                <v-list-item v-for="(value, propertyName) in firstList" v-bind:key="propertyName" two-line>-->
+        <!--                    <v-list-item-content>-->
+        <!--                        <v-list-item-title>{{ propertyName | titleCase }}</v-list-item-title>-->
+        <!--                        <v-list-item-subtitle v-if="propertyName !== 'assignees'">{{ value }}</v-list-item-subtitle>-->
+        <!--                        <div v-else v-for="name in value">-->
+        <!--                            <div-->
+        <!--                                class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-blue-700 bg-blue-100 border border-blue-300 ">-->
+        <!--                                <div class="text-xs font-normal leading-none max-w-full flex-initial">{{ name }}</div>-->
+        <!--                            </div>-->
+        <!--                        </div>-->
 
-                    </v-list-item-content>
-                </v-list-item>
-            </v-col>
+        <!--                    </v-list-item-content>-->
+        <!--                </v-list-item>-->
+        <!--            </v-col>-->
 
-            <v-col cols="6" md="6">
-                <v-list-item v-for="(value, propertyName) in secondList" v-bind:key="propertyName" two-line>
-                    <v-list-item-content>
-                        <v-list-item-title>{{ propertyName | titleCase }}</v-list-item-title>
-                        <v-list-item-subtitle>{{ value }}</v-list-item-subtitle>
-                    </v-list-item-content>
-                </v-list-item>
-            </v-col>
-        </v-row>
+        <!--            <v-col cols="6" md="6">-->
+        <!--                <v-list-item v-for="(value, propertyName) in secondList" v-bind:key="propertyName" two-line>-->
+        <!--                    <v-list-item-content>-->
+        <!--                        <v-list-item-title>{{ propertyName | titleCase }}</v-list-item-title>-->
+        <!--                        <v-list-item-subtitle>{{ value }}</v-list-item-subtitle>-->
+        <!--                    </v-list-item-content>-->
+        <!--                </v-list-item>-->
+        <!--            </v-col>-->
+        <!--        </v-row>-->
 
         <h6>Description</h6>
         <span v-html="requirement.description"></span>
 
         <!-- Attachments -->
         <h5>Attachments</h5>
-        <attachment-list :requirement="requirement"></attachment-list>
+        <!--        <attachment-list :requirement="requirement"></attachment-list>-->
         <!-- // Attachments -->
 
-        <ul class="nav nav-pills">
-            <li v-for="tab in tabs" v-bind:key="tab" class="nav-item">
-                <a :class="'nav-link ' +  (currentTab === tab ? 'active' : '')"
-                   href="#" @click.prevent="currentTab = tab">{{ tab | titleCase }}</a>
-            </li>
-        </ul>
+        <nav class="px-1 pt-2">
+            <div class="-mb-px flex justify-left">
+                <a v-for="tab in tabs" :class="currentTab === tab ? 'active-tab' : 'tab'" href="#"
+                   @click.prevent="currentTab = tab">
+                    {{ tab | titleCase }}
+                </a>
+            </div>
+
+        </nav>
+
+        <!--        <nav class="px-1 pt-2">-->
+        <!--            <div class="-mb-px flex justify-left">-->
+        <!--                <a v-for="tab in tabs" :class="currentTab === tab ? 'active-tab' : 'tab'" href="#"-->
+        <!--                   @click.prevent="currentTab = tab">-->
+        <!--                    {{tab.tab}}-->
+        <!--                </a>-->
+        <!--            </div>-->
+        <!--        </nav>-->
+
+        <!--        <ul class="nav nav-pills">-->
+        <!--            <li v-for="tab in tabs" v-bind:key="tab" class="nav-item">-->
+        <!--                <a :class="'nav-link ' +  (currentTab === tab ? 'active' : '')"-->
+        <!--                   href="#" @click.prevent="currentTab = tab">{{ tab | titleCase }}</a>-->
+        <!--            </li>-->
+        <!--        </ul>-->
+
 
         <div v-show="currentTab === 'comments'">
             <h5 class="text-black text-xl font-bold">Comments</h5>

@@ -30,9 +30,18 @@
     @auth
         @include('layouts.topBar')
         <toast-notification></toast-notification>
-        <div class="pt-16">
-            <router-view :key="$route.fullPath"></router-view>
+        <div class="pt-16 flex">
+        <div class="flex-auto">
+{{--                @include('layouts.sideBar')--}}
+            </div>
+            <div class="flex-auto">
+                <router-view :key="$route.fullPath"></router-view>
+            </div>
         </div>
+
+
+
+
     @endauth
 
 </div>

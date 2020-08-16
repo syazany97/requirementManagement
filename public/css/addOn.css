@@ -36,9 +36,13 @@
 }
 
 .primary-input {
-    @apply appearance-none border block w-full bg-gray-200
-    text-gray-700 border border-red-500 rounded py-1
+    @apply appearance-none hidden border block w-full bg-gray-200
+    text-gray-700 border rounded py-1
     px-4 mb-3 leading-tight
+}
+
+.primary-input:focus {
+    @apply bg-white
 }
 
 .primary-label {
@@ -64,6 +68,10 @@
     width: 100%;
     min-height: 75px;
     border: 1px solid grey;
+}
+
+.text-input:focus {
+    @apply bg-white
 }
 
 .divider {
@@ -117,6 +125,18 @@
 
 .tab:hover {
     @apply border-gray-500
+}
+
+.search-textfield {
+ @apply hidden px-4 py-1 text-sm text-gray-600 border-2 rounded block
+}
+
+.search-textfield:focus {
+ @apply outline-none shadow-none
+}
+
+.search-textfield:hover {
+ @apply bg-gray-100
 }
 
 
