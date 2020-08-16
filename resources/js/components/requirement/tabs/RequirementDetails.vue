@@ -3,23 +3,6 @@
 
         <h6 class="text-black text-xl pt-4">{{ requirement.numbering }} {{ requirement.name }}</h6>
 
-        <nav class="bg-white px-8 pt-2 shadow-md">
-            <div class="-mb-px flex justify-center">
-                <a class="tab" href="#">
-                    Home
-                </a>
-                <a class="tab" href="#">
-                    Products
-                </a>
-                <a class="active-tab" href="#">
-                    Discounts
-                </a>
-                <a class="tab last-tab" href="#">
-                    Customers
-                </a>
-            </div>
-        </nav>
-
         <v-row>
             <v-col cols="6" md="6">
                 <v-list-item v-for="(value, propertyName) in firstList" v-bind:key="propertyName" two-line>

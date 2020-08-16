@@ -100,7 +100,7 @@
 }
 
 .active-tab {
-    @apply .tab border-purple-700
+    @apply .tab text-purple-700 border-purple-700
 }
 
 .tab:hover {

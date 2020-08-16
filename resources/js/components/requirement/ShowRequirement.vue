@@ -5,12 +5,20 @@
         outlined
         tile
     >
-        <ul class="nav nav-pills">
-            <li v-for="tab in items" class="nav-item">
-                <a :class="'nav-link ' +  (currentTab === tab.component ? 'active' : '')"
-                   href="#" @click.prevent="currentTab= tab.component">{{tab.tab}}</a>
-            </li>
-        </ul>
+<!--        <ul class="nav nav-pills">-->
+<!--            <li v-for="tab in items" class="nav-item">-->
+<!--                <a :class="'nav-link ' +  (currentTab === tab.component ? 'active' : '')"-->
+<!--                   href="#" @click.prevent="currentTab= tab.component">{{tab.tab}}</a>-->
+<!--            </li>-->
+<!--        </ul>-->
+
+        <nav class="px-8 pt-2">
+            <div class="-mb-px flex justify-left">
+                <a v-for="tab in items" :class="currentTab === tab.component ? 'active-tab' : 'tab'" href="#" @click.prevent="currentTab= tab.component">
+                    {{tab.tab}}
+                </a>
+            </div>
+        </nav>
 
         <div v-for="tab in items" v-bind:key="tab.component">
             <component v-show="currentTab === tab.component"  v-bind:is="tab.component"></component>
