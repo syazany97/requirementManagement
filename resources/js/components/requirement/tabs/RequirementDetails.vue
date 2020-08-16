@@ -30,6 +30,23 @@
         <!--            </v-col>-->
         <!--        </v-row>-->
 
+
+        <div class="flex">
+
+            <div v-for="(value, propertyName) in firstList" v-bind:key="propertyName" class="flex-1 pl-1 mr-16">
+                <div v-if="propertyName !== 'assignees'">
+                    <div class="font-medium">{{ propertyName | titleCase }}</div>
+                    <div class="text-gray-600 text-sm">{{ value }}</div>
+                </div>
+
+                <div v-else>
+                    <div v-if="propertyName === 'assignees'" class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-blue-700
+                bg-blue-100 border border-blue-300 ">
+                        <div class="text-xs font-normal leading-none max-w-full flex-initial">{{ name }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <h6>Description</h6>
         <span v-html="requirement.description"></span>
 
@@ -48,25 +65,8 @@
 
         </nav>
 
-        <!--        <nav class="px-1 pt-2">-->
-        <!--            <div class="-mb-px flex justify-left">-->
-        <!--                <a v-for="tab in tabs" :class="currentTab === tab ? 'active-tab' : 'tab'" href="#"-->
-        <!--                   @click.prevent="currentTab = tab">-->
-        <!--                    {{tab.tab}}-->
-        <!--                </a>-->
-        <!--            </div>-->
-        <!--        </nav>-->
-
-        <!--        <ul class="nav nav-pills">-->
-        <!--            <li v-for="tab in tabs" v-bind:key="tab" class="nav-item">-->
-        <!--                <a :class="'nav-link ' +  (currentTab === tab ? 'active' : '')"-->
-        <!--                   href="#" @click.prevent="currentTab = tab">{{ tab | titleCase }}</a>-->
-        <!--            </li>-->
-        <!--        </ul>-->
-
 
         <div v-show="currentTab === 'comments'">
-            <h5 class="text-black text-xl font-bold">Comments</h5>
             <comment-list :requirement="requirement" repository-type="requirement"/>
         </div>
     </div>
@@ -110,6 +110,9 @@ export default {
                 priority: this.get(this.requirement, 'priority.title', ''),
                 type: this.requirement.type
             }
+        },
+        list() {
+            return [this.firstList, this.secondList]
         },
         capitalize(value) {
             if (!value) return '';

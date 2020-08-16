@@ -7,7 +7,7 @@
         <div v-if="comments.length && commentsLoaded">
             <div v-for="comment in comments" v-bind:key="comment.id">
                 <div class="flex justify-between mb-1">
-                    <p class="text-grey-darkest leading-normal text-lg">{{ comment.details }}</p>
+                    <p class="text-grey-darkest leading-normal text-base">{{ comment.details }}</p>
                     <button v-if="comment.meta.permissions.delete"
                             class="text-red hover:bg-red hover:text-white
                             py-2 px-4 rounded tracking-wide mb-2 md:mb-0

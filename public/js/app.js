@@ -3485,6 +3485,9 @@ __webpack_require__.r(__webpack_exports__);
         type: this.requirement.type
       };
     },
+    list: function list() {
+      return [this.firstList, this.secondList];
+    },
     capitalize: function capitalize(value) {
       if (!value) return '';
       return _.capitalize(value);
@@ -56297,7 +56300,7 @@ var render = function() {
               _c("div", { staticClass: "flex justify-between mb-1" }, [
                 _c(
                   "p",
-                  { staticClass: "text-grey-darkest leading-normal text-lg" },
+                  { staticClass: "text-grey-darkest leading-normal text-base" },
                   [_vm._v(_vm._s(comment.details))]
                 ),
                 _vm._v(" "),
@@ -56423,6 +56426,51 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "flex" },
+      _vm._l(_vm.firstList, function(value, propertyName) {
+        return _c(
+          "div",
+          { key: propertyName, staticClass: "flex-1 pl-1 mr-16" },
+          [
+            propertyName !== "assignees"
+              ? _c("div", [
+                  _c("div", { staticClass: "font-medium" }, [
+                    _vm._v(_vm._s(_vm._f("titleCase")(propertyName)))
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "text-gray-600 text-sm" }, [
+                    _vm._v(_vm._s(value))
+                  ])
+                ])
+              : _c("div", [
+                  propertyName === "assignees"
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-blue-700\n            bg-blue-100 border border-blue-300 "
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "text-xs font-normal leading-none max-w-full flex-initial"
+                            },
+                            [_vm._v(_vm._s(_vm.name))]
+                          )
+                        ]
+                      )
+                    : _vm._e()
+                ])
+          ]
+        )
+      }),
+      0
+    ),
+    _vm._v(" "),
     _c("h6", [_vm._v("Description")]),
     _vm._v(" "),
     _c("span", {
@@ -56474,10 +56522,6 @@ var render = function() {
         ]
       },
       [
-        _c("h5", { staticClass: "text-black text-xl font-bold" }, [
-          _vm._v("Comments")
-        ]),
-        _vm._v(" "),
         _c("comment-list", {
           attrs: {
             requirement: _vm.requirement,
