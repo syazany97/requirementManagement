@@ -49,6 +49,17 @@ Vue.filter('titleCase', function(value) {
     return _.startCase(_.toLower(value));
 })
 
+// filters
+Vue.filter('limitWords', function(value) {
+    if (!value) return '';
+    value = value.toString();
+
+    if (value.length >= 60) {
+        return value.substring(0, 60) + '...';
+    }
+    return value;
+});
+
 
 const app = new Vue({
     el: '#app',

@@ -1,55 +1,54 @@
 <template>
-    <v-card>
-        <v-card-title class="headline">New Project</v-card-title>
+    <div class="container mx-auto px-4 py-4 overflow-y-auto">
 
-        <v-card-text>
-            <v-form
-                ref="form"
-                v-model="valid"
-                lazy-validation
-            >
-                <v-text-field
-                    v-model="projectName"
-                    label="Name"
-                    required
-                ></v-text-field>
+        <h1 class="headline text-left">Create new project</h1>
 
-                <v-text-field
-                    v-model="projectDescription"
-                ></v-text-field>
+        <label class="primary-label" for="projectName">
+            Name
+        </label>
 
-                <v-select
-                    v-model="projectStatusId"
-                    :items="projectStatuses"
-                    item-text="title"
-                    item-value="id"
-                    label="Standard"
-                ></v-select>
-            </v-form>
-        </v-card-text>
+        <input class="primary-input"
+               v-model="projectName"
+               id="projectName" name="projectName"
+               type="text" placeholder="Name">
 
-        <v-card-actions>
-            <v-spacer></v-spacer>
+        <label class="primary-label" for="projectDescription">
+            Description
+        </label>
 
-            <v-btn
-                color="primary"
-                @click="dialog = false"
-            >
-                Cancel
-            </v-btn>
+        <input class="primary-input"
+               v-model="projectDescription"
+               id="projectDescription" name="projectDescription"
+               type="text" placeholder="Description">
 
-            <v-btn
-                color="primary"
-                @click="createProject()"
-            >
-                Create
-            </v-btn>
-        </v-card-actions>
-    </v-card>
+        <label class="primary-label" for="projectStatus">
+            Project Status
+        </label>
+
+        <vue-select
+            v-model="projectStatusId"
+            name="projectStatus"
+            id="projectStatus"
+            :options="projectStatuses"
+            label="title"
+            :reduce="title => title.id"
+        ></vue-select>
+
+        <div class="inline-flex text-right pt-4">
+            <button @click="dialog = false" class="btn-tertiary pr-3">
+                <span>Cancel</span>
+            </button>
+            <div class="divider"></div>
+            <button @click="createProject()" class="btn-primary">
+                <span>Create</span>
+            </button>
+        </div>
+    </div>
 </template>
 
 <script>
     import projectRepository from "../../../repositories/projectRepository";
+
     export default {
         name: "CreateProjectDialog",
         data() {
@@ -57,8 +56,8 @@
                 valid: true,
                 projectName: "",
                 projectDescription: "",
-                projectStatusId : "",
-                projectStatuses : []
+                projectStatusId: "",
+                projectStatuses: []
             }
         },
         created() {
@@ -67,9 +66,9 @@
         methods: {
             createProject() {
                 projectRepository.store({
-                    name : this.projectName,
-                    description : this.projectDescription,
-                    project_status_id : this.projectStatusId
+                    name: this.projectName,
+                    description: this.projectDescription,
+                    project_status_id: this.projectStatusId
                 }).then(res => {
                     this.$emit('fetch-projects', 'fetchProjects');
                     this.projectName = "";

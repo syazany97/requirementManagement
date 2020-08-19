@@ -2,16 +2,13 @@
     <div>
         <h1>Projects</h1>
         <v-col class="text-end">
-            <v-btn @click.stop="projectDialog = true" color="primary" small>
-                <v-icon left dark>mdi-plus</v-icon>
+            <button @click.stop="$modal.show('projectDialog')" class="btn-primary">
                 New project
-            </v-btn>
-            <v-dialog
-                v-model="projectDialog"
-                max-width="500"
+            </button>
+            <modal name="projectDialog"
             >
                 <create-project-dialog @fetch-projects="fetchProjects(); projectDialog = false"></create-project-dialog>
-            </v-dialog>
+            </modal>
 
         </v-col>
         <div>

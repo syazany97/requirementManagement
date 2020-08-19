@@ -2344,8 +2344,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CreateProjectDialog",
@@ -3772,9 +3770,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
-//
 //
 //
 //
@@ -10726,7 +10721,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "@-webkit-keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n.loader {\n  border-right-color: transparent;\n  -webkit-animation: loader-rotate 1s linear infinite;\n          animation: loader-rotate 1s linear infinite;\n}\r\n\r\n", ""]);
+exports.push([module.i, "@-webkit-keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n.loader {\n  border-right-color: transparent;\n  -webkit-animation: loader-rotate 1s linear infinite;\n          animation: loader-rotate 1s linear infinite;\n}\n\n", ""]);
 
 // exports
 
@@ -55599,103 +55594,133 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-card",
+    "div",
+    { staticClass: "container mx-auto px-4 py-4 overflow-y-auto" },
     [
-      _c("v-card-title", { staticClass: "headline" }, [_vm._v("New Project")]),
+      _c("h1", { staticClass: "headline text-left" }, [
+        _vm._v("Create new project")
+      ]),
       _vm._v(" "),
       _c(
-        "v-card-text",
-        [
-          _c(
-            "v-form",
-            {
-              ref: "form",
-              attrs: { "lazy-validation": "" },
-              model: {
-                value: _vm.valid,
-                callback: function($$v) {
-                  _vm.valid = $$v
-                },
-                expression: "valid"
-              }
-            },
-            [
-              _c("v-text-field", {
-                attrs: { label: "Name", required: "" },
-                model: {
-                  value: _vm.projectName,
-                  callback: function($$v) {
-                    _vm.projectName = $$v
-                  },
-                  expression: "projectName"
-                }
-              }),
-              _vm._v(" "),
-              _c("v-text-field", {
-                model: {
-                  value: _vm.projectDescription,
-                  callback: function($$v) {
-                    _vm.projectDescription = $$v
-                  },
-                  expression: "projectDescription"
-                }
-              }),
-              _vm._v(" "),
-              _c("v-select", {
-                attrs: {
-                  items: _vm.projectStatuses,
-                  "item-text": "title",
-                  "item-value": "id",
-                  label: "Standard"
-                },
-                model: {
-                  value: _vm.projectStatusId,
-                  callback: function($$v) {
-                    _vm.projectStatusId = $$v
-                  },
-                  expression: "projectStatusId"
-                }
-              })
-            ],
-            1
-          )
-        ],
-        1
+        "label",
+        { staticClass: "primary-label", attrs: { for: "projectName" } },
+        [_vm._v("\n        Name\n    ")]
       ),
       _vm._v(" "),
-      _c(
-        "v-card-actions",
-        [
-          _c("v-spacer"),
-          _vm._v(" "),
-          _c(
-            "v-btn",
-            {
-              attrs: { color: "primary" },
-              on: {
-                click: function($event) {
-                  _vm.dialog = false
-                }
-              }
-            },
-            [_vm._v("\n            Cancel\n        ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "v-btn",
-            {
-              attrs: { color: "primary" },
-              on: {
-                click: function($event) {
-                  return _vm.createProject()
-                }
-              }
-            },
-            [_vm._v("\n            Create\n        ")]
-          )
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.projectName,
+            expression: "projectName"
+          }
         ],
-        1
-      )
+        staticClass: "primary-input",
+        attrs: {
+          id: "projectName",
+          name: "projectName",
+          type: "text",
+          placeholder: "Name"
+        },
+        domProps: { value: _vm.projectName },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.projectName = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c(
+        "label",
+        { staticClass: "primary-label", attrs: { for: "projectDescription" } },
+        [_vm._v("\n        Description\n    ")]
+      ),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.projectDescription,
+            expression: "projectDescription"
+          }
+        ],
+        staticClass: "primary-input",
+        attrs: {
+          id: "projectDescription",
+          name: "projectDescription",
+          type: "text",
+          placeholder: "Description"
+        },
+        domProps: { value: _vm.projectDescription },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.projectDescription = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c(
+        "label",
+        { staticClass: "primary-label", attrs: { for: "projectStatus" } },
+        [_vm._v("\n        Project Status\n    ")]
+      ),
+      _vm._v(" "),
+      _c("vue-select", {
+        attrs: {
+          name: "projectStatus",
+          id: "projectStatus",
+          options: _vm.projectStatuses,
+          label: "title",
+          reduce: function(title) {
+            return title.id
+          }
+        },
+        model: {
+          value: _vm.projectStatusId,
+          callback: function($$v) {
+            _vm.projectStatusId = $$v
+          },
+          expression: "projectStatusId"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "inline-flex text-right pt-4" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn-tertiary pr-3",
+            on: {
+              click: function($event) {
+                _vm.dialog = false
+              }
+            }
+          },
+          [_c("span", [_vm._v("Cancel")])]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "divider" }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn-primary",
+            on: {
+              click: function($event) {
+                return _vm.createProject()
+              }
+            }
+          },
+          [_c("span", [_vm._v("Create")])]
+        )
+      ])
     ],
     1
   )
@@ -56273,7 +56298,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "container" }, [
     !_vm.commentsLoaded
       ? _c("div", { staticClass: "text-center" }, [
           _c("div", {
@@ -56291,7 +56316,7 @@ var render = function() {
                 _c(
                   "p",
                   { staticClass: "text-grey-darkest leading-normal text-base" },
-                  [_vm._v(_vm._s(comment.details))]
+                  [_vm._v(_vm._s(_vm._f("limitWords")(comment.details)))]
                 ),
                 _vm._v(" "),
                 comment.meta.permissions.delete
@@ -57023,37 +57048,22 @@ var render = function() {
         { staticClass: "text-end" },
         [
           _c(
-            "v-btn",
+            "button",
             {
-              attrs: { color: "primary", small: "" },
+              staticClass: "btn-primary",
               on: {
                 click: function($event) {
                   $event.stopPropagation()
-                  _vm.projectDialog = true
+                  return _vm.$modal.show("projectDialog")
                 }
               }
             },
-            [
-              _c("v-icon", { attrs: { left: "", dark: "" } }, [
-                _vm._v("mdi-plus")
-              ]),
-              _vm._v("\n            New project\n        ")
-            ],
-            1
+            [_vm._v("\n            New project\n        ")]
           ),
           _vm._v(" "),
           _c(
-            "v-dialog",
-            {
-              attrs: { "max-width": "500" },
-              model: {
-                value: _vm.projectDialog,
-                callback: function($$v) {
-                  _vm.projectDialog = $$v
-                },
-                expression: "projectDialog"
-              }
-            },
+            "modal",
+            { attrs: { name: "projectDialog" } },
             [
               _c("create-project-dialog", {
                 on: {
@@ -74182,8 +74192,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var vue_js_modal__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vue-js-modal */ "./node_modules/vue-js-modal/dist/index.js");
-/* harmony import */ var vue_js_modal__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(vue_js_modal__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var vue_js_modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-js-modal */ "./node_modules/vue-js-modal/dist/index.js");
+/* harmony import */ var vue_js_modal__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_js_modal__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _vuex_modules_notification__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./vuex-modules/notification */ "./resources/js/vuex-modules/notification.js");
 /* harmony import */ var vue_tree_list__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-tree-list */ "./node_modules/vue-tree-list/dist/vue-tree-list.umd.min.js");
 /* harmony import */ var vue_tree_list__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vue_tree_list__WEBPACK_IMPORTED_MODULE_8__);
@@ -74210,7 +74220,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-[vue_router__WEBPACK_IMPORTED_MODULE_4__["default"], dayjs__WEBPACK_IMPORTED_MODULE_0___default.a, vuex__WEBPACK_IMPORTED_MODULE_5__["default"], vue_toast_notification__WEBPACK_IMPORTED_MODULE_2___default.a, vue_tree_list__WEBPACK_IMPORTED_MODULE_8___default.a, vue_js_modal__WEBPACK_IMPORTED_MODULE_12___default.a].forEach(function (x) {
+[vue_router__WEBPACK_IMPORTED_MODULE_4__["default"], dayjs__WEBPACK_IMPORTED_MODULE_0___default.a, vuex__WEBPACK_IMPORTED_MODULE_5__["default"], vue_toast_notification__WEBPACK_IMPORTED_MODULE_2___default.a, vue_tree_list__WEBPACK_IMPORTED_MODULE_8___default.a, vue_js_modal__WEBPACK_IMPORTED_MODULE_6___default.a].forEach(function (x) {
   return Vue.use(x);
 });
 Vue.component('vue-select', vue_select__WEBPACK_IMPORTED_MODULE_11___default.a);
@@ -74241,6 +74251,17 @@ Vue.filter('formatDateTime', function (value) {
 });
 Vue.filter('titleCase', function (value) {
   return _.startCase(_.toLower(value));
+}); // filters
+
+Vue.filter('limitWords', function (value) {
+  if (!value) return '';
+  value = value.toString();
+
+  if (value.length >= 60) {
+    return value.substring(0, 60) + '...';
+  }
+
+  return value;
 });
 var app = new Vue({
   el: '#app',

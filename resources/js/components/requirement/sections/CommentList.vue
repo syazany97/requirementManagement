@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <div v-if="!commentsLoaded" class="text-center">
             <div class="w-5 h-5 border-2 border-teal-600 rounded-full loader"></div>
         </div>
@@ -7,7 +7,7 @@
         <div v-if="comments.length && commentsLoaded">
             <div v-for="comment in comments" v-bind:key="comment.id">
                 <div class="flex justify-between mb-1">
-                    <p class="text-grey-darkest leading-normal text-base">{{ comment.details }}</p>
+                    <p class="text-grey-darkest leading-normal text-base">{{ comment.details | limitWords }}</p>
                     <button v-if="comment.meta.permissions.delete"
                             class="text-red hover:bg-red hover:text-white
                             py-2 px-4 rounded tracking-wide mb-2 md:mb-0
