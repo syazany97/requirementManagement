@@ -3819,6 +3819,138 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Index.vue",
@@ -3831,7 +3963,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       dense: false,
       fixedHeader: false,
       height: 300,
-      projectDialog: false
+      projectDialog: false,
+      headings: ['Number', 'Name', 'Description', 'No', 'Owner', 'Action '],
+      showHeading: false
     };
   },
   created: function created() {
@@ -57038,146 +57172,401 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("h1", [_vm._v("Projects")]),
-      _vm._v(" "),
-      _c(
-        "v-col",
-        { staticClass: "text-end" },
-        [
-          _c(
-            "button",
-            {
-              staticClass: "btn-primary",
-              on: {
-                click: function($event) {
-                  $event.stopPropagation()
-                  return _vm.$modal.show("projectDialog")
-                }
-              }
-            },
-            [_vm._v("\n            New project\n        ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "modal",
-            { attrs: { name: "projectDialog" } },
-            [
-              _c("create-project-dialog", {
-                on: {
-                  "fetch-projects": function($event) {
-                    _vm.fetchProjects()
-                    _vm.projectDialog = false
-                  }
-                }
-              })
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
+  return _c("div", [
+    _c("h1", [_vm._v("Projects")]),
+    _vm._v(" "),
+    _c("div", [
       _c(
         "div",
+        {
+          staticClass: "container mx-auto py-6 px-4",
+          attrs: { "x-data": "datatables()", "x-cloak": "" }
+        },
         [
-          _c("v-simple-table", {
-            attrs: {
-              dense: _vm.dense,
-              "fixed-header": _vm.fixedHeader,
-              height: _vm.height
+          _c("h1", { staticClass: "text-3xl py-4 border-b mb-10" }, [
+            _vm._v("Datatable")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "bg-teal-200 fixed top-0 left-0 right-0 z-40 w-full shadow",
+              attrs: { "x-show": "selectedRows.length" }
             },
-            scopedSlots: _vm._u([
-              {
-                key: "default",
-                fn: function() {
-                  return [
-                    _c("thead", [
-                      _c("tr", [
-                        _c("th", { staticClass: "text-left" }, [
-                          _vm._v("Number")
-                        ]),
+            [
+              _c("div", { staticClass: "container mx-auto px-4 py-4" }, [
+                _c("div", { staticClass: "flex md:items-center" }, [
+                  _c("div", { staticClass: "mr-4 flex-shrink-0" }, [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "h-8 w-8 text-teal-600",
+                        attrs: { viewBox: "0 0 20 20", fill: "currentColor" }
+                      },
+                      [
+                        _c("path", {
+                          attrs: {
+                            "fill-rule": "evenodd",
+                            d:
+                              "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z",
+                            "clip-rule": "evenodd"
+                          }
+                        })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", {
+                    staticClass: "text-teal-800 text-lg",
+                    attrs: {
+                      "x-html": "selectedRows.length + ' rows are selected'"
+                    }
+                  })
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-4 flex justify-between items-center" }, [
+            _c("div", { staticClass: "flex-1 pr-4" }, [
+              _c("div", { staticClass: "relative md:w-1/3" }, [
+                _c("input", {
+                  staticClass:
+                    "w-full pl-10 pr-4 py-2 rounded-lg shadow focus:outline-none focus:shadow-outline text-gray-600 font-medium",
+                  attrs: { type: "search", placeholder: "Search..." }
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "absolute top-0 left-0 inline-flex items-center p-2"
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "w-6 h-6 text-gray-400",
+                        attrs: {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          viewBox: "0 0 24 24",
+                          "stroke-width": "2",
+                          stroke: "currentColor",
+                          fill: "none",
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round"
+                        }
+                      },
+                      [
+                        _c("rect", {
+                          attrs: {
+                            x: "0",
+                            y: "0",
+                            width: "24",
+                            height: "24",
+                            stroke: "none"
+                          }
+                        }),
                         _vm._v(" "),
-                        _c("th", { staticClass: "text-left" }, [
-                          _vm._v("Name")
-                        ]),
+                        _c("circle", { attrs: { cx: "10", cy: "10", r: "7" } }),
                         _vm._v(" "),
-                        _c("th", { staticClass: "text-left" }, [
-                          _vm._v("Description")
-                        ]),
-                        _vm._v(" "),
-                        _c("th", { staticClass: "text-left" }, [
-                          _vm._v("No of modules")
-                        ]),
-                        _vm._v(" "),
-                        _c("th", { staticClass: "text-left" }, [
-                          _vm._v("Owner")
-                        ]),
-                        _vm._v(" "),
-                        _c("th", { staticClass: "text-left" }, [
-                          _vm._v("Action")
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _vm.projects.length
-                      ? _c(
-                          "tbody",
-                          _vm._l(_vm.projects, function(project, index) {
-                            return _c("tr", { key: project.id }, [
-                              _c("td", [_vm._v(_vm._s(index + 1))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(project.name))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(project.description))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(project.modules_count))]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _vm._v(
-                                  _vm._s(_vm.get(project, "owner.name", null))
-                                )
+                        _c("line", {
+                          attrs: { x1: "21", y1: "21", x2: "15", y2: "15" }
+                        })
+                      ]
+                    )
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("div", { staticClass: "shadow rounded-lg flex" }, [
+                _c("div", { staticClass: "relative" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "rounded-lg inline-flex items-center bg-white hover:text-blue-500 focus:outline-none focus:shadow-outline text-gray-500 font-semibold py-2 px-2 md:px-4",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.showHeading = !_vm.showHeading
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "w-6 h-6 md:hidden",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            viewBox: "0 0 24 24",
+                            "stroke-width": "2",
+                            stroke: "currentColor",
+                            fill: "none",
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round"
+                          }
+                        },
+                        [
+                          _c("rect", {
+                            attrs: {
+                              x: "0",
+                              y: "0",
+                              width: "24",
+                              height: "24",
+                              stroke: "none"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5"
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "hidden md:block" }, [
+                        _vm._v("Display")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "w-5 h-5 ml-1",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "24",
+                            height: "24",
+                            viewBox: "0 0 24 24",
+                            "stroke-width": "2",
+                            stroke: "currentColor",
+                            fill: "none",
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round"
+                          }
+                        },
+                        [
+                          _c("rect", {
+                            attrs: {
+                              x: "0",
+                              y: "0",
+                              width: "24",
+                              height: "24",
+                              stroke: "none"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("polyline", {
+                            attrs: { points: "6 9 12 15 18 9" }
+                          })
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.showHeading
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "z-40 absolute top-0 right-0 w-40 bg-white rounded-lg shadow-lg mt-12 -mr-1 block py-1 overflow-hidden"
+                        },
+                        _vm._l(_vm.headings, function(heading) {
+                          return _c(
+                            "label",
+                            {
+                              staticClass:
+                                "flex justify-start items-center text-truncate hover:bg-gray-100 px-4 py-2"
+                            },
+                            [
+                              _c("div", { staticClass: "text-teal-600 mr-3" }, [
+                                _c("input", {
+                                  staticClass:
+                                    "form-checkbox focus:outline-none focus:shadow-outline",
+                                  attrs: { type: "checkbox", checked: "" },
+                                  on: { click: function($event) {} }
+                                })
                               ]),
                               _vm._v(" "),
                               _c(
-                                "td",
-                                [
-                                  _c(
-                                    "v-btn",
-                                    {
-                                      attrs: { "x-small": "" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.viewProject(project.id)
-                                        }
-                                      }
-                                    },
-                                    [_vm._v("View")]
-                                  )
-                                ],
-                                1
+                                "div",
+                                { staticClass: "select-none text-gray-700" },
+                                [_vm._v(_vm._s(heading))]
                               )
-                            ])
-                          }),
-                          0
-                        )
-                      : _vm._e()
-                  ]
-                },
-                proxy: true
-              }
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    : _vm._e()
+                ])
+              ])
             ])
-          })
-        ],
-        1
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative",
+              staticStyle: { height: "405px" }
+            },
+            [
+              _c(
+                "table",
+                {
+                  staticClass:
+                    "border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative"
+                },
+                [
+                  _c("thead", [
+                    _c(
+                      "tr",
+                      { staticClass: "text-left" },
+                      [
+                        _c(
+                          "th",
+                          {
+                            staticClass:
+                              "py-2 px-3 sticky top-0 border-b border-gray-200 bg-gray-100"
+                          },
+                          [
+                            _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "text-teal-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer"
+                              },
+                              [
+                                _c("input", {
+                                  staticClass:
+                                    "form-checkbox focus:outline-none focus:shadow-outline",
+                                  attrs: { type: "checkbox" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.selectAllCheckbox($event)
+                                    }
+                                  }
+                                })
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm._l(_vm.headings, function(heading) {
+                          return _c(
+                            "th",
+                            {
+                              staticClass:
+                                "bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs"
+                            },
+                            [_vm._v(_vm._s(heading))]
+                          )
+                        })
+                      ],
+                      2
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    [
+                      _vm._l(_vm.projects, function(project) {
+                        return _c("tr", { key: project.id }, [
+                          _vm._m(0, true),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "border-dashed border-t border-gray-200 ProjectId"
+                            },
+                            [
+                              _c("span", {
+                                staticClass:
+                                  "text-gray-700 px-6 py-3 flex items-center",
+                                model: {
+                                  value: project.id,
+                                  callback: function($$v) {
+                                    _vm.$set(project, "id", $$v)
+                                  },
+                                  expression: "project.id"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "border-dashed border-t border-gray-200 firstName"
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "text-gray-700 px-6 py-3 flex items-center"
+                                },
+                                [_vm._v(_vm._s(project.name))]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm._m(1, true)
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ]
+              )
+            ]
+          )
+        ]
       )
-    ],
-    1
-  )
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "td",
+      { staticClass: "border-dashed border-t border-gray-200 px-3" },
+      [
+        _c("label", {
+          staticClass:
+            "text-teal-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer"
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "td",
+      { staticClass: "border-dashed border-t border-gray-200 lastName" },
+      [
+        _c("span", {
+          staticClass: "text-gray-700 px-6 py-3 flex items-center",
+          attrs: { "x-text": "user.lastName" }
+        })
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
