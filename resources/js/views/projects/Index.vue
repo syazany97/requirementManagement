@@ -154,7 +154,8 @@ export default {
             pagination: {
                 links: null,
                 meta: null
-            }
+            },
+            url : '/api/projects'
         };
     },
     created() {
@@ -162,7 +163,11 @@ export default {
     },
     methods: {
         async fetchProjects() {
+
+            const url = this.pagination.links === null ? this.url : this.pagination.links;
+
             const response = await axios.get('/api/projects');
+            console.log(response.data);
             this.projects = response.data.data;
             this.pagination.links = response.data.links;
             this.pagination.meta = response.data.meta;

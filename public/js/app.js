@@ -2247,6 +2247,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TopBar",
   data: function data() {
@@ -4147,7 +4148,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       pagination: {
         links: null,
         meta: null
-      }
+      },
+      url: '/api/projects'
     };
   },
   created: function created() {
@@ -4158,22 +4160,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var response;
+        var url, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                url = _this.pagination.links === null ? _this.url : _this.pagination.links;
+                _context.next = 3;
                 return axios.get('/api/projects');
 
-              case 2:
+              case 3:
                 response = _context.sent;
+                console.log(response.data);
                 _this.projects = response.data.data;
                 _this.pagination.links = response.data.links;
                 _this.pagination.meta = response.data.meta;
                 console.log(response.data);
 
-              case 7:
+              case 9:
               case "end":
                 return _context.stop();
             }
@@ -55574,7 +55578,7 @@ var render = function() {
                       "flex px-3 py-1 ml-2 self-center text-sm font-medium text-gray-800 antialiased rounded-md focus:outline-none hover:bg-blue-100 hover:text-blue-500 focus:bg-blue-100"
                   },
                   [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("Filters")]),
+                    _c("a", { attrs: { href: "#" } }, [_vm._v("Filters ")]),
                     _vm._v(" "),
                     _c(
                       "svg",
