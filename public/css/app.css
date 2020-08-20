@@ -991,6 +991,16 @@ video {
   margin-bottom: 2.5rem;
 }
 
+/* table */
+
+.default-row {
+  border-style: solid;
+  border-top-width: 1px;
+  --border-opacity: 1;
+  border-color: #edf2f7;
+  border-color: rgba(237, 242, 247, var(--border-opacity));
+}
+
 /* transition */
 
 .space-y-0 > :not(template) ~ :not(template){

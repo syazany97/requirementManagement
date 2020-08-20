@@ -141,6 +141,12 @@
 .h1 {
     @apply text-3xl py-4 border-b font-bold mb-10
 }
+
+/* table */
+.default-row {
+    @apply border-solid border-t border-gray-200
+}
+
 /* transition */
 
 

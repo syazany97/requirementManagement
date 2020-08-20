@@ -4083,10 +4083,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Index.vue",
@@ -58072,7 +58068,7 @@ var render = function() {
                       staticClass:
                         "bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs"
                     },
-                    [_vm._v(_vm._s(heading) + "\n                        ")]
+                    [_vm._v(_vm._s(heading) + "\n                ")]
                   )
                 })
               ],
@@ -58096,86 +58092,62 @@ var render = function() {
                     }
                   },
                   [
-                    _c(
-                      "td",
-                      { staticClass: "border-dashed border-t border-gray-200" },
-                      [
-                        _c(
-                          "span",
-                          {
-                            staticClass:
-                              "text-gray-700 px-6 py-3 flex items-center"
-                          },
-                          [_vm._v(_vm._s(project.id))]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      { staticClass: "border-dashed border-t border-gray-200" },
-                      [
-                        _c(
-                          "span",
-                          {
-                            staticClass:
-                              "text-gray-700 px-6 py-3 flex items-center"
-                          },
-                          [_vm._v(_vm._s(project.name))]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      { staticClass: "border-dashed border-t border-gray-200" },
-                      [
-                        _c("span", {
+                    _c("td", { staticClass: "default-row" }, [
+                      _c(
+                        "span",
+                        {
                           staticClass:
                             "text-gray-700 px-6 py-3 flex items-center"
-                        }),
-                        _vm._v(
-                          _vm._s(project.modules_count) +
-                            "\n                            "
-                        )
-                      ]
-                    ),
+                        },
+                        [_vm._v(_vm._s(project.id))]
+                      )
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "td",
-                      { staticClass: "border-dashed border-t border-gray-200" },
-                      [
-                        _c(
-                          "span",
-                          {
-                            staticClass:
-                              "text-gray-700 px-6 py-3 flex items-center"
-                          },
-                          [_vm._v(_vm._s(_vm.get(project, "owner.name", null)))]
-                        )
-                      ]
-                    ),
+                    _c("td", { staticClass: "default-row" }, [
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "text-gray-700 px-6 py-3 flex items-center"
+                        },
+                        [_vm._v(_vm._s(project.name))]
+                      )
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "td",
-                      { staticClass: "border-dashed border-t border-gray-200" },
-                      [
-                        _c(
-                          "span",
-                          {
-                            staticClass:
-                              "text-gray-700 px-6 py-3 flex items-center"
-                          },
-                          [
-                            _vm._v(
-                              _vm._s(
-                                _vm._f("formatDateTime")(project.created_at)
-                              )
-                            )
-                          ]
-                        )
-                      ]
-                    )
+                    _c("td", { staticClass: "default-row" }, [
+                      _c("span", {
+                        staticClass: "text-gray-700 px-6 py-3 flex items-center"
+                      }),
+                      _vm._v(
+                        _vm._s(project.modules_count) + "\n                    "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "default-row" }, [
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "text-gray-700 px-6 py-3 flex items-center"
+                        },
+                        [_vm._v(_vm._s(_vm.get(project, "owner.name", null)))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "default-row" }, [
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "text-gray-700 px-6 py-3 flex items-center"
+                        },
+                        [
+                          _vm._v(
+                            _vm._s(_vm._f("formatDateTime")(project.created_at))
+                          )
+                        ]
+                      )
+                    ])
                   ]
                 )
               })
