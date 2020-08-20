@@ -13,6 +13,7 @@ import VueTreeList from 'vue-tree-list';
 import requirement from "./vuex-modules/requirement";
 import user from "./vuex-modules/user";
 import vSelect from 'vue-select'
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -35,22 +36,22 @@ const router = new VueRouter({
 const store = new Vuex.Store({
     modules: {
         notification: notification,
-        requirement : requirement,
-        user : user
+        requirement: requirement,
+        user: user
     }
 });
 
-Vue.filter('formatDateTime', function(value) {
+Vue.filter('formatDateTime', function (value) {
     let dateTime = dayjs(value);
     return dateTime.format('LLL');
 });
 
-Vue.filter('titleCase', function(value) {
+Vue.filter('titleCase', function (value) {
     return _.startCase(_.toLower(value));
 })
 
 // filters
-Vue.filter('limitWords', function(value) {
+Vue.filter('limitWords', function (value) {
     if (!value) return '';
     value = value.toString();
 
@@ -58,6 +59,41 @@ Vue.filter('limitWords', function(value) {
         return value.substring(0, 60) + '...';
     }
     return value;
+});
+
+Vue.directive('click-outside', {
+
+    bind: function (el, binding, vNode) {
+        // Provided expression must evaluate to a function.
+        if (typeof binding.value !== 'function') {
+            const compName = vNode.context.name
+            let warn = `[Vue-click-outside:] provided expression '${binding.expression}' is not a function, but has to be`
+            if (compName) {
+                warn += `Found in component '${compName}'`
+            }
+
+            console.warn(warn)
+        }
+        // Define Handler and cache it on the element
+        const bubble = binding.modifiers.bubble
+        const handler = (e) => {
+            if (bubble || (!el.contains(e.target) && el !== e.target)) {
+                binding.value(e)
+            }
+        }
+        el.__vueClickOutside__ = handler
+
+        // add Event Listeners
+        document.addEventListener('click', handler)
+    },
+
+    unbind: function (el, binding) {
+        // Remove Event Listeners
+        document.removeEventListener('click', el.__vueClickOutside__)
+        el.__vueClickOutside__ = null
+
+    }
+
 });
 
 

@@ -28,7 +28,8 @@
         @yield('content')
     @endguest
     @auth
-        @include('layouts.topBar')
+{{--        @include('layouts.topBar')--}}
+        <top-bar></top-bar>
         <toast-notification></toast-notification>
         <div class="pt-16 flex">
         <div class="flex-initial">
@@ -47,3 +48,9 @@
 </div>
 </body>
 </html>
+{{--<script>--}}
+{{--    import TopBar from "../../js/components/layouts/TopBar";--}}
+{{--    export default {--}}
+{{--        components: {TopBar}--}}
+{{--    }--}}
+{{--</script>--}}

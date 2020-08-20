@@ -13,23 +13,23 @@
         <!--        </v-col>-->
         <div>
             <div class="container mx-auto py-6 px-4" x-data="datatables()" x-cloak>
-                <h1 class="text-3xl py-4 border-b mb-10">Datatable</h1>
+                <h1 class="text-3xl py-4 border-b font-bold mb-10">Datatable</h1>
 
-                <div x-show="selectedRows.length" class="bg-teal-200 fixed top-0 left-0 right-0 z-40 w-full shadow">
-                    <div class="container mx-auto px-4 py-4">
-                        <div class="flex md:items-center">
-                            <div class="mr-4 flex-shrink-0">
-                                <svg class="h-8 w-8 text-teal-600" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                                          clip-rule="evenodd"/>
-                                </svg>
-                            </div>
-                            <div x-html="selectedRows.length + ' rows are selected'"
-                                 class="text-teal-800 text-lg"></div>
-                        </div>
-                    </div>
-                </div>
+                <!--                <div x-show="selectedRows.length" class="bg-teal-200 fixed top-0 left-0 right-0 z-40 w-full shadow">-->
+                <!--                    <div class="container mx-auto px-4 py-4">-->
+                <!--                        <div class="flex md:items-center">-->
+                <!--                            <div class="mr-4 flex-shrink-0">-->
+                <!--                                <svg class="h-8 w-8 text-teal-600" viewBox="0 0 20 20" fill="currentColor">-->
+                <!--                                    <path fill-rule="evenodd"-->
+                <!--                                          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"-->
+                <!--                                          clip-rule="evenodd"/>-->
+                <!--                                </svg>-->
+                <!--                            </div>-->
+                <!--                            <div x-html="selectedRows.length + ' rows are selected'"-->
+                <!--                                 class="text-teal-800 text-lg"></div>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
 
                 <div class="mb-4 flex justify-between items-center">
                     <div class="flex-1 pr-4">
@@ -74,13 +74,13 @@
                                 <div v-if="showHeading"
                                      class="z-40 absolute top-0 right-0 w-40 bg-white rounded-lg shadow-lg mt-12 -mr-1 block py-1 overflow-hidden">
                                     <label v-for="heading in headings"
-                                        class="flex justify-start items-center text-truncate hover:bg-gray-100 px-4 py-2">
+                                           class="flex justify-start items-center text-truncate hover:bg-gray-100 px-4 py-2">
                                         <div class="text-teal-600 mr-3">
                                             <input type="checkbox"
                                                    class="form-checkbox focus:outline-none focus:shadow-outline" checked
                                                    @click="">
                                         </div>
-                                        <div class="select-none text-gray-700">{{heading}}</div>
+                                        <div class="select-none text-gray-700">{{ heading }}</div>
                                     </label>
 
                                 </div>
@@ -101,14 +101,16 @@
                                            @click="selectAllCheckbox($event);">
                                 </label>
                             </th>
-                                                            <th v-for="heading in headings" class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs"
-                                                                 >{{heading}}</th>
+                            <th v-for="heading in headings"
+                                class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs"
+                            >{{ heading }}
+                            </th>
                         </tr>
 
                         </thead>
                         <tbody>
                         <template>
-                            <tr v-for="project in projects" v-bind:key="project.id">
+                            <tr v-for="project in projects" v-bind:key="project.id" class="cursor-pointer hover:bg-gray-200" @click="viewProject(project.id)">
                                 <td class="border-dashed border-t border-gray-200 px-3">
                                     <label
                                         class="text-teal-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer">
@@ -116,27 +118,26 @@
                                         <!--                                               @click="">-->
                                     </label>
                                 </td>
-                                <td class="border-dashed border-t border-gray-200 ProjectId">
+                                <td class="border-dashed border-t border-gray-200">
                                     <span class="text-gray-700 px-6 py-3 flex items-center" v-model="project.id"></span>
                                 </td>
-                                <td class="border-dashed border-t border-gray-200 firstName">
-                                    <span class="text-gray-700 px-6 py-3 flex items-center">{{project.name}}</span>
+                                <td class="border-dashed border-t border-gray-200">
+                                    <span class="text-gray-700 px-6 py-3 flex items-center">{{ project.name }}</span>
                                 </td>
-                                <td class="border-dashed border-t border-gray-200 lastName">
+                                <td class="border-dashed border-t border-gray-200">
                                     <span class="text-gray-700 px-6 py-3 flex items-center"
-                                          x-text="user.lastName"></span>
+                                    >{{ project.description | limitWords }}</span>
                                 </td>
-                                <!--                                <td class="border-dashed border-t border-gray-200 emailAddress">-->
-                                <!--								<span class="text-gray-700 px-6 py-3 flex items-center"-->
-                                <!--                                      x-text="user.emailAddress"></span>-->
-                                <!--                                </td>-->
-                                <!--                                <td class="border-dashed border-t border-gray-200 gender">-->
-                                <!--								<span class="text-gray-700 px-6 py-3 flex items-center"-->
-                                <!--                                      x-text="user.gender"></span>-->
-                                <!--                                </td>-->
-                                <!--                                <td class="border-dashed border-t border-gray-200 phoneNumber">-->
-                                <!--								<span class="text-gray-700 px-6 py-3 flex items-center"-->
-                                <!--                                      x-text="user.phoneNumber"></span>-->
+                                <td class="border-dashed border-t border-gray-200">
+                                								<span class="text-gray-700 px-6 py-3 flex items-center"
+                                                                ></span>{{ project.modules_count }}
+                                </td>
+                                <td class="border-dashed border-t border-gray-200">
+                                								<span class="text-gray-700 px-6 py-3 flex items-center"
+                                                                >{{ get(project, 'owner.name', null) }}</span>
+                                </td>
+                                <td class="border-dashed border-t border-gray-200">
+                                    <button  @click="viewProject(project.id)" class="btn-primary">View</button>
                                 </td>
                             </tr>
                         </template>
@@ -180,53 +181,53 @@
 </template>
 
 <script>
-    import CreateProjectDialog from "../../components/project/modal/CreateProjectDialog";
+import CreateProjectDialog from "../../components/project/modal/CreateProjectDialog";
 
-    export default {
-        name: "Index.vue",
-        components: {CreateProjectDialog},
-        data() {
-            return {
-                projects: [],
-                dense: false,
-                fixedHeader: false,
-                height: 300,
-                projectDialog: false,
-                headings: [
-                    'Number',
-                    'Name',
-                    'Description',
-                    'No',
-                    'Owner',
-                    'Action ',
-                ],
-                showHeading : false
-            };
+export default {
+    name: "Index.vue",
+    components: {CreateProjectDialog},
+    data() {
+        return {
+            projects: [],
+            dense: false,
+            fixedHeader: false,
+            height: 300,
+            projectDialog: false,
+            headings: [
+                'Number',
+                'Name',
+                'Description',
+                'No of modules',
+                'Owner',
+                'Action ',
+            ],
+            showHeading: false
+        };
+    },
+    created() {
+        this.fetchProjects();
+    },
+    methods: {
+        async fetchProjects() {
+            const response = await axios.get('/api/projects');
+            this.projects = response.data.data;
+            console.log(response.data);
         },
-        created() {
-            this.fetchProjects();
+        get(data, column, defaultValue) {
+            return _.get(data, column, defaultValue);
         },
-        methods: {
-            async fetchProjects() {
-                const response = await axios.get('/api/projects');
-                this.projects = response.data.data;
-                console.log(response.data);
-            },
-            get(data, column, defaultValue) {
-                return _.get(data, column, defaultValue);
-            },
-            test() {
-                console.log('woi');
-            },
-            viewProject(projectId) {
-                this.$router.push({
-                    name: 'project.show', params: {
-                        project: projectId
-                    }
-                });
-            }
+        test() {
+            console.log('woi');
+        },
+        viewProject(projectId) {
+            this.$router.push({
+                name: 'project.show', params: {
+                    project: projectId
+                }
+            });
         }
     }
+}
 </script>
 
 <style scoped>
