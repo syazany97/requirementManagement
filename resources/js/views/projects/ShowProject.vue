@@ -7,53 +7,58 @@
         </div>
         <!-- // create new module dialog -->
 
-        <div class="flex mb-4" v-if="modules.length">
-            <div class="flex-none px-5">
-                <requirement-list></requirement-list>
-            </div>
+                <div class="flex mb-4" v-if="modules.length">
+                    <div class="flex-none w-1/3 px-5">
+                        <requirement-list></requirement-list>
+                    </div>
 
-            <div class="flex-none">
-                <show-requirement></show-requirement>
-            </div>
-        </div>
+                    <div class="flex-none w-2/3">
+
+                        <show-requirement></show-requirement>
+                    </div>
+                </div>
+
+
 
     </div>
 
 </template>
 
 <script>
-    import projectRepository from "../../repositories/projectRepository";
-    import moduleRepository from "../../repositories/moduleRepository";
+import projectRepository from "../../repositories/projectRepository";
+import moduleRepository from "../../repositories/moduleRepository";
+import RequirementList from "../../components/requirement/RequirementList";
 
-    export default {
-        name: "Show",
-        data() {
-            return {
-                projectId: this.$route.params.project,
-                project: {},
-                requirements: [],
-                loaded: false
-            }
-        },
-        created() {
-            this.$store.dispatch('requirement/setRequirementList',
-                {project_id: this.projectId});
-            this.setQueryParameter();
-        },
-        computed: {
-            modules() {
-                return this.$store.getters['requirement/requirementList'];
-            }
-        },
-        methods: {
-            setQueryParameter() {
-                if (this.$route.query.requirement) {
-                    // if there is a query parameter on url then set display it
-                    this.$store.dispatch('requirement/setRequirement', this.$route.query.requirement);
-                }
+export default {
+    name: "Show",
+    components: {RequirementList},
+    data() {
+        return {
+            projectId: this.$route.params.project,
+            project: {},
+            requirements: [],
+            loaded: false
+        }
+    },
+    created() {
+        this.$store.dispatch('requirement/setRequirementList',
+            {project_id: this.projectId});
+        this.setQueryParameter();
+    },
+    computed: {
+        modules() {
+            return this.$store.getters['requirement/requirementList'];
+        }
+    },
+    methods: {
+        setQueryParameter() {
+            if (this.$route.query.requirement) {
+                // if there is a query parameter on url then set display it
+                this.$store.dispatch('requirement/setRequirement', this.$route.query.requirement);
             }
         }
     }
+}
 </script>
 
 <style scoped>

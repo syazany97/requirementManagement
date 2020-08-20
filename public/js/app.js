@@ -4082,7 +4082,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Index.vue",
@@ -4165,6 +4164,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../repositories/projectRepository */ "./resources/js/repositories/projectRepository.js");
 /* harmony import */ var _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../repositories/moduleRepository */ "./resources/js/repositories/moduleRepository.js");
+/* harmony import */ var _components_requirement_RequirementList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/requirement/RequirementList */ "./resources/js/components/requirement/RequirementList.vue");
 //
 //
 //
@@ -4188,10 +4188,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Show",
+  components: {
+    RequirementList: _components_requirement_RequirementList__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
   data: function data() {
     return {
       projectId: this.$route.params.project,
@@ -58078,81 +58085,75 @@ var render = function() {
           _vm._v(" "),
           _c(
             "tbody",
-            [
-              _vm._l(_vm.projects, function(project) {
-                return _c(
-                  "tr",
-                  {
-                    key: project.id,
-                    staticClass: "cursor-pointer hover:bg-gray-200",
-                    on: {
-                      click: function($event) {
-                        return _vm.viewProject(project.id)
-                      }
+            _vm._l(_vm.projects, function(project) {
+              return _c(
+                "tr",
+                {
+                  key: project.id,
+                  staticClass: "cursor-pointer hover:bg-gray-200",
+                  on: {
+                    click: function($event) {
+                      return _vm.viewProject(project.id)
                     }
-                  },
-                  [
-                    _c("td", { staticClass: "default-row" }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass:
-                            "text-gray-700 px-6 py-3 flex items-center"
-                        },
-                        [_vm._v(_vm._s(project.id))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "default-row" }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass:
-                            "text-gray-700 px-6 py-3 flex items-center"
-                        },
-                        [_vm._v(_vm._s(project.name))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "default-row" }, [
-                      _c("span", {
+                  }
+                },
+                [
+                  _c("td", { staticClass: "default-row" }, [
+                    _c(
+                      "span",
+                      {
                         staticClass: "text-gray-700 px-6 py-3 flex items-center"
-                      }),
-                      _vm._v(
-                        _vm._s(project.modules_count) + "\n                    "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "default-row" }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass:
-                            "text-gray-700 px-6 py-3 flex items-center"
-                        },
-                        [_vm._v(_vm._s(_vm.get(project, "owner.name", null)))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "default-row" }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass:
-                            "text-gray-700 px-6 py-3 flex items-center"
-                        },
-                        [
-                          _vm._v(
-                            _vm._s(_vm._f("formatDateTime")(project.created_at))
-                          )
-                        ]
-                      )
-                    ])
-                  ]
-                )
-              })
-            ],
-            2
+                      },
+                      [_vm._v(_vm._s(project.id))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "default-row" }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "text-gray-700 px-6 py-3 flex items-center"
+                      },
+                      [_vm._v(_vm._s(project.name))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "default-row" }, [
+                    _c("span", {
+                      staticClass: "text-gray-700 px-6 py-3 flex items-center"
+                    }),
+                    _vm._v(
+                      _vm._s(project.modules_count) + "\n                    "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "default-row" }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "text-gray-700 px-6 py-3 flex items-center"
+                      },
+                      [_vm._v(_vm._s(_vm.get(project, "owner.name", null)))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "default-row" }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "text-gray-700 px-6 py-3 flex items-center"
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(_vm._f("formatDateTime")(project.created_at))
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              )
+            }),
+            0
           )
         ]
       )
@@ -58200,12 +58201,17 @@ var render = function() {
       ? _c("div", { staticClass: "flex mb-4" }, [
           _c(
             "div",
-            { staticClass: "flex-none px-5" },
+            { staticClass: "flex-none w-1/3 px-5" },
             [_c("requirement-list")],
             1
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "flex-none" }, [_c("show-requirement")], 1)
+          _c(
+            "div",
+            { staticClass: "flex-none w-2/3" },
+            [_c("show-requirement")],
+            1
+          )
         ])
       : _vm._e()
   ])

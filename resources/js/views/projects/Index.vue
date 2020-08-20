@@ -99,7 +99,6 @@
 
                 </thead>
                 <tbody>
-                <template>
                     <tr v-for="project in projects" v-bind:key="project.id" class="cursor-pointer hover:bg-gray-200"
                         @click="viewProject(project.id)">
                         <td class="default-row">
@@ -122,7 +121,7 @@
                         </td>
 
                     </tr>
-                </template>
+
                 </tbody>
             </table>
         </div>
