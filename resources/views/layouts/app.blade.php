@@ -23,12 +23,32 @@
 
 </head>
 <body>
-    <div id="app">
-{{--            @guest--}}
-{{--            @yield('content')--}}
-{{--            @endguest--}}
-        <app>
-        </app>
-    </div>
+<div id="app">
+    @guest
+        @yield('content')
+    @endguest
+    @auth
+        @csrf
+{{--        @include('layouts.topBar')--}}
+        <top-bar></top-bar>
+        <toast-notification></toast-notification>
+        <div class="pt-16 flex">
+            <div class="flex-1">
+                <router-view :key="$route.fullPath"></router-view>
+            </div>
+        </div>
+
+
+
+
+    @endauth
+
+</div>
 </body>
 </html>
+{{--<script>--}}
+{{--    import TopBar from "../../js/components/layouts/TopBar";--}}
+{{--    export default {--}}
+{{--        components: {TopBar}--}}
+{{--    }--}}
+{{--</script>--}}

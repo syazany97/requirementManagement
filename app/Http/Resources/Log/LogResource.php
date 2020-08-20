@@ -21,31 +21,18 @@ class LogResource extends JsonResource
 
         return [
             'user' => optional(User::find($this->causer_id))->name,
-            'description' => $this->description === 'created' ? sprintf('Created this %s', $modal) : $this->formatUpdatedInformation($modal, $this->properties->toArray()),
-//            'updated' => $this->properties
+            'description' => $this->description === 'created' ?
+                sprintf('Created this %s', $modal) :
+                $this->formatUpdatedInformation($modal, $this->properties['attributes']),
+            'properties' => $this->properties,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at
         ];
     }
 
     private function formatUpdatedInformation(string $modal, $attributes)
     {
-        // convert attributes of array to string
-        $newAttributes = collect(Arr::get($attributes, 'attributes', []));
-        $oldAttributes = collect(Arr::get($attributes, 'old', []));
-
-        if (!empty($newAttributes)) {
-            return 'Updated this ' . $modal . ' ' . $newAttributes->map(function ($item, $key) use ($oldAttributes) {
-                    $oldAttribute = $oldAttributes->first(function ($oldValue, $oldKey) use ($key) {
-                        return $oldKey === $key;
-                    });
-
-                    return
-                        sprintf('%s from %s to %s', $key ,$item, $oldAttribute)
-                    ;
-                })->implode(', ');
-        }
-
-        return "";
-
+        return sprintf("Updated %s's %s", $modal, collect($attributes)->keys()->implode(', '));
     }
 
     private function getClassBaseName(string $subjectType)

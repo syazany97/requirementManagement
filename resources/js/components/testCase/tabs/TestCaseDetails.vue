@@ -2,33 +2,36 @@
 
     <div>
         <div class="text-right">
-            <button @click="redirectToTestCasePage()" class="primary-btn">
-                <svg fill="currentColor" viewBox="0 0 20 20">
+            <button @click="redirectToTestCasePage()" class="btn-primary">
+
+                <svg viewBox="0 0 20 20" fill="currentColor" class="plus w-6 h-6">
                     <path fill-rule="evenodd"
-                          d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                          clip-rule="evenodd"></path>
+                          d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                          clip-rule="evenodd">
+                    </path>
                 </svg>
-                <span>New test case</span>
+
+                <span>Create test case</span>
             </button>
         </div>
 
-        <table v-if="testCases.length" class="table-auto">
+        <table v-if="testCases.length" class="cursor-pointer hover:bg-gray-200 mt-4">
             <thead>
             <tr>
-                <th class="px-4 py-2">No</th>
-                <th class="px-4 py-2">Title</th>
-                <th class="px-4 py-2">User</th>
-                <th class="px-4 py-2">Created</th>
+                <th v-for="heading in headings" class="default-header">{{heading}}</th>
             </tr>
             </thead>
             <tbody>
             <tr v-for="(test, index) in testCases" v-bind:key="test.id" :class="index % 0 === 0 ? 'bg-gray-100' : ''">
-                <td class="border px-4 py-2">{{ index + 1 }}</td>
-                <td class="border px-4 py-2" v-html="test.description">a</td>
-                <td class="border px-4 py-2">{{ test.user.name }}</td>
-                <td class="border px-4 py-2">{{ test.created_at | formatDateTime }}</td>
-                <td class="border px-4 py-2"><router-link :to="{name : 'test-case.edit' ,params : {testCase : test.id}}"
-                                                          tag="button" class="primary-btn">View</router-link></td>
+                <td class="default-row">{{ index + 1 }}</td>
+                <td class="default-row" v-html="test.description">a</td>
+                <td class="default-row">{{ test.user.name }}</td>
+                <td class="default-row">{{ test.created_at | formatDateTime }}</td>
+                <td class="default-row">
+                    <router-link :to="{name : 'test-case.edit' ,params : {testCase : test.id}}"
+                                 tag="button" class="btn-primary">View
+                    </router-link>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -42,7 +45,10 @@ export default {
     name: "TestCaseDetails",
     data() {
         return {
-            testCases: []
+            testCases: [],
+            headings: [
+                'No', 'Title', 'User', 'Created', 'Action'
+            ]
         }
     },
     created() {

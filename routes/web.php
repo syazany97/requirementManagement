@@ -22,5 +22,6 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('{any}', function () {
     return view('layouts.app');
-})->where('any', '.*')->middleware('auth:sanctum');
+})->where('any', '.*')
+    ->middleware('auth:sanctum');
 

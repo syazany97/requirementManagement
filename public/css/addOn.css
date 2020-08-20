@@ -1,36 +1,55 @@
-.primary-btn {
-    @apply bg-blue-500 text-white font-normal py-1 px-4 rounded inline-flex items-center;
+.btn {
+   @apply font-medium py-1 px-4 rounded inline-flex items-center text-sm
 }
 
-.primary-btn:hover {
-    @apply bg-blue-700
+.btn-primary {
+    background-color: rgb(84, 105, 212);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.12) 0px 1px 1px 0px,
+    rgb(84, 105, 212) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
+    @apply .btn text-white ;
 }
 
-.secondary-btn {
-    @apply bg-gray-300 text-gray-800 font-normal py-1 px-4 rounded inline-flex items-center
+.btn-primary:hover {
+    @apply bg-blue-700 .btn
 }
 
+.btn-secondary {
+    @apply bg-gray-300 text-gray-800 .btn
+}
 
-.secondary-btn:hover {
+.btn-secondary:hover {
     @apply bg-gray-400
 }
 
-.tertiary-btn {
-    @apply text-gray-800 rounded font-normal py-1 px-4 inline-flex items-center
+.btn-tertiary {
+    @apply text-gray-800 .btn
 }
 
-.tertiary-btn:hover {
+.btn-tertiary:hover {
     @apply bg-gray-400
 }
 
 .primary-input {
-    @apply appearance-none border block w-full bg-gray-200
-    text-gray-700 border border-red-500 rounded py-1
-    px-4 mb-3 leading-tight
+    @apply appearance-none hidden border block w-full bg-gray-100
+    text-gray-700 border rounded py-1 border-gray-400
+    px-4 leading-tight
+}
+
+.primary-input:focus {
+    @apply bg-white outline-none shadow-outline
+}
+
+.primary-input:hover {
+    @apply bg-gray-200
 }
 
 .primary-label {
-    @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4
+    @apply block tracking-wide text-gray-700 text-sm font-medium mb-2 pt-4 text-left
 }
 
 .primary-text-area {
@@ -54,8 +73,20 @@
     border: 1px solid grey;
 }
 
+.text-input:focus {
+    @apply bg-white
+}
+
+.primary-select {
+    @apply bg-gray-100
+}
+
+.primary-select:focus {
+    @apply bg-white
+}
+
 .divider {
-    width:5px;
+    width:3px;
     height:auto;
     display:inline-block;
 }
@@ -75,7 +106,6 @@
 
 .nav-pills .nav-link:hover {
     background: none;
-    color: #4040c8;
     border-bottom: solid 2px grey;
 }
 
@@ -96,6 +126,46 @@
     list-style: none;
 }
 
-/*.primary-btn:focus {*/
-/*    @apply bg-white, outline*/
-/*}*/
+.tab {
+    @apply no-underline text-gray-700 border-b-2 border-transparent tracking-wide font-bold text-xs py-3 mr-8
+}
+
+.active-tab {
+    @apply .tab text-purple-700 border-purple-700
+}
+
+.tab:hover {
+    @apply border-gray-500
+}
+
+.search-textfield {
+ @apply hidden px-4 py-1 text-sm text-gray-600 border-2 rounded block
+}
+
+.search-textfield:focus {
+ @apply outline-none shadow-none
+}
+
+.search-textfield:hover {
+ @apply bg-gray-100
+}
+
+.h1 {
+    @apply text-3xl py-4 border-b font-bold mb-10
+}
+
+/* table */
+.default-row {
+    @apply border-solid border-t border-gray-200
+}
+
+.default-header {
+    @apply bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs
+}
+
+/* transition */
+
+
+
+
+

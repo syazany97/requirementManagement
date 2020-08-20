@@ -3,12 +3,12 @@
         <h1>Histories List</h1>
         <div v-for="history in histories" v-bind:key="history.id">
             <span>{{ history.description }}</span>
-            <span>{{ history.user }}</span>
+            <span>{{ get(history, 'user', "") }}</span>
         </div>
     </div>
 
 </template>
-
+t
 <script>
 
 import testCaseLogRepository from "../../repositories/testCase/logs/testCaseLogRepository";
@@ -29,6 +29,9 @@ export default {
             const response = await testCaseLogRepository.all(this.testCaseId);
             this.histories = response.data.data;
             console.log(response);
+        },
+        get(key, attributes, defaultValue) {
+            return _.get(key, attributes, defaultValue);
         }
     }
 }
