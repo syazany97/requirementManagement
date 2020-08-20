@@ -62,16 +62,14 @@
 }
 
 .primary-rich-text {
-    min-height : 240px;
-
+    min-height : 200px;
     @apply rounded
-
 }
 
 .description {
     float: left;
     width: 100%;
-    height: auto;
+    /*height: auto;*/
 }
 
 .text-input {
@@ -169,6 +167,12 @@
 
 .default-header {
     @apply bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs
+}
+
+.ql-container.ql-snow {
+    border: none;
+    border-radius: 5px;
+    height: 150px;
 }
 
 /* transition */

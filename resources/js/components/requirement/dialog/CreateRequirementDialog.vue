@@ -56,13 +56,12 @@
                 Description
             </label>
 
-            <div class="description">
-                <quill-editor id="grid-description"
-                              v-model="requirement.description"
-                              class="primary-rich-text">
+            <quill-editor id="grid-description"
+                      height="200"
+                          v-model="requirement.description"
+                          class="primary-rich-text">
 
-                </quill-editor>
-            </div>
+            </quill-editor>
 
             <label class="primary-label" for="grid-assignees">
                 Assignees
