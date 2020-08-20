@@ -96,6 +96,19 @@ Vue.directive('click-outside', {
 
 });
 
+Vue.component('default-transition', {
+    template : '\  <transition\n' +
+        'enter-active-class="transition ease-out duration-100"\n' +
+        'enter-class="opacity-0 scale-95 transform"\n' +
+        'enter-to-class="opacity-100 scale-100 transform"\n' +
+        'leave-active-class="transition ease-in duration-75"\n' +
+        'leave-class="opacity-100 scale-100 transform"\n' +
+        'leave-to-class="opacity-0 scale-95 transform"\n' +
+        '>\
+        \<slot></slot>\
+        </transition>',
+});
+
 
 const app = new Vue({
     el: '#app',

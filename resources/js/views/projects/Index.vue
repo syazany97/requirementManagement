@@ -71,6 +71,8 @@
                                     </svg>
                                 </button>
 
+                                <default-transition>
+
                                 <div v-if="showHeading"
                                      class="z-40 absolute top-0 right-0 w-40 bg-white rounded-lg shadow-lg mt-12 -mr-1 block py-1 overflow-hidden">
                                     <label v-for="heading in headings"
@@ -84,6 +86,7 @@
                                     </label>
 
                                 </div>
+                                </default-transition>
                             </div>
                         </div>
                     </div>
@@ -145,36 +148,7 @@
                     </table>
                 </div>
             </div>
-            <!--            <v-simple-table-->
-            <!--                :dense="dense"-->
-            <!--                :fixed-header="fixedHeader"-->
-            <!--                :height="height"-->
-            <!--            >-->
-            <!--                <template v-slot:default>-->
-            <!--                    <thead>-->
-            <!--                    <tr>-->
-            <!--                        <th class="text-left">Number</th>-->
-            <!--                        <th class="text-left">Name</th>-->
-            <!--                        <th class="text-left">Description</th>-->
-            <!--                        <th class="text-left">No of modules</th>-->
-            <!--                        <th class="text-left">Owner</th>-->
-            <!--                        <th class="text-left">Action</th>-->
-            <!--                    </tr>-->
-            <!--                    </thead>-->
-            <!--                    <tbody v-if="projects.length">-->
-            <!--                    <tr v-for="(project, index) in projects" :key="project.id">-->
-            <!--                        <td>{{ index + 1 }}</td>-->
-            <!--                        <td>{{ project.name }}</td>-->
-            <!--                        <td>{{ project.description }}</td>-->
-            <!--                        <td>{{ project.modules_count }}</td>-->
-            <!--                        <td>{{ get(project, 'owner.name', null) }}</td>-->
-            <!--                        <td>-->
-            <!--                            <v-btn x-small @click="viewProject(project.id)">View</v-btn>-->
-            <!--                        </td>-->
-            <!--                    </tr>-->
-            <!--                    </tbody>-->
-            <!--                </template>-->
-            <!--            </v-simple-table>-->
+
         </div>
 
     </div>

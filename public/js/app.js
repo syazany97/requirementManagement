@@ -4113,32 +4113,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Index.vue",
@@ -55881,119 +55855,103 @@ var render = function() {
                     ]
                   ),
                   _vm._v(" "),
-                  _c(
-                    "transition",
-                    {
-                      attrs: {
-                        "enter-active-class":
-                          "transition ease-out duration-100",
-                        "enter-class": "opacity-0 scale-95 transform",
-                        "enter-to-class": "opacity-100 scale-100 transform",
-                        "leave-active-class": "transition ease-in duration-75",
-                        "leave-class": "opacity-100 scale-100 transform",
-                        "leave-to-class": "opacity-0 scale-95 transform"
-                      }
-                    },
-                    [
-                      _vm.isOpen
-                        ? _c(
-                            "div",
-                            {
-                              staticClass:
-                                "origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg"
-                            },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "rounded-md bg-white shadow-xs"
-                                },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass: "py-1",
-                                      attrs: {
-                                        role: "menu",
-                                        "aria-orientation": "vertical",
-                                        "aria-labelledby": "options-menu"
-                                      }
-                                    },
-                                    [
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass:
-                                            "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
-                                          attrs: { href: "#", role: "menuitem" }
-                                        },
-                                        [_vm._v("Account settings")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass:
-                                            "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
-                                          attrs: { href: "#", role: "menuitem" }
-                                        },
-                                        [_vm._v("Support")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "a",
-                                        {
-                                          staticClass:
-                                            "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
-                                          attrs: { href: "#", role: "menuitem" }
-                                        },
-                                        [_vm._v("License")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "form",
-                                        {
+                  _c("default-transition", [
+                    _vm.isOpen
+                      ? _c(
+                          "div",
+                          {
+                            staticClass:
+                              "origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg"
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "rounded-md bg-white shadow-xs" },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "py-1",
+                                    attrs: {
+                                      role: "menu",
+                                      "aria-orientation": "vertical",
+                                      "aria-labelledby": "options-menu"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
+                                        attrs: { href: "#", role: "menuitem" }
+                                      },
+                                      [_vm._v("Account settings")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
+                                        attrs: { href: "#", role: "menuitem" }
+                                      },
+                                      [_vm._v("Support")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
+                                        attrs: { href: "#", role: "menuitem" }
+                                      },
+                                      [_vm._v("License")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "form",
+                                      {
+                                        attrs: {
+                                          method: "POST",
+                                          action: "logout"
+                                        }
+                                      },
+                                      [
+                                        _c("input", {
                                           attrs: {
-                                            method: "POST",
-                                            action: "logout"
-                                          }
-                                        },
-                                        [
-                                          _c("input", {
+                                            type: "hidden",
+                                            name: "_token"
+                                          },
+                                          domProps: { value: _vm.csrf }
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "block w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
                                             attrs: {
-                                              type: "hidden",
-                                              name: "_token"
-                                            },
-                                            domProps: { value: _vm.csrf }
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "button",
-                                            {
-                                              staticClass:
-                                                "block w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
-                                              attrs: {
-                                                type: "submit",
-                                                role: "menuitem"
-                                              }
-                                            },
-                                            [
-                                              _vm._v(
-                                                "\n                                                    Sign out\n                                                "
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ]
-                          )
-                        : _vm._e()
-                    ]
-                  )
+                                              type: "submit",
+                                              role: "menuitem"
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                    Sign out\n                                                "
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      : _vm._e()
+                  ])
                 ],
                 1
               )
@@ -57966,129 +57924,145 @@ var render = function() {
             _vm._v(" "),
             _c("div", [
               _c("div", { staticClass: "shadow rounded-lg flex" }, [
-                _c("div", { staticClass: "relative" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass:
-                        "rounded-lg inline-flex items-center bg-white hover:text-blue-500 focus:outline-none focus:shadow-outline text-gray-500 font-semibold py-2 px-2 md:px-4",
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          _vm.showHeading = !_vm.showHeading
+                _c(
+                  "div",
+                  { staticClass: "relative" },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass:
+                          "rounded-lg inline-flex items-center bg-white hover:text-blue-500 focus:outline-none focus:shadow-outline text-gray-500 font-semibold py-2 px-2 md:px-4",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.showHeading = !_vm.showHeading
+                          }
                         }
-                      }
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "w-6 h-6 md:hidden",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            viewBox: "0 0 24 24",
-                            "stroke-width": "2",
-                            stroke: "currentColor",
-                            fill: "none",
-                            "stroke-linecap": "round",
-                            "stroke-linejoin": "round"
-                          }
-                        },
-                        [
-                          _c("rect", {
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "w-6 h-6 md:hidden",
                             attrs: {
-                              x: "0",
-                              y: "0",
+                              xmlns: "http://www.w3.org/2000/svg",
+                              viewBox: "0 0 24 24",
+                              "stroke-width": "2",
+                              stroke: "currentColor",
+                              fill: "none",
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round"
+                            }
+                          },
+                          [
+                            _c("rect", {
+                              attrs: {
+                                x: "0",
+                                y: "0",
+                                width: "24",
+                                height: "24",
+                                stroke: "none"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5"
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "hidden md:block" }, [
+                          _vm._v("Display")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "w-5 h-5 ml-1",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
                               width: "24",
                               height: "24",
-                              stroke: "none"
+                              viewBox: "0 0 24 24",
+                              "stroke-width": "2",
+                              stroke: "currentColor",
+                              fill: "none",
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round"
                             }
-                          }),
-                          _vm._v(" "),
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5"
-                            }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "hidden md:block" }, [
-                        _vm._v("Display")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "w-5 h-5 ml-1",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "24",
-                            height: "24",
-                            viewBox: "0 0 24 24",
-                            "stroke-width": "2",
-                            stroke: "currentColor",
-                            fill: "none",
-                            "stroke-linecap": "round",
-                            "stroke-linejoin": "round"
-                          }
-                        },
-                        [
-                          _c("rect", {
-                            attrs: {
-                              x: "0",
-                              y: "0",
-                              width: "24",
-                              height: "24",
-                              stroke: "none"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("polyline", {
-                            attrs: { points: "6 9 12 15 18 9" }
-                          })
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm.showHeading
-                    ? _c(
-                        "div",
-                        {
-                          staticClass:
-                            "z-40 absolute top-0 right-0 w-40 bg-white rounded-lg shadow-lg mt-12 -mr-1 block py-1 overflow-hidden"
-                        },
-                        _vm._l(_vm.headings, function(heading) {
-                          return _c(
-                            "label",
+                          },
+                          [
+                            _c("rect", {
+                              attrs: {
+                                x: "0",
+                                y: "0",
+                                width: "24",
+                                height: "24",
+                                stroke: "none"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("polyline", {
+                              attrs: { points: "6 9 12 15 18 9" }
+                            })
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("default-transition", [
+                      _vm.showHeading
+                        ? _c(
+                            "div",
                             {
                               staticClass:
-                                "flex justify-start items-center text-truncate hover:bg-gray-100 px-4 py-2"
+                                "z-40 absolute top-0 right-0 w-40 bg-white rounded-lg shadow-lg mt-12 -mr-1 block py-1 overflow-hidden"
                             },
-                            [
-                              _c("div", { staticClass: "text-teal-600 mr-3" }, [
-                                _c("input", {
+                            _vm._l(_vm.headings, function(heading) {
+                              return _c(
+                                "label",
+                                {
                                   staticClass:
-                                    "form-checkbox focus:outline-none focus:shadow-outline",
-                                  attrs: { type: "checkbox", checked: "" },
-                                  on: { click: function($event) {} }
-                                })
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "select-none text-gray-700" },
-                                [_vm._v(_vm._s(heading))]
+                                    "flex justify-start items-center text-truncate hover:bg-gray-100 px-4 py-2"
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "text-teal-600 mr-3" },
+                                    [
+                                      _c("input", {
+                                        staticClass:
+                                          "form-checkbox focus:outline-none focus:shadow-outline",
+                                        attrs: {
+                                          type: "checkbox",
+                                          checked: ""
+                                        },
+                                        on: { click: function($event) {} }
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "select-none text-gray-700"
+                                    },
+                                    [_vm._v(_vm._s(heading))]
+                                  )
+                                ]
                               )
-                            ]
+                            }),
+                            0
                           )
-                        }),
-                        0
-                      )
-                    : _vm._e()
-                ])
+                        : _vm._e()
+                    ])
+                  ],
+                  1
+                )
               ])
             ])
           ]),
@@ -75457,6 +75431,11 @@ Vue.directive('click-outside', {
     document.removeEventListener('click', el.__vueClickOutside__);
     el.__vueClickOutside__ = null;
   }
+});
+Vue.component('default-transition', {
+  template: '\  <transition\n' + 'enter-active-class="transition ease-out duration-100"\n' + 'enter-class="opacity-0 scale-95 transform"\n' + 'enter-to-class="opacity-100 scale-100 transform"\n' + 'leave-active-class="transition ease-in duration-75"\n' + 'leave-class="opacity-100 scale-100 transform"\n' + 'leave-to-class="opacity-0 scale-95 transform"\n' + '>\
+        \<slot></slot>\
+        </transition>'
 });
 var app = new Vue({
   el: '#app',
