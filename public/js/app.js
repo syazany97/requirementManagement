@@ -2215,14 +2215,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TopBar",
   data: function data() {
@@ -3957,18 +3949,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -55558,7 +55538,7 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "Your\n                                work\n                            "
+                      "Your\n                            work\n                        "
                     )
                   ]
                 ),
@@ -55938,7 +55918,7 @@ var render = function() {
                                           },
                                           [
                                             _vm._v(
-                                              "\n                                                    Sign out\n                                                "
+                                              "\n                                                Sign out\n                                            "
                                             )
                                           ]
                                         )
@@ -55989,7 +55969,7 @@ var staticRenderFns = [
           { staticClass: "justify-center text-xl font-semibold text-center" },
           [
             _vm._v(
-              "\n                            Zany Software\n                        "
+              "\n                        Zany Software\n                    "
             )
           ]
         )
@@ -57855,445 +57835,426 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("Projects")]),
-    _vm._v(" "),
-    _c("div", [
-      _c(
-        "div",
-        {
-          staticClass: "container mx-auto py-6 px-4",
-          attrs: { "x-data": "datatables()", "x-cloak": "" }
-        },
-        [
-          _c("h1", { staticClass: "text-3xl py-4 border-b font-bold mb-10" }, [
-            _vm._v("Datatable")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mb-4 flex justify-between items-center" }, [
-            _c("div", { staticClass: "flex-1 pr-4" }, [
-              _c("div", { staticClass: "relative md:w-1/3" }, [
-                _c("input", {
+    _c(
+      "div",
+      {
+        staticClass: "container mx-auto py-6 px-4",
+        attrs: { "x-data": "datatables()", "x-cloak": "" }
+      },
+      [
+        _c("h1", { staticClass: "h1" }, [_vm._v("Projects")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "mb-4 flex justify-between items-center" }, [
+          _c("div", { staticClass: "flex-1 pr-4" }, [
+            _c("div", { staticClass: "relative md:w-1/3" }, [
+              _c("input", {
+                staticClass:
+                  "w-full pl-10 pr-4 py-2 rounded-lg shadow focus:outline-none focus:shadow-outline text-gray-600 font-medium",
+                attrs: { type: "search", placeholder: "Search..." }
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
                   staticClass:
-                    "w-full pl-10 pr-4 py-2 rounded-lg shadow focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-                  attrs: { type: "search", placeholder: "Search..." }
-                }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "absolute top-0 left-0 inline-flex items-center p-2"
-                  },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "w-6 h-6 text-gray-400",
+                    "absolute top-0 left-0 inline-flex items-center p-2"
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "w-6 h-6 text-gray-400",
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        viewBox: "0 0 24 24",
+                        "stroke-width": "2",
+                        stroke: "currentColor",
+                        fill: "none",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round"
+                      }
+                    },
+                    [
+                      _c("rect", {
                         attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          viewBox: "0 0 24 24",
-                          "stroke-width": "2",
-                          stroke: "currentColor",
-                          fill: "none",
-                          "stroke-linecap": "round",
-                          "stroke-linejoin": "round"
+                          x: "0",
+                          y: "0",
+                          width: "24",
+                          height: "24",
+                          stroke: "none"
                         }
-                      },
-                      [
-                        _c("rect", {
-                          attrs: {
-                            x: "0",
-                            y: "0",
-                            width: "24",
-                            height: "24",
-                            stroke: "none"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("circle", { attrs: { cx: "10", cy: "10", r: "7" } }),
-                        _vm._v(" "),
-                        _c("line", {
-                          attrs: { x1: "21", y1: "21", x2: "15", y2: "15" }
-                        })
-                      ]
-                    )
-                  ]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("div", { staticClass: "shadow rounded-lg flex" }, [
-                _c(
-                  "div",
-                  { staticClass: "relative" },
-                  [
-                    _c(
-                      "button",
-                      {
-                        staticClass:
-                          "rounded-lg inline-flex items-center bg-white hover:text-blue-500 focus:outline-none focus:shadow-outline text-gray-500 font-semibold py-2 px-2 md:px-4",
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            _vm.showHeading = !_vm.showHeading
-                          }
-                        }
-                      },
-                      [
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "w-6 h-6 md:hidden",
-                            attrs: {
-                              xmlns: "http://www.w3.org/2000/svg",
-                              viewBox: "0 0 24 24",
-                              "stroke-width": "2",
-                              stroke: "currentColor",
-                              fill: "none",
-                              "stroke-linecap": "round",
-                              "stroke-linejoin": "round"
-                            }
-                          },
-                          [
-                            _c("rect", {
-                              attrs: {
-                                x: "0",
-                                y: "0",
-                                width: "24",
-                                height: "24",
-                                stroke: "none"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("path", {
-                              attrs: {
-                                d:
-                                  "M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5"
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "hidden md:block" }, [
-                          _vm._v("Display")
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "w-5 h-5 ml-1",
-                            attrs: {
-                              xmlns: "http://www.w3.org/2000/svg",
-                              width: "24",
-                              height: "24",
-                              viewBox: "0 0 24 24",
-                              "stroke-width": "2",
-                              stroke: "currentColor",
-                              fill: "none",
-                              "stroke-linecap": "round",
-                              "stroke-linejoin": "round"
-                            }
-                          },
-                          [
-                            _c("rect", {
-                              attrs: {
-                                x: "0",
-                                y: "0",
-                                width: "24",
-                                height: "24",
-                                stroke: "none"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("polyline", {
-                              attrs: { points: "6 9 12 15 18 9" }
-                            })
-                          ]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("default-transition", [
-                      _vm.showHeading
-                        ? _c(
-                            "div",
-                            {
-                              staticClass:
-                                "z-40 absolute top-0 right-0 w-40 bg-white rounded-lg shadow-lg mt-12 -mr-1 block py-1 overflow-hidden"
-                            },
-                            _vm._l(_vm.headings, function(heading) {
-                              return _c(
-                                "label",
-                                {
-                                  staticClass:
-                                    "flex justify-start items-center text-truncate hover:bg-gray-100 px-4 py-2"
-                                },
-                                [
-                                  _c(
-                                    "div",
-                                    { staticClass: "text-teal-600 mr-3" },
-                                    [
-                                      _c("input", {
-                                        staticClass:
-                                          "form-checkbox focus:outline-none focus:shadow-outline",
-                                        attrs: {
-                                          type: "checkbox",
-                                          checked: ""
-                                        },
-                                        on: { click: function($event) {} }
-                                      })
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass: "select-none text-gray-700"
-                                    },
-                                    [_vm._v(_vm._s(heading))]
-                                  )
-                                ]
-                              )
-                            }),
-                            0
-                          )
-                        : _vm._e()
-                    ])
-                  ],
-                  1
-                )
-              ])
+                      }),
+                      _vm._v(" "),
+                      _c("circle", { attrs: { cx: "10", cy: "10", r: "7" } }),
+                      _vm._v(" "),
+                      _c("line", {
+                        attrs: { x1: "21", y1: "21", x2: "15", y2: "15" }
+                      })
+                    ]
+                  )
+                ]
+              )
             ])
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative",
-              staticStyle: { height: "405px" }
-            },
-            [
+          _c("div", [
+            _c("div", { staticClass: "shadow rounded-lg flex" }, [
               _c(
-                "table",
-                {
-                  staticClass:
-                    "border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative"
-                },
+                "div",
+                { staticClass: "relative" },
                 [
-                  _c("thead", [
-                    _c(
-                      "tr",
-                      { staticClass: "text-left" },
-                      [
-                        _c(
-                          "th",
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "rounded-lg inline-flex items-center bg-white hover:text-blue-500 focus:outline-none focus:shadow-outline text-gray-500 font-semibold py-2 px-2 md:px-4",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.showHeading = !_vm.showHeading
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "w-6 h-6 md:hidden",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            viewBox: "0 0 24 24",
+                            "stroke-width": "2",
+                            stroke: "currentColor",
+                            fill: "none",
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round"
+                          }
+                        },
+                        [
+                          _c("rect", {
+                            attrs: {
+                              x: "0",
+                              y: "0",
+                              width: "24",
+                              height: "24",
+                              stroke: "none"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5"
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "hidden md:block" }, [
+                        _vm._v("Display")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "w-5 h-5 ml-1",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "24",
+                            height: "24",
+                            viewBox: "0 0 24 24",
+                            "stroke-width": "2",
+                            stroke: "currentColor",
+                            fill: "none",
+                            "stroke-linecap": "round",
+                            "stroke-linejoin": "round"
+                          }
+                        },
+                        [
+                          _c("rect", {
+                            attrs: {
+                              x: "0",
+                              y: "0",
+                              width: "24",
+                              height: "24",
+                              stroke: "none"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("polyline", {
+                            attrs: { points: "6 9 12 15 18 9" }
+                          })
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("default-transition", [
+                    _vm.showHeading
+                      ? _c(
+                          "div",
                           {
                             staticClass:
-                              "py-2 px-3 sticky top-0 border-b border-gray-200 bg-gray-100"
+                              "z-40 absolute top-0 right-0 w-40 bg-white rounded-lg shadow-lg mt-12 -mr-1 block py-1 overflow-hidden"
                           },
-                          [
-                            _c(
+                          _vm._l(_vm.headings, function(heading) {
+                            return _c(
                               "label",
                               {
                                 staticClass:
-                                  "text-teal-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer"
+                                  "flex justify-start items-center text-truncate hover:bg-gray-100 px-4 py-2"
                               },
                               [
-                                _c("input", {
-                                  staticClass:
-                                    "form-checkbox focus:outline-none focus:shadow-outline",
-                                  attrs: { type: "checkbox" },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.selectAllCheckbox($event)
-                                    }
-                                  }
-                                })
+                                _c(
+                                  "div",
+                                  { staticClass: "text-teal-600 mr-3" },
+                                  [
+                                    _c("input", {
+                                      staticClass:
+                                        "form-checkbox focus:outline-none focus:shadow-outline",
+                                      attrs: { type: "checkbox", checked: "" },
+                                      on: { click: function($event) {} }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "select-none text-gray-700" },
+                                  [_vm._v(_vm._s(heading))]
+                                )
                               ]
                             )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _vm._l(_vm.headings, function(heading) {
-                          return _c(
-                            "th",
+                          }),
+                          0
+                        )
+                      : _vm._e()
+                  ])
+                ],
+                1
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative",
+            staticStyle: { height: "405px" }
+          },
+          [
+            _c(
+              "table",
+              {
+                staticClass:
+                  "border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative"
+              },
+              [
+                _c("thead", [
+                  _c(
+                    "tr",
+                    { staticClass: "text-left" },
+                    [
+                      _c(
+                        "th",
+                        {
+                          staticClass:
+                            "py-2 px-3 sticky top-0 border-b border-gray-200 bg-gray-100"
+                        },
+                        [
+                          _c(
+                            "label",
                             {
                               staticClass:
-                                "bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs"
+                                "text-teal-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer"
                             },
                             [
-                              _vm._v(
-                                _vm._s(heading) + "\n                        "
-                              )
+                              _c("input", {
+                                staticClass:
+                                  "form-checkbox focus:outline-none focus:shadow-outline",
+                                attrs: { type: "checkbox" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.selectAllCheckbox($event)
+                                  }
+                                }
+                              })
                             ]
                           )
-                        })
-                      ],
-                      2
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "tbody",
-                    [
-                      _vm._l(_vm.projects, function(project) {
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _vm._l(_vm.headings, function(heading) {
                         return _c(
-                          "tr",
+                          "th",
                           {
-                            key: project.id,
-                            staticClass: "cursor-pointer hover:bg-gray-200",
-                            on: {
-                              click: function($event) {
-                                return _vm.viewProject(project.id)
-                              }
-                            }
+                            staticClass:
+                              "bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs"
                           },
-                          [
-                            _vm._m(0, true),
-                            _vm._v(" "),
-                            _c(
-                              "td",
-                              {
-                                staticClass:
-                                  "border-dashed border-t border-gray-200"
-                              },
-                              [
-                                _c("span", {
-                                  staticClass:
-                                    "text-gray-700 px-6 py-3 flex items-center",
-                                  model: {
-                                    value: project.id,
-                                    callback: function($$v) {
-                                      _vm.$set(project, "id", $$v)
-                                    },
-                                    expression: "project.id"
-                                  }
-                                })
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "td",
-                              {
-                                staticClass:
-                                  "border-dashed border-t border-gray-200"
-                              },
-                              [
-                                _c(
-                                  "span",
-                                  {
-                                    staticClass:
-                                      "text-gray-700 px-6 py-3 flex items-center"
-                                  },
-                                  [_vm._v(_vm._s(project.name))]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "td",
-                              {
-                                staticClass:
-                                  "border-dashed border-t border-gray-200"
-                              },
-                              [
-                                _c(
-                                  "span",
-                                  {
-                                    staticClass:
-                                      "text-gray-700 px-6 py-3 flex items-center"
-                                  },
-                                  [
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm._f("limitWords")(
-                                          project.description
-                                        )
-                                      )
-                                    )
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "td",
-                              {
-                                staticClass:
-                                  "border-dashed border-t border-gray-200"
-                              },
-                              [
-                                _c("span", {
-                                  staticClass:
-                                    "text-gray-700 px-6 py-3 flex items-center"
-                                }),
-                                _vm._v(
-                                  _vm._s(project.modules_count) +
-                                    "\n                            "
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "td",
-                              {
-                                staticClass:
-                                  "border-dashed border-t border-gray-200"
-                              },
-                              [
-                                _c(
-                                  "span",
-                                  {
-                                    staticClass:
-                                      "text-gray-700 px-6 py-3 flex items-center"
-                                  },
-                                  [
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm.get(project, "owner.name", null)
-                                      )
-                                    )
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "td",
-                              {
-                                staticClass:
-                                  "border-dashed border-t border-gray-200"
-                              },
-                              [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn-primary",
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.viewProject(project.id)
-                                      }
-                                    }
-                                  },
-                                  [_vm._v("View")]
-                                )
-                              ]
-                            )
-                          ]
+                          [_vm._v(_vm._s(heading) + "\n                    ")]
                         )
                       })
                     ],
                     2
                   )
-                ]
-              )
-            ]
-          )
-        ]
-      )
-    ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "tbody",
+                  [
+                    _vm._l(_vm.projects, function(project) {
+                      return _c(
+                        "tr",
+                        {
+                          key: project.id,
+                          staticClass: "cursor-pointer hover:bg-gray-200",
+                          on: {
+                            click: function($event) {
+                              return _vm.viewProject(project.id)
+                            }
+                          }
+                        },
+                        [
+                          _vm._m(0, true),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "border-dashed border-t border-gray-200"
+                            },
+                            [
+                              _c("span", {
+                                staticClass:
+                                  "text-gray-700 px-6 py-3 flex items-center",
+                                model: {
+                                  value: project.id,
+                                  callback: function($$v) {
+                                    _vm.$set(project, "id", $$v)
+                                  },
+                                  expression: "project.id"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "border-dashed border-t border-gray-200"
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "text-gray-700 px-6 py-3 flex items-center"
+                                },
+                                [_vm._v(_vm._s(project.name))]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "border-dashed border-t border-gray-200"
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "text-gray-700 px-6 py-3 flex items-center"
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm._f("limitWords")(project.description)
+                                    )
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "border-dashed border-t border-gray-200"
+                            },
+                            [
+                              _c("span", {
+                                staticClass:
+                                  "text-gray-700 px-6 py-3 flex items-center"
+                              }),
+                              _vm._v(
+                                _vm._s(project.modules_count) +
+                                  "\n                        "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "border-dashed border-t border-gray-200"
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "text-gray-700 px-6 py-3 flex items-center"
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(_vm.get(project, "owner.name", null))
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "td",
+                            {
+                              staticClass:
+                                "border-dashed border-t border-gray-200"
+                            },
+                            [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn-primary",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.viewProject(project.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("View")]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]
+            )
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [

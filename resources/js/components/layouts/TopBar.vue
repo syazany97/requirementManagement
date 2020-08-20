@@ -116,14 +116,6 @@
                                 </svg>
                             </button>
 
-<!--                            <transition-->
-<!--                                enter-active-class="transition ease-out duration-100"-->
-<!--                                enter-class="opacity-0 scale-95 transform"-->
-<!--                                enter-to-class="opacity-100 scale-100 transform"-->
-<!--                                leave-active-class="transition ease-in duration-75"-->
-<!--                                leave-class="opacity-100 scale-100 transform"-->
-<!--                                leave-to-class="opacity-0 scale-95 transform"-->
-<!--                            >-->
                             <default-transition>
                                 <div v-if="isOpen" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg">
                                     <div class="rounded-md bg-white shadow-xs">
