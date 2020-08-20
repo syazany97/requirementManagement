@@ -175,6 +175,10 @@
     height: 150px;
 }
 
+.default-dialog-title {
+    @apply text-left font-medium px-4 py-4
+}
+
 /* transition */
 
 

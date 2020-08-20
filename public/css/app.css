@@ -3922,6 +3922,15 @@ video {
   height: 150px;
 }
 
+.default-dialog-title {
+  text-align: left;
+  font-weight: 500;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 /* transition */
 
 .space-y-0 > :not(template) ~ :not(template){

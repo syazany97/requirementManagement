@@ -1,7 +1,7 @@
 <template>
     <div class="container mx-auto py-2 overflow-y-auto">
 
-        <h1 class="headline text-left font-medium px-4 py-4">Create new requirement</h1>
+        <h1 class="default-dialog-title">Create new requirement</h1>
 
         <hr>
 

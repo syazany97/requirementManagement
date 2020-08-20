@@ -25,23 +25,26 @@
         </modal>
 
         <modal name="moduleDialog">
-            <div class="container mx-auto">
-                <h1>Create new module</h1>
+            <div class="container mx-auto py-2 overflow-y-auto">
+                <h1 class="default-dialog-title">Create new module</h1>
+                <hr>
+                <div class="bg-white-100 px-4">
 
-                <label class="primary-label" for="moduleName">Module</label>
+                    <label class="primary-label" for="moduleName">Module</label>
 
-                <input class="primary-input"
-                       v-model="moduleName"
-                       id="moduleName" type="text" placeholder="Name">
+                    <input class="primary-input"
+                           v-model="moduleName"
+                           id="moduleName" type="text" placeholder="Name">
 
-                <div class="inline-flex text-right pt-4">
-                    <button @click="$modal.hide('moduleDialog')" class="btn-tertiary pr-3">
-                        <span>Cancel</span>
-                    </button>
-                    <div class="divider"></div>
-                    <button @click="addModule()" class="btn-primary">
-                        <span>Create</span>
-                    </button>
+                    <div class="inline-flex text-right pt-4">
+                        <button @click="$modal.hide('moduleDialog')" class="btn-tertiary pr-3">
+                            <span>Cancel</span>
+                        </button>
+                        <div class="divider"></div>
+                        <button @click="addModule()" class="btn-primary">
+                            <span>{{ adding ? 'Creating' : 'Create' }}</span>
+                        </button>
+                    </div>
                 </div>
 
             </div>
@@ -74,24 +77,22 @@ export default {
                 assigned: [],
                 description: ""
             },
-            testDialog: false
+            testDialog: false,
+            adding: false
         }
     },
     methods: {
         async addModule() {
             try {
+                this.adding = true;
                 await moduleRepository.store(this.$route.params.project, {
                     name: this.moduleName
                 })
-
-                this.$store.dispatch('requirement/setRequirementList',
+                await this.$store.dispatch('requirement/setRequirementList',
                     {project_id: this.$route.params.project});
-
+                this.adding = false;
                 this.moduleName = "";
-
-                this.dialog = false;
-
-
+                this.$modal.hide('moduleDialog')
             } catch (e) {
                 console.log(e);
             }
@@ -101,17 +102,3 @@ export default {
 }
 </script>
 
-<style scoped>
-.btn {
-    @apply font-bold py-2 px-4 rounded;
-}
-
-.btn-blue {
-    @apply bg-blue-500 text-white;
-}
-
-.btn-blue:hover {
-    @apply bg-blue-700;
-}
-
-</style>
