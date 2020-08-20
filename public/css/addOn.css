@@ -35,17 +35,21 @@
 }
 
 .primary-input {
-    @apply appearance-none hidden border block w-full bg-gray-200
-    text-gray-700 border rounded py-1
-    px-4 mb-3 leading-tight
+    @apply appearance-none hidden border block w-full bg-gray-100
+    text-gray-700 border rounded py-1 border-gray-400
+    px-4 leading-tight
 }
 
 .primary-input:focus {
-    @apply bg-white
+    @apply bg-white outline-none shadow-outline
+}
+
+.primary-input:hover {
+    @apply bg-gray-200
 }
 
 .primary-label {
-    @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 pt-4 text-left
+    @apply block tracking-wide text-gray-700 text-sm font-medium mb-2 pt-4 text-left
 }
 
 .primary-text-area {
@@ -73,8 +77,16 @@
     @apply bg-white
 }
 
+.primary-select {
+    @apply bg-gray-100
+}
+
+.primary-select:focus {
+    @apply bg-white
+}
+
 .divider {
-    width:5px;
+    width:3px;
     height:auto;
     display:inline-block;
 }
@@ -145,6 +157,10 @@
 /* table */
 .default-row {
     @apply border-solid border-t border-gray-200
+}
+
+.default-header {
+    @apply bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs
 }
 
 /* transition */

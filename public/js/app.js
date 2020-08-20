@@ -3072,6 +3072,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -3743,12 +3748,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TestCaseDetails",
   data: function data() {
     return {
-      testCases: []
+      testCases: [],
+      headings: ['No', 'Title', 'User', 'Created', 'Action']
     };
   },
   created: function created() {
@@ -55897,7 +55906,7 @@ var render = function() {
                                       {
                                         attrs: {
                                           method: "POST",
-                                          action: "logout"
+                                          action: "/logout"
                                         }
                                       },
                                       [
@@ -56786,202 +56795,209 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container mx-auto px-4 py-4 overflow-y-auto" },
-    [
-      _c("h1", { staticClass: "headline text-left" }, [
-        _vm._v("Create new requirement")
-      ]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "primary-label", attrs: { for: "grid-name" } },
-        [_vm._v("\n        Name\n    ")]
-      ),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.requirement.name,
-            expression: "requirement.name"
-          }
-        ],
-        staticClass: "primary-input",
-        attrs: { id: "grid-name", type: "text", placeholder: "Name" },
-        domProps: { value: _vm.requirement.name },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.requirement, "name", $event.target.value)
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "primary-label", attrs: { for: "grid-priority" } },
-        [_vm._v("\n        Priority\n    ")]
-      ),
-      _vm._v(" "),
-      _c("vue-select", {
-        attrs: {
-          options: _vm.priorities,
-          id: "grid-priority",
-          label: "name",
-          reduce: function(name) {
-            return name.id
-          }
-        },
-        model: {
-          value: _vm.requirement.requirement_priority_id,
-          callback: function($$v) {
-            _vm.$set(_vm.requirement, "requirement_priority_id", $$v)
-          },
-          expression: "requirement.requirement_priority_id"
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "primary-label", attrs: { for: "grid-module-id" } },
-        [_vm._v("\n        Under which module\n    ")]
-      ),
-      _vm._v(" "),
-      _c("vue-select", {
-        attrs: {
-          id: "grid-module-id",
-          options: _vm.modules,
-          label: "name",
-          reduce: function(name) {
-            return name.id
-          }
-        },
-        model: {
-          value: _vm.requirement.module_id,
-          callback: function($$v) {
-            _vm.$set(_vm.requirement, "module_id", $$v)
-          },
-          expression: "requirement.module_id"
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "primary-label", attrs: { for: "grid-status" } },
-        [_vm._v("\n        Status\n    ")]
-      ),
-      _vm._v(" "),
-      _c("vue-select", {
-        attrs: {
-          options: _vm.statuses,
-          label: "name",
-          reduce: function(name) {
-            return name.id
-          },
-          id: "grid-status"
-        },
-        model: {
-          value: _vm.requirement.requirement_status_id,
-          callback: function($$v) {
-            _vm.$set(_vm.requirement, "requirement_status_id", $$v)
-          },
-          expression: "requirement.requirement_status_id"
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "primary-label", attrs: { for: "grid-description" } },
-        [_vm._v("\n        Description\n    ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "description" },
-        [
-          _c("quill-editor", {
-            staticClass: "primary-text-area text-input",
-            attrs: { id: "grid-description" },
-            model: {
-              value: _vm.requirement.description,
-              callback: function($$v) {
-                _vm.$set(_vm.requirement, "description", $$v)
-              },
-              expression: "requirement.description"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "primary-label", attrs: { for: "grid-assignees" } },
-        [_vm._v("\n        Assignees\n    ")]
-      ),
-      _vm._v(" "),
-      _c("vue-select", {
-        attrs: {
-          id: "grid-assignees",
-          options: _vm.users,
-          label: "name",
-          reduce: function(name) {
-            return name.id
-          },
-          multiple: ""
-        },
-        model: {
-          value: _vm.requirement.assignees,
-          callback: function($$v) {
-            _vm.$set(_vm.requirement, "assignees", $$v)
-          },
-          expression: "requirement.assignees"
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "inline-flex text-right pt-4" }, [
+  return _c("div", { staticClass: "container mx-auto py-2 overflow-y-auto" }, [
+    _c("h1", { staticClass: "headline text-left font-medium px-4 py-4" }, [
+      _vm._v("Create new requirement")
+    ]),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "bg-white-100 px-4" },
+      [
         _c(
-          "button",
-          {
-            staticClass: "btn-tertiary pr-3",
-            on: {
-              click: function($event) {
-                return _vm.closeDialog()
-              }
-            }
-          },
-          [_c("span", [_vm._v("Cancel")])]
+          "label",
+          { staticClass: "primary-label", attrs: { for: "grid-name" } },
+          [_vm._v("\n            Name\n        ")]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "divider" }),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.requirement.name,
+              expression: "requirement.name"
+            }
+          ],
+          staticClass: "primary-input",
+          attrs: {
+            id: "grid-name",
+            type: "text",
+            placeholder: "Requirement A"
+          },
+          domProps: { value: _vm.requirement.name },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.requirement, "name", $event.target.value)
+            }
+          }
+        }),
         _vm._v(" "),
         _c(
-          "button",
-          {
-            staticClass: "btn-primary",
-            on: {
-              click: function($event) {
-                return _vm.addRequirement()
-              }
+          "label",
+          { staticClass: "primary-label", attrs: { for: "grid-priority" } },
+          [_vm._v("\n            Priority\n        ")]
+        ),
+        _vm._v(" "),
+        _c("vue-select", {
+          staticClass: "bg-gray-100",
+          attrs: {
+            options: _vm.priorities,
+            id: "grid-priority",
+            label: "name",
+            reduce: function(name) {
+              return name.id
             }
           },
+          model: {
+            value: _vm.requirement.requirement_priority_id,
+            callback: function($$v) {
+              _vm.$set(_vm.requirement, "requirement_priority_id", $$v)
+            },
+            expression: "requirement.requirement_priority_id"
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "primary-label", attrs: { for: "grid-module-id" } },
+          [_vm._v("\n            Under which module\n        ")]
+        ),
+        _vm._v(" "),
+        _c("vue-select", {
+          attrs: {
+            id: "grid-module-id",
+            options: _vm.modules,
+            label: "name",
+            reduce: function(name) {
+              return name.id
+            }
+          },
+          model: {
+            value: _vm.requirement.module_id,
+            callback: function($$v) {
+              _vm.$set(_vm.requirement, "module_id", $$v)
+            },
+            expression: "requirement.module_id"
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "primary-label", attrs: { for: "grid-status" } },
+          [_vm._v("\n            Status\n        ")]
+        ),
+        _vm._v(" "),
+        _c("vue-select", {
+          attrs: {
+            options: _vm.statuses,
+            label: "name",
+            reduce: function(name) {
+              return name.id
+            },
+            id: "grid-status"
+          },
+          model: {
+            value: _vm.requirement.requirement_status_id,
+            callback: function($$v) {
+              _vm.$set(_vm.requirement, "requirement_status_id", $$v)
+            },
+            expression: "requirement.requirement_status_id"
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "primary-label", attrs: { for: "grid-description" } },
+          [_vm._v("\n            Description\n        ")]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "description" },
           [
-            _c("span", [
-              _vm._v(_vm._s(_vm.addingRequirement ? "Creating" : "Create"))
-            ])
-          ]
-        )
-      ])
-    ],
-    1
-  )
+            _c("quill-editor", {
+              staticClass: "primary-text-area text-input",
+              attrs: { id: "grid-description" },
+              model: {
+                value: _vm.requirement.description,
+                callback: function($$v) {
+                  _vm.$set(_vm.requirement, "description", $$v)
+                },
+                expression: "requirement.description"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "primary-label", attrs: { for: "grid-assignees" } },
+          [_vm._v("\n            Assignees\n        ")]
+        ),
+        _vm._v(" "),
+        _c("vue-select", {
+          attrs: {
+            id: "grid-assignees",
+            options: _vm.users,
+            label: "name",
+            reduce: function(name) {
+              return name.id
+            },
+            multiple: ""
+          },
+          model: {
+            value: _vm.requirement.assignees,
+            callback: function($$v) {
+              _vm.$set(_vm.requirement, "assignees", $$v)
+            },
+            expression: "requirement.assignees"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "inline-flex text-right pt-4" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn-tertiary pr-3",
+              on: {
+                click: function($event) {
+                  return _vm.closeDialog()
+                }
+              }
+            },
+            [_c("span", [_vm._v("Cancel")])]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "divider" }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn-primary",
+              on: {
+                click: function($event) {
+                  return _vm.addRequirement()
+                }
+              }
+            },
+            [
+              _c("span", [
+                _vm._v(_vm._s(_vm.addingRequirement ? "Creating" : "Create"))
+              ])
+            ]
+          )
+        ])
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -57391,25 +57407,42 @@ var render = function() {
           }
         },
         [
-          _c("svg", { attrs: { fill: "currentColor", viewBox: "0 0 20 20" } }, [
-            _c("path", {
-              attrs: {
-                "fill-rule": "evenodd",
-                d:
-                  "M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z",
-                "clip-rule": "evenodd"
-              }
-            })
-          ]),
+          _c(
+            "svg",
+            {
+              staticClass: "plus w-6 h-6",
+              attrs: { viewBox: "0 0 20 20", fill: "currentColor" }
+            },
+            [
+              _c("path", {
+                attrs: {
+                  "fill-rule": "evenodd",
+                  d:
+                    "M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z",
+                  "clip-rule": "evenodd"
+                }
+              })
+            ]
+          ),
           _vm._v(" "),
-          _c("span", [_vm._v("New test case")])
+          _c("span", [_vm._v("Create test case")])
         ]
       )
     ]),
     _vm._v(" "),
     _vm.testCases.length
-      ? _c("table", { staticClass: "table-auto" }, [
-          _vm._m(0),
+      ? _c("table", { staticClass: "cursor-pointer hover:bg-gray-200 mt-4" }, [
+          _c("thead", [
+            _c(
+              "tr",
+              _vm._l(_vm.headings, function(heading) {
+                return _c("th", { staticClass: "default-header" }, [
+                  _vm._v(_vm._s(heading))
+                ])
+              }),
+              0
+            )
+          ]),
           _vm._v(" "),
           _c(
             "tbody",
@@ -57418,30 +57451,30 @@ var render = function() {
                 "tr",
                 { key: test.id, class: index % 0 === 0 ? "bg-gray-100" : "" },
                 [
-                  _c("td", { staticClass: "border px-4 py-2" }, [
+                  _c("td", { staticClass: "default-row" }, [
                     _vm._v(_vm._s(index + 1))
                   ]),
                   _vm._v(" "),
                   _c(
                     "td",
                     {
-                      staticClass: "border px-4 py-2",
+                      staticClass: "default-row",
                       domProps: { innerHTML: _vm._s(test.description) }
                     },
                     [_vm._v("a")]
                   ),
                   _vm._v(" "),
-                  _c("td", { staticClass: "border px-4 py-2" }, [
+                  _c("td", { staticClass: "default-row" }, [
                     _vm._v(_vm._s(test.user.name))
                   ]),
                   _vm._v(" "),
-                  _c("td", { staticClass: "border px-4 py-2" }, [
+                  _c("td", { staticClass: "default-row" }, [
                     _vm._v(_vm._s(_vm._f("formatDateTime")(test.created_at)))
                   ]),
                   _vm._v(" "),
                   _c(
                     "td",
-                    { staticClass: "border px-4 py-2" },
+                    { staticClass: "default-row" },
                     [
                       _c(
                         "router-link",
@@ -57455,7 +57488,7 @@ var render = function() {
                             tag: "button"
                           }
                         },
-                        [_vm._v("View")]
+                        [_vm._v("View\n                ")]
                       )
                     ],
                     1
@@ -57469,24 +57502,7 @@ var render = function() {
       : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { staticClass: "px-4 py-2" }, [_vm._v("No")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Title")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "px-4 py-2" }, [_vm._v("User")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "px-4 py-2" }, [_vm._v("Created")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -58069,14 +58085,9 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _vm._l(_vm.headings, function(heading) {
-                  return _c(
-                    "th",
-                    {
-                      staticClass:
-                        "bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs"
-                    },
-                    [_vm._v(_vm._s(heading) + "\n                ")]
-                  )
+                  return _c("th", { staticClass: "default-header" }, [
+                    _vm._v(_vm._s(heading) + "\n                ")
+                  ])
                 })
               ],
               2
@@ -58194,8 +58205,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "text-right pb-2" }, [_c("create-new-module")], 1),
+  return _c("div", { staticClass: "container mx-auto" }, [
+    _c(
+      "div",
+      { staticClass: "text-right pb-2 mt-2" },
+      [_c("create-new-module")],
+      1
+    ),
     _vm._v(" "),
     _vm.modules.length
       ? _c("div", { staticClass: "flex mb-4" }, [

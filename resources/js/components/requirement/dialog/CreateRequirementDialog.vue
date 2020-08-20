@@ -1,88 +1,93 @@
 <template>
-    <div class="container mx-auto px-4 py-4 overflow-y-auto">
+    <div class="container mx-auto py-2 overflow-y-auto">
 
-        <h1 class="headline text-left">Create new requirement</h1>
+        <h1 class="headline text-left font-medium px-4 py-4">Create new requirement</h1>
 
-        <br>
+        <hr>
 
-        <label class="primary-label" for="grid-name">
-            Name
-        </label>
+        <div class="bg-white-100 px-4">
 
-        <input class="primary-input"
-               v-model="requirement.name"
-               id="grid-name" type="text" placeholder="Name">
+            <label class="primary-label" for="grid-name">
+                Name
+            </label>
 
-        <label class="primary-label" for="grid-priority">
-            Priority
-        </label>
+            <input class="primary-input"
+                   v-model="requirement.name"
+                   id="grid-name" type="text" placeholder="Requirement A">
 
-        <vue-select :options="priorities"
-                    v-model="requirement.requirement_priority_id"
-                    id="grid-priority"
-                    label="name"
-                    :reduce="name => name.id">
-        </vue-select>
+            <label class="primary-label" for="grid-priority">
+                Priority
+            </label>
 
-        <label class="primary-label" for="grid-module-id">
-            Under which module
-        </label>
+            <vue-select :options="priorities"
+                        class="bg-gray-100"
+                        v-model="requirement.requirement_priority_id"
+                        id="grid-priority"
+                        label="name"
+                        :reduce="name => name.id">
+            </vue-select>
 
-        <vue-select
-            v-model="requirement.module_id"
-            id="grid-module-id"
-            :options="modules"
-            label="name"
-            :reduce="name => name.id"
-        ></vue-select>
+            <label class="primary-label" for="grid-module-id">
+                Under which module
+            </label>
 
-        <label class="primary-label" for="grid-status">
-            Status
-        </label>
+            <vue-select
+                v-model="requirement.module_id"
+                id="grid-module-id"
+                :options="modules"
+                label="name"
+                :reduce="name => name.id"
+            ></vue-select>
 
-        <vue-select
-            v-model="requirement.requirement_status_id"
-            :options="statuses"
-            label="name"
-            :reduce="name => name.id"
-            id="grid-status"
-        ></vue-select>
+            <label class="primary-label" for="grid-status">
+                Status
+            </label>
+
+            <vue-select
+                v-model="requirement.requirement_status_id"
+                :options="statuses"
+                label="name"
+                :reduce="name => name.id"
+                id="grid-status"
+            ></vue-select>
 
 
-        <label class="primary-label" for="grid-description">
-            Description
-        </label>
+            <label class="primary-label" for="grid-description">
+                Description
+            </label>
 
-        <div class="description">
-            <quill-editor id="grid-description"
-                          v-model="requirement.description"
-                          class="primary-text-area text-input">
+            <div class="description">
+                <quill-editor id="grid-description"
+                              v-model="requirement.description"
+                              class="primary-text-area text-input">
 
-            </quill-editor>
+                </quill-editor>
+            </div>
+
+            <label class="primary-label" for="grid-assignees">
+                Assignees
+            </label>
+
+            <vue-select
+                v-model="requirement.assignees"
+                id="grid-assignees"
+                :options="users"
+                label="name"
+                :reduce="name => name.id"
+                multiple
+            ></vue-select>
+
+            <div class="inline-flex text-right pt-4">
+                <button @click="closeDialog()" class="btn-tertiary pr-3">
+                    <span>Cancel</span>
+                </button>
+                <div class="divider"></div>
+                <button @click="addRequirement()" class="btn-primary">
+                    <span>{{ addingRequirement ? 'Creating' : 'Create' }}</span>
+                </button>
+            </div>
         </div>
 
-        <label class="primary-label" for="grid-assignees">
-            Assignees
-        </label>
-
-        <vue-select
-            v-model="requirement.assignees"
-            id="grid-assignees"
-            :options="users"
-            label="name"
-            :reduce="name => name.id"
-            multiple
-        ></vue-select>
-
-        <div class="inline-flex text-right pt-4">
-            <button @click="closeDialog()" class="btn-tertiary pr-3">
-                <span>Cancel</span>
-            </button>
-            <div class="divider"></div>
-            <button @click="addRequirement()" class="btn-primary">
-                <span>{{addingRequirement ? 'Creating' : 'Create'}}</span>
-            </button>
-        </div>
     </div>
 </template>
 
