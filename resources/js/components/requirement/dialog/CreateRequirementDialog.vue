@@ -20,7 +20,7 @@
             </label>
 
             <vue-select :options="priorities"
-                        class="bg-gray-100"
+                        class="primary-select"
                         v-model="requirement.requirement_priority_id"
                         id="grid-priority"
                         label="name"
@@ -34,6 +34,7 @@
             <vue-select
                 v-model="requirement.module_id"
                 id="grid-module-id"
+                class="primary-select"
                 :options="modules"
                 label="name"
                 :reduce="name => name.id"
@@ -46,6 +47,7 @@
             <vue-select
                 v-model="requirement.requirement_status_id"
                 :options="statuses"
+                class="primary-select"
                 label="name"
                 :reduce="name => name.id"
                 id="grid-status"
@@ -70,6 +72,7 @@
             <vue-select
                 v-model="requirement.assignees"
                 id="grid-assignees"
+                class="primary-select"
                 :options="users"
                 label="name"
                 :reduce="name => name.id"

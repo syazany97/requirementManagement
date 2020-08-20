@@ -1,3 +1,5 @@
+
+/* BUTTON SECTION */
 .btn {
    @apply font-medium py-1 px-4 rounded inline-flex items-center text-sm
 }
@@ -33,6 +35,10 @@
 .btn-tertiary:hover {
     @apply bg-gray-400
 }
+
+/* BUTTON ENDS */
+
+/* INPUT AND FORM */
 
 .primary-input {
     @apply appearance-none hidden border block w-full bg-gray-100
@@ -91,11 +97,14 @@
     @apply bg-white
 }
 
+/* INPUT AND FORM ENDS */
+
 .divider {
     width:3px;
     height:auto;
     display:inline-block;
 }
+
 
 .primary-tabs {
     font-size: 0.9rem;
@@ -169,9 +178,10 @@
     @apply bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs
 }
 
+/*TODO : set rounded rich text area by uncomment border-radius*/
 .ql-container.ql-snow {
     border: none;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     height: 150px;
 }
 

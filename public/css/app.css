@@ -3567,6 +3567,8 @@ video {
   }
 }
 
+/* BUTTON SECTION */
+
 .btn {
   font-weight: 500;
   padding-top: 0.25rem;
@@ -3655,6 +3657,10 @@ video {
   background-color: #cbd5e0;
   background-color: rgba(203, 213, 224, var(--bg-opacity));
 }
+
+/* BUTTON ENDS */
+
+/* INPUT AND FORM */
 
 .primary-input {
   -webkit-appearance: none;
@@ -3765,6 +3771,8 @@ video {
   background-color: #fff;
   background-color: rgba(255, 255, 255, var(--bg-opacity));
 }
+
+/* INPUT AND FORM ENDS */
 
 .divider {
   width: 3px;
@@ -3916,9 +3924,11 @@ video {
   font-size: 0.75rem;
 }
 
+/*TODO : set rounded rich text area by uncomment border-radius*/
+
 .ql-container.ql-snow {
   border: none;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   height: 150px;
 }
 

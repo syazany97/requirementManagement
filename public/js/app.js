@@ -2215,17 +2215,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TopBar",
   data: function data() {
     return {
       isOpen: false,
+      showAppSelect: false,
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     };
   },
   methods: {
     hideDropDown: function hideDropDown() {
       this.isOpen = false;
+      this.showAppSelect = false;
     }
   }
 });
@@ -2985,6 +3019,9 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
 //
 //
 //
@@ -55606,34 +55643,152 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "div",
-                  {
-                    staticClass:
-                      "flex px-3 py-1 ml-2 self-center text-sm font-medium text-gray-800 antialiased rounded-md focus:outline-none hover:bg-blue-100 hover:text-blue-500 focus:bg-blue-100"
-                  },
+                  { staticClass: "relative" },
                   [
-                    _c("a", { attrs: { href: "#" } }, [_vm._v("App")]),
-                    _vm._v(" "),
                     _c(
-                      "svg",
+                      "div",
                       {
-                        staticClass: "h-4 w-4 mt-1 ml-1",
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          fill: "currentColor",
-                          viewBox: "0 0 20 20"
-                        }
+                        staticClass:
+                          "flex px-3 py-1 ml-2 self-center text-sm font-medium text-gray-800 antialiased rounded-md focus:outline-none hover:bg-blue-100 hover:text-blue-500 focus:bg-blue-100"
                       },
                       [
-                        _c("path", {
-                          attrs: {
-                            "fill-rule": "evenodd",
-                            d:
-                              "M4.516 7.548c.436-.446 1.043-.481 1.576 0L10 11.295l3.908-3.747c.533-.481 1.141-.446 1.574 0 .436.445.408 1.197 0 1.615-.406.418-4.695 4.502-4.695 4.502a1.095 1.095 0 01-1.576 0S4.924 9.581 4.516 9.163c-.409-.418-.436-1.17 0-1.615z"
-                          }
-                        })
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                _vm.showAppSelect = !_vm.showAppSelect
+                              }
+                            }
+                          },
+                          [_vm._v("App")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "h-4 w-4 mt-1 ml-1",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              fill: "currentColor",
+                              viewBox: "0 0 20 20"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                "fill-rule": "evenodd",
+                                d:
+                                  "M4.516 7.548c.436-.446 1.043-.481 1.576 0L10 11.295l3.908-3.747c.533-.481 1.141-.446 1.574 0 .436.445.408 1.197 0 1.615-.406.418-4.695 4.502-4.695 4.502a1.095 1.095 0 01-1.576 0S4.924 9.581 4.516 9.163c-.409-.418-.436-1.17 0-1.615z"
+                              }
+                            })
+                          ]
+                        )
                       ]
-                    )
-                  ]
+                    ),
+                    _vm._v(" "),
+                    _c("default-transition", [
+                      _vm.showAppSelect
+                        ? _c(
+                            "div",
+                            {
+                              staticClass:
+                                "origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg"
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "rounded-md bg-white shadow-xs"
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "py-1",
+                                      attrs: {
+                                        role: "menu",
+                                        "aria-orientation": "vertical",
+                                        "aria-labelledby": "options-menu"
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
+                                          attrs: { href: "#", role: "menuitem" }
+                                        },
+                                        [_vm._v("Account settings")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
+                                          attrs: { href: "#", role: "menuitem" }
+                                        },
+                                        [_vm._v("Support")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass:
+                                            "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
+                                          attrs: { href: "#", role: "menuitem" }
+                                        },
+                                        [_vm._v("License")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "form",
+                                        {
+                                          attrs: {
+                                            method: "POST",
+                                            action: "/logout"
+                                          }
+                                        },
+                                        [
+                                          _c("input", {
+                                            attrs: {
+                                              type: "hidden",
+                                              name: "_token"
+                                            },
+                                            domProps: { value: _vm.csrf }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "button",
+                                            {
+                                              staticClass:
+                                                "block w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
+                                              attrs: {
+                                                type: "submit",
+                                                role: "menuitem"
+                                              }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                                    Sign out\n                                                "
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        : _vm._e()
+                    ])
+                  ],
+                  1
                 ),
                 _vm._v(" "),
                 _c(
@@ -56771,7 +56926,7 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("vue-select", {
-          staticClass: "bg-gray-100",
+          staticClass: "primary-select",
           attrs: {
             options: _vm.priorities,
             id: "grid-priority",
@@ -56796,6 +56951,7 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("vue-select", {
+          staticClass: "primary-select",
           attrs: {
             id: "grid-module-id",
             options: _vm.modules,
@@ -56820,6 +56976,7 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("vue-select", {
+          staticClass: "primary-select",
           attrs: {
             options: _vm.statuses,
             label: "name",
@@ -56862,6 +57019,7 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("vue-select", {
+          staticClass: "primary-select",
           attrs: {
             id: "grid-assignees",
             options: _vm.users,

@@ -59,15 +59,47 @@
                             <a href="#"
                                class="px-3 py-1 ml-2 self-center text-sm font-medium text-gray-800 antialiased rounded-md focus:outline-none hover:bg-blue-100 hover:text-blue-500 focus:bg-blue-100">People</a>
 
+                            <div class="relative">
+
                             <div
                                 class="flex px-3 py-1 ml-2 self-center text-sm font-medium text-gray-800 antialiased rounded-md focus:outline-none hover:bg-blue-100 hover:text-blue-500 focus:bg-blue-100">
-                                <a href="#" class="">App</a>
+                                <a href="#" @click="showAppSelect = !showAppSelect" class="">App</a>
                                 <svg class="h-4 w-4 mt-1 ml-1" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                      viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"
                                           d="M4.516 7.548c.436-.446 1.043-.481 1.576 0L10 11.295l3.908-3.747c.533-.481 1.141-.446 1.574 0 .436.445.408 1.197 0 1.615-.406.418-4.695 4.502-4.695 4.502a1.095 1.095 0 01-1.576 0S4.924 9.581 4.516 9.163c-.409-.418-.436-1.17 0-1.615z"/>
                                 </svg>
                             </div>
+
+                                <default-transition>
+                                    <div v-if="showAppSelect" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg">
+                                        <div class="rounded-md bg-white shadow-xs">
+                                            <div class="py-1" role="menu" aria-orientation="vertical"
+                                                 aria-labelledby="options-menu">
+                                                <a href="#"
+                                                   class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                                                   role="menuitem">Account settings</a>
+                                                <a href="#"
+                                                   class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                                                   role="menuitem">Support</a>
+                                                <a href="#"
+                                                   class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                                                   role="menuitem">License</a>
+                                                <form method="POST" action="/logout">
+                                                    <input type="hidden" name="_token" :value="csrf">
+                                                    <button type="submit"
+                                                            class="block w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                                                            role="menuitem">
+                                                        Sign out
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </default-transition>
+                            </div>
+
+
                             <a href="#"
                                class="px-3 py-1 self-center ml-2 text-sm font-medium antialiased rounded bg-blue-800 text-white">Create</a>
                         </div>
@@ -156,11 +188,13 @@ export default {
     name: "TopBar",
     data: () => ({
         isOpen: false,
+        showAppSelect : false,
         csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     }),
     methods : {
         hideDropDown() {
             this.isOpen = false;
+            this.showAppSelect = false;
         }
     },
 }
