@@ -2305,15 +2305,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3350,6 +3341,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -11009,7 +11001,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "@-webkit-keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n.loader {\n  border-right-color: transparent;\n  -webkit-animation: loader-rotate 1s linear infinite;\n          animation: loader-rotate 1s linear infinite;\n}\r\n\r\n", ""]);
+exports.push([module.i, "@-webkit-keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n.loader {\n  border-right-color: transparent;\n  -webkit-animation: loader-rotate 1s linear infinite;\n          animation: loader-rotate 1s linear infinite;\n}\n\n", ""]);
 
 // exports
 
@@ -56067,33 +56059,6 @@ var render = function() {
       ),
       _vm._v(" "),
       _c(
-        "button",
-        {
-          staticClass: "btn-secondary",
-          on: {
-            click: function($event) {
-              $event.stopPropagation()
-              _vm.testDialog = !_vm.testDialog
-            }
-          }
-        },
-        [
-          _c("svg", { attrs: { fill: "currentColor", viewBox: "0 0 20 20" } }, [
-            _c("path", {
-              attrs: {
-                "fill-rule": "evenodd",
-                d:
-                  "M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z",
-                "clip-rule": "evenodd"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("span", [_vm._v("Test dialog")])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
         "modal",
         {
           attrs: {
@@ -56922,7 +56887,7 @@ var render = function() {
           { staticClass: "description" },
           [
             _c("quill-editor", {
-              staticClass: "primary-text-area text-input",
+              staticClass: "primary-rich-text",
               attrs: { id: "grid-description" },
               model: {
                 value: _vm.requirement.description,
@@ -57131,7 +57096,7 @@ var render = function() {
                 _c(
                   "p",
                   { staticClass: "text-grey-darkest leading-normal text-base" },
-                  [_vm._v(_vm._s(_vm._f("limitWords")(comment.details)))]
+                  [_vm._v(_vm._s(comment.details))]
                 ),
                 _vm._v(" "),
                 comment.meta.permissions.delete
@@ -57202,8 +57167,7 @@ var render = function() {
                 expression: "comment"
               }
             ],
-            staticClass:
-              "bg-grey-dark rounded leading-normal resize-none w-full h-24 py-2 px-3",
+            staticClass: "primary-text-area",
             attrs: { placeholder: "Add comment" },
             domProps: { value: _vm.comment },
             on: {

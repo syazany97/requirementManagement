@@ -59,7 +59,7 @@
             <div class="description">
                 <quill-editor id="grid-description"
                               v-model="requirement.description"
-                              class="primary-text-area text-input">
+                              class="primary-rich-text">
 
                 </quill-editor>
             </div>

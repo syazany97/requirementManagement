@@ -7,7 +7,7 @@
         <div v-if="comments.length && commentsLoaded">
             <div v-for="comment in comments" v-bind:key="comment.id">
                 <div class="flex justify-between mb-1">
-                    <p class="text-grey-darkest leading-normal text-base">{{ comment.details | limitWords }}</p>
+                    <p class="text-grey-darkest leading-normal text-base">{{ comment.details}}</p>
                     <button v-if="comment.meta.permissions.delete"
                             class="text-red hover:bg-red hover:text-white
                             py-2 px-4 rounded tracking-wide mb-2 md:mb-0
@@ -28,8 +28,9 @@
         <div v-if="showCommentTextField">
              <textarea v-model="comment"
                        placeholder="Add comment"
-                       class="bg-grey-dark rounded leading-normal resize-none w-full h-24 py-2 px-3">
+                       class="primary-text-area">
             </textarea>
+
             <div class="text-right">
                 <button class="btn-secondary" @click="postComment">Post</button>
             </div>
