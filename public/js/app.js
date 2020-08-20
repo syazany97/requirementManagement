@@ -2223,14 +2223,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TopBar",
   data: function data() {
     return {
-      isOpen: false
+      isOpen: false,
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     };
   },
   methods: {
@@ -55955,9 +55953,20 @@ var render = function() {
                                       _c(
                                         "form",
                                         {
-                                          attrs: { method: "POST", action: "#" }
+                                          attrs: {
+                                            method: "POST",
+                                            action: "logout"
+                                          }
                                         },
                                         [
+                                          _c("input", {
+                                            attrs: {
+                                              type: "hidden",
+                                              name: "_token"
+                                            },
+                                            domProps: { value: _vm.csrf }
+                                          }),
+                                          _vm._v(" "),
                                           _c(
                                             "button",
                                             {

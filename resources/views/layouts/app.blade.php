@@ -28,6 +28,7 @@
         @yield('content')
     @endguest
     @auth
+        @csrf
 {{--        @include('layouts.topBar')--}}
         <top-bar></top-bar>
         <toast-notification></toast-notification>
