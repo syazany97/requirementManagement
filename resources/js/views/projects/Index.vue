@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <div class="container mx-auto py-6 px-4" x-data="datatables()" x-cloak>
+        <div class="container mx-auto py-6 px-4">
             <h1 class="h1">Projects</h1>
 
             <!--                <div x-show="selectedRows.length" class="bg-teal-200 fixed top-0 left-0 right-0 z-40 w-full shadow">-->
@@ -80,9 +79,9 @@
                 </div>
             </div>
 
-            <div class="overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative"
-                 style="height: 405px;">
-                <table class="border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative">
+            <div class="container mx-auto">
+
+            <table class="border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative">
                     <thead>
                     <tr class="text-left">
                         <th class="py-2 px-3 sticky top-0 border-b border-gray-200 bg-gray-100">
@@ -103,23 +102,16 @@
                     <template>
                         <tr v-for="project in projects" v-bind:key="project.id" class="cursor-pointer hover:bg-gray-200"
                             @click="viewProject(project.id)">
-                            <td class="border-dashed border-t border-gray-200 px-3">
-                                <label
-                                    class="text-teal-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer">
-                                    <!--                                        <input type="checkbox" class="form-checkbox rowCheckbox focus:outline-none focus:shadow-outline" :name="user.userId"-->
-                                    <!--                                               @click="">-->
-                                </label>
-                            </td>
                             <td class="border-dashed border-t border-gray-200">
-                                <span class="text-gray-700 px-6 py-3 flex items-center" v-model="project.id"></span>
+                                <span class="text-gray-700 px-6 py-3 flex items-center">{{project.id}}</span>
                             </td>
                             <td class="border-dashed border-t border-gray-200">
                                 <span class="text-gray-700 px-6 py-3 flex items-center">{{ project.name }}</span>
                             </td>
-                            <td class="border-dashed border-t border-gray-200">
-                                    <span class="text-gray-700 px-6 py-3 flex items-center"
-                                    >{{ project.description | limitWords }}</span>
-                            </td>
+<!--                            <td class="border-dashed border-t border-gray-200">-->
+<!--                                    <span class="text-gray-700 px-6 py-3 flex items-center"-->
+<!--                                    >{{ project.description | limitWords }}</span>-->
+<!--                            </td>-->
                             <td class="border-dashed border-t border-gray-200">
                                 								<span class="text-gray-700 px-6 py-3 flex items-center"
                                                                 ></span>{{ project.modules_count }}
@@ -129,16 +121,18 @@
                                                                 >{{ get(project, 'owner.name', null) }}</span>
                             </td>
                             <td class="border-dashed border-t border-gray-200">
-                                <button @click="viewProject(project.id)" class="btn-primary">View</button>
+                                								<span class="text-gray-700 px-6 py-3 flex items-center"
+                                                                >{{ project.created_at | formatDateTime }}</span>
                             </td>
+
                         </tr>
                     </template>
                     </tbody>
                 </table>
             </div>
+            <span v-if="pagination.meta !== null">Showing {{this.pagination.meta.to}} of {{this.pagination.meta.total}} results</span>
         </div>
 
-    </div>
 
 </template>
 
@@ -156,14 +150,16 @@ export default {
             height: 300,
             projectDialog: false,
             headings: [
-                'Number',
                 'Name',
-                'Description',
                 'No of modules',
                 'Owner',
-                'Action ',
+                'Created'
             ],
-            showHeading: false
+            showHeading: false,
+            pagination : {
+                links : null,
+                meta : null
+            }
         };
     },
     created() {
@@ -173,6 +169,8 @@ export default {
         async fetchProjects() {
             const response = await axios.get('/api/projects');
             this.projects = response.data.data;
+            this.pagination.links = response.data.links;
+            this.pagination.meta = response.data.meta;
             console.log(response.data);
         },
         get(data, column, defaultValue) {

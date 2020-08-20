@@ -33,10 +33,7 @@
         <top-bar></top-bar>
         <toast-notification></toast-notification>
         <div class="pt-16 flex">
-        <div class="flex-initial">
-{{--                @include('layouts.sideBar')--}}
-            </div>
-            <div class="flex-initial">
+            <div class="flex-1">
                 <router-view :key="$route.fullPath"></router-view>
             </div>
         </div>
