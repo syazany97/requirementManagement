@@ -1,6 +1,6 @@
 <template>
     <div class="container mx-auto px-4" v-if="requirement.id !== null && dataLoaded">
-        <h1>{{ requirement.name }}</h1>
+        <h1 class="default-dialog-title">{{ requirement.name }}</h1>
 
         <label class="primary-label" for="test-case-title">
             Title
@@ -15,7 +15,7 @@
 
 
         <quill-editor v-model="testCase.description"
-                      id="test-case-description" class="primary-text-area text-input">
+                      id="test-case-description" class="primary-rich-text">
 
         </quill-editor>
 
@@ -26,7 +26,7 @@
             Preconditions
         </label>
 
-        <textarea class="primary-input" v-model="testCase.preconditions"
+        <textarea class="primary-text-area" v-model="testCase.preconditions"
                   id="test-case-preconditions" type="text"></textarea>
 
         <button class="btn-primary" @click="addStep">Add step</button>

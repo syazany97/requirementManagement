@@ -59,7 +59,7 @@
             </label>
 
             <quill-editor id="grid-description"
-                      height="200"
+                          height="200"
                           v-model="requirement.description"
                           class="primary-rich-text">
 
@@ -178,7 +178,7 @@ export default {
             this.requirement.requirement_status_id = null;
             this.requirement.requirement_priority_id = null;
             this.requirement.module_id = null;
-            this.$emit('update:requirementDialog', false)
+            this.$emit('close-requirement-dialog')
         }
     },
 }

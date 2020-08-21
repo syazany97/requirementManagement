@@ -2343,6 +2343,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2412,6 +2413,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee, null, [[0, 11]]);
       }))();
+    },
+    closeRequirementDialog: function closeRequirementDialog() {
+      this.$modal.hide('requirementDialog');
     }
   }
 });
@@ -3227,7 +3231,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.requirement.requirement_status_id = null;
       this.requirement.requirement_priority_id = null;
       this.requirement.module_id = null;
-      this.$emit('update:requirementDialog', false);
+      this.$emit('close-requirement-dialog');
     }
   }
 });
@@ -56188,6 +56192,9 @@ var render = function() {
               },
               "update:requirement-dialog": function($event) {
                 _vm.requirementDialog = $event
+              },
+              "close-requirement-dialog": function($event) {
+                return _vm.closeRequirementDialog()
               }
             }
           })
@@ -58339,7 +58346,9 @@ var render = function() {
         "div",
         { staticClass: "container mx-auto px-4" },
         [
-          _c("h1", [_vm._v(_vm._s(_vm.requirement.name))]),
+          _c("h1", { staticClass: "default-dialog-title" }, [
+            _vm._v(_vm._s(_vm.requirement.name))
+          ]),
           _vm._v(" "),
           _c(
             "label",
@@ -58383,7 +58392,7 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("quill-editor", {
-            staticClass: "primary-text-area text-input",
+            staticClass: "primary-rich-text",
             attrs: { id: "test-case-description" },
             model: {
               value: _vm.testCase.description,
@@ -58412,7 +58421,7 @@ var render = function() {
                 expression: "testCase.preconditions"
               }
             ],
-            staticClass: "primary-input",
+            staticClass: "primary-text-area",
             attrs: { id: "test-case-preconditions", type: "text" },
             domProps: { value: _vm.testCase.preconditions },
             on: {

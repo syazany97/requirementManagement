@@ -40,7 +40,7 @@
                             </div>
                             <div
                                 class="flex px-3 py-1 ml-2 self-center text-sm font-medium text-gray-800 antialiased rounded-md focus:outline-none hover:bg-blue-100 hover:text-blue-500 focus:bg-blue-100">
-                                <a href="#" class="">Filters </a>
+                            <a href="#" class="">Filters </a>
                                 <svg class="h-4 w-4 mt-1 ml-1" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                      viewBox="0 0 20 20">
                                     <path fill-rule="evenodd"

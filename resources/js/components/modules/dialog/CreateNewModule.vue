@@ -21,7 +21,8 @@
         </button>
 
         <modal name="requirementDialog" :adaptive="true" width="50%" :scrollable="true" height="auto">
-            <create-requirement-dialog :requirement-dialog.sync="requirementDialog"></create-requirement-dialog>
+            <create-requirement-dialog :requirement-dialog.sync="requirementDialog"
+                                       @close-requirement-dialog="closeRequirementDialog()" ></create-requirement-dialog>
         </modal>
 
         <modal name="moduleDialog">
@@ -96,7 +97,9 @@ export default {
             } catch (e) {
                 console.log(e);
             }
-
+        },
+        closeRequirementDialog() {
+            this.$modal.hide('requirementDialog');
         }
     }
 }
