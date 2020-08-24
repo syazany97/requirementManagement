@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h1>Test</h1>
-<show-project project-id="{{ $project->id }}"></show-project>
+<project-index :show-project="{{route('projects.show')}}"></project-index>
 @endsection
 
 

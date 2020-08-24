@@ -135,8 +135,15 @@
 import CreateProjectDialog from "../../components/project/modal/CreateProjectDialog";
 
 export default {
-    name: "Index.vue",
-    components: {CreateProjectDialog},
+    name: "ProjectIndex.vue",
+    components: {CreateProjectDialog
+    },
+    props : {
+      projectShow : {
+          type : String,
+          default : null
+      }
+    },
     data() {
         return {
             projects: [],
@@ -159,6 +166,7 @@ export default {
         };
     },
     created() {
+        console.log(this.projectShow);
         this.fetchProjects();
     },
     methods: {
@@ -175,9 +183,6 @@ export default {
         },
         get(data, column, defaultValue) {
             return _.get(data, column, defaultValue);
-        },
-        test() {
-            console.log('woi');
         },
         viewProject(projectId) {
             this.$router.push({

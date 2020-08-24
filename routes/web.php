@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Project\ProjectController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -12,9 +14,11 @@ Auth::routes();
 
 
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/home', 'HomeController@index');
-});
+
+//Route::middleware(['auth'])->group(function () {
+////    Route::get('/home', 'HomeController@index');
+////    Route::apiResource('projects', ProjectController::class);
+//});
 
 Route::get('{any}', function () {
     return view('layouts.app');

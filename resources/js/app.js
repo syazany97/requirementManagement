@@ -10,6 +10,7 @@ import VueTreeList from 'vue-tree-list';
 import requirement from "./vuex-modules/requirement";
 import user from "./vuex-modules/user";
 import vSelect from 'vue-select'
+import ProjectIndex from "./views/projects/ProjectIndex";
 
 require('./bootstrap');
 
@@ -23,12 +24,14 @@ const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 dayjs.extend(LocalizedFormat);
 
-const router = new VueRouter({
-    mode: 'history',
-    routes,
-    linkActiveClass: 'active', // apply active class when url matches the route
-    linkExactActiveClass: 'active'
-})
+Vue.component('project-index', require('./views/projects/ProjectIndex').default);
+
+// const router = new VueRouter({
+//     mode: 'history',
+//     routes,
+//     linkActiveClass: 'active', // apply active class when url matches the route
+//     linkExactActiveClass: 'active'
+// })
 
 const store = new Vuex.Store({
     modules: {
@@ -94,7 +97,7 @@ Vue.directive('click-outside', {
 });
 
 Vue.component('default-transition', {
-    template : '\  <transition\n' +
+    template: '\  <transition\n' +
         'enter-active-class="transition ease-out duration-100"\n' +
         'enter-class="opacity-0 scale-95 transform"\n' +
         'enter-to-class="opacity-100 scale-100 transform"\n' +
@@ -109,6 +112,6 @@ Vue.component('default-transition', {
 
 const app = new Vue({
     el: '#app',
-    store,
-    router
+    store
+    // router
 });

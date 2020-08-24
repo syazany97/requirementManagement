@@ -29,18 +29,14 @@
     @endguest
     @auth
         @csrf
-{{--        @include('layouts.topBar')--}}
         <top-bar></top-bar>
         <toast-notification></toast-notification>
         <div class="pt-16 flex">
             <div class="flex-1">
-                <router-view :key="$route.fullPath"></router-view>
+{{--                <router-view :key="$route.fullPath"></router-view>--}}
+                @yield('content')
             </div>
         </div>
-
-
-
-
     @endauth
 
 </div>

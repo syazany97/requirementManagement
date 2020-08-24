@@ -46,7 +46,13 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        //
+        $this->mapCustomRoutes();
+    }
+
+    protected function mapCustomRoutes()
+    {
+        Route::middleware(['web', 'auth'])
+            ->group(base_path('routes/routes.php'));
     }
 
     /**

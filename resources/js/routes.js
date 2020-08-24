@@ -8,7 +8,7 @@ export const routes = [
     {
         path: '/projects',
         name: 'project.index',
-        component: require('./views/projects/Index.vue').default
+        component: require('./views/projects/ProjectIndex.vue').default
     },
     {
         path: '/projects/:project',
