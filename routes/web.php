@@ -16,10 +16,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index');
 });
 
-//Route::resource('projects', 'Project\ProjectController');
-
-
-
 Route::get('{any}', function () {
     return view('layouts.app');
 })->where('any', '.*')
