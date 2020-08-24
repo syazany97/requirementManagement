@@ -1,7 +1,7 @@
 
 /* BUTTON SECTION */
 .btn {
-   @apply font-medium py-1 px-4 rounded inline-flex items-center text-sm
+   @apply font-medium py-2 px-4 rounded inline-flex items-center text-sm
 }
 
 .btn-primary {
@@ -36,14 +36,22 @@
     @apply bg-gray-400
 }
 
+.btn-dropdown {
+    @apply  border-transparent rounded border
+}
+
+.btn-dropdown:hover {
+    @apply bg-white border-gray-400
+}
+
 /* BUTTON ENDS */
 
 /* INPUT AND FORM */
 
 .primary-input {
     @apply appearance-none hidden border block w-full bg-gray-100
-    text-gray-700 border rounded py-1 border-gray-400
-    px-4 leading-tight
+    text-gray-800 border rounded py-1 border-gray-400
+    px-4 py-2 leading-tight
 }
 
 .primary-input:focus {
@@ -56,7 +64,7 @@
 
 
 .primary-label {
-    @apply block tracking-wide text-gray-700 text-sm font-medium mb-2 pt-4 text-left
+    @apply block tracking-wide text-black text-sm font-medium mb-2 pt-5 text-left
 }
 
 .primary-text-area {
@@ -166,7 +174,7 @@
 }
 
 .h1 {
-    @apply text-3xl py-4 border-b font-bold mb-10
+    @apply text-3xl py-4 border-b font-bold
 }
 
 /* table */

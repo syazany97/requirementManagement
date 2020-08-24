@@ -20,7 +20,7 @@
             <span>Add requirement</span>
         </button>
 
-        <modal name="requirementDialog" :adaptive="true" width="50%" :scrollable="true" height="auto">
+        <modal name="requirementDialog" class="sm:w-full md:w-1/4" :adaptive="true" :scrollable="true" height="auto">
             <create-requirement-dialog :requirement-dialog.sync="requirementDialog"
                                        @close-requirement-dialog="closeRequirementDialog()" ></create-requirement-dialog>
         </modal>

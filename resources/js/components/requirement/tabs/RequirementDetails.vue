@@ -1,46 +1,32 @@
 <template>
     <div>
 
-        <h6 class="text-black text-xl pt-4">{{ requirement.numbering }} {{ requirement.name }}</h6>
-
-        <!--        <v-row>-->
-        <!--            <v-col cols="6" md="6">-->
-        <!--                <v-list-item v-for="(value, propertyName) in firstList" v-bind:key="propertyName" two-line>-->
-        <!--                    <v-list-item-content>-->
-        <!--                        <v-list-item-title>{{ propertyName | titleCase }}</v-list-item-title>-->
-        <!--                        <v-list-item-subtitle v-if="propertyName !== 'assignees'">{{ value }}</v-list-item-subtitle>-->
-        <!--                        <div v-else v-for="name in value">-->
-        <!--                            <div-->
-        <!--                                class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-blue-700 bg-blue-100 border border-blue-300 ">-->
-        <!--                                <div class="text-xs font-normal leading-none max-w-full flex-initial">{{ name }}</div>-->
-        <!--                            </div>-->
-        <!--                        </div>-->
-
-        <!--                    </v-list-item-content>-->
-        <!--                </v-list-item>-->
-        <!--            </v-col>-->
-
-        <!--            <v-col cols="6" md="6">-->
-        <!--                <v-list-item v-for="(value, propertyName) in secondList" v-bind:key="propertyName" two-line>-->
-        <!--                    <v-list-item-content>-->
-        <!--                        <v-list-item-title>{{ propertyName | titleCase }}</v-list-item-title>-->
-        <!--                        <v-list-item-subtitle>{{ value }}</v-list-item-subtitle>-->
-        <!--                    </v-list-item-content>-->
-        <!--                </v-list-item>-->
-        <!--            </v-col>-->
-        <!--        </v-row>-->
-
+        <h6 class="text-black text-xl pt-4 font-medium">{{ requirement.numbering }} {{ requirement.name }}</h6>
 
         <div v-if="lists.length" class="flex">
             <div v-for="(list, index) in lists" v-bind:key="index" class="flex-1 pl-1 mr-16">
-                <div v-for="(value, propertyName) in list" v-bind:key="propertyName" class="flex-1 pl-1 mr-16">
-                    <div class="font-medium">{{ propertyName | titleCase }}</div>
-                    <div class="text-gray-600 text-sm">{{ value }}</div>
+                <div v-for="(value, propertyName) in list" v-bind:key="propertyName" class="flex-1 pl-1 mr-16 pt-2">
+                    <div v-if="propertyName !== 'assignees'">
+                        <div class="font-medium">{{ propertyName | titleCase }}</div>
+                        <div class="text-gray-600 text-sm">{{ value }}</div>
+                    </div>
+
+                    <div v-else>
+                        <div class="font-medium">{{ propertyName | titleCase }}</div>
+                        <div class="grid grid-flow-row grid-cols-2 grid-rows-2 gap-1">
+                            <div v-for="item in value"
+                                 class="flex justify-center items-center m-1 font-medium px-2 bg-white rounded-full text-blue-700 bg-blue-100 border border-blue-300 ">
+                                <div class="text-xs font-normal leading-none max-w-full flex-initial">{{ item }}</div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
-        <h6>Description</h6>
+        <h6 class="pt-4 font-medium">Description</h6>
         <span v-html="requirement.description"></span>
+
 
         <!-- Attachments -->
         <h5>Attachments</h5>
@@ -107,6 +93,9 @@ export default {
         capitalize(value) {
             if (!value) return '';
             return _.capitalize(value)
+        },
+        assignees() {
+            return this.firstList.assignees
         }
     },
     methods: {

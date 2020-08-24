@@ -18,7 +18,7 @@
         <!--                    </div>-->
         <!--                </div>-->
 
-        <div class="mb-4 flex justify-between items-center">
+        <div class="mb-4 flex justify-between items-center mt-2">
             <div class="flex-1 pr-4">
                 <div class="relative md:w-1/3">
                     <input type="search"
@@ -120,6 +120,18 @@
                                                                 >{{ project.created_at | formatDateTime }}</span>
                         </td>
 
+                        <td class="default-row">
+<!--                                								<button class="border-opacity-100 hover:bg-red hover:border-grey-300 rounded">-->
+                                								<button @click.stop="test()"
+                                                                        class="btn-dropdown">
+                                                                    <svg viewBox="0 0 20 20" fill="currentColor" class="dots-horizontal w-6 h-6 px-1">
+                                                                        <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                                                                    </svg>
+                                                                </button>
+
+<!--                            <button class="bg-red-500 rounded px-2 py-2 hover:bg-white border-transparent hover:border-black border"></button>-->
+                        </td>
+
                     </tr>
 
                 </tbody>
@@ -148,7 +160,8 @@ export default {
                 'Name',
                 'No of modules',
                 'Owner',
-                'Created'
+                'Created',
+                ''
             ],
             showHeading: false,
             pagination: {

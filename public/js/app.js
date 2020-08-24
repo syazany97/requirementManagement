@@ -3645,20 +3645,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -3706,6 +3692,9 @@ __webpack_require__.r(__webpack_exports__);
     capitalize: function capitalize(value) {
       if (!value) return '';
       return _.capitalize(value);
+    },
+    assignees: function assignees() {
+      return this.firstList.assignees;
     }
   },
   methods: {
@@ -4134,6 +4123,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Index.vue",
@@ -4147,7 +4148,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       fixedHeader: false,
       height: 300,
       projectDialog: false,
-      headings: ['Name', 'No of modules', 'Owner', 'Created'],
+      headings: ['Name', 'No of modules', 'Owner', 'Created', ''],
       showHeading: false,
       pagination: {
         links: null,
@@ -4220,6 +4221,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../repositories/projectRepository */ "./resources/js/repositories/projectRepository.js");
 /* harmony import */ var _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../repositories/moduleRepository */ "./resources/js/repositories/moduleRepository.js");
 /* harmony import */ var _components_requirement_RequirementList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/requirement/RequirementList */ "./resources/js/components/requirement/RequirementList.vue");
+/* harmony import */ var _components_requirement_ShowRequirement__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/requirement/ShowRequirement */ "./resources/js/components/requirement/ShowRequirement.vue");
 //
 //
 //
@@ -4241,18 +4243,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Show",
   components: {
-    RequirementList: _components_requirement_RequirementList__WEBPACK_IMPORTED_MODULE_2__["default"]
+    RequirementList: _components_requirement_RequirementList__WEBPACK_IMPORTED_MODULE_2__["default"],
+    ShowRequirement: _components_requirement_ShowRequirement__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
     return {
@@ -10958,7 +10957,7 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.bubble.css?33be":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.bubble.css":
 /*!**********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/quill/dist/quill.bubble.css ***!
   \**********************************************************************************************************************************/
@@ -10977,7 +10976,7 @@ exports.push([module.i, "/*!\n * Quill Editor v1.3.7\n * https://quilljs.com/\n 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.core.css?af45":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.core.css":
 /*!********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/quill/dist/quill.core.css ***!
   \********************************************************************************************************************************/
@@ -10996,7 +10995,7 @@ exports.push([module.i, "/*!\n * Quill Editor v1.3.7\n * https://quilljs.com/\n 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.snow.css?48b9":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.snow.css":
 /*!********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/quill/dist/quill.snow.css ***!
   \********************************************************************************************************************************/
@@ -42138,7 +42137,7 @@ process.umask = function() { return 0; };
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./quill.bubble.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.bubble.css?33be");
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./quill.bubble.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.bubble.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -42168,7 +42167,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./quill.core.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.core.css?af45");
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./quill.core.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.core.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -53766,7 +53765,7 @@ module.exports = __webpack_require__(63);
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./quill.snow.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.snow.css?48b9");
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./quill.snow.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.snow.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -56175,10 +56174,10 @@ var render = function() {
       _c(
         "modal",
         {
+          staticClass: "sm:w-full md:w-1/4",
           attrs: {
             name: "requirementDialog",
             adaptive: true,
-            width: "50%",
             scrollable: true,
             height: "auto"
           }
@@ -56887,205 +56886,212 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container mx-auto py-2 overflow-y-auto" }, [
-    _c("h1", { staticClass: "default-dialog-title" }, [
-      _vm._v("Create new requirement")
-    ]),
-    _vm._v(" "),
-    _c("hr"),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "bg-white-100 px-4" },
-      [
-        _c(
-          "label",
-          { staticClass: "primary-label", attrs: { for: "grid-name" } },
-          [_vm._v("\n            Name\n        ")]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.requirement.name,
-              expression: "requirement.name"
-            }
-          ],
-          staticClass: "primary-input",
-          attrs: {
-            id: "grid-name",
-            type: "text",
-            placeholder: "Requirement A"
-          },
-          domProps: { value: _vm.requirement.name },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.requirement, "name", $event.target.value)
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          { staticClass: "primary-label", attrs: { for: "grid-priority" } },
-          [_vm._v("\n            Priority\n        ")]
-        ),
-        _vm._v(" "),
-        _c("vue-select", {
-          staticClass: "primary-select",
-          attrs: {
-            options: _vm.priorities,
-            id: "grid-priority",
-            label: "name",
-            reduce: function(name) {
-              return name.id
-            }
-          },
-          model: {
-            value: _vm.requirement.requirement_priority_id,
-            callback: function($$v) {
-              _vm.$set(_vm.requirement, "requirement_priority_id", $$v)
-            },
-            expression: "requirement.requirement_priority_id"
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          { staticClass: "primary-label", attrs: { for: "grid-module-id" } },
-          [_vm._v("\n            Under which module\n        ")]
-        ),
-        _vm._v(" "),
-        _c("vue-select", {
-          staticClass: "primary-select",
-          attrs: {
-            id: "grid-module-id",
-            options: _vm.modules,
-            label: "name",
-            reduce: function(name) {
-              return name.id
-            }
-          },
-          model: {
-            value: _vm.requirement.module_id,
-            callback: function($$v) {
-              _vm.$set(_vm.requirement, "module_id", $$v)
-            },
-            expression: "requirement.module_id"
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          { staticClass: "primary-label", attrs: { for: "grid-status" } },
-          [_vm._v("\n            Status\n        ")]
-        ),
-        _vm._v(" "),
-        _c("vue-select", {
-          staticClass: "primary-select",
-          attrs: {
-            options: _vm.statuses,
-            label: "name",
-            reduce: function(name) {
-              return name.id
-            },
-            id: "grid-status"
-          },
-          model: {
-            value: _vm.requirement.requirement_status_id,
-            callback: function($$v) {
-              _vm.$set(_vm.requirement, "requirement_status_id", $$v)
-            },
-            expression: "requirement.requirement_status_id"
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          { staticClass: "primary-label", attrs: { for: "grid-description" } },
-          [_vm._v("\n            Description\n        ")]
-        ),
-        _vm._v(" "),
-        _c("quill-editor", {
-          staticClass: "primary-rich-text",
-          attrs: { id: "grid-description", height: "200" },
-          model: {
-            value: _vm.requirement.description,
-            callback: function($$v) {
-              _vm.$set(_vm.requirement, "description", $$v)
-            },
-            expression: "requirement.description"
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          { staticClass: "primary-label", attrs: { for: "grid-assignees" } },
-          [_vm._v("\n            Assignees\n        ")]
-        ),
-        _vm._v(" "),
-        _c("vue-select", {
-          staticClass: "primary-select",
-          attrs: {
-            id: "grid-assignees",
-            options: _vm.users,
-            label: "name",
-            reduce: function(name) {
-              return name.id
-            },
-            multiple: ""
-          },
-          model: {
-            value: _vm.requirement.assignees,
-            callback: function($$v) {
-              _vm.$set(_vm.requirement, "assignees", $$v)
-            },
-            expression: "requirement.assignees"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "inline-flex text-right pt-4" }, [
+  return _c(
+    "div",
+    { staticClass: "container md:mx-auto sm:w-full py-2 overflow-y-auto" },
+    [
+      _c("h1", { staticClass: "default-dialog-title" }, [
+        _vm._v("Add requirement")
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "bg-white px-4" },
+        [
           _c(
-            "button",
-            {
-              staticClass: "btn-tertiary pr-3",
-              on: {
-                click: function($event) {
-                  return _vm.closeDialog()
-                }
-              }
-            },
-            [_c("span", [_vm._v("Cancel")])]
+            "label",
+            { staticClass: "primary-label", attrs: { for: "grid-name" } },
+            [_vm._v("\n            Name\n        ")]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "divider" }),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.requirement.name,
+                expression: "requirement.name"
+              }
+            ],
+            staticClass: "primary-input",
+            attrs: {
+              id: "grid-name",
+              type: "text",
+              placeholder: "Requirement A"
+            },
+            domProps: { value: _vm.requirement.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.requirement, "name", $event.target.value)
+              }
+            }
+          }),
           _vm._v(" "),
           _c(
-            "button",
-            {
-              staticClass: "btn-primary",
-              on: {
-                click: function($event) {
-                  return _vm.addRequirement()
-                }
+            "label",
+            { staticClass: "primary-label", attrs: { for: "grid-priority" } },
+            [_vm._v("\n            Priority\n        ")]
+          ),
+          _vm._v(" "),
+          _c("vue-select", {
+            staticClass: "primary-select",
+            attrs: {
+              options: _vm.priorities,
+              id: "grid-priority",
+              label: "name",
+              reduce: function(name) {
+                return name.id
               }
             },
-            [
-              _c("span", [
-                _vm._v(_vm._s(_vm.addingRequirement ? "Creating" : "Create"))
-              ])
-            ]
-          )
-        ])
-      ],
-      1
-    )
-  ])
+            model: {
+              value: _vm.requirement.requirement_priority_id,
+              callback: function($$v) {
+                _vm.$set(_vm.requirement, "requirement_priority_id", $$v)
+              },
+              expression: "requirement.requirement_priority_id"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            { staticClass: "primary-label", attrs: { for: "grid-module-id" } },
+            [_vm._v("\n            Under which module\n        ")]
+          ),
+          _vm._v(" "),
+          _c("vue-select", {
+            staticClass: "primary-select",
+            attrs: {
+              id: "grid-module-id",
+              options: _vm.modules,
+              label: "name",
+              reduce: function(name) {
+                return name.id
+              }
+            },
+            model: {
+              value: _vm.requirement.module_id,
+              callback: function($$v) {
+                _vm.$set(_vm.requirement, "module_id", $$v)
+              },
+              expression: "requirement.module_id"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            { staticClass: "primary-label", attrs: { for: "grid-status" } },
+            [_vm._v("\n            Status\n        ")]
+          ),
+          _vm._v(" "),
+          _c("vue-select", {
+            staticClass: "primary-select",
+            attrs: {
+              options: _vm.statuses,
+              label: "name",
+              reduce: function(name) {
+                return name.id
+              },
+              id: "grid-status"
+            },
+            model: {
+              value: _vm.requirement.requirement_status_id,
+              callback: function($$v) {
+                _vm.$set(_vm.requirement, "requirement_status_id", $$v)
+              },
+              expression: "requirement.requirement_status_id"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass: "primary-label",
+              attrs: { for: "grid-description" }
+            },
+            [_vm._v("\n            Description\n        ")]
+          ),
+          _vm._v(" "),
+          _c("quill-editor", {
+            staticClass: "primary-rich-text",
+            attrs: { id: "grid-description", height: "200" },
+            model: {
+              value: _vm.requirement.description,
+              callback: function($$v) {
+                _vm.$set(_vm.requirement, "description", $$v)
+              },
+              expression: "requirement.description"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            { staticClass: "primary-label", attrs: { for: "grid-assignees" } },
+            [_vm._v("\n            Assignees\n        ")]
+          ),
+          _vm._v(" "),
+          _c("vue-select", {
+            staticClass: "primary-select",
+            attrs: {
+              id: "grid-assignees",
+              options: _vm.users,
+              label: "name",
+              reduce: function(name) {
+                return name.id
+              },
+              multiple: ""
+            },
+            model: {
+              value: _vm.requirement.assignees,
+              callback: function($$v) {
+                _vm.$set(_vm.requirement, "assignees", $$v)
+              },
+              expression: "requirement.assignees"
+            }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "inline-flex text-right pt-4 pb-5" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn-tertiary pr-3",
+                on: {
+                  click: function($event) {
+                    return _vm.closeDialog()
+                  }
+                }
+              },
+              [_c("span", [_vm._v("Cancel")])]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "divider" }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn-primary",
+                on: {
+                  click: function($event) {
+                    return _vm.addRequirement()
+                  }
+                }
+              },
+              [
+                _c("span", [
+                  _vm._v(_vm._s(_vm.addingRequirement ? "Creating" : "Create"))
+                ])
+              ]
+            )
+          ])
+        ],
+        1
+      )
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -57213,31 +57219,39 @@ var render = function() {
     _vm.comments.length && _vm.commentsLoaded
       ? _c(
           "div",
+          { staticClass: "pb-4" },
           _vm._l(_vm.comments, function(comment) {
             return _c("div", { key: comment.id }, [
-              _c("div", { staticClass: "flex justify-between mb-1" }, [
-                _c(
-                  "p",
-                  { staticClass: "text-grey-darkest leading-normal text-base" },
-                  [_vm._v(_vm._s(comment.details))]
-                ),
-                _vm._v(" "),
-                comment.meta.permissions.delete
-                  ? _c(
-                      "button",
-                      {
-                        staticClass:
-                          "text-red hover:bg-red hover:text-white\n                        py-2 px-4 rounded tracking-wide mb-2 md:mb-0\n                        md:ml-auto",
-                        on: {
-                          click: function($event) {
-                            return _vm.deleteComment(comment.id)
+              _c(
+                "div",
+                { staticClass: "flex justify-between mb-1 pt-4 pb-1" },
+                [
+                  _c(
+                    "p",
+                    {
+                      staticClass:
+                        "text-grey-darkest font-medium leading-normal text-base"
+                    },
+                    [_vm._v(_vm._s(comment.details))]
+                  ),
+                  _vm._v(" "),
+                  comment.meta.permissions.delete
+                    ? _c(
+                        "button",
+                        {
+                          staticClass:
+                            "text-red hover:bg-red-300 hover:text-red\n                        py-2 px-4 rounded tracking-wide mb-2 md:mb-0\n                        md:ml-auto",
+                          on: {
+                            click: function($event) {
+                              return _vm.deleteComment(comment.id)
+                            }
                           }
-                        }
-                      },
-                      [_vm._v("Delete\n                ")]
-                    )
-                  : _vm._e()
-              ]),
+                        },
+                        [_vm._v("Delete\n                ")]
+                      )
+                    : _vm._e()
+                ]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "text-grey leading-normal text-sm" }, [
                 _c("p", [
@@ -57337,7 +57351,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h6", { staticClass: "text-black text-xl pt-4" }, [
+    _c("h6", { staticClass: "text-black text-xl pt-4 font-medium" }, [
       _vm._v(
         _vm._s(_vm.requirement.numbering) + " " + _vm._s(_vm.requirement.name)
       )
@@ -57354,15 +57368,51 @@ var render = function() {
               _vm._l(list, function(value, propertyName) {
                 return _c(
                   "div",
-                  { key: propertyName, staticClass: "flex-1 pl-1 mr-16" },
+                  { key: propertyName, staticClass: "flex-1 pl-1 mr-16 pt-2" },
                   [
-                    _c("div", { staticClass: "font-medium" }, [
-                      _vm._v(_vm._s(_vm._f("titleCase")(propertyName)))
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "text-gray-600 text-sm" }, [
-                      _vm._v(_vm._s(value))
-                    ])
+                    propertyName !== "assignees"
+                      ? _c("div", [
+                          _c("div", { staticClass: "font-medium" }, [
+                            _vm._v(_vm._s(_vm._f("titleCase")(propertyName)))
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "text-gray-600 text-sm" }, [
+                            _vm._v(_vm._s(value))
+                          ])
+                        ])
+                      : _c("div", [
+                          _c("div", { staticClass: "font-medium" }, [
+                            _vm._v(_vm._s(_vm._f("titleCase")(propertyName)))
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "grid grid-flow-row grid-cols-2 grid-rows-2 gap-1"
+                            },
+                            _vm._l(value, function(item) {
+                              return _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "flex justify-center items-center m-1 font-medium px-2 bg-white rounded-full text-blue-700 bg-blue-100 border border-blue-300 "
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "text-xs font-normal leading-none max-w-full flex-initial"
+                                    },
+                                    [_vm._v(_vm._s(item))]
+                                  )
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        ])
                   ]
                 )
               }),
@@ -57373,7 +57423,7 @@ var render = function() {
         )
       : _vm._e(),
     _vm._v(" "),
-    _c("h6", [_vm._v("Description")]),
+    _c("h6", { staticClass: "pt-4 font-medium" }, [_vm._v("Description")]),
     _vm._v(" "),
     _c("span", {
       domProps: { innerHTML: _vm._s(_vm.requirement.description) }
@@ -57943,7 +57993,7 @@ var render = function() {
   return _c("div", { staticClass: "container mx-auto py-6 px-4" }, [
     _c("h1", { staticClass: "h1" }, [_vm._v("Projects")]),
     _vm._v(" "),
-    _c("div", { staticClass: "mb-4 flex justify-between items-center" }, [
+    _c("div", { staticClass: "mb-4 flex justify-between items-center mt-2" }, [
       _c("div", { staticClass: "flex-1 pr-4" }, [
         _c("div", { staticClass: "relative md:w-1/3" }, [
           _c("input", {
@@ -58173,7 +58223,7 @@ var render = function() {
                 _vm._v(" "),
                 _vm._l(_vm.headings, function(heading) {
                   return _c("th", { staticClass: "default-header" }, [
-                    _vm._v(_vm._s(heading) + "\n                ")
+                    _vm._v(_vm._s(heading) + "\n                    ")
                   ])
                 })
               ],
@@ -58221,7 +58271,8 @@ var render = function() {
                       staticClass: "text-gray-700 px-6 py-3 flex items-center"
                     }),
                     _vm._v(
-                      _vm._s(project.modules_count) + "\n                    "
+                      _vm._s(project.modules_count) +
+                        "\n                        "
                     )
                   ]),
                   _vm._v(" "),
@@ -58244,6 +58295,41 @@ var render = function() {
                       [
                         _vm._v(
                           _vm._s(_vm._f("formatDateTime")(project.created_at))
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "default-row" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn-dropdown",
+                        on: {
+                          click: function($event) {
+                            $event.stopPropagation()
+                            return _vm.test()
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "dots-horizontal w-6 h-6 px-1",
+                            attrs: {
+                              viewBox: "0 0 20 20",
+                              fill: "currentColor"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"
+                              }
+                            })
+                          ]
                         )
                       ]
                     )
@@ -58301,7 +58387,7 @@ var render = function() {
     ),
     _vm._v(" "),
     _vm.modules.length
-      ? _c("div", { staticClass: "flex mb-4" }, [
+      ? _c("div", { staticClass: "md:flex mb-4" }, [
           _c(
             "div",
             { staticClass: "flex-none w-1/3 px-5" },
@@ -58346,7 +58432,7 @@ var render = function() {
         "div",
         { staticClass: "container mx-auto px-4" },
         [
-          _c("h1", { staticClass: "default-dialog-title" }, [
+          _c("h1", { staticClass: "h1" }, [
             _vm._v(_vm._s(_vm.requirement.name))
           ]),
           _vm._v(" "),

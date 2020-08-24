@@ -1,6 +1,6 @@
 <template>
     <div class="container mx-auto px-4" v-if="requirement.id !== null && dataLoaded">
-        <h1 class="default-dialog-title">{{ requirement.name }}</h1>
+        <h1 class="h1">{{ requirement.name }}</h1>
 
         <label class="primary-label" for="test-case-title">
             Title

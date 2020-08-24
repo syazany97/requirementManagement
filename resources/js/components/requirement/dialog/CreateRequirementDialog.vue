@@ -1,11 +1,11 @@
 <template>
-    <div class="container mx-auto py-2 overflow-y-auto">
+    <div class="container md:mx-auto sm:w-full py-2 overflow-y-auto">
 
-        <h1 class="default-dialog-title">Create new requirement</h1>
+        <h1 class="default-dialog-title">Add requirement</h1>
 
         <hr>
 
-        <div class="bg-white-100 px-4">
+        <div class="bg-white px-4">
 
             <label class="primary-label" for="grid-name">
                 Name
@@ -79,7 +79,7 @@
                 multiple
             ></vue-select>
 
-            <div class="inline-flex text-right pt-4">
+            <div class="inline-flex text-right pt-4 pb-5">
                 <button @click="closeDialog()" class="btn-tertiary pr-3">
                     <span>Cancel</span>
                 </button>

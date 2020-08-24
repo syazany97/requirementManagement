@@ -4,12 +4,12 @@
             <div class="w-5 h-5 border-2 border-teal-600 rounded-full loader"></div>
         </div>
 
-        <div v-if="comments.length && commentsLoaded">
+        <div v-if="comments.length && commentsLoaded" class="pb-4">
             <div v-for="comment in comments" v-bind:key="comment.id">
-                <div class="flex justify-between mb-1">
-                    <p class="text-grey-darkest leading-normal text-base">{{ comment.details}}</p>
+                <div class="flex justify-between mb-1 pt-4 pb-1">
+                    <p class="text-grey-darkest font-medium leading-normal text-base">{{ comment.details}}</p>
                     <button v-if="comment.meta.permissions.delete"
-                            class="text-red hover:bg-red hover:text-white
+                            class="text-red hover:bg-red-300 hover:text-red
                             py-2 px-4 rounded tracking-wide mb-2 md:mb-0
                             md:ml-auto" @click="deleteComment(comment.id)">Delete
                     </button>
