@@ -23,7 +23,8 @@
             </div>
         </div>
         <span v-if="!comments.length && commentsLoaded">No comment yet for this requirement</span>
-        <button class="btn-secondary" v-show="!showCommentTextField" @click="showCommentTextField = true">Add comment
+        <button class="btn-secondary" v-show="!showCommentTextField" @click="showCommentTextField = true">
+            Add comment
         </button>
         <div v-if="showCommentTextField">
              <textarea v-model="comment"
