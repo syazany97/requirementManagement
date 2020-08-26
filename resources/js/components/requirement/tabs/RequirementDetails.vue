@@ -16,7 +16,9 @@
                         <div class="grid grid-flow-row grid-cols-2 grid-rows-2 gap-1">
                             <div v-for="item in value"
                                  class="flex justify-center items-center m-1 font-medium px-2 bg-white rounded-full text-blue-700 bg-blue-100 border border-blue-300 ">
-                                <div class="text-xs font-normal leading-none max-w-full flex-initial">{{ item }}</div>
+                                <div class="text-xs font-normal leading-none max-w-full flex-initial">
+                                    {{ item }}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -84,7 +86,8 @@ export default {
         secondList() {
             return {
                 priority: this.get(this.requirement, 'priority.title', ''),
-                type: this.requirement.type
+                type: this.requirement.type,
+                hours_to_complete : this.requirement.hours_to_complete
             }
         },
         lists() {

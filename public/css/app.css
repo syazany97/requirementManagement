@@ -3957,6 +3957,12 @@ video {
   padding-bottom: 1rem;
 }
 
+/* dialog */
+
+.default-dialog-size {
+  /*@apply sm:w-full md:w-1/4*/
+}
+
 /* transition */
 
 .space-y-0 > :not(template) ~ :not(template){

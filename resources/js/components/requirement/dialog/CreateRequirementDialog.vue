@@ -27,6 +27,13 @@
                         :reduce="name => name.id">
             </vue-select>
 
+            <label class="primary-label" for="hours_to_complete">
+                Hours to complete
+            </label>
+
+            <input v-model="requirement.hours_to_complete" type="number" class="primary-input" name="hours_to_complete" id="hours_to_complete">
+
+
             <label class="primary-label" for="grid-module-id">
                 Under which module
             </label>
@@ -119,6 +126,7 @@ export default {
                 requirement_status_id: null,
                 requirement_priority_id: null,
                 module_id: null,
+                hours_to_complete : 1
             },
             addingRequirement: false
         }

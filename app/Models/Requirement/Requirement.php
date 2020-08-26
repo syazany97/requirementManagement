@@ -16,7 +16,9 @@ class Requirement extends Model implements HasMedia
     use InteractsWithMedia, LogsActivity;
 
     protected $fillable = ['name', 'module_id', 'description', 'description',
-        'requirement_priority_id', 'requirement_status_id', 'numbering', 'module_id'];
+        'requirement_priority_id', 'requirement_status_id', 'numbering', 'module_id',
+        'hours_to_complete'
+        ];
 
     protected static $logFillable = true;
 

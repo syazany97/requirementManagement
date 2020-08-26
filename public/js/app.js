@@ -3119,6 +3119,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3141,7 +3148,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         assignees: [],
         requirement_status_id: null,
         requirement_priority_id: null,
-        module_id: null
+        module_id: null,
+        hours_to_complete: 1
       },
       addingRequirement: false
     };
@@ -3431,6 +3439,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -3645,6 +3654,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -3683,7 +3694,8 @@ __webpack_require__.r(__webpack_exports__);
     secondList: function secondList() {
       return {
         priority: this.get(this.requirement, 'priority.title', ''),
-        type: this.requirement.type
+        type: this.requirement.type,
+        hours_to_complete: this.requirement.hours_to_complete
       };
     },
     lists: function lists() {
@@ -3990,9 +4002,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
-//
 //
 //
 //
@@ -56591,7 +56600,7 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "inline-flex text-right pt-4" }, [
+      _c("div", { staticClass: "inline-flex text-right pt-4 float-right" }, [
         _c(
           "button",
           {
@@ -56959,6 +56968,45 @@ var render = function() {
           _vm._v(" "),
           _c(
             "label",
+            {
+              staticClass: "primary-label",
+              attrs: { for: "hours_to_complete" }
+            },
+            [_vm._v("\n            Hours to complete\n        ")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.requirement.hours_to_complete,
+                expression: "requirement.hours_to_complete"
+              }
+            ],
+            staticClass: "primary-input",
+            attrs: {
+              type: "number",
+              name: "hours_to_complete",
+              id: "hours_to_complete"
+            },
+            domProps: { value: _vm.requirement.hours_to_complete },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(
+                  _vm.requirement,
+                  "hours_to_complete",
+                  $event.target.value
+                )
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
             { staticClass: "primary-label", attrs: { for: "grid-module-id" } },
             [_vm._v("\n            Under which module\n        ")]
           ),
@@ -57290,7 +57338,7 @@ var render = function() {
           }
         }
       },
-      [_vm._v("Add comment\n    ")]
+      [_vm._v("\n        Add comment\n    ")]
     ),
     _vm._v(" "),
     _vm.showCommentTextField
@@ -57405,7 +57453,13 @@ var render = function() {
                                       staticClass:
                                         "text-xs font-normal leading-none max-w-full flex-initial"
                                     },
-                                    [_vm._v(_vm._s(item))]
+                                    [
+                                      _vm._v(
+                                        "\n                                " +
+                                          _vm._s(item) +
+                                          "\n                            "
+                                      )
+                                    ]
                                   )
                                 ]
                               )
@@ -58054,85 +58108,29 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass:
-                    "rounded-lg inline-flex items-center bg-white hover:text-blue-500 focus:outline-none focus:shadow-outline text-gray-500 font-semibold py-2 px-2 md:px-4",
+                  staticClass: "btn-primary float-right",
                   on: {
                     click: function($event) {
-                      $event.preventDefault()
-                      _vm.showHeading = !_vm.showHeading
+                      return _vm.$modal.show("modalProjectDialog")
                     }
                   }
                 },
-                [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "w-6 h-6 md:hidden",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 24 24",
-                        "stroke-width": "2",
-                        stroke: "currentColor",
-                        fill: "none",
-                        "stroke-linecap": "round",
-                        "stroke-linejoin": "round"
-                      }
-                    },
-                    [
-                      _c("rect", {
-                        attrs: {
-                          x: "0",
-                          y: "0",
-                          width: "24",
-                          height: "24",
-                          stroke: "none"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("path", {
-                        attrs: {
-                          d:
-                            "M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5"
-                        }
-                      })
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "hidden md:block" }, [
-                    _vm._v("Display")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "w-5 h-5 ml-1",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        width: "24",
-                        height: "24",
-                        viewBox: "0 0 24 24",
-                        "stroke-width": "2",
-                        stroke: "currentColor",
-                        fill: "none",
-                        "stroke-linecap": "round",
-                        "stroke-linejoin": "round"
-                      }
-                    },
-                    [
-                      _c("rect", {
-                        attrs: {
-                          x: "0",
-                          y: "0",
-                          width: "24",
-                          height: "24",
-                          stroke: "none"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("polyline", { attrs: { points: "6 9 12 15 18 9" } })
-                    ]
-                  )
-                ]
+                [_vm._v("Add project")]
+              ),
+              _vm._v(" "),
+              _c(
+                "modal",
+                {
+                  staticClass: "sm:w-full md:w-1/4",
+                  attrs: {
+                    name: "modalProjectDialog",
+                    adaptive: true,
+                    scrollable: true,
+                    height: "auto"
+                  }
+                },
+                [_c("create-project-dialog")],
+                1
               ),
               _vm._v(" "),
               _c("default-transition", [
@@ -58271,8 +58269,7 @@ var render = function() {
                       staticClass: "text-gray-700 px-6 py-3 flex items-center"
                     }),
                     _vm._v(
-                      _vm._s(project.modules_count) +
-                        "\n                        "
+                      _vm._s(project.modules_count) + "\n                    "
                     )
                   ]),
                   _vm._v(" "),

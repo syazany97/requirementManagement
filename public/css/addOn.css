@@ -197,6 +197,11 @@
     @apply text-left font-medium px-4 py-4
 }
 
+/* dialog */
+.default-dialog-size {
+    /*@apply sm:w-full md:w-1/4*/
+}
+
 /* transition */
 
 
