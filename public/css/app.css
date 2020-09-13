@@ -3602,15 +3602,6 @@ video {
   --bg-opacity: 1;
   background-color: #2b6cb0;
   background-color: rgba(43, 108, 176, var(--bg-opacity));
-  font-weight: 500;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  border-radius: 0.25rem;
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.875rem;
 }
 
 .btn-secondary {
@@ -3620,15 +3611,6 @@ video {
   --text-opacity: 1;
   color: #2d3748;
   color: rgba(45, 55, 72, var(--text-opacity));
-  font-weight: 500;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  border-radius: 0.25rem;
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.875rem;
 }
 
 .btn-secondary:hover {
@@ -3637,19 +3619,15 @@ video {
   background-color: rgba(203, 213, 224, var(--bg-opacity));
 }
 
+.btn-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .btn-tertiary {
   --text-opacity: 1;
   color: #2d3748;
   color: rgba(45, 55, 72, var(--text-opacity));
-  font-weight: 500;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  border-radius: 0.25rem;
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.875rem;
 }
 
 .btn-tertiary:hover {

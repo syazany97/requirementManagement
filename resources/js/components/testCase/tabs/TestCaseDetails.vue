@@ -2,7 +2,7 @@
 
     <div>
         <div class="text-right">
-            <button @click="redirectToTestCasePage()" class="btn-primary">
+            <button @click="redirectToTestCasePage()" class="btn btn-primary">
 
                 <svg viewBox="0 0 20 20" fill="currentColor" class="plus w-6 h-6">
                     <path fill-rule="evenodd"
@@ -29,7 +29,7 @@
                 <td class="default-row">{{ test.created_at | formatDateTime }}</td>
                 <td class="default-row">
                     <router-link :to="{name : 'test-case.edit' ,params : {testCase : test.id}}"
-                                 tag="button" class="btn-primary">View
+                                 tag="button" class="btn btn-primary">View
                     </router-link>
                 </td>
             </tr>

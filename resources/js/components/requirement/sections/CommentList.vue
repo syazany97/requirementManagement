@@ -7,7 +7,7 @@
         <div v-if="comments.length && commentsLoaded" class="pb-4">
             <div v-for="comment in comments" v-bind:key="comment.id">
                 <div class="flex justify-between mb-1 pt-4 pb-1">
-                    <p class="text-grey-darkest font-medium leading-normal text-base">{{ comment.details}}</p>
+                    <p class="text-grey-darkest font-medium leading-normal text-base">{{ comment.details }}</p>
                     <button v-if="comment.meta.permissions.delete"
                             class="text-red hover:bg-red-300 hover:text-red
                             py-2 px-4 rounded tracking-wide mb-2 md:mb-0
@@ -23,17 +23,29 @@
             </div>
         </div>
         <span v-if="!comments.length && commentsLoaded">No comment yet for this requirement</span>
-        <button class="btn-secondary" v-show="!showCommentTextField" @click="showCommentTextField = true">
+        <button class="btn btn-secondary" v-show="!showCommentTextField" @click="showCommentTextField = true">
             Add comment
         </button>
         <div v-if="showCommentTextField">
-             <textarea v-model="comment"
-                       placeholder="Add comment"
-                       class="primary-text-area">
+            <div class="text-right">
+                <button
+                    @click="showCommentTextField = !showCommentTextField"
+                    class="px-1 py-2 bg-white hover:bg-gray-300">
+                <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+
+                </button>
+
+            </div>
+
+            <textarea v-model="comment"
+                      placeholder="Add comment"
+                      class="primary-text-area">
             </textarea>
 
             <div class="text-right">
-                <button class="btn-secondary" @click="postComment">Post</button>
+                <button class="btn btn-secondary" @click="postComment">Post</button>
             </div>
         </div>
     </div>
@@ -87,9 +99,9 @@ export default {
                 console.log(e);
             }
         },
-        async deleteComment(commentId) {
+        async deleteComment(id) {
             try {
-                await commentRepository.delete(commentId);
+                await commentRepository.delete(id);
                 this.comment = "";
                 await this.fetchComments();
             } catch (e) {

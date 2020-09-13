@@ -35,11 +35,11 @@
         ></vue-select>
 
         <div class="inline-flex text-right pt-4 float-right">
-            <button @click="dialog = false" class="btn-tertiary pr-3">
+            <button @click="dialog = false" class="btn btn-tertiary pr-3">
                 <span>Cancel</span>
             </button>
             <div class="divider"></div>
-            <button @click="createProject()" class="btn-primary">
+            <button @click="createProject()" class="btn btn-primary">
                 <span>Create</span>
             </button>
         </div>

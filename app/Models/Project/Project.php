@@ -25,4 +25,17 @@ class Project extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function collaborators()
+    {
+//        return $this->belongsToMany(User::class, 'user_id', ProjectUserRole::class);
+    }
+
+    public function scopeIndex($query, $search = null)
+    {
+        return $query->when($search, function ($q) use ($search) {
+            return $q->where('name', 'like', '%' . $search . '%')
+                ->orWhere('description', 'like', '%' . $search . '%');
+        })->withCount(['modules'])->with(['user:id,name']);
+    }
 }

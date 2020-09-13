@@ -29,7 +29,7 @@
         <textarea class="primary-text-area" v-model="testCase.preconditions"
                   id="test-case-preconditions" type="text"></textarea>
 
-        <button class="btn-primary" @click="addStep">Add step</button>
+        <button class="btn btn-primary" @click="addStep">Add step</button>
 
         <table class="table-auto">
             <thead>
@@ -70,7 +70,7 @@
                                 v-model="step.is_passed"></vue-select>
                 </td>
                 <td class="border px-4 py-2">
-                    <button class="btn-primary">Add Step</button>
+                    <button class="btn btn-primary">Add Step</button>
                 </td>
             </tr>
             </tbody>
@@ -87,7 +87,7 @@
             <component v-show="currentTab === tab.props.is" v-bind="tab.props"></component>
         </div>
 
-        <button v-if="steps.length" class="btn-primary" @click="submitTestCase()">Submit</button>
+        <button v-if="steps.length" class="btn btn-primary" @click="submitTestCase()">Submit</button>
 
     </div>
 

@@ -5,14 +5,14 @@
         <!--        <div class="flex pt-2">-->
         <!--            <div class="w-3/4"></div>-->
         <!--            <div class="w-1/4">-->
-        <!--                <button class="btn-primary float-right">Add project</button>-->
+        <!--                <button class="btn btn-primary float-right">Add project</button>-->
         <!--            </div>-->
         <!--        </div>-->
 
         <div class="mb-4 flex justify-between items-center mt-2">
             <div class="flex-1 pr-4">
                 <div class="relative md:w-1/3">
-                    <input type="search"
+                    <input v-model="search" type="search"
                            class="w-full pl-10 pr-4 py-2 rounded-lg shadow focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                            placeholder="Search...">
                     <div class="absolute top-0 left-0 inline-flex items-center p-2">
@@ -48,7 +48,8 @@
                         <!--                                <polyline points="6 9 12 15 18 9"/>-->
                         <!--                            </svg>-->
                         <!--                        </button>-->
-                        <button @click="$modal.show('modalProjectDialog')" class="btn-primary float-right">Add project
+                        <button @click="$modal.show('modalProjectDialog')" class="btn btn-primary float-right">Add
+                            project
                         </button>
 
                         <modal name="modalProjectDialog" class="sm:w-full md:w-1/4" :adaptive="true" :scrollable="true"
@@ -137,24 +138,30 @@
             </table>
         </div>
 
-        <div v-if="pagination.meta !== null" class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+        <div v-if="pagination.meta !== null" class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between pt-3">
             <div>
                 <p class="text-sm leading-5 text-gray-700">
                     Showing
                     <span class="font-medium">{{ pagination.meta.from }}</span>
                     to
-                    <span class="font-medium">{{this.pagination.meta.to}}</span>
+                    <span class="font-medium">{{ this.pagination.meta.to }}</span>
                     of
                     <span class="font-medium">{{ pagination.meta.total }}</span>
                     results
                 </p>
             </div>
             <div>
-               <button class="btn-tertiary">Previous</button>
+                <button class="btn btn-tertiary border border-gray-400"
+                        :class="pagination.links.prev === null ? 'btn-disabled' : ''"
+                        @click="fetchProjects(pagination.links.prev)">Previous
+                </button>
 
                 <div class="divider"></div>
 
-               <button class="btn-tertiary">Next</button>
+                <button class="btn btn-tertiary border border-gray-400"
+                        :class="pagination.links.next === null ? 'btn-disabled' : ''"
+                        @click="fetchProjects(pagination.links.next)">Next
+                </button>
             </div>
         </div>
 
@@ -165,6 +172,7 @@
 
 <script>
 import CreateProjectDialog from "../../components/project/modal/CreateProjectDialog";
+import {debounce} from "../../helper";
 
 export default {
     name: "Index.vue",
@@ -188,23 +196,26 @@ export default {
                 links: null,
                 meta: null
             },
-            url: '/api/projects'
+            url: '/api/projects',
+            search: ""
         };
     },
     created() {
         this.fetchProjects();
     },
+    watch: {
+        search: debounce(function () {
+            this.fetchProjects();
+        }, 1000)
+    },
     methods: {
-        async fetchProjects() {
-
-            const url = this.pagination.links === null ? this.url : this.pagination.links;
-
-            const response = await axios.get('/api/projects');
+        async fetchProjects(link = null) {
+            const url = link === null ? this.url + ('?q=' + this.search) : link;
+            const response = await axios.get(url);
             console.log(response.data);
             this.projects = response.data.data;
             this.pagination.links = response.data.links;
             this.pagination.meta = response.data.meta;
-            console.log(response.data);
         },
         get(data, column, defaultValue) {
             return _.get(data, column, defaultValue);

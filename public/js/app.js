@@ -3440,6 +3440,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3514,7 +3526,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, null, [[0, 8]]);
       }))();
     },
-    deleteComment: function deleteComment(commentId) {
+    deleteComment: function deleteComment(id) {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
@@ -3524,7 +3536,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return _repositories_comment_commentRepository__WEBPACK_IMPORTED_MODULE_2__["default"]["delete"](commentId);
+                return _repositories_comment_commentRepository__WEBPACK_IMPORTED_MODULE_2__["default"]["delete"](id);
 
               case 3:
                 _this2.comment = "";
@@ -3996,6 +4008,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_project_modal_CreateProjectDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/project/modal/CreateProjectDialog */ "./resources/js/components/project/modal/CreateProjectDialog.vue");
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helper */ "./resources/js/helper.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -4167,6 +4180,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Index.vue",
@@ -4186,33 +4207,40 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         links: null,
         meta: null
       },
-      url: '/api/projects'
+      url: '/api/projects',
+      search: ""
     };
   },
   created: function created() {
     this.fetchProjects();
   },
+  watch: {
+    search: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["debounce"])(function () {
+      this.fetchProjects();
+    }, 1000)
+  },
   methods: {
     fetchProjects: function fetchProjects() {
-      var _this = this;
+      var _arguments = arguments,
+          _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var url, response;
+        var link, url, response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                url = _this.pagination.links === null ? _this.url : _this.pagination.links;
-                _context.next = 3;
-                return axios.get('/api/projects');
+                link = _arguments.length > 0 && _arguments[0] !== undefined ? _arguments[0] : null;
+                url = link === null ? _this.url + ('?q=' + _this.search) : link;
+                _context.next = 4;
+                return axios.get(url);
 
-              case 3:
+              case 4:
                 response = _context.sent;
                 console.log(response.data);
                 _this.projects = response.data.data;
                 _this.pagination.links = response.data.links;
                 _this.pagination.meta = response.data.meta;
-                console.log(response.data);
 
               case 9:
               case "end":
@@ -11058,7 +11086,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "@-webkit-keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n.loader {\n  border-right-color: transparent;\n  -webkit-animation: loader-rotate 1s linear infinite;\n          animation: loader-rotate 1s linear infinite;\n}\r\n\r\n", ""]);
+exports.push([module.i, "@-webkit-keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n.loader {\n  border-right-color: transparent;\n  -webkit-animation: loader-rotate 1s linear infinite;\n          animation: loader-rotate 1s linear infinite;\n}\n\n", ""]);
 
 // exports
 
@@ -56153,7 +56181,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "btn-primary",
+          staticClass: "btn btn-primary",
           on: {
             click: function($event) {
               return _vm.$modal.show("moduleDialog")
@@ -56179,7 +56207,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "btn-secondary",
+          staticClass: "btn btn-secondary",
           on: {
             click: function($event) {
               $event.stopPropagation()
@@ -56274,7 +56302,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn-tertiary pr-3",
+                  staticClass: "btn btn-tertiary pr-3",
                   on: {
                     click: function($event) {
                       return _vm.$modal.hide("moduleDialog")
@@ -56289,7 +56317,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn-primary",
+                  staticClass: "btn btn-primary",
                   on: {
                     click: function($event) {
                       return _vm.addModule()
@@ -56627,7 +56655,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn-tertiary pr-3",
+            staticClass: "btn btn-tertiary pr-3",
             on: {
               click: function($event) {
                 _vm.dialog = false
@@ -56642,7 +56670,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn-primary",
+            staticClass: "btn btn-primary",
             on: {
               click: function($event) {
                 return _vm.createProject()
@@ -57129,7 +57157,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn-tertiary pr-3",
+                staticClass: "btn btn-tertiary pr-3",
                 on: {
                   click: function($event) {
                     return _vm.closeDialog()
@@ -57144,7 +57172,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn-primary",
+                staticClass: "btn btn-primary",
                 on: {
                   click: function($event) {
                     return _vm.addRequirement()
@@ -57354,7 +57382,7 @@ var render = function() {
             expression: "!showCommentTextField"
           }
         ],
-        staticClass: "btn-secondary",
+        staticClass: "btn btn-secondary",
         on: {
           click: function($event) {
             _vm.showCommentTextField = true
@@ -57366,6 +57394,44 @@ var render = function() {
     _vm._v(" "),
     _vm.showCommentTextField
       ? _c("div", [
+          _c("div", { staticClass: "text-right" }, [
+            _c(
+              "button",
+              {
+                staticClass: "px-1 py-2 bg-white hover:bg-gray-300",
+                on: {
+                  click: function($event) {
+                    _vm.showCommentTextField = !_vm.showCommentTextField
+                  }
+                }
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "fill-current w-4 h-4 mr-2",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      fill: "none",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round",
+                        "stroke-width": "2",
+                        d: "M6 18L18 6M6 6l12 12"
+                      }
+                    })
+                  ]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
           _c("textarea", {
             directives: [
               {
@@ -57391,7 +57457,10 @@ var render = function() {
           _c("div", { staticClass: "text-right" }, [
             _c(
               "button",
-              { staticClass: "btn-secondary", on: { click: _vm.postComment } },
+              {
+                staticClass: "btn btn-secondary",
+                on: { click: _vm.postComment }
+              },
               [_vm._v("Post")]
             )
           ])
@@ -57613,7 +57682,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "btn-primary",
+          staticClass: "btn btn-primary",
           on: {
             click: function($event) {
               return _vm.redirectToTestCasePage()
@@ -57693,7 +57762,7 @@ var render = function() {
                       _c(
                         "router-link",
                         {
-                          staticClass: "btn-primary",
+                          staticClass: "btn btn-primary",
                           attrs: {
                             to: {
                               name: "test-case.edit",
@@ -58074,9 +58143,26 @@ var render = function() {
       _c("div", { staticClass: "flex-1 pr-4" }, [
         _c("div", { staticClass: "relative md:w-1/3" }, [
           _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.search,
+                expression: "search"
+              }
+            ],
             staticClass:
               "w-full pl-10 pr-4 py-2 rounded-lg shadow focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-            attrs: { type: "search", placeholder: "Search..." }
+            attrs: { type: "search", placeholder: "Search..." },
+            domProps: { value: _vm.search },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.search = $event.target.value
+              }
+            }
           }),
           _vm._v(" "),
           _c(
@@ -58131,14 +58217,18 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn-primary float-right",
+                  staticClass: "btn btn-primary float-right",
                   on: {
                     click: function($event) {
                       return _vm.$modal.show("modalProjectDialog")
                     }
                   }
                 },
-                [_vm._v("Add project\n                    ")]
+                [
+                  _vm._v(
+                    "Add\n                        project\n                    "
+                  )
+                ]
               ),
               _vm._v(" "),
               _c(
@@ -58366,7 +58456,7 @@ var render = function() {
           "div",
           {
             staticClass:
-              "hidden sm:flex-1 sm:flex sm:items-center sm:justify-between"
+              "hidden sm:flex-1 sm:flex sm:items-center sm:justify-between pt-3"
           },
           [
             _c("div", [
@@ -58387,26 +58477,45 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(0)
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-tertiary border border-gray-400",
+                  class:
+                    _vm.pagination.links.prev === null ? "btn-disabled" : "",
+                  on: {
+                    click: function($event) {
+                      return _vm.fetchProjects(_vm.pagination.links.prev)
+                    }
+                  }
+                },
+                [_vm._v("Previous\n            ")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "divider" }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-tertiary border border-gray-400",
+                  class:
+                    _vm.pagination.links.next === null ? "btn-disabled" : "",
+                  on: {
+                    click: function($event) {
+                      return _vm.fetchProjects(_vm.pagination.links.next)
+                    }
+                  }
+                },
+                [_vm._v("Next\n            ")]
+              )
+            ])
           ]
         )
       : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("button", { staticClass: "btn-tertiary" }, [_vm._v("Previous")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "divider" }),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn-tertiary" }, [_vm._v("Next")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -58572,7 +58681,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "button",
-            { staticClass: "btn-primary", on: { click: _vm.addStep } },
+            { staticClass: "btn btn-primary", on: { click: _vm.addStep } },
             [_vm._v("Add step")]
           ),
           _vm._v(" "),
@@ -58810,7 +58919,7 @@ var render = function() {
             ? _c(
                 "button",
                 {
-                  staticClass: "btn-primary",
+                  staticClass: "btn btn-primary",
                   on: {
                     click: function($event) {
                       return _vm.submitTestCase()
@@ -58857,7 +58966,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", { staticClass: "border px-4 py-2" }, [
-      _c("button", { staticClass: "btn-primary" }, [_vm._v("Add Step")])
+      _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Add Step")])
     ])
   }
 ]
@@ -76644,6 +76753,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TestCaseDetails_vue_vue_type_template_id_f496f5be_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/helper.js":
+/*!********************************!*\
+  !*** ./resources/js/helper.js ***!
+  \********************************/
+/*! exports provided: debounce */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "debounce", function() { return debounce; });
+var debounce = function debounce(fn, delay) {
+  var timeoutID = null;
+  return function () {
+    clearTimeout(timeoutID);
+    var args = arguments;
+    var that = this;
+    timeoutID = setTimeout(function () {
+      fn.apply(that, args);
+    }, delay);
+  };
+};
 
 /***/ }),
 

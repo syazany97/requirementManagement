@@ -87,11 +87,11 @@
             ></vue-select>
 
             <div class="inline-flex text-right pt-4 pb-5">
-                <button @click="closeDialog()" class="btn-tertiary pr-3">
+                <button @click="closeDialog()" class="btn btn-tertiary pr-3">
                     <span>Cancel</span>
                 </button>
                 <div class="divider"></div>
-                <button @click="addRequirement()" class="btn-primary">
+                <button @click="addRequirement()" class="btn btn-primary">
                     <span>{{ addingRequirement ? 'Creating' : 'Create' }}</span>
                 </button>
             </div>
