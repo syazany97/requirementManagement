@@ -17,6 +17,7 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         $search = $request->has('q') ? $request->q : null;
+
         return ProjectResource::collection(
             Project::index($search)
                 ->where('user_id', auth()->user()->id)

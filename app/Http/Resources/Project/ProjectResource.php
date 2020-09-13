@@ -26,7 +26,13 @@ class ProjectResource extends JsonResource
             'description' => $this->description,
             'owner' => $this->whenLoaded('user'),
             'modules_count' => $this->modules_count,
-            'modules' =>  ModuleResource::collection($this->whenLoaded('modules')),
+            'modules' => ModuleResource::collection($this->whenLoaded('modules')),
+            'meta' => [
+                'permissions' => [
+                    'edit' => $this->user_id === auth()->user()->id,
+                    'delete' => $this->user_id === auth()->user()->id,
+                ]
+            ],
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];
