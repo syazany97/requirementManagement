@@ -2,12 +2,12 @@
     <div class="container mx-auto py-6 px-4">
         <h1 class="h1">Projects</h1>
 
-<!--        <div class="flex pt-2">-->
-<!--            <div class="w-3/4"></div>-->
-<!--            <div class="w-1/4">-->
-<!--                <button class="btn-primary float-right">Add project</button>-->
-<!--            </div>-->
-<!--        </div>-->
+        <!--        <div class="flex pt-2">-->
+        <!--            <div class="w-3/4"></div>-->
+        <!--            <div class="w-1/4">-->
+        <!--                <button class="btn-primary float-right">Add project</button>-->
+        <!--            </div>-->
+        <!--        </div>-->
 
         <div class="mb-4 flex justify-between items-center mt-2">
             <div class="flex-1 pr-4">
@@ -30,27 +30,29 @@
             <div>
                 <div class="shadow rounded-lg flex">
                     <div class="relative">
-<!--                        <button @click.prevent="showHeading = !showHeading"-->
-<!--                                class="rounded-lg inline-flex items-center bg-white hover:text-blue-500 focus:outline-none focus:shadow-outline text-gray-500 font-semibold py-2 px-2 md:px-4">-->
-<!--                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 md:hidden"-->
-<!--                                 viewBox="0 0 24 24"-->
-<!--                                 stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"-->
-<!--                                 stroke-linejoin="round">-->
-<!--                                <rect x="0" y="0" width="24" height="24" stroke="none"></rect>-->
-<!--                                <path-->
-<!--                                    d="M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5"/>-->
-<!--                            </svg>-->
-<!--                            <span class="hidden md:block">Display</span>-->
-<!--                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" width="24" height="24"-->
-<!--                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"-->
-<!--                                 stroke-linecap="round" stroke-linejoin="round">-->
-<!--                                <rect x="0" y="0" width="24" height="24" stroke="none"></rect>-->
-<!--                                <polyline points="6 9 12 15 18 9"/>-->
-<!--                            </svg>-->
-<!--                        </button>-->
-                        <button @click="$modal.show('modalProjectDialog')" class="btn-primary float-right">Add project</button>
+                        <!--                        <button @click.prevent="showHeading = !showHeading"-->
+                        <!--                                class="rounded-lg inline-flex items-center bg-white hover:text-blue-500 focus:outline-none focus:shadow-outline text-gray-500 font-semibold py-2 px-2 md:px-4">-->
+                        <!--                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 md:hidden"-->
+                        <!--                                 viewBox="0 0 24 24"-->
+                        <!--                                 stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"-->
+                        <!--                                 stroke-linejoin="round">-->
+                        <!--                                <rect x="0" y="0" width="24" height="24" stroke="none"></rect>-->
+                        <!--                                <path-->
+                        <!--                                    d="M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5"/>-->
+                        <!--                            </svg>-->
+                        <!--                            <span class="hidden md:block">Display</span>-->
+                        <!--                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" width="24" height="24"-->
+                        <!--                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"-->
+                        <!--                                 stroke-linecap="round" stroke-linejoin="round">-->
+                        <!--                                <rect x="0" y="0" width="24" height="24" stroke="none"></rect>-->
+                        <!--                                <polyline points="6 9 12 15 18 9"/>-->
+                        <!--                            </svg>-->
+                        <!--                        </button>-->
+                        <button @click="$modal.show('modalProjectDialog')" class="btn-primary float-right">Add project
+                        </button>
 
-                        <modal name="modalProjectDialog" class="sm:w-full md:w-1/4" :adaptive="true" :scrollable="true" height="auto" >
+                        <modal name="modalProjectDialog" class="sm:w-full md:w-1/4" :adaptive="true" :scrollable="true"
+                               height="auto">
                             <create-project-dialog></create-project-dialog>
                         </modal>
 
@@ -134,7 +136,28 @@
                 </tbody>
             </table>
         </div>
-        <span v-if="pagination.meta !== null">Showing {{ this.pagination.meta.to }} of {{ this.pagination.meta.total }} results</span>
+
+        <div v-if="pagination.meta !== null" class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+            <div>
+                <p class="text-sm leading-5 text-gray-700">
+                    Showing
+                    <span class="font-medium">{{ pagination.meta.from }}</span>
+                    to
+                    <span class="font-medium">{{this.pagination.meta.to}}</span>
+                    of
+                    <span class="font-medium">{{ pagination.meta.total }}</span>
+                    results
+                </p>
+            </div>
+            <div>
+               <button class="btn-tertiary">Previous</button>
+
+                <div class="divider"></div>
+
+               <button class="btn-tertiary">Next</button>
+            </div>
+        </div>
+
     </div>
 
 

@@ -4144,6 +4144,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Index.vue",
@@ -11035,7 +11058,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "@-webkit-keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n.loader {\n  border-right-color: transparent;\n  -webkit-animation: loader-rotate 1s linear infinite;\n          animation: loader-rotate 1s linear infinite;\n}\n\n", ""]);
+exports.push([module.i, "@-webkit-keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n.loader {\n  border-right-color: transparent;\n  -webkit-animation: loader-rotate 1s linear infinite;\n          animation: loader-rotate 1s linear infinite;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -58115,7 +58138,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Add project")]
+                [_vm._v("Add project\n                    ")]
               ),
               _vm._v(" "),
               _c(
@@ -58221,7 +58244,7 @@ var render = function() {
                 _vm._v(" "),
                 _vm._l(_vm.headings, function(heading) {
                   return _c("th", { staticClass: "default-header" }, [
-                    _vm._v(_vm._s(heading) + "\n                    ")
+                    _vm._v(_vm._s(heading) + "\n                ")
                   ])
                 })
               ],
@@ -58268,9 +58291,7 @@ var render = function() {
                     _c("span", {
                       staticClass: "text-gray-700 px-6 py-3 flex items-center"
                     }),
-                    _vm._v(
-                      _vm._s(project.modules_count) + "\n                    "
-                    )
+                    _vm._v(_vm._s(project.modules_count) + "\n                ")
                   ]),
                   _vm._v(" "),
                   _c("td", { staticClass: "default-row" }, [
@@ -58341,19 +58362,51 @@ var render = function() {
     ]),
     _vm._v(" "),
     _vm.pagination.meta !== null
-      ? _c("span", [
-          _vm._v(
-            "Showing " +
-              _vm._s(this.pagination.meta.to) +
-              " of " +
-              _vm._s(this.pagination.meta.total) +
-              " results"
-          )
-        ])
+      ? _c(
+          "div",
+          {
+            staticClass:
+              "hidden sm:flex-1 sm:flex sm:items-center sm:justify-between"
+          },
+          [
+            _c("div", [
+              _c("p", { staticClass: "text-sm leading-5 text-gray-700" }, [
+                _vm._v("\n                Showing\n                "),
+                _c("span", { staticClass: "font-medium" }, [
+                  _vm._v(_vm._s(_vm.pagination.meta.from))
+                ]),
+                _vm._v("\n                to\n                "),
+                _c("span", { staticClass: "font-medium" }, [
+                  _vm._v(_vm._s(this.pagination.meta.to))
+                ]),
+                _vm._v("\n                of\n                "),
+                _c("span", { staticClass: "font-medium" }, [
+                  _vm._v(_vm._s(_vm.pagination.meta.total))
+                ]),
+                _vm._v("\n                results\n            ")
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(0)
+          ]
+        )
       : _vm._e()
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("button", { staticClass: "btn-tertiary" }, [_vm._v("Previous")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "divider" }),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn-tertiary" }, [_vm._v("Next")])
+    ])
+  }
+]
 render._withStripped = true
 
 
