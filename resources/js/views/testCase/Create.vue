@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto px-4" v-if="requirement.id !== null && dataLoaded">
+    <div class="container mx-auto px-4" style="padding-bottom: 250px" v-if="requirement.id !== null && dataLoaded">
         <h1 class="h1">{{ requirement.name }}</h1>
 
         <label class="primary-label" for="test-case-title">
@@ -76,6 +76,8 @@
             </tbody>
         </table>
 
+        <div class="pt-5">
+
         <ul class="nav nav-pills">
             <li v-for="tab in items" class="nav-item">
                 <a :class="'nav-link ' +  (currentTab === tab.props.is ? 'active' : '')"
@@ -86,8 +88,9 @@
         <div v-for="tab in items" v-bind:key="tab.props.is">
             <component v-show="currentTab === tab.props.is" v-bind="tab.props"></component>
         </div>
+        </div>
 
-        <button v-if="steps.length" class="btn btn-primary" @click="submitTestCase()">Submit</button>
+        <button v-if="steps.length" class="btn btn-primary mt-2" @click="submitTestCase()">Submit</button>
 
     </div>
 

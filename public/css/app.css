@@ -3770,7 +3770,7 @@ video {
 /* INPUT AND FORM ENDS */
 
 .divider {
-  width: 3px;
+  width: 5px;
   height: auto;
   display: inline-block;
 }

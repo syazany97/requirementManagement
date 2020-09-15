@@ -1972,7 +1972,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "HistoriesList",
@@ -2062,6 +2061,25 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3370,6 +3388,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -4282,6 +4304,9 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
 //
 //
 //
@@ -10935,7 +10960,7 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.bubble.css":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.bubble.css?33be":
 /*!**********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/quill/dist/quill.bubble.css ***!
   \**********************************************************************************************************************************/
@@ -10954,7 +10979,7 @@ exports.push([module.i, "/*!\n * Quill Editor v1.3.7\n * https://quilljs.com/\n 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.core.css":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.core.css?af45":
 /*!********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/quill/dist/quill.core.css ***!
   \********************************************************************************************************************************/
@@ -10973,7 +10998,7 @@ exports.push([module.i, "/*!\n * Quill Editor v1.3.7\n * https://quilljs.com/\n 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.snow.css":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.snow.css?48b9":
 /*!********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/quill/dist/quill.snow.css ***!
   \********************************************************************************************************************************/
@@ -42115,7 +42140,7 @@ process.umask = function() { return 0; };
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./quill.bubble.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.bubble.css");
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./quill.bubble.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.bubble.css?33be");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -42145,7 +42170,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./quill.core.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.core.css");
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./quill.core.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.core.css?af45");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -53743,7 +53768,7 @@ module.exports = __webpack_require__(63);
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./quill.snow.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.snow.css");
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./quill.snow.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.snow.css?48b9");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -55394,18 +55419,15 @@ var render = function() {
   return _vm.histories.length
     ? _c(
         "div",
-        [
-          _c("h1", [_vm._v("Histories List")]),
-          _vm._v(" "),
-          _vm._l(_vm.histories, function(history) {
-            return _c("div", { key: history.id }, [
-              _c("span", [_vm._v(_vm._s(history.description))]),
-              _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(_vm.get(history, "user", "")))])
-            ])
-          })
-        ],
-        2
+        { staticClass: "pt-3" },
+        _vm._l(_vm.histories, function(history) {
+          return _c("div", { key: history.id }, [
+            _c("span", [_vm._v(_vm._s(history.description))]),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(_vm.get(history, "user", "")))])
+          ])
+        }),
+        0
       )
     : _vm._e()
 }
@@ -55729,7 +55751,7 @@ var render = function() {
                                           },
                                           [
                                             _vm._v(
-                                              "\n                                                Sign out\n                                            "
+                                              "\n                                                    Sign out\n                                                "
                                             )
                                           ]
                                         )
@@ -55780,7 +55802,7 @@ var staticRenderFns = [
           { staticClass: "justify-center text-xl font-semibold text-center" },
           [
             _vm._v(
-              "\n                        Zany Software\n                    "
+              "\n                            Zany Software\n                        "
             )
           ]
         )
@@ -57001,9 +57023,11 @@ var render = function() {
         )
       : _vm._e(),
     _vm._v(" "),
-    !_vm.comments.length && _vm.commentsLoaded
-      ? _c("span", [_vm._v("No comment yet for this requirement")])
-      : _vm._e(),
+    _c("div", { staticClass: "py-4" }, [
+      !_vm.comments.length && _vm.commentsLoaded && !_vm.showCommentTextField
+        ? _c("span", [_vm._v("No comment yet for this requirement")])
+        : _vm._e()
+    ]),
     _vm._v(" "),
     _c(
       "button",
@@ -58223,7 +58247,10 @@ var render = function() {
   return _vm.requirement.id !== null && _vm.dataLoaded
     ? _c(
         "div",
-        { staticClass: "container mx-auto px-4" },
+        {
+          staticClass: "container mx-auto px-4",
+          staticStyle: { "padding-bottom": "250px" }
+        },
         [
           _c("h1", { staticClass: "h1" }, [
             _vm._v(_vm._s(_vm.requirement.name))
@@ -58496,64 +58523,71 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c(
-            "ul",
-            { staticClass: "nav nav-pills" },
-            _vm._l(_vm.items, function(tab) {
-              return _c("li", { staticClass: "nav-item" }, [
-                _c(
-                  "a",
-                  {
-                    class:
-                      "nav-link " +
-                      (_vm.currentTab === tab.props.is ? "active" : ""),
-                    attrs: { href: "#" },
-                    on: {
-                      click: function($event) {
-                        $event.preventDefault()
-                        _vm.currentTab = tab.props.is
-                      }
-                    }
-                  },
-                  [_vm._v(_vm._s(tab.tab))]
-                )
-              ])
-            }),
-            0
-          ),
-          _vm._v(" "),
-          _vm._l(_vm.items, function(tab) {
-            return _c(
-              "div",
-              { key: tab.props.is },
-              [
-                _c(
-                  "component",
-                  _vm._b(
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.currentTab === tab.props.is,
-                          expression: "currentTab === tab.props.is"
+            "div",
+            { staticClass: "pt-5" },
+            [
+              _c(
+                "ul",
+                { staticClass: "nav nav-pills" },
+                _vm._l(_vm.items, function(tab) {
+                  return _c("li", { staticClass: "nav-item" }, [
+                    _c(
+                      "a",
+                      {
+                        class:
+                          "nav-link " +
+                          (_vm.currentTab === tab.props.is ? "active" : ""),
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            _vm.currentTab = tab.props.is
+                          }
                         }
-                      ]
-                    },
-                    "component",
-                    tab.props,
-                    false
-                  )
+                      },
+                      [_vm._v(_vm._s(tab.tab))]
+                    )
+                  ])
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _vm._l(_vm.items, function(tab) {
+                return _c(
+                  "div",
+                  { key: tab.props.is },
+                  [
+                    _c(
+                      "component",
+                      _vm._b(
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.currentTab === tab.props.is,
+                              expression: "currentTab === tab.props.is"
+                            }
+                          ]
+                        },
+                        "component",
+                        tab.props,
+                        false
+                      )
+                    )
+                  ],
+                  1
                 )
-              ],
-              1
-            )
-          }),
+              })
+            ],
+            2
+          ),
           _vm._v(" "),
           _vm.steps.length
             ? _c(
                 "button",
                 {
-                  staticClass: "btn btn-primary",
+                  staticClass: "btn btn-primary mt-2",
                   on: {
                     click: function($event) {
                       return _vm.submitTestCase()
@@ -58564,7 +58598,7 @@ var render = function() {
               )
             : _vm._e()
         ],
-        2
+        1
       )
     : _vm._e()
 }

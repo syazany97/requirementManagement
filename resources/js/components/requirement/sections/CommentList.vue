@@ -22,7 +22,10 @@
                 </div>
             </div>
         </div>
-        <span v-if="!comments.length && commentsLoaded">No comment yet for this requirement</span>
+        <div class="py-4">
+            <span
+                v-if="!comments.length && commentsLoaded && !showCommentTextField">No comment yet for this requirement</span>
+        </div>
         <button class="btn btn-secondary" v-show="!showCommentTextField" @click="showCommentTextField = true">
             Add comment
         </button>
@@ -31,7 +34,8 @@
                 <button
                     @click="showCommentTextField = !showCommentTextField"
                     class="px-1 py-2 bg-white hover:bg-gray-300">
-                <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
 
@@ -66,16 +70,14 @@ export default {
         },
         testCase: Object
     },
-    data() {
-        return {
-            comment: "",
-            comments: [],
-            commentsLoaded: false,
-            showCommentTextField: false,
-            repository: null,
-            params: {}
-        }
-    },
+    data: () => ({
+        comment: "",
+        comments: [],
+        commentsLoaded: false,
+        showCommentTextField: false,
+        repository: null,
+        params: {}
+    }),
     watch: {
         requirement() {
             this.commentsLoaded = false;

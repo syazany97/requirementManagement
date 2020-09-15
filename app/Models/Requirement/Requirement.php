@@ -5,6 +5,7 @@ namespace App\Models\Requirement;
 use App\Models\Comment\Comment;
 use App\Models\Module;
 use App\Models\TestCase\TestCase;
+use App\QueryBuilder\RequirementQueryBuilder;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -57,5 +58,10 @@ class Requirement extends Model implements HasMedia
     public function scopeShow($query)
     {
         return $query->with(['assignees', 'comments', 'priority']);
+    }
+
+    public function newEloquentBuilder($query)
+    {
+        return new RequirementQueryBuilder($query);
     }
 }
