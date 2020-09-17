@@ -2,6 +2,8 @@
     <div class="container mx-auto px-4" style="padding-bottom: 250px" v-if="requirement.id !== null && dataLoaded">
         <h1 class="h1">{{ requirement.name }}</h1>
 
+        <button v-if="steps.length" class="btn btn-primary mt-2" @click="submitTestCase()">Submit</button>
+
         <label class="primary-label" for="test-case-title">
             Title
         </label>
@@ -18,9 +20,6 @@
                       id="test-case-description" class="primary-rich-text">
 
         </quill-editor>
-
-        <!--        <textarea class="primary-input" v-model="testCase.description"-->
-        <!--                  id="test-case-description" type="text"></textarea>-->
 
         <label class="primary-label" for="test-case-preconditions">
             Preconditions
@@ -47,7 +46,7 @@
             </thead>
             <tbody>
             <tr v-for="(step, index) in steps" v-bind:key="index" :class="index % 2 !== 0 ? '' : 'bg-gray-100' ">
-                <td class="border px-4 py-2">{{ index + 1 }}</td>
+                <td class="border px-4 py-2">{{ step.order }}</td>
                 <td class="border px-4 py-2">{{ step.id }}</td>
                 <td class="border px-4 py-2">
                     <textarea class="primary-input" v-model="step.description" type="text"></textarea>
@@ -70,7 +69,36 @@
                                 v-model="step.is_passed"></vue-select>
                 </td>
                 <td class="border px-4 py-2">
-                    <button class="btn btn-primary">Add Step</button>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <button
+                                @click="addStep(index)"
+                                class="p-1 ml-2 hover:text-blue-500 text-gray-700 border-2 border-transparent rounded-full hover:bg-blue-100 focus:outline-none"
+                                aria-label="Add">
+                                <svg class="w-6 h-6" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <!-- ... -->
+                        <div>
+
+                            <button
+                                @click="removeStep(step)"
+                                class="p-1 ml-2 hover:text-blue-500 text-gray-700 border-2 border-transparent rounded-full hover:bg-blue-100 focus:outline-none"
+                                aria-label="Remove">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
                 </td>
             </tr>
             </tbody>
@@ -78,19 +106,17 @@
 
         <div class="pt-5">
 
-        <ul class="nav nav-pills">
-            <li v-for="tab in items" class="nav-item">
-                <a :class="'nav-link ' +  (currentTab === tab.props.is ? 'active' : '')"
-                   href="#" @click.prevent="currentTab = tab.props.is">{{ tab.tab }}</a>
-            </li>
-        </ul>
+            <ul class="nav nav-pills">
+                <li v-for="tab in items" class="nav-item">
+                    <a :class="'nav-link ' +  (currentTab === tab.props.is ? 'active' : '')"
+                       href="#" @click.prevent="currentTab = tab.props.is">{{ tab.tab }}</a>
+                </li>
+            </ul>
 
-        <div v-for="tab in items" v-bind:key="tab.props.is">
-            <component v-show="currentTab === tab.props.is" v-bind="tab.props"></component>
+            <div v-for="tab in items" v-bind:key="tab.props.is">
+                <component v-show="currentTab === tab.props.is" v-bind="tab.props"></component>
+            </div>
         </div>
-        </div>
-
-        <button v-if="steps.length" class="btn btn-primary mt-2" @click="submitTestCase()">Submit</button>
 
     </div>
 
@@ -99,6 +125,7 @@
 <script>
 import requirementTestCaseRepository from "../../repositories/requirement/requirementTestCaseRepository";
 import {quillEditor} from 'vue-quill-editor'
+import DefaultButton from "../../components/layouts/buttons/DefaultButton";
 
 export default {
     name: "Create.vue",
@@ -109,9 +136,11 @@ export default {
             this.fetchTestCase();
         } else {
             this.$store.dispatch('requirement/setRequirement', this.$route.params.requirement);
+            this.dataLoaded = true;
         }
     },
     components: {
+        DefaultButton,
         quillEditor
     },
     data() {
@@ -142,7 +171,10 @@ export default {
         }
     },
     methods: {
-        addStep() {
+        test() {
+            console.log('test');
+        },
+        addStep(order = null) {
             let step = {
                 comment: "",
                 description: "",
@@ -150,11 +182,28 @@ export default {
                 expected_result: "",
                 is_passed: false
             }
-            this.steps.push(step);
+
+            order === null ? this.steps.push(step) : this.steps.splice(order + 1, 0, step);
+
+            this.updateSteps();
+        },
+        removeStep(step) {
+            const indexStep = this.steps.findIndex(element => element.order === step.order);
+
+            if (indexStep) {
+                this.steps.splice(indexStep, 1);
+            }
+
+            this.updateSteps();
+
+        },
+        updateSteps() {
+            for (let i = 0; i < this.steps.length; i++) {
+                Vue.set(this.steps[i], 'order', i + 1);
+            }
         },
         async submitTestCase() {
             try {
-
                 const payload = {
                     test_case: this.testCase,
                     steps: this.steps

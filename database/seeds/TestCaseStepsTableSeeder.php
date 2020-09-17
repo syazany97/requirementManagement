@@ -50,6 +50,7 @@ class TestCaseStepsTableSeeder extends Seeder
                 $step = [
                     'test_case_id' => $testCaseId[$i],
                     'description' => $faker->realText(),
+                    'order' => $j + 1,
                     'expected_result' => $faker->realText(),
                     'input' => $faker->realText(),
                     'is_passed' => $boolean->random(),

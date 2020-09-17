@@ -7,7 +7,7 @@ use App\Http\Requests\TestCase\TestCaseCreateRequest;
 use App\Http\Resources\TestCase\TestCaseResource;
 use App\Models\Requirement\Requirement;
 use App\Models\TestCase\TestCase;
-use App\Models\TestCase\TestCaseSteps;
+use App\Models\TestCase\TestCaseStep;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -62,7 +62,7 @@ class RequirementTestCaseController extends Controller
                 if (!isset($step['id'])) {
                     $testCase->steps()->create($step);
                 } else {
-                    $instance = TestCaseSteps::findOrFail($step['id']);
+                    $instance = TestCaseStep::findOrFail($step['id']);
                     $instance->update($step);
                 }
             }
