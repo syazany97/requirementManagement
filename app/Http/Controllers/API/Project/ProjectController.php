@@ -36,13 +36,22 @@ class ProjectController extends Controller
         return new ProjectResource($project);
     }
 
-    public function update(Request $request, Project $project)
+    public function update(ProjectCreateRequest $request, Project $project)
     {
-        //
+        $project->update($request->validated());
     }
 
     public function destroy(Project $project)
     {
-        //
+        try {
+            $project->delete();
+
+            return response()->json([
+                'message' => 'Project deleted'
+            ]);
+
+        } catch (\Exception $e) {
+            return $e;
+        }
     }
 }

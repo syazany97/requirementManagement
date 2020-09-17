@@ -39,6 +39,10 @@ class RequirementController extends Controller
 
     public function destroy(Requirement $requirement)
     {
-        $requirement->delete();
+        try {
+            $requirement->delete();
+        } catch (\Exception $e) {
+            return $e;
+        }
     }
 }

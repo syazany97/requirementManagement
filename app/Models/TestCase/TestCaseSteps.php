@@ -10,6 +10,7 @@ class TestCaseSteps extends Model
         'description',
         'input',
         'expected_result',
+        'order',
         'is_passed'];
 
     protected $casts = [
