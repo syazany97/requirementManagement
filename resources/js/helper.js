@@ -10,3 +10,7 @@ export const debounce = (fn, delay) => {
         }, delay);
     };
 };
+
+export const QUILL_OPTIONS = {
+
+}
