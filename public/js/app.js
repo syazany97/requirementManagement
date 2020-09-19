@@ -11118,7 +11118,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "@-webkit-keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n.loader {\n  border-right-color: transparent;\n  -webkit-animation: loader-rotate 1s linear infinite;\n          animation: loader-rotate 1s linear infinite;\n}\n\n", ""]);
+exports.push([module.i, "@-webkit-keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n.loader {\n  border-right-color: transparent;\n  -webkit-animation: loader-rotate 1s linear infinite;\n          animation: loader-rotate 1s linear infinite;\n}\r\n\r\n", ""]);
 
 // exports
 
