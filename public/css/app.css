@@ -3941,6 +3941,19 @@ video {
   /*@apply sm:w-full md:w-1/4*/
 }
 
+/* text */
+
+.validation-error {
+  --text-opacity: 1;
+  color: #f56565;
+  color: rgba(245, 101, 101, var(--text-opacity));
+  font-weight: 400;
+  font-size: 0.875rem;
+  text-align: left;
+}
+
+/* END text */
+
 /* transition */
 
 .space-y-0 > :not(template) ~ :not(template){

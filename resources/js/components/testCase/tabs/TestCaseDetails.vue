@@ -73,7 +73,7 @@ export default {
         },
         redirectToTestCasePage() {
             this.$router.push({
-                name: 'test-case.create', params: {
+                name: 'test-cases.create', params: {
                     requirement:
                     this.$store.getters['requirement/currentRequirement'].id
                 }

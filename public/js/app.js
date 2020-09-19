@@ -3100,6 +3100,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3125,7 +3133,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         module_id: null,
         hours_to_complete: 1
       },
-      addingRequirement: false
+      addingRequirement: false,
+      errors: {
+        name: [],
+        description: [],
+        assignees: [],
+        requirement_status_id: [],
+        requirement_priority_id: [],
+        module_id: [],
+        hours_to_complete: []
+      }
     };
   },
   computed: {
@@ -3171,39 +3188,56 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.prev = 0;
+                if (!(_this.requirement.module_id === null)) {
+                  _context.next = 5;
+                  break;
+                }
+
+                console.log('adad error');
+
+                _this.errors.module_id.push('Please select a module');
+
+                _context.next = 21;
+                break;
+
+              case 5:
+                _context.prev = 5;
                 _this.addingRequirement = true;
-                _context.next = 4;
+                _context.next = 9;
                 return _repositories_requirementRepository__WEBPACK_IMPORTED_MODULE_1__["default"].store(_this.requirement.module_id, _this.requirement);
 
-              case 4:
-                _context.next = 6;
+              case 9:
+                _context.next = 11;
                 return _this.$store.dispatch('requirement/setRequirementList', {
                   project_id: _this.$route.params.project
                 });
 
-              case 6:
+              case 11:
                 _this.closeDialog();
 
-                _context.next = 12;
+                _context.next = 18;
                 break;
 
-              case 9:
-                _context.prev = 9;
-                _context.t0 = _context["catch"](0);
-                console.log(_context.t0);
+              case 14:
+                _context.prev = 14;
+                _context.t0 = _context["catch"](5);
+                console.log(_context.t0.response);
 
-              case 12:
-                _context.prev = 12;
+                if (_context.t0.response.status === 422) {
+                  _this.errors = _context.t0.response.data.errors;
+                }
+
+              case 18:
+                _context.prev = 18;
                 _this.addingRequirement = false;
-                return _context.finish(12);
+                return _context.finish(18);
 
-              case 15:
+              case 21:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 9, 12, 15]]);
+        }, _callee, null, [[5, 14, 18, 21]]);
       }))();
     },
     closeDialog: function closeDialog() {
@@ -3836,7 +3870,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     redirectToTestCasePage: function redirectToTestCasePage() {
       this.$router.push({
-        name: 'test-case.create',
+        name: 'test-cases.create',
         params: {
           requirement: this.$store.getters['requirement/currentRequirement'].id
         }
@@ -4343,6 +4377,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -56795,6 +56830,12 @@ var render = function() {
             }
           }),
           _vm._v(" "),
+          _vm.errors.hasOwnProperty("name")
+            ? _c("p", { staticClass: "validation-error" }, [
+                _vm._v(_vm._s(_vm.errors.name[0]))
+              ])
+            : _vm._e(),
+          _vm._v(" "),
           _c(
             "label",
             { staticClass: "primary-label", attrs: { for: "grid-priority" } },
@@ -56819,6 +56860,12 @@ var render = function() {
               expression: "requirement.requirement_priority_id"
             }
           }),
+          _vm._v(" "),
+          _vm.errors.hasOwnProperty("requirement_priority_id")
+            ? _c("p", { staticClass: "validation-error" }, [
+                _vm._v(_vm._s(_vm.errors.requirement_priority_id[0]))
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "label",
@@ -56859,10 +56906,16 @@ var render = function() {
             }
           }),
           _vm._v(" "),
+          _vm.errors.hasOwnProperty("hours_to_complete")
+            ? _c("p", { staticClass: "validation-error" }, [
+                _vm._v(_vm._s(_vm.errors.hours_to_complete[0]))
+              ])
+            : _vm._e(),
+          _vm._v(" "),
           _c(
             "label",
             { staticClass: "primary-label", attrs: { for: "grid-module-id" } },
-            [_vm._v("\n            Under which module\n        ")]
+            [_vm._v("\n                Under which module\n            ")]
           ),
           _vm._v(" "),
           _c("vue-select", {
@@ -56883,6 +56936,12 @@ var render = function() {
               expression: "requirement.module_id"
             }
           }),
+          _vm._v(" "),
+          _vm.errors.hasOwnProperty("module_id")
+            ? _c("p", { staticClass: "validation-error" }, [
+                _vm._v(_vm._s(_vm.errors.module_id[0]))
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "label",
@@ -56909,6 +56968,12 @@ var render = function() {
             }
           }),
           _vm._v(" "),
+          _vm.errors.hasOwnProperty("requirement_status_id")
+            ? _c("p", { staticClass: "validation-error" }, [
+                _vm._v(_vm._s(_vm.errors.requirement_status_id[0]))
+              ])
+            : _vm._e(),
+          _vm._v(" "),
           _c(
             "label",
             {
@@ -56929,6 +56994,12 @@ var render = function() {
               expression: "requirement.description"
             }
           }),
+          _vm._v(" "),
+          _vm.errors.hasOwnProperty("description")
+            ? _c("p", { staticClass: "validation-error" }, [
+                _vm._v(_vm._s(_vm.errors.description[0]))
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "label",
@@ -56955,6 +57026,12 @@ var render = function() {
               expression: "requirement.assignees"
             }
           }),
+          _vm._v(" "),
+          _vm.errors.hasOwnProperty("assignees")
+            ? _c("p", { staticClass: "validation-error" }, [
+                _vm._v(_vm._s(_vm.errors.assignees[0]))
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c("div", { staticClass: "inline-flex text-right pt-4 pb-5" }, [
             _c(
@@ -58407,14 +58484,14 @@ var render = function() {
             ? _c(
                 "button",
                 {
-                  staticClass: "btn btn-primary mt-2",
+                  staticClass: "btn btn-primary mt-2 float-right",
                   on: {
                     click: function($event) {
                       return _vm.submitTestCase()
                     }
                   }
                 },
-                [_vm._v("Submit")]
+                [_vm._v("Submit\n    ")]
               )
             : _vm._e(),
           _vm._v(" "),
@@ -75363,17 +75440,6 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./resources/css/app.css":
-/*!*******************************!*\
-  !*** ./resources/css/app.css ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/postcss-loader/src/index.js):\nError: ENOENT: no such file or directory, open 'C:\\xampp\\htdocs\\requirementManagement\\resources\\css\\app.css'\n    at C:\\xampp\\htdocs\\requirementManagement\\node_modules\\webpack\\lib\\NormalModule.js:316:20\n    at C:\\xampp\\htdocs\\requirementManagement\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\xampp\\htdocs\\requirementManagement\\node_modules\\loader-runner\\lib\\LoaderRunner.js:203:19\n    at C:\\xampp\\htdocs\\requirementManagement\\node_modules\\enhanced-resolve\\lib\\CachedInputFileSystem.js:85:15\n    at processTicksAndRejections (internal/process/task_queues.js:82:9)");
-
-/***/ }),
-
 /***/ "./resources/js sync recursive \\.vue$/":
 /*!***********************************!*\
   !*** ./resources/js sync \.vue$/ ***!
@@ -77657,15 +77723,26 @@ var actions = {
 
 /***/ }),
 
+/***/ "./resources/sass/app.scss":
+/*!*********************************!*\
+  !*** ./resources/sass/app.scss ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!***********************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/css/app.css ***!
-  \***********************************************************/
+/*!*************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\xampp\htdocs\requirementManagement\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\requirementManagement\resources\css\app.css */"./resources/css/app.css");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\requirementManagement\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

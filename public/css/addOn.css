@@ -206,6 +206,13 @@
     /*@apply sm:w-full md:w-1/4*/
 }
 
+/* text */
+.validation-error {
+    @apply text-red-500 font-normal text-sm text-left
+}
+
+/* END text */
+
 /* transition */
 
 

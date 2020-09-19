@@ -34,4 +34,12 @@ class RequirementCreateRequest extends FormRequest
             'requirement_status_id' => ['required', 'exists:requirement_statuses,id']
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'requirement_priority_id.required' => 'The priority field is required',
+            'requirement_status_id.required' => 'The status field is required',
+        ];
+    }
 }

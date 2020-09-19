@@ -1,8 +1,9 @@
 <template>
     <div class="container mx-auto px-4" style="padding-bottom: 250px" v-if="requirement.id !== null && dataLoaded">
         <h1 class="h1">{{ requirement.name }}</h1>
+        <button v-if="steps.length" class="btn btn-primary mt-2 float-right" @click="submitTestCase()">Submit
+        </button>
 
-        <button v-if="steps.length" class="btn btn-primary mt-2" @click="submitTestCase()">Submit</button>
 
         <label class="primary-label" for="test-case-title">
             Title
