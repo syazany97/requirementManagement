@@ -6,9 +6,12 @@ use App\Models\Module;
 use App\Models\Requirement\Requirement;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Project extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = ['name', 'description', 'project_status_id', 'uuid'];
 
     public function modules()
@@ -18,7 +21,7 @@ class Project extends Model
 
     public function requirements()
     {
-        return $this->morphMany(Requirement::class, 'requirementable');
+        return $this->hasManyThrough(Requirement::class, Module::class);
     }
 
     public function user()

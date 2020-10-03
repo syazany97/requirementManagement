@@ -98,7 +98,8 @@
 
                 </thead>
                 <tbody>
-                <tr v-for="(project, index) in projects" v-bind:key="project.id" class="cursor-pointer hover:bg-gray-200"
+                <tr v-for="(project, index) in projects" v-bind:key="project.id"
+                    class="cursor-pointer hover:bg-gray-200"
                     @click="viewProject(project.id)">
                     <td class="default-row">
                         <span class="text-gray-700 px-6 py-3 flex items-center">{{ project.id }}</span>
@@ -131,8 +132,9 @@
 
 
                         <default-transition>
-<!--                            <div v-if="isOpen[index]" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg">-->
-                            <div v-if="isOpen[index]" class="absolute cross-origin-top-right mt-2 w-56 bg-white rounded-md shadow-xl z-20">
+                            <!--                            <div v-if="isOpen[index]" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg">-->
+                            <div v-if="isOpen[index]"
+                                 class="absolute cross-origin-top-right mt-2 w-56 bg-white rounded-md shadow-xl z-20">
                                 <div class="ContextualPopover-arrow"></div>
                                 <div class="rounded-md bg-white bg-opacity-0 shadow-xs">
                                     <div class="py-1" role="menu" aria-orientation="vertical"
@@ -141,7 +143,7 @@
                                            class="block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100
                                            hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0"
                                            role="menuitem">Account settings</a>
-                                        <a href="#"
+                                        <a @click.stop="deleteProject(project.id)" href="#"
                                            class="block px-4 py-2 text-sm leading-5 text-red-700
                                            font-medium
                                            hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
@@ -195,6 +197,7 @@
 <script>
 import CreateProjectDialog from "../../components/project/modal/CreateProjectDialog";
 import {debounce} from "../../helper";
+import projectRepository from "../../repositories/projectRepository";
 
 export default {
     name: "Index.vue",
@@ -220,7 +223,7 @@ export default {
             },
             url: '/api/projects',
             search: "",
-            isOpen : []
+            isOpen: []
         };
     },
     created() {
@@ -240,11 +243,9 @@ export default {
             this.pagination.links = response.data.links;
             this.pagination.meta = response.data.meta;
 
-            for(let i = 0; i < this.projects.length; i++) {
+            for (let i = 0; i < this.projects.length; i++) {
                 this.isOpen.push(false);
             }
-
-
         },
         shouldOpen(result) {
             console.log('result', result);
@@ -253,8 +254,17 @@ export default {
         get(data, column, defaultValue) {
             return _.get(data, column, defaultValue);
         },
+        async deleteProject(projectId) {
+            try {
+                const response = await projectRepository.delete(projectId);
+                await this.fetchProjects();
+                console.log('delete project', response);
+            } catch (e) {
+                console.log('error', e);
+            }
+        },
         showDropdown(projectIndex) {
-            this.isOpen.splice(projectIndex, 1, !this.isOpen[projectIndex] );
+            this.isOpen.splice(projectIndex, 1, !this.isOpen[projectIndex]);
         },
         viewProject(projectId) {
             this.$router.push({

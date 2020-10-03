@@ -51,7 +51,7 @@ class ProjectController extends Controller
             ]);
 
         } catch (\Exception $e) {
-            return $e;
+            return response()->json($e, 400);
         }
     }
 }

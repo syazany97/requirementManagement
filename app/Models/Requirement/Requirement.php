@@ -8,18 +8,19 @@ use App\Models\TestCase\TestCase;
 use App\QueryBuilder\RequirementQueryBuilder;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Requirement extends Model implements HasMedia
 {
-    use InteractsWithMedia, LogsActivity;
+    use InteractsWithMedia, LogsActivity, SoftDeletes;
 
     protected $fillable = ['name', 'module_id', 'description', 'description',
         'requirement_priority_id', 'requirement_status_id', 'numbering', 'module_id',
         'hours_to_complete'
-        ];
+    ];
 
     protected static $logFillable = true;
 
@@ -37,7 +38,7 @@ class Requirement extends Model implements HasMedia
     {
         return $this->belongsToMany(User::class, RequirementAssignee::class,
             'requirement_id', 'assignee_id'
-            );
+        );
     }
 
     public function creator()

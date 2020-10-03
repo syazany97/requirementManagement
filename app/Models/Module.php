@@ -5,9 +5,11 @@ namespace App\Models;
 use App\Models\Project\Project;
 use App\Models\Requirement\Requirement;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Module extends Model
 {
+    use SoftDeletes;
     protected $fillable = ['name', 'numbering', 'parent_id', 'uuid'];
 
     public function project()
@@ -27,10 +29,9 @@ class Module extends Model
             ->orderBy('numbering', 'asc');
     }
 
-    public function scopeCompleteInformation($query, $projectId)
+    public function scopeCompleteInformation($query)
     {
         return $query->where('parent_id', null)
-            ->where('project_id', $projectId)
             ->with([
                 'children.requirements.assignees',
                 'children.requirements.priority',

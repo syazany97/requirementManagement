@@ -3985,6 +3985,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_project_modal_CreateProjectDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/project/modal/CreateProjectDialog */ "./resources/js/components/project/modal/CreateProjectDialog.vue");
 /* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helper */ "./resources/js/helper.js");
+/* harmony import */ var _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../repositories/projectRepository */ "./resources/js/repositories/projectRepository.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -4185,6 +4186,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4259,6 +4263,42 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     get: function get(data, column, defaultValue) {
       return _.get(data, column, defaultValue);
+    },
+    deleteProject: function deleteProject(projectId) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_3__["default"]["delete"](projectId);
+
+              case 3:
+                response = _context2.sent;
+                _context2.next = 6;
+                return _this2.fetchProjects();
+
+              case 6:
+                console.log('delete project', response);
+                _context2.next = 12;
+                break;
+
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](0);
+                console.log('error', _context2.t0);
+
+              case 12:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 9]]);
+      }))();
     },
     showDropdown: function showDropdown(projectIndex) {
       this.isOpen.splice(projectIndex, 1, !this.isOpen[projectIndex]);
@@ -58110,7 +58150,7 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "Add\n                            project\n                        "
+                    "Add\n                        project\n                    "
                   )
                 ]
               ),
@@ -58218,7 +58258,7 @@ var render = function() {
                 _vm._v(" "),
                 _vm._l(_vm.headings, function(heading) {
                   return _c("th", { staticClass: "default-header" }, [
-                    _vm._v(_vm._s(heading) + "\n                    ")
+                    _vm._v(_vm._s(heading) + "\n                ")
                   ])
                 })
               ],
@@ -58367,7 +58407,7 @@ var render = function() {
                                           "a",
                                           {
                                             staticClass:
-                                              "block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100\n                                           hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0",
+                                              "block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100\n                                       hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0",
                                             attrs: {
                                               href: "#",
                                               role: "menuitem"
@@ -58380,10 +58420,18 @@ var render = function() {
                                           "a",
                                           {
                                             staticClass:
-                                              "block px-4 py-2 text-sm leading-5 text-red-700\n                                           font-medium\n                                           hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
+                                              "block px-4 py-2 text-sm leading-5 text-red-700\n                                       font-medium\n                                       hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
                                             attrs: {
                                               href: "#",
                                               role: "menuitem"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                $event.stopPropagation()
+                                                return _vm.deleteProject(
+                                                  project.id
+                                                )
+                                              }
                                             }
                                           },
                                           [_vm._v("Delete this project")]
@@ -58418,19 +58466,19 @@ var render = function() {
           [
             _c("div", [
               _c("p", { staticClass: "text-sm leading-5 text-gray-700" }, [
-                _vm._v("\n                    Showing\n                    "),
+                _vm._v("\n                Showing\n                "),
                 _c("span", { staticClass: "font-medium" }, [
                   _vm._v(_vm._s(_vm.pagination.meta.from))
                 ]),
-                _vm._v("\n                    to\n                    "),
+                _vm._v("\n                to\n                "),
                 _c("span", { staticClass: "font-medium" }, [
                   _vm._v(_vm._s(this.pagination.meta.to))
                 ]),
-                _vm._v("\n                    of\n                    "),
+                _vm._v("\n                of\n                "),
                 _c("span", { staticClass: "font-medium" }, [
                   _vm._v(_vm._s(_vm.pagination.meta.total))
                 ]),
-                _vm._v("\n                    results\n                ")
+                _vm._v("\n                results\n            ")
               ])
             ]),
             _vm._v(" "),
@@ -58447,7 +58495,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Previous\n                ")]
+                [_vm._v("Previous\n            ")]
               ),
               _vm._v(" "),
               _c("div", { staticClass: "divider" }),
@@ -58464,7 +58512,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Next\n                ")]
+                [_vm._v("Next\n            ")]
               )
             ])
           ]
@@ -76963,6 +77011,9 @@ window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
   },
   getProjectStatuses: function getProjectStatuses() {
     return axios.get('/api/project-statuses');
+  },
+  "delete": function _delete(id) {
+    return axios["delete"]("/api/".concat(resource, "/").concat(id));
   }
 });
 

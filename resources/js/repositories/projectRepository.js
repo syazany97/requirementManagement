@@ -11,5 +11,8 @@ export default {
     },
     getProjectStatuses() {
         return axios.get('/api/project-statuses');
+    },
+    delete(id) {
+        return axios.delete(`/api/${resource}/${id}`);
     }
 }
