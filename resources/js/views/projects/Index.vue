@@ -98,7 +98,7 @@
 
                 </thead>
                 <tbody>
-                <tr v-for="project in projects" v-bind:key="project.id" class="cursor-pointer hover:bg-gray-200"
+                <tr v-for="(project, index) in projects" v-bind:key="project.id" class="cursor-pointer hover:bg-gray-200"
                     @click="viewProject(project.id)">
                     <td class="default-row">
                         <span class="text-gray-700 px-6 py-3 flex items-center">{{ project.id }}</span>
@@ -121,13 +121,35 @@
 
                     <td class="default-row">
                         <!--                                								<button class="border-opacity-100 hover:bg-red hover:border-grey-300 rounded">-->
-                        <button @click.stop="test()"
+                        <button @click.stop="showDropdown(index)"
                                 class="btn-dropdown">
                             <svg viewBox="0 0 20 20" fill="currentColor" class="dots-horizontal w-6 h-6 px-1">
                                 <path
                                     d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
                             </svg>
                         </button>
+
+
+                        <default-transition>
+<!--                            <div v-if="isOpen[index]" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg">-->
+                            <div v-if="isOpen[index]" class="absolute cross-origin-top-right mt-2 w-56 bg-white rounded-md shadow-xl z-20">
+                                <div class="ContextualPopover-arrow"></div>
+                                <div class="rounded-md bg-white bg-opacity-0 shadow-xs">
+                                    <div class="py-1" role="menu" aria-orientation="vertical"
+                                         aria-labelledby="options-menu">
+                                        <a href="#"
+                                           class="block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100
+                                           hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0"
+                                           role="menuitem">Account settings</a>
+                                        <a href="#"
+                                           class="block px-4 py-2 text-sm leading-5 text-red-700
+                                           font-medium
+                                           hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                                           role="menuitem">Delete this project</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </default-transition>
 
                         <!--                            <button class="bg-red-500 rounded px-2 py-2 hover:bg-white border-transparent hover:border-black border"></button>-->
                     </td>
@@ -197,7 +219,8 @@ export default {
                 meta: null
             },
             url: '/api/projects',
-            search: ""
+            search: "",
+            isOpen : []
         };
     },
     created() {
@@ -216,12 +239,22 @@ export default {
             this.projects = response.data.data;
             this.pagination.links = response.data.links;
             this.pagination.meta = response.data.meta;
+
+            for(let i = 0; i < this.projects.length; i++) {
+                this.isOpen.push(false);
+            }
+
+
+        },
+        shouldOpen(result) {
+            console.log('result', result);
+            return result;
         },
         get(data, column, defaultValue) {
             return _.get(data, column, defaultValue);
         },
-        test() {
-            console.log('woi');
+        showDropdown(projectIndex) {
+            this.isOpen.splice(projectIndex, 1, !this.isOpen[projectIndex] );
         },
         viewProject(projectId) {
             this.$router.push({
@@ -236,4 +269,11 @@ export default {
 
 <style scoped>
 
+.ContextualPopover-arrow {
+    z-index: 1;
+    width: 21px;
+    height: 21px;
+    margin: -7px;
+    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMSIgaGVpZ2h0PSI5Ij48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiM4ODk4QUEiIGZpbGwtb3BhY2l0eT0iLjEiIGQ9Ik0xIDkuMDkyaDE5bC02LjQwMi02Ljc0Yy0xLjcxNy0xLjgwNi00LjQ4NS0xLjgtNi4xOTYgMEwxIDkuMDkzek0yMC4zNDIgOGwtNi4wMi02LjMzNmMtMi4xMDgtMi4yMi01LjUzOC0yLjIxOC03LjY0NSAwTC42NTggOGgxOS42ODR6Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTcuNDAyIDIuMzUzYzEuNzExLTEuODAxIDQuNDgtMS44MDcgNi4xOTYgMEwyMCA5LjA5M0gxbDYuNDAyLTYuNzR6Ii8+PC9nPjwvc3ZnPg==) no-repeat 50%;
+}
 </style>
