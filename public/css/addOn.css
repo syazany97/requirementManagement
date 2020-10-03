@@ -1,7 +1,12 @@
 
 /* BUTTON SECTION */
 .btn {
-   @apply font-medium py-2 px-4 rounded inline-flex items-center text-sm
+    padding: 0.4rem 0.8rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    align-items: center;
+    display: inline-flex;
+    border-radius: 0.25rem;
 }
 
 .btn-primary {
@@ -13,11 +18,15 @@
     rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
-    @apply .btn text-white ;
+    color: #fff;
+}
+
+.btn-icon {
+    padding-left : 0.3rem;
 }
 
 .btn-primary:hover {
-    @apply bg-blue-700
+    background-color: #2b6cb0;
 }
 
 .btn-secondary {
@@ -166,13 +175,13 @@
 
 @screen md {
     .tab {
-        @apply text-xl
+        font-size: 1.125rem;
     }
 }
 
 @screen lg {
     .tab {
-        @apply text-sm
+        font-size: 0.875rem;
     }
 }
 

@@ -2,7 +2,7 @@
 
     <div>
         <div class="text-right">
-            <button @click="redirectToTestCasePage()" class="btn btn-primary">
+            <button @click="redirectToTestCasePage()" class="btn btn-primary btn-icon">
 
                 <svg viewBox="0 0 20 20" fill="currentColor" class="plus w-6 h-6">
                     <path fill-rule="evenodd"

@@ -108,7 +108,7 @@
                     </td>
                     <td class="default-row">
                                 								<span class="text-gray-700 px-6 py-3 flex items-center"
-                                                                ></span>{{ project.modules_count }}
+                                                                >{{ project.modules_count }}</span>
                     </td>
                     <td class="default-row">
                                 								<span class="text-gray-700 px-6 py-3 flex items-center"

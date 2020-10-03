@@ -57486,7 +57486,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "btn btn-primary",
+          staticClass: "btn btn-primary btn-icon",
           on: {
             click: function($event) {
               return _vm.redirectToTestCasePage()
@@ -58182,10 +58182,13 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("td", { staticClass: "default-row" }, [
-                    _c("span", {
-                      staticClass: "text-gray-700 px-6 py-3 flex items-center"
-                    }),
-                    _vm._v(_vm._s(project.modules_count) + "\n                ")
+                    _c(
+                      "span",
+                      {
+                        staticClass: "text-gray-700 px-6 py-3 flex items-center"
+                      },
+                      [_vm._v(_vm._s(project.modules_count))]
+                    )
                   ]),
                   _vm._v(" "),
                   _c("td", { staticClass: "default-row" }, [

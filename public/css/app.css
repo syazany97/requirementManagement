@@ -3570,38 +3570,26 @@ video {
 /* BUTTON SECTION */
 
 .btn {
+  padding: 0.4rem 0.8rem;
   font-weight: 500;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  border-radius: 0.25rem;
-  display: inline-flex;
-  align-items: center;
   font-size: 0.875rem;
+  align-items: center;
+  display: inline-flex;
+  border-radius: 0.25rem;
 }
 
 .btn-primary {
   background-color: rgb(84, 105, 212);
   box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgb(84, 105, 212) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
-  font-weight: 500;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  border-radius: 0.25rem;
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.875rem;
-  --text-opacity: 1;
   color: #fff;
-  color: rgba(255, 255, 255, var(--text-opacity));
+}
+
+.btn-icon {
+  padding-left: 0.3rem;
 }
 
 .btn-primary:hover {
-  --bg-opacity: 1;
   background-color: #2b6cb0;
-  background-color: rgba(43, 108, 176, var(--bg-opacity));
 }
 
 .btn-secondary {
@@ -3830,7 +3818,7 @@ video {
 
 @media (min-width: 768px) {
   .tab {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
   }
 }
 
