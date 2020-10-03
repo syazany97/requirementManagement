@@ -4187,7 +4187,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 
@@ -4257,12 +4256,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    shouldOpen: function shouldOpen(result) {
-      console.log('result', result);
-      return result;
-    },
     get: function get(data, column, defaultValue) {
       return _.get(data, column, defaultValue);
+    },
+    test: function test(e) {
+      console.log('test', e);
     },
     deleteProject: function deleteProject(projectId) {
       var _this2 = this;
@@ -4301,7 +4299,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     showDropdown: function showDropdown(projectIndex) {
+      var _this3 = this;
+
+      this.isOpen.forEach(function (x, index) {
+        if (index !== projectIndex) {
+          _this3.isOpen.splice(index, 1, false);
+        }
+      });
       this.isOpen.splice(projectIndex, 1, !this.isOpen[projectIndex]);
+    },
+    hideAllDropdowns: function hideAllDropdowns() {
+      var _this4 = this;
+
+      this.isOpen.forEach(function (x, index) {
+        _this4.isOpen.splice(index, 1, false);
+      });
     },
     viewProject: function viewProject(projectId) {
       this.$router.push({
@@ -58060,465 +58072,493 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container mx-auto py-6 px-4" }, [
-    _c("h1", { staticClass: "h1" }, [_vm._v("Projects")]),
-    _vm._v(" "),
-    _c("div", { staticClass: "mb-4 flex justify-between items-center mt-2" }, [
-      _c("div", { staticClass: "flex-1 pr-4" }, [
-        _c("div", { staticClass: "relative md:w-1/3" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.search,
-                expression: "search"
-              }
-            ],
-            staticClass:
-              "w-full pl-10 pr-4 py-2 rounded-lg shadow focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-            attrs: { type: "text", placeholder: "Search..." },
-            domProps: { value: _vm.search },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.search = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "absolute top-0 left-0 inline-flex items-center p-2"
-            },
-            [
-              _c(
-                "svg",
-                {
-                  staticClass: "w-6 h-6 text-gray-400",
-                  attrs: {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    viewBox: "0 0 24 24",
-                    "stroke-width": "2",
-                    stroke: "currentColor",
-                    fill: "none",
-                    "stroke-linecap": "round",
-                    "stroke-linejoin": "round"
-                  }
-                },
-                [
-                  _c("rect", {
-                    attrs: {
-                      x: "0",
-                      y: "0",
-                      width: "24",
-                      height: "24",
-                      stroke: "none"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("circle", { attrs: { cx: "10", cy: "10", r: "7" } }),
-                  _vm._v(" "),
-                  _c("line", {
-                    attrs: { x1: "21", y1: "21", x2: "15", y2: "15" }
-                  })
-                ]
-              )
-            ]
-          )
-        ])
-      ]),
+  return _c(
+    "div",
+    {
+      directives: [
+        {
+          name: "click-outside",
+          rawName: "v-click-outside",
+          value: _vm.hideAllDropdowns,
+          expression: "hideAllDropdowns"
+        }
+      ],
+      staticClass: "container mx-auto py-6 px-4"
+    },
+    [
+      _c("h1", { staticClass: "h1" }, [_vm._v("Projects")]),
       _vm._v(" "),
-      _c("div", [
-        _c("div", { staticClass: "shadow rounded-lg flex" }, [
-          _c(
-            "div",
-            { staticClass: "relative" },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary float-right",
-                  on: {
-                    click: function($event) {
-                      return _vm.$modal.show("modalProjectDialog")
-                    }
+      _c(
+        "div",
+        { staticClass: "mb-4 flex justify-between items-center mt-2" },
+        [
+          _c("div", { staticClass: "flex-1 pr-4" }, [
+            _c("div", { staticClass: "relative md:w-1/3" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.search,
+                    expression: "search"
                   }
+                ],
+                staticClass:
+                  "w-full pl-10 pr-4 py-2 rounded-lg shadow focus:outline-none focus:shadow-outline text-gray-600 font-medium",
+                attrs: { type: "text", placeholder: "Search..." },
+                domProps: { value: _vm.search },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.search = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "absolute top-0 left-0 inline-flex items-center p-2"
                 },
                 [
-                  _vm._v(
-                    "Add\n                        project\n                    "
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "w-6 h-6 text-gray-400",
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        viewBox: "0 0 24 24",
+                        "stroke-width": "2",
+                        stroke: "currentColor",
+                        fill: "none",
+                        "stroke-linecap": "round",
+                        "stroke-linejoin": "round"
+                      }
+                    },
+                    [
+                      _c("rect", {
+                        attrs: {
+                          x: "0",
+                          y: "0",
+                          width: "24",
+                          height: "24",
+                          stroke: "none"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("circle", { attrs: { cx: "10", cy: "10", r: "7" } }),
+                      _vm._v(" "),
+                      _c("line", {
+                        attrs: { x1: "21", y1: "21", x2: "15", y2: "15" }
+                      })
+                    ]
                   )
                 ]
-              ),
-              _vm._v(" "),
-              _c(
-                "modal",
-                {
-                  staticClass: "sm:w-full md:w-1/4",
-                  attrs: {
-                    name: "modalProjectDialog",
-                    adaptive: true,
-                    scrollable: true,
-                    height: "auto"
-                  }
-                },
-                [_c("create-project-dialog")],
-                1
-              ),
-              _vm._v(" "),
-              _c("default-transition", [
-                _vm.showHeading
-                  ? _c(
-                      "div",
-                      {
-                        staticClass:
-                          "z-40 absolute top-0 right-0 w-40 bg-white rounded-lg shadow-lg mt-12 -mr-1 block py-1 overflow-hidden"
-                      },
-                      _vm._l(_vm.headings, function(heading) {
-                        return _c(
-                          "label",
-                          {
-                            staticClass:
-                              "flex justify-start items-center text-truncate hover:bg-gray-100 px-4 py-2"
-                          },
-                          [
-                            _c("div", { staticClass: "text-teal-600 mr-3" }, [
-                              _c("input", {
-                                staticClass:
-                                  "form-checkbox focus:outline-none focus:shadow-outline",
-                                attrs: { type: "checkbox", checked: "" },
-                                on: { click: function($event) {} }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "select-none text-gray-700" },
-                              [_vm._v(_vm._s(heading))]
-                            )
-                          ]
-                        )
-                      }),
-                      0
-                    )
-                  : _vm._e()
-              ])
-            ],
-            1
-          )
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "container mx-auto" }, [
-      _c(
-        "table",
-        {
-          staticClass:
-            "border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative"
-        },
-        [
-          _c("thead", [
-            _c(
-              "tr",
-              { staticClass: "text-left" },
-              [
-                _c(
-                  "th",
-                  {
-                    staticClass:
-                      "py-2 px-3 sticky top-0 border-b border-gray-200 bg-gray-100"
-                  },
-                  [
-                    _c(
-                      "label",
-                      {
-                        staticClass:
-                          "text-teal-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer"
-                      },
-                      [
-                        _c("input", {
-                          staticClass:
-                            "form-checkbox focus:outline-none focus:shadow-outline",
-                          attrs: { type: "checkbox" },
-                          on: {
-                            click: function($event) {
-                              return _vm.selectAllCheckbox($event)
-                            }
-                          }
-                        })
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _vm._l(_vm.headings, function(heading) {
-                  return _c("th", { staticClass: "default-header" }, [
-                    _vm._v(_vm._s(heading) + "\n                ")
-                  ])
-                })
-              ],
-              2
-            )
+              )
+            ])
           ]),
           _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.projects, function(project, index) {
-              return _c(
-                "tr",
-                {
-                  key: project.id,
-                  staticClass: "cursor-pointer hover:bg-gray-200",
-                  on: {
-                    click: function($event) {
-                      return _vm.viewProject(project.id)
-                    }
-                  }
-                },
+          _c("div", [
+            _c("div", { staticClass: "shadow rounded-lg flex" }, [
+              _c(
+                "div",
+                { staticClass: "relative" },
                 [
-                  _c("td", { staticClass: "default-row" }, [
-                    _c(
-                      "span",
-                      {
-                        staticClass: "text-gray-700 px-6 py-3 flex items-center"
-                      },
-                      [_vm._v(_vm._s(project.id))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "default-row" }, [
-                    _c(
-                      "span",
-                      {
-                        staticClass: "text-gray-700 px-6 py-3 flex items-center"
-                      },
-                      [_vm._v(_vm._s(project.name))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "default-row" }, [
-                    _c(
-                      "span",
-                      {
-                        staticClass: "text-gray-700 px-6 py-3 flex items-center"
-                      },
-                      [_vm._v(_vm._s(project.modules_count))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "default-row" }, [
-                    _c(
-                      "span",
-                      {
-                        staticClass: "text-gray-700 px-6 py-3 flex items-center"
-                      },
-                      [_vm._v(_vm._s(_vm.get(project, "owner.name", null)))]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "default-row" }, [
-                    _c(
-                      "span",
-                      {
-                        staticClass: "text-gray-700 px-6 py-3 flex items-center"
-                      },
-                      [
-                        _vm._v(
-                          _vm._s(_vm._f("formatDateTime")(project.created_at))
-                        )
-                      ]
-                    )
-                  ]),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary float-right",
+                      on: {
+                        click: function($event) {
+                          return _vm.$modal.show("modalProjectDialog")
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "Add\n                        project\n                    "
+                      )
+                    ]
+                  ),
                   _vm._v(" "),
                   _c(
-                    "td",
-                    { staticClass: "default-row" },
-                    [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn-dropdown",
-                          on: {
-                            click: function($event) {
-                              $event.stopPropagation()
-                              return _vm.showDropdown(index)
-                            }
-                          }
-                        },
-                        [
-                          _c(
-                            "svg",
-                            {
-                              staticClass: "dots-horizontal w-6 h-6 px-1",
-                              attrs: {
-                                viewBox: "0 0 20 20",
-                                fill: "currentColor"
-                              }
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  d:
-                                    "M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"
-                                }
-                              })
-                            ]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("default-transition", [
-                        _vm.isOpen[index]
-                          ? _c(
-                              "div",
+                    "modal",
+                    {
+                      staticClass: "sm:w-full md:w-1/4",
+                      attrs: {
+                        name: "modalProjectDialog",
+                        adaptive: true,
+                        scrollable: true,
+                        height: "auto"
+                      }
+                    },
+                    [_c("create-project-dialog")],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("default-transition", [
+                    _vm.showHeading
+                      ? _c(
+                          "div",
+                          {
+                            staticClass:
+                              "z-40 absolute top-0 right-0 w-40 bg-white rounded-lg shadow-lg mt-12 -mr-1 block py-1 overflow-hidden"
+                          },
+                          _vm._l(_vm.headings, function(heading) {
+                            return _c(
+                              "label",
                               {
                                 staticClass:
-                                  "absolute cross-origin-top-right mt-2 w-56 bg-white rounded-md shadow-xl z-20"
+                                  "flex justify-start items-center text-truncate hover:bg-gray-100 px-4 py-2"
                               },
                               [
-                                _c("div", {
-                                  staticClass: "ContextualPopover-arrow"
-                                }),
+                                _c(
+                                  "div",
+                                  { staticClass: "text-teal-600 mr-3" },
+                                  [
+                                    _c("input", {
+                                      staticClass:
+                                        "form-checkbox focus:outline-none focus:shadow-outline",
+                                      attrs: { type: "checkbox", checked: "" },
+                                      on: { click: function($event) {} }
+                                    })
+                                  ]
+                                ),
                                 _vm._v(" "),
                                 _c(
                                   "div",
-                                  {
-                                    staticClass:
-                                      "rounded-md bg-white bg-opacity-0 shadow-xs"
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "py-1",
-                                        attrs: {
-                                          role: "menu",
-                                          "aria-orientation": "vertical",
-                                          "aria-labelledby": "options-menu"
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "a",
-                                          {
-                                            staticClass:
-                                              "block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100\n                                       hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0",
-                                            attrs: {
-                                              href: "#",
-                                              role: "menuitem"
-                                            }
-                                          },
-                                          [_vm._v("Account settings")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "a",
-                                          {
-                                            staticClass:
-                                              "block px-4 py-2 text-sm leading-5 text-red-700\n                                       font-medium\n                                       hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
-                                            attrs: {
-                                              href: "#",
-                                              role: "menuitem"
-                                            },
-                                            on: {
-                                              click: function($event) {
-                                                $event.stopPropagation()
-                                                return _vm.deleteProject(
-                                                  project.id
-                                                )
-                                              }
-                                            }
-                                          },
-                                          [_vm._v("Delete this project")]
-                                        )
-                                      ]
-                                    )
-                                  ]
+                                  { staticClass: "select-none text-gray-700" },
+                                  [_vm._v(_vm._s(heading))]
                                 )
                               ]
                             )
-                          : _vm._e()
-                      ])
-                    ],
-                    1
-                  )
-                ]
-              )
-            }),
-            0
-          )
-        ]
-      )
-    ]),
-    _vm._v(" "),
-    _vm.pagination.meta !== null
-      ? _c(
-          "div",
-          {
-            staticClass:
-              "hidden sm:flex-1 sm:flex sm:items-center sm:justify-between pt-3"
-          },
-          [
-            _c("div", [
-              _c("p", { staticClass: "text-sm leading-5 text-gray-700" }, [
-                _vm._v("\n                Showing\n                "),
-                _c("span", { staticClass: "font-medium" }, [
-                  _vm._v(_vm._s(_vm.pagination.meta.from))
-                ]),
-                _vm._v("\n                to\n                "),
-                _c("span", { staticClass: "font-medium" }, [
-                  _vm._v(_vm._s(this.pagination.meta.to))
-                ]),
-                _vm._v("\n                of\n                "),
-                _c("span", { staticClass: "font-medium" }, [
-                  _vm._v(_vm._s(_vm.pagination.meta.total))
-                ]),
-                _vm._v("\n                results\n            ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-tertiary border border-gray-400",
-                  class:
-                    _vm.pagination.links.prev === null ? "btn-disabled" : "",
-                  on: {
-                    click: function($event) {
-                      return _vm.fetchProjects(_vm.pagination.links.prev)
-                    }
-                  }
-                },
-                [_vm._v("Previous\n            ")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "divider" }),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-tertiary border border-gray-400",
-                  class:
-                    _vm.pagination.links.next === null ? "btn-disabled" : "",
-                  on: {
-                    click: function($event) {
-                      return _vm.fetchProjects(_vm.pagination.links.next)
-                    }
-                  }
-                },
-                [_vm._v("Next\n            ")]
+                          }),
+                          0
+                        )
+                      : _vm._e()
+                  ])
+                ],
+                1
               )
             ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "container mx-auto" }, [
+        _c(
+          "table",
+          {
+            staticClass:
+              "border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative"
+          },
+          [
+            _c("thead", [
+              _c(
+                "tr",
+                { staticClass: "text-left" },
+                [
+                  _c(
+                    "th",
+                    {
+                      staticClass:
+                        "py-2 px-3 sticky top-0 border-b border-gray-200 bg-gray-100"
+                    },
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "text-teal-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer"
+                        },
+                        [
+                          _c("input", {
+                            staticClass:
+                              "form-checkbox focus:outline-none focus:shadow-outline",
+                            attrs: { type: "checkbox" },
+                            on: {
+                              click: function($event) {
+                                return _vm.selectAllCheckbox($event)
+                              }
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.headings, function(heading) {
+                    return _c("th", { staticClass: "default-header" }, [
+                      _vm._v(_vm._s(heading) + "\n                ")
+                    ])
+                  })
+                ],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.projects, function(project, index) {
+                return _c(
+                  "tr",
+                  {
+                    key: project.id,
+                    staticClass: "cursor-pointer hover:bg-gray-200",
+                    on: {
+                      click: function($event) {
+                        return _vm.viewProject(project.id)
+                      }
+                    }
+                  },
+                  [
+                    _c("td", { staticClass: "default-row" }, [
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "text-gray-700 px-6 py-3 flex items-center"
+                        },
+                        [_vm._v(_vm._s(project.id))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "default-row" }, [
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "text-gray-700 px-6 py-3 flex items-center"
+                        },
+                        [_vm._v(_vm._s(project.name))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "default-row" }, [
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "text-gray-700 px-6 py-3 flex items-center"
+                        },
+                        [_vm._v(_vm._s(project.modules_count))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "default-row" }, [
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "text-gray-700 px-6 py-3 flex items-center"
+                        },
+                        [_vm._v(_vm._s(_vm.get(project, "owner.name", null)))]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "default-row" }, [
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "text-gray-700 px-6 py-3 flex items-center"
+                        },
+                        [
+                          _vm._v(
+                            _vm._s(_vm._f("formatDateTime")(project.created_at))
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      { staticClass: "default-row" },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn-dropdown",
+                            on: {
+                              click: function($event) {
+                                $event.stopPropagation()
+                                return _vm.showDropdown(index)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "svg",
+                              {
+                                staticClass: "dots-horizontal w-6 h-6 px-1",
+                                attrs: {
+                                  viewBox: "0 0 20 20",
+                                  fill: "currentColor"
+                                }
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    d:
+                                      "M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"
+                                  }
+                                })
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("default-transition", [
+                          _vm.isOpen[index]
+                            ? _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "absolute cross-origin-top-right mt-2 w-56 bg-white rounded-md shadow-xl z-20"
+                                },
+                                [
+                                  _c("div", {
+                                    staticClass: "ContextualPopover-arrow"
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "rounded-md bg-white bg-opacity-0 shadow-xs"
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "py-1",
+                                          attrs: {
+                                            role: "menu",
+                                            "aria-orientation": "vertical",
+                                            "aria-labelledby": "options-menu"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "a",
+                                            {
+                                              staticClass:
+                                                "block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100\n                                       hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0",
+                                              attrs: {
+                                                href: "#",
+                                                role: "menuitem"
+                                              }
+                                            },
+                                            [_vm._v("Account settings")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "a",
+                                            {
+                                              staticClass:
+                                                "block px-4 py-2 text-sm leading-5 text-red-700\n                                       font-medium\n                                       hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
+                                              attrs: {
+                                                href: "#",
+                                                role: "menuitem"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  $event.stopPropagation()
+                                                  return _vm.deleteProject(
+                                                    project.id
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [_vm._v("Delete this project")]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            : _vm._e()
+                        ])
+                      ],
+                      1
+                    )
+                  ]
+                )
+              }),
+              0
+            )
           ]
         )
-      : _vm._e()
-  ])
+      ]),
+      _vm._v(" "),
+      _vm.pagination.meta !== null
+        ? _c(
+            "div",
+            {
+              staticClass:
+                "hidden sm:flex-1 sm:flex sm:items-center sm:justify-between pt-3"
+            },
+            [
+              _c("div", [
+                _c("p", { staticClass: "text-sm leading-5 text-gray-700" }, [
+                  _vm._v("\n                Showing\n                "),
+                  _c("span", { staticClass: "font-medium" }, [
+                    _vm._v(_vm._s(_vm.pagination.meta.from))
+                  ]),
+                  _vm._v("\n                to\n                "),
+                  _c("span", { staticClass: "font-medium" }, [
+                    _vm._v(_vm._s(this.pagination.meta.to))
+                  ]),
+                  _vm._v("\n                of\n                "),
+                  _c("span", { staticClass: "font-medium" }, [
+                    _vm._v(_vm._s(_vm.pagination.meta.total))
+                  ]),
+                  _vm._v("\n                results\n            ")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-tertiary border border-gray-400",
+                    class:
+                      _vm.pagination.links.prev === null ? "btn-disabled" : "",
+                    on: {
+                      click: function($event) {
+                        return _vm.fetchProjects(_vm.pagination.links.prev)
+                      }
+                    }
+                  },
+                  [_vm._v("Previous\n            ")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "divider" }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-tertiary border border-gray-400",
+                    class:
+                      _vm.pagination.links.next === null ? "btn-disabled" : "",
+                    on: {
+                      click: function($event) {
+                        return _vm.fetchProjects(_vm.pagination.links.next)
+                      }
+                    }
+                  },
+                  [_vm._v("Next\n            ")]
+                )
+              ])
+            ]
+          )
+        : _vm._e()
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

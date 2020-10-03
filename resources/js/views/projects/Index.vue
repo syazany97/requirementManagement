@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto py-6 px-4">
+    <div v-click-outside="hideAllDropdowns" class="container mx-auto py-6 px-4">
         <h1 class="h1">Projects</h1>
 
         <!--        <div class="flex pt-2">-->
@@ -132,7 +132,6 @@
 
 
                         <default-transition>
-                            <!--                            <div v-if="isOpen[index]" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg">-->
                             <div v-if="isOpen[index]"
                                  class="absolute cross-origin-top-right mt-2 w-56 bg-white rounded-md shadow-xl z-20">
                                 <div class="ContextualPopover-arrow"></div>
@@ -247,12 +246,11 @@ export default {
                 this.isOpen.push(false);
             }
         },
-        shouldOpen(result) {
-            console.log('result', result);
-            return result;
-        },
         get(data, column, defaultValue) {
             return _.get(data, column, defaultValue);
+        },
+        test(e) {
+            console.log('test', e);
         },
         async deleteProject(projectId) {
             try {
@@ -264,7 +262,19 @@ export default {
             }
         },
         showDropdown(projectIndex) {
+            this.isOpen.forEach((x, index) => {
+                if (index !== projectIndex) {
+                    this.isOpen.splice(index, 1, false);
+                }
+            })
+
             this.isOpen.splice(projectIndex, 1, !this.isOpen[projectIndex]);
+        },
+        hideAllDropdowns() {
+            this.isOpen.forEach((x, index) => {
+                this.isOpen.splice(index, 1, false);
+            })
+
         },
         viewProject(projectId) {
             this.$router.push({
