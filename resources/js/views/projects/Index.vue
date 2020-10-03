@@ -30,24 +30,24 @@
             <div>
                 <div class="shadow rounded-lg flex">
                     <div class="relative">
-                        <!--                        <button @click.prevent="showHeading = !showHeading"-->
-                        <!--                                class="rounded-lg inline-flex items-center bg-white hover:text-blue-500 focus:outline-none focus:shadow-outline text-gray-500 font-semibold py-2 px-2 md:px-4">-->
-                        <!--                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 md:hidden"-->
-                        <!--                                 viewBox="0 0 24 24"-->
-                        <!--                                 stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"-->
-                        <!--                                 stroke-linejoin="round">-->
-                        <!--                                <rect x="0" y="0" width="24" height="24" stroke="none"></rect>-->
-                        <!--                                <path-->
-                        <!--                                    d="M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5"/>-->
-                        <!--                            </svg>-->
-                        <!--                            <span class="hidden md:block">Display</span>-->
-                        <!--                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" width="24" height="24"-->
-                        <!--                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"-->
-                        <!--                                 stroke-linecap="round" stroke-linejoin="round">-->
-                        <!--                                <rect x="0" y="0" width="24" height="24" stroke="none"></rect>-->
-                        <!--                                <polyline points="6 9 12 15 18 9"/>-->
-                        <!--                            </svg>-->
-                        <!--                        </button>-->
+<!--                                                <button @click.prevent="showHeading = !showHeading"-->
+<!--                                                        class="rounded-lg inline-flex items-center bg-white hover:text-blue-500 focus:outline-none focus:shadow-outline text-gray-500 font-semibold py-2 px-2 md:px-4">-->
+<!--                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 md:hidden"-->
+<!--                                                         viewBox="0 0 24 24"-->
+<!--                                                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"-->
+<!--                                                         stroke-linejoin="round">-->
+<!--                                                        <rect x="0" y="0" width="24" height="24" stroke="none"></rect>-->
+<!--                                                        <path-->
+<!--                                                            d="M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5"/>-->
+<!--                                                    </svg>-->
+<!--                                                    <span class="hidden md:block">Display</span>-->
+<!--                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" width="24" height="24"-->
+<!--                                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"-->
+<!--                                                         stroke-linecap="round" stroke-linejoin="round">-->
+<!--                                                        <rect x="0" y="0" width="24" height="24" stroke="none"></rect>-->
+<!--                                                        <polyline points="6 9 12 15 18 9"/>-->
+<!--                                                    </svg>-->
+<!--                                                </button>-->
                         <button @click="$modal.show('modalProjectDialog')" class="btn btn-primary float-right">Add
                             project
                         </button>
@@ -55,6 +55,24 @@
                         <modal name="modalProjectDialog" class="sm:w-full md:w-1/4" :adaptive="true" :scrollable="true"
                                height="auto">
                             <create-project-dialog></create-project-dialog>
+                        </modal>
+
+                        <modal name="confirmationDialog" class="sm:w-full md:w-1/4" :adaptive="true" :scrollable="true"
+                               height="auto">
+                            <div class="card">
+                                <h1 class="default-dialog-title">Add requirement</h1>
+                                <span>Are you sure you want to permanently delete this project? This cannot be undone</span>
+                                <div class="inline-flex text-right pt-4 pb-5">
+                                    <button @click="" class="btn btn-tertiary pr-3">
+                                        <span>Cancel</span>
+                                    </button>
+                                    <div class="divider"></div>
+                                    <button @click="" class="btn btn-primary">
+                                        <span>Delete project</span>
+                                    </button>
+                                </div>
+                            </div>
+
                         </modal>
 
                         <default-transition>
@@ -253,13 +271,14 @@ export default {
             console.log('test', e);
         },
         async deleteProject(projectId) {
-            try {
-                const response = await projectRepository.delete(projectId);
-                await this.fetchProjects();
-                console.log('delete project', response);
-            } catch (e) {
-                console.log('error', e);
-            }
+            this.$modal.show('confirmationDialog');
+            // try {
+            //     const response = await projectRepository.delete(projectId);
+            //     await this.fetchProjects();
+            //     console.log('delete project', response);
+            // } catch (e) {
+            //     console.log('error', e);
+            // }
         },
         showDropdown(projectIndex) {
             this.isOpen.forEach((x, index) => {

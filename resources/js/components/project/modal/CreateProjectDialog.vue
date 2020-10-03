@@ -1,8 +1,11 @@
 <template>
-    <div class="container mx-auto px-4 py-4 overflow-y-auto">
+    <div class="container mx-auto py-2 overflow-y-auto">
 
-        <h1 class="headline text-left">Create new project</h1>
+        <h1 class="default-dialog-title">Create new project</h1>
 
+        <hr>
+
+        <div class="bg-white px-4">
         <label class="primary-label" for="projectName">
             Name
         </label>
@@ -42,6 +45,7 @@
             <button @click="createProject()" class="btn btn-primary">
                 <span>Create</span>
             </button>
+        </div>
         </div>
     </div>
 </template>

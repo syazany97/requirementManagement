@@ -2537,6 +2537,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CreateProjectDialog",
@@ -4187,6 +4191,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4266,36 +4288,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.prev = 0;
-                _context2.next = 3;
-                return _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_3__["default"]["delete"](projectId);
+                _this2.$modal.show('confirmationDialog'); // try {
+                //     const response = await projectRepository.delete(projectId);
+                //     await this.fetchProjects();
+                //     console.log('delete project', response);
+                // } catch (e) {
+                //     console.log('error', e);
+                // }
 
-              case 3:
-                response = _context2.sent;
-                _context2.next = 6;
-                return _this2.fetchProjects();
 
-              case 6:
-                console.log('delete project', response);
-                _context2.next = 12;
-                break;
-
-              case 9:
-                _context2.prev = 9;
-                _context2.t0 = _context2["catch"](0);
-                console.log('error', _context2.t0);
-
-              case 12:
+              case 1:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 9]]);
+        }, _callee2);
       }))();
     },
     showDropdown: function showDropdown(projectIndex) {
@@ -56485,137 +56496,144 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container mx-auto px-4 py-4 overflow-y-auto" },
-    [
-      _c("h1", { staticClass: "headline text-left" }, [
-        _vm._v("Create new project")
-      ]),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "primary-label", attrs: { for: "projectName" } },
-        [_vm._v("\n        Name\n    ")]
-      ),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.projectName,
-            expression: "projectName"
-          }
-        ],
-        staticClass: "primary-input",
-        attrs: {
-          id: "projectName",
-          name: "projectName",
-          type: "text",
-          placeholder: "Name"
-        },
-        domProps: { value: _vm.projectName },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.projectName = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "primary-label", attrs: { for: "projectDescription" } },
-        [_vm._v("\n        Description\n    ")]
-      ),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.projectDescription,
-            expression: "projectDescription"
-          }
-        ],
-        staticClass: "primary-input",
-        attrs: {
-          id: "projectDescription",
-          name: "projectDescription",
-          type: "text",
-          placeholder: "Description"
-        },
-        domProps: { value: _vm.projectDescription },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.projectDescription = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "label",
-        { staticClass: "primary-label", attrs: { for: "projectStatus" } },
-        [_vm._v("\n        Project Status\n    ")]
-      ),
-      _vm._v(" "),
-      _c("vue-select", {
-        attrs: {
-          name: "projectStatus",
-          id: "projectStatus",
-          options: _vm.projectStatuses,
-          label: "title",
-          reduce: function(title) {
-            return title.id
-          }
-        },
-        model: {
-          value: _vm.projectStatusId,
-          callback: function($$v) {
-            _vm.projectStatusId = $$v
-          },
-          expression: "projectStatusId"
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "inline-flex text-right pt-4 float-right" }, [
+  return _c("div", { staticClass: "container mx-auto py-2 overflow-y-auto" }, [
+    _c("h1", { staticClass: "default-dialog-title" }, [
+      _vm._v("Create new project")
+    ]),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "bg-white px-4" },
+      [
         _c(
-          "button",
-          {
-            staticClass: "btn btn-tertiary pr-3",
-            on: {
-              click: function($event) {
-                _vm.dialog = false
-              }
-            }
-          },
-          [_c("span", [_vm._v("Cancel")])]
+          "label",
+          { staticClass: "primary-label", attrs: { for: "projectName" } },
+          [_vm._v("\n        Name\n    ")]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "divider" }),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.projectName,
+              expression: "projectName"
+            }
+          ],
+          staticClass: "primary-input",
+          attrs: {
+            id: "projectName",
+            name: "projectName",
+            type: "text",
+            placeholder: "Name"
+          },
+          domProps: { value: _vm.projectName },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.projectName = $event.target.value
+            }
+          }
+        }),
         _vm._v(" "),
         _c(
-          "button",
+          "label",
           {
-            staticClass: "btn btn-primary",
-            on: {
-              click: function($event) {
-                return _vm.createProject()
+            staticClass: "primary-label",
+            attrs: { for: "projectDescription" }
+          },
+          [_vm._v("\n        Description\n    ")]
+        ),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.projectDescription,
+              expression: "projectDescription"
+            }
+          ],
+          staticClass: "primary-input",
+          attrs: {
+            id: "projectDescription",
+            name: "projectDescription",
+            type: "text",
+            placeholder: "Description"
+          },
+          domProps: { value: _vm.projectDescription },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
               }
+              _vm.projectDescription = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          { staticClass: "primary-label", attrs: { for: "projectStatus" } },
+          [_vm._v("\n        Project Status\n    ")]
+        ),
+        _vm._v(" "),
+        _c("vue-select", {
+          attrs: {
+            name: "projectStatus",
+            id: "projectStatus",
+            options: _vm.projectStatuses,
+            label: "title",
+            reduce: function(title) {
+              return title.id
             }
           },
-          [_c("span", [_vm._v("Create")])]
-        )
-      ])
-    ],
-    1
-  )
+          model: {
+            value: _vm.projectStatusId,
+            callback: function($$v) {
+              _vm.projectStatusId = $$v
+            },
+            expression: "projectStatusId"
+          }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "inline-flex text-right pt-4 float-right" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-tertiary pr-3",
+              on: {
+                click: function($event) {
+                  _vm.dialog = false
+                }
+              }
+            },
+            [_c("span", [_vm._v("Cancel")])]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "divider" }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              on: {
+                click: function($event) {
+                  return _vm.createProject()
+                }
+              }
+            },
+            [_c("span", [_vm._v("Create")])]
+          )
+        ])
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -58179,7 +58197,7 @@ var render = function() {
                     },
                     [
                       _vm._v(
-                        "Add\n                        project\n                    "
+                        "Add\n                            project\n                        "
                       )
                     ]
                   ),
@@ -58197,6 +58215,58 @@ var render = function() {
                     },
                     [_c("create-project-dialog")],
                     1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "modal",
+                    {
+                      staticClass: "sm:w-full md:w-1/4",
+                      attrs: {
+                        name: "confirmationDialog",
+                        adaptive: true,
+                        scrollable: true,
+                        height: "auto"
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "card" }, [
+                        _c("h1", { staticClass: "default-dialog-title" }, [
+                          _vm._v("Add requirement")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", [
+                          _vm._v(
+                            "Are you sure you want to permanently delete this project? This cannot be undone"
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "inline-flex text-right pt-4 pb-5" },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-tertiary pr-3",
+                                on: { click: function($event) {} }
+                              },
+                              [_c("span", [_vm._v("Cancel")])]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "divider" }),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-primary",
+                                on: { click: function($event) {} }
+                              },
+                              [_c("span", [_vm._v("Delete project")])]
+                            )
+                          ]
+                        )
+                      ])
+                    ]
                   ),
                   _vm._v(" "),
                   _c("default-transition", [
@@ -58292,7 +58362,7 @@ var render = function() {
                   _vm._v(" "),
                   _vm._l(_vm.headings, function(heading) {
                     return _c("th", { staticClass: "default-header" }, [
-                      _vm._v(_vm._s(heading) + "\n                ")
+                      _vm._v(_vm._s(heading) + "\n                    ")
                     ])
                   })
                 ],
@@ -58446,7 +58516,7 @@ var render = function() {
                                             "a",
                                             {
                                               staticClass:
-                                                "block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100\n                                       hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0",
+                                                "block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100\n                                           hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0",
                                               attrs: {
                                                 href: "#",
                                                 role: "menuitem"
@@ -58459,7 +58529,7 @@ var render = function() {
                                             "a",
                                             {
                                               staticClass:
-                                                "block px-4 py-2 text-sm leading-5 text-red-700\n                                       font-medium\n                                       hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
+                                                "block px-4 py-2 text-sm leading-5 text-red-700\n                                           font-medium\n                                           hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
                                               attrs: {
                                                 href: "#",
                                                 role: "menuitem"
@@ -58505,19 +58575,19 @@ var render = function() {
             [
               _c("div", [
                 _c("p", { staticClass: "text-sm leading-5 text-gray-700" }, [
-                  _vm._v("\n                Showing\n                "),
+                  _vm._v("\n                    Showing\n                    "),
                   _c("span", { staticClass: "font-medium" }, [
                     _vm._v(_vm._s(_vm.pagination.meta.from))
                   ]),
-                  _vm._v("\n                to\n                "),
+                  _vm._v("\n                    to\n                    "),
                   _c("span", { staticClass: "font-medium" }, [
                     _vm._v(_vm._s(this.pagination.meta.to))
                   ]),
-                  _vm._v("\n                of\n                "),
+                  _vm._v("\n                    of\n                    "),
                   _c("span", { staticClass: "font-medium" }, [
                     _vm._v(_vm._s(_vm.pagination.meta.total))
                   ]),
-                  _vm._v("\n                results\n            ")
+                  _vm._v("\n                    results\n                ")
                 ])
               ]),
               _vm._v(" "),
@@ -58534,7 +58604,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Previous\n            ")]
+                  [_vm._v("Previous\n                ")]
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "divider" }),
@@ -58551,7 +58621,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Next\n            ")]
+                  [_vm._v("Next\n                ")]
                 )
               ])
             ]
