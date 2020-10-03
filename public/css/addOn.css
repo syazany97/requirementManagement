@@ -154,11 +154,30 @@
 }
 
 .tab {
-    @apply no-underline text-gray-700 border-b-2 border-transparent tracking-wide font-bold text-xs py-3 mr-8
+    border-bottom-width: 3px;
+    @apply no-underline text-gray-700 border-transparent tracking-wide font-semibold py-3 mr-8
+}
+
+@screen sm {
+    .tab {
+        @apply text-lg
+    }
+}
+
+@screen md {
+    .tab {
+        @apply text-xl
+    }
+}
+
+@screen lg {
+    .tab {
+        @apply text-sm
+    }
 }
 
 .active-tab {
-    @apply .tab text-purple-700 border-purple-700
+    @apply text-purple-700 border-purple-700
 }
 
 .tab:hover {

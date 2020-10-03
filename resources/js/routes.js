@@ -17,7 +17,7 @@ export const routes = [
     },
     {
         path: '/requirements/:requirement/test-cases/create',
-        name: 'test-cases.create',
+        name: 'test-case.create',
         component: require('./views/testCase/Create.vue').default
     },
     {

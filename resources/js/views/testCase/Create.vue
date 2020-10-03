@@ -130,7 +130,7 @@ import DefaultButton from "../../components/layouts/buttons/DefaultButton";
 export default {
     name: "Create.vue",
     created() {
-        if (this.$route.name !== 'test-cases.create') {
+        if (this.$route.name !== 'test-case.create') {
             this.isEditMode = true;
             this.testCaseId = this.$route.params.testCase;
             this.fetchTestCase();

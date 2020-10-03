@@ -37,7 +37,7 @@
 
         <nav class="px-1 pt-2">
             <div class="-mb-px flex justify-left">
-                <a v-for="tab in tabs" :class="currentTab === tab ? 'active-tab' : 'tab'" href="#"
+                <a v-for="tab in tabs" class="tab" :class="currentTab === tab ? 'active-tab' : ''" href="#"
                    @click.prevent="currentTab = tab">
                     {{ tab | titleCase }}
                 </a>
