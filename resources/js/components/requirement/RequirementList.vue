@@ -20,8 +20,6 @@
             @drop-after="onDropAfter"
             :model="data"
             default-tree-node-name="new module"
-            :edit-node-disabled="true"
-            :del-node-disabled="true"
             default-leaf-node-name="new requirement"
             v-bind:default-expanded="false"
         >
@@ -134,6 +132,12 @@ export default {
 
                     if (result.type === 'module') result.isLeaf = false;
 
+                    result.addTreeNodeDisabled = true;
+                    result.addLeafNodeDisable = true;
+                    result.addLeafNodeDisabled = true;
+                    // result.editNodeDisabled = true;
+                    result.delNodeDisabled = true;
+
                     let currentKey = keysMap[key] || key; // if the key is in keysMap use the replacement, if not use the original key
 
                     result[currentKey] = _.isObject(value) ? replaceKeysDeep(value, keysMap) : value;
@@ -159,7 +163,7 @@ export default {
 
         onClick(params) {
             if (params.type === 'requirement') {
-                console.log(this.$route);
+                console.log('node', params);
                 history.replaceState(
                     {requirement: params.id},
                     null,

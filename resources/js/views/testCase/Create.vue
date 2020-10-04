@@ -126,13 +126,10 @@
             </nav>
 
             <div v-for="tab in items" v-bind:key="tab.props.is">
-                <component v-show="currentTab === tab.props.is"  v-bind:is="tab.props"></component>
+                <keep-alive>
+                    <component v-show="currentTab === tab.props.is" v-bind="tab.props"  v-bind:is="tab.props.is"></component>
+                </keep-alive>
             </div>
-
-
-
-
-
 
         </div>
 
@@ -178,7 +175,20 @@ export default {
                 description: "",
                 preconditions: ""
             },
-            items: [],
+            items: [ {
+                tab: 'Comments',
+                props: {
+                    'test-case': this.testCase,
+                    'is': 'comment-list',
+                    'repository-type': 'test-case'
+                }
+            },
+                {
+                    tab: 'History',
+                    props: {
+                        'is': 'histories-list',
+                    }
+                }],
             currentTab: 'comment-list',
             dataLoaded: false
         }

@@ -2732,8 +2732,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 
 
 
@@ -2808,6 +2806,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
           if (result.type === 'requirement') result.isLeaf = true;
           if (result.type === 'module') result.isLeaf = false;
+          result.addTreeNodeDisabled = true;
+          result.addLeafNodeDisable = true;
+          result.addLeafNodeDisabled = true; // result.editNodeDisabled = true;
+
+          result.delNodeDisabled = true;
           var currentKey = keysMap[key] || key; // if the key is in keysMap use the replacement, if not use the original key
 
           result[currentKey] = _.isObject(value) ? replaceKeysDeep(value, keysMap) : value; // if the key is an object run it through the inner function - replaceKeys
@@ -2827,7 +2830,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     onClick: function onClick(params) {
       if (params.type === 'requirement') {
-        console.log(this.$route);
+        console.log('node', params);
         history.replaceState({
           requirement: params.id
         }, null, '?requirement=' + params.id);
@@ -4717,9 +4720,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
 
 
 
@@ -4756,7 +4756,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         description: "",
         preconditions: ""
       },
-      items: [],
+      items: [{
+        tab: 'Comments',
+        props: {
+          'test-case': this.testCase,
+          'is': 'comment-list',
+          'repository-type': 'test-case'
+        }
+      }, {
+        tab: 'History',
+        props: {
+          'is': 'histories-list'
+        }
+      }],
       currentTab: 'comment-list',
       dataLoaded: false
     };
@@ -56928,8 +56940,6 @@ var render = function() {
           attrs: {
             model: _vm.data,
             "default-tree-node-name": "new module",
-            "edit-node-disabled": true,
-            "del-node-disabled": true,
             "default-leaf-node-name": "new requirement",
             "default-expanded": false
           },
@@ -59303,17 +59313,31 @@ var render = function() {
                   "div",
                   { key: tab.props.is },
                   [
-                    _c(tab.props, {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.currentTab === tab.props.is,
-                          expression: "currentTab === tab.props.is"
-                        }
+                    _c(
+                      "keep-alive",
+                      [
+                        _c(
+                          tab.props.is,
+                          _vm._b(
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.currentTab === tab.props.is,
+                                  expression: "currentTab === tab.props.is"
+                                }
+                              ],
+                              tag: "component"
+                            },
+                            "component",
+                            tab.props,
+                            false
+                          )
+                        )
                       ],
-                      tag: "component"
-                    })
+                      1
+                    )
                   ],
                   1
                 )
