@@ -20,6 +20,8 @@
             @drop-after="onDropAfter"
             :model="data"
             default-tree-node-name="new module"
+            :edit-node-disabled="true"
+            :del-node-disabled="true"
             default-leaf-node-name="new requirement"
             v-bind:default-expanded="false"
         >

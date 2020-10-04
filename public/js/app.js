@@ -2730,6 +2730,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 
@@ -56857,6 +56859,8 @@ var render = function() {
           attrs: {
             model: _vm.data,
             "default-tree-node-name": "new module",
+            "edit-node-disabled": true,
+            "del-node-disabled": true,
             "default-leaf-node-name": "new requirement",
             "default-expanded": false
           },
