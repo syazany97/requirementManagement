@@ -57,23 +57,9 @@
                             <create-project-dialog></create-project-dialog>
                         </modal>
 
-                        <modal name="confirmationDialog" class="sm:w-full md:w-1/4" :adaptive="true" :scrollable="true"
-                               :shiftY="0.3" height="auto" width="620px">
-                            <div class="container md:mx-auto sm:w-full py-2 overflow-y-auto">
-                                <h1 class="default-dialog-title">Delete project</h1>
-                                <span class="px-4">Are you sure you want to permanently delete this project? This cannot be undone</span>
-                                <div class="inline-flex text-right px-4 pt-4 pb-5 float-right">
-                                    <button @click="" class="btn btn-tertiary pr-3">
-                                        <span>Cancel</span>
-                                    </button>
-                                    <div class="divider"></div>
-                                    <button @click="" class="btn btn-primary">
-                                        <span>Delete project</span>
-                                    </button>
-                                </div>
-                            </div>
+                        <delete-confirmation-dialog object-type="Project" @delete="deleteProject"></delete-confirmation-dialog>
 
-                        </modal>
+
 
                         <default-transition>
 
@@ -160,7 +146,7 @@
                                            class="block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100
                                            hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0"
                                            role="menuitem">Account settings</a>
-                                        <a @click.stop="deleteProject(project.id)" href="#"
+                                        <a @click.stop="currentProjectId = project.id; hideAllDropdowns(); $modal.show('confirmationDialog');" href="#"
                                            class="block px-4 py-2 text-sm leading-5 text-red-700
                                            font-medium
                                            hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
@@ -215,10 +201,11 @@
 import CreateProjectDialog from "../../components/project/modal/CreateProjectDialog";
 import {debounce} from "../../helper";
 import projectRepository from "../../repositories/projectRepository";
+import DeleteConfirmationDialog from "../../components/layouts/modal/DeleteConfirmationDialog";
 
 export default {
     name: "Index.vue",
-    components: {CreateProjectDialog},
+    components: {DeleteConfirmationDialog, CreateProjectDialog},
     data() {
         return {
             projects: [],
@@ -233,6 +220,7 @@ export default {
                 'Created',
                 ''
             ],
+            currentProjectId : null,
             showHeading: false,
             pagination: {
                 links: null,
@@ -267,18 +255,14 @@ export default {
         get(data, column, defaultValue) {
             return _.get(data, column, defaultValue);
         },
-        test(e) {
-            console.log('test', e);
-        },
-        async deleteProject(projectId) {
-            this.$modal.show('confirmationDialog');
-            // try {
-            //     const response = await projectRepository.delete(projectId);
-            //     await this.fetchProjects();
-            //     console.log('delete project', response);
-            // } catch (e) {
-            //     console.log('error', e);
-            // }
+        async deleteProject() {
+            try {
+                const response = await projectRepository.delete(this.currentProjectId);
+                await this.fetchProjects();
+                console.log('delete project', response);
+            } catch (e) {
+                console.log('error', e);
+            }
         },
         showDropdown(projectIndex) {
             this.isOpen.forEach((x, index) => {

@@ -2241,6 +2241,59 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layouts/modal/DeleteConfirmationDialog.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layouts/modal/DeleteConfirmationDialog.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    objectType: {
+      type: String,
+      "default": 'Project'
+    }
+  },
+  computed: {
+    type: function type() {
+      return this.objectType.toLowerCase();
+    }
+  },
+  name: "DeleteConfirmationDialog",
+  methods: {
+    deleteObject: function deleteObject() {
+      this.$emit('delete');
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modules/dialog/CreateNewModule.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/modules/dialog/CreateNewModule.vue?vue&type=script&lang=js& ***!
@@ -3990,6 +4043,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_project_modal_CreateProjectDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/project/modal/CreateProjectDialog */ "./resources/js/components/project/modal/CreateProjectDialog.vue");
 /* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helper */ "./resources/js/helper.js");
 /* harmony import */ var _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../repositories/projectRepository */ "./resources/js/repositories/projectRepository.js");
+/* harmony import */ var _components_layouts_modal_DeleteConfirmationDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/layouts/modal/DeleteConfirmationDialog */ "./resources/js/components/layouts/modal/DeleteConfirmationDialog.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -4195,26 +4249,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Index.vue",
   components: {
+    DeleteConfirmationDialog: _components_layouts_modal_DeleteConfirmationDialog__WEBPACK_IMPORTED_MODULE_4__["default"],
     CreateProjectDialog: _components_project_modal_CreateProjectDialog__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
@@ -4225,6 +4267,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       height: 300,
       projectDialog: false,
       headings: ['Name', 'No of modules', 'Owner', 'Created', ''],
+      currentProjectId: null,
       showHeading: false,
       pagination: {
         links: null,
@@ -4281,32 +4324,40 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     get: function get(data, column, defaultValue) {
       return _.get(data, column, defaultValue);
     },
-    test: function test(e) {
-      console.log('test', e);
-    },
-    deleteProject: function deleteProject(projectId) {
+    deleteProject: function deleteProject() {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _this2.$modal.show('confirmationDialog'); // try {
-                //     const response = await projectRepository.delete(projectId);
-                //     await this.fetchProjects();
-                //     console.log('delete project', response);
-                // } catch (e) {
-                //     console.log('error', e);
-                // }
+                _context2.prev = 0;
+                _context2.next = 3;
+                return _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_3__["default"]["delete"](_this2.currentProjectId);
 
+              case 3:
+                response = _context2.sent;
+                _context2.next = 6;
+                return _this2.fetchProjects();
 
-              case 1:
+              case 6:
+                console.log('delete project', response);
+                _context2.next = 12;
+                break;
+
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](0);
+                console.log('error', _context2.t0);
+
+              case 12:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[0, 9]]);
       }))();
     },
     showDropdown: function showDropdown(projectIndex) {
@@ -56104,6 +56155,94 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layouts/modal/DeleteConfirmationDialog.vue?vue&type=template&id=1eba967b&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layouts/modal/DeleteConfirmationDialog.vue?vue&type=template&id=1eba967b&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "modal",
+    {
+      staticClass: "sm:w-full md:w-1/4",
+      attrs: {
+        name: "confirmationDialog",
+        adaptive: true,
+        scrollable: true,
+        shiftY: 0.3,
+        height: "auto",
+        width: "620px"
+      }
+    },
+    [
+      _c(
+        "div",
+        { staticClass: "container md:mx-auto sm:w-full py-2 overflow-y-auto" },
+        [
+          _c("h1", { staticClass: "default-dialog-title" }, [
+            _vm._v("Delete " + _vm._s(_vm.type))
+          ]),
+          _vm._v(" "),
+          _c("span", { staticClass: "px-4" }, [
+            _vm._v(
+              "Are you sure you want to permanently delete this " +
+                _vm._s(_vm.type) +
+                "? This cannot be undone"
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "inline-flex text-right px-4 pt-4 pb-5 float-right"
+            },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-tertiary pr-3",
+                  on: {
+                    click: function($event) {
+                      return _vm.$modal.hide("confirmationDialog")
+                    }
+                  }
+                },
+                [_c("span", [_vm._v("Cancel")])]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "divider" }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary",
+                  on: { click: _vm.deleteObject }
+                },
+                [_c("span", [_vm._v("Delete " + _vm._s(_vm.type))])]
+              )
+            ]
+          )
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/modules/dialog/CreateNewModule.vue?vue&type=template&id=b8b3c888&":
 /*!*********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/modules/dialog/CreateNewModule.vue?vue&type=template&id=b8b3c888& ***!
@@ -58218,69 +58357,10 @@ var render = function() {
                     1
                   ),
                   _vm._v(" "),
-                  _c(
-                    "modal",
-                    {
-                      staticClass: "sm:w-full md:w-1/4",
-                      attrs: {
-                        name: "confirmationDialog",
-                        adaptive: true,
-                        scrollable: true,
-                        shiftY: 0.3,
-                        height: "auto",
-                        width: "620px"
-                      }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "container md:mx-auto sm:w-full py-2 overflow-y-auto"
-                        },
-                        [
-                          _c("h1", { staticClass: "default-dialog-title" }, [
-                            _vm._v("Delete project")
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "px-4" }, [
-                            _vm._v(
-                              "Are you sure you want to permanently delete this project? This cannot be undone"
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "inline-flex text-right px-4 pt-4 pb-5 float-right"
-                            },
-                            [
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-tertiary pr-3",
-                                  on: { click: function($event) {} }
-                                },
-                                [_c("span", [_vm._v("Cancel")])]
-                              ),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "divider" }),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-primary",
-                                  on: { click: function($event) {} }
-                                },
-                                [_c("span", [_vm._v("Delete project")])]
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    ]
-                  ),
+                  _c("delete-confirmation-dialog", {
+                    attrs: { "object-type": "Project" },
+                    on: { delete: _vm.deleteProject }
+                  }),
                   _vm._v(" "),
                   _c("default-transition", [
                     _vm.showHeading
@@ -58550,8 +58630,11 @@ var render = function() {
                                               on: {
                                                 click: function($event) {
                                                   $event.stopPropagation()
-                                                  return _vm.deleteProject(
+                                                  _vm.currentProjectId =
                                                     project.id
+                                                  _vm.hideAllDropdowns()
+                                                  _vm.$modal.show(
+                                                    "confirmationDialog"
                                                   )
                                                 }
                                               }
@@ -75699,6 +75782,7 @@ var map = {
 	"./components/layouts/ToastNotification.vue": "./resources/js/components/layouts/ToastNotification.vue",
 	"./components/layouts/TopBar.vue": "./resources/js/components/layouts/TopBar.vue",
 	"./components/layouts/buttons/DefaultButton.vue": "./resources/js/components/layouts/buttons/DefaultButton.vue",
+	"./components/layouts/modal/DeleteConfirmationDialog.vue": "./resources/js/components/layouts/modal/DeleteConfirmationDialog.vue",
 	"./components/modules/dialog/CreateNewModule.vue": "./resources/js/components/modules/dialog/CreateNewModule.vue",
 	"./components/modules/dialog/TestDialog.vue": "./resources/js/components/modules/dialog/TestDialog.vue",
 	"./components/project/modal/CreateProjectDialog.vue": "./resources/js/components/project/modal/CreateProjectDialog.vue",
@@ -76256,6 +76340,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultButton_vue_vue_type_template_id_7447dde4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultButton_vue_vue_type_template_id_7447dde4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/layouts/modal/DeleteConfirmationDialog.vue":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/layouts/modal/DeleteConfirmationDialog.vue ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DeleteConfirmationDialog_vue_vue_type_template_id_1eba967b_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteConfirmationDialog.vue?vue&type=template&id=1eba967b&scoped=true& */ "./resources/js/components/layouts/modal/DeleteConfirmationDialog.vue?vue&type=template&id=1eba967b&scoped=true&");
+/* harmony import */ var _DeleteConfirmationDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteConfirmationDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/layouts/modal/DeleteConfirmationDialog.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DeleteConfirmationDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DeleteConfirmationDialog_vue_vue_type_template_id_1eba967b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DeleteConfirmationDialog_vue_vue_type_template_id_1eba967b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "1eba967b",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/layouts/modal/DeleteConfirmationDialog.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/layouts/modal/DeleteConfirmationDialog.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/layouts/modal/DeleteConfirmationDialog.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteConfirmationDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./DeleteConfirmationDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layouts/modal/DeleteConfirmationDialog.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteConfirmationDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/layouts/modal/DeleteConfirmationDialog.vue?vue&type=template&id=1eba967b&scoped=true&":
+/*!***********************************************************************************************************************!*\
+  !*** ./resources/js/components/layouts/modal/DeleteConfirmationDialog.vue?vue&type=template&id=1eba967b&scoped=true& ***!
+  \***********************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteConfirmationDialog_vue_vue_type_template_id_1eba967b_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./DeleteConfirmationDialog.vue?vue&type=template&id=1eba967b&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layouts/modal/DeleteConfirmationDialog.vue?vue&type=template&id=1eba967b&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteConfirmationDialog_vue_vue_type_template_id_1eba967b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteConfirmationDialog_vue_vue_type_template_id_1eba967b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
