@@ -3873,12 +3873,13 @@ video {
   background-color: rgba(247, 250, 252, var(--bg-opacity));
 }
 
-.h1 {
+h1 {
   font-size: 1.875rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
   border-bottom-width: 1px;
   font-weight: 700;
+  border-style: none;
 }
 
 /* table */

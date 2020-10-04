@@ -1,7 +1,7 @@
 <template>
     <div v-click-outside="hideAllDropdowns" class="container mx-auto py-6 px-4">
-        <h1 class="h1">Projects</h1>
-
+        <h1>Projects</h1>
+        <hr>
         <!--        <div class="flex pt-2">-->
         <!--            <div class="w-3/4"></div>-->
         <!--            <div class="w-1/4">-->

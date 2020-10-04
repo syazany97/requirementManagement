@@ -1,6 +1,5 @@
 <template>
-    <div>
-
+    <div class="mt-6">
         <button @click="$modal.show('moduleDialog')"
                 class="btn btn-primary">
             <svg fill="currentColor" viewBox="0 0 20 20">

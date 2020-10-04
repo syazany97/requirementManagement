@@ -1,10 +1,20 @@
 <template>
 
     <div class="container mx-auto">
-        <!-- create new module dialog -->
-        <div class="text-right pb-2 mt-2">
+        <div class="flex justify-between">
+            <div>
+                <h1>{{ project.name }}</h1>
+            </div>
             <create-new-module></create-new-module>
+
         </div>
+        <hr>
+
+
+        <!-- create new module dialog -->
+        <!--        <div class="text-right pb-2 mt-2">-->
+
+        <!--        </div>-->
         <!-- // create new module dialog -->
         <div class="md:flex mb-4" v-if="modules.length">
             <div class="flex-none w-1/3 px-5">
@@ -39,6 +49,7 @@ export default {
     created() {
         this.$store.dispatch('requirement/setRequirementList',
             {project_id: this.projectId});
+        this.setProject();
         this.setQueryParameter();
     },
     computed: {
@@ -47,6 +58,10 @@ export default {
         }
     },
     methods: {
+        async setProject() {
+            const response = await projectRepository.find(this.projectId);
+            this.project = response.data.data;
+        },
         setQueryParameter() {
             if (this.$route.query.requirement) {
                 // if there is a query parameter on url then set display it

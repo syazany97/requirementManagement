@@ -2366,7 +2366,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4449,10 +4448,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../repositories/projectRepository */ "./resources/js/repositories/projectRepository.js");
-/* harmony import */ var _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../repositories/moduleRepository */ "./resources/js/repositories/moduleRepository.js");
-/* harmony import */ var _components_requirement_RequirementList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/requirement/RequirementList */ "./resources/js/components/requirement/RequirementList.vue");
-/* harmony import */ var _components_requirement_ShowRequirement__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/requirement/ShowRequirement */ "./resources/js/components/requirement/ShowRequirement.vue");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../repositories/projectRepository */ "./resources/js/repositories/projectRepository.js");
+/* harmony import */ var _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../repositories/moduleRepository */ "./resources/js/repositories/moduleRepository.js");
+/* harmony import */ var _components_requirement_RequirementList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/requirement/RequirementList */ "./resources/js/components/requirement/RequirementList.vue");
+/* harmony import */ var _components_requirement_ShowRequirement__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/requirement/ShowRequirement */ "./resources/js/components/requirement/ShowRequirement.vue");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4481,8 +4498,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Show",
   components: {
-    RequirementList: _components_requirement_RequirementList__WEBPACK_IMPORTED_MODULE_2__["default"],
-    ShowRequirement: _components_requirement_ShowRequirement__WEBPACK_IMPORTED_MODULE_3__["default"]
+    RequirementList: _components_requirement_RequirementList__WEBPACK_IMPORTED_MODULE_3__["default"],
+    ShowRequirement: _components_requirement_ShowRequirement__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   data: function data() {
     return {
@@ -4496,6 +4513,7 @@ __webpack_require__.r(__webpack_exports__);
     this.$store.dispatch('requirement/setRequirementList', {
       project_id: this.projectId
     });
+    this.setProject();
     this.setQueryParameter();
   },
   computed: {
@@ -4504,6 +4522,30 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    setProject: function setProject() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_1__["default"].find(_this.projectId);
+
+              case 2:
+                response = _context.sent;
+                _this.project = response.data.data;
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
     setQueryParameter: function setQueryParameter() {
       if (this.$route.query.requirement) {
         // if there is a query parameter on url then set display it
@@ -56308,6 +56350,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "mt-6" },
     [
       _c(
         "button",
@@ -58282,7 +58325,9 @@ var render = function() {
       staticClass: "container mx-auto py-6 px-4"
     },
     [
-      _c("h1", { staticClass: "h1" }, [_vm._v("Projects")]),
+      _c("h1", [_vm._v("Projects")]),
+      _vm._v(" "),
+      _c("hr"),
       _vm._v(" "),
       _c(
         "div",
@@ -58790,10 +58835,16 @@ var render = function() {
   return _c("div", { staticClass: "container mx-auto" }, [
     _c(
       "div",
-      { staticClass: "text-right pb-2 mt-2" },
-      [_c("create-new-module")],
+      { staticClass: "flex justify-between" },
+      [
+        _c("div", [_c("h1", [_vm._v(_vm._s(_vm.project.name))])]),
+        _vm._v(" "),
+        _c("create-new-module")
+      ],
       1
     ),
+    _vm._v(" "),
+    _c("hr"),
     _vm._v(" "),
     _vm.modules.length
       ? _c("div", { staticClass: "md:flex mb-4" }, [

@@ -209,8 +209,8 @@
  @apply bg-gray-100
 }
 
-.h1 {
-    @apply text-3xl py-4 border-b font-bold
+h1 {
+    @apply text-3xl py-4 border-b font-bold border-none
 }
 
 /* table */
