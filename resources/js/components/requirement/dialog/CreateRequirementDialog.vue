@@ -87,7 +87,7 @@
                 multiple
             ></vue-select>
 
-            <div class="inline-flex text-right pt-4 pb-5">
+            <div class="modal-button-alignment">
                 <button @click="closeDialog()" class="btn btn-tertiary pr-3">
                     <span>Cancel</span>
                 </button>

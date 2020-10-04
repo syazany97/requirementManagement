@@ -1,7 +1,7 @@
 
 /* BUTTON SECTION */
 .btn {
-    padding: 0.4rem 0.8rem;
+    padding: 0.4rem 0.6rem;
     font-weight: 500;
     font-size: 0.875rem;
     align-items: center;
@@ -236,6 +236,10 @@
 /* dialog */
 .default-dialog-size {
     /*@apply sm:w-full md:w-1/4*/
+}
+
+.modal-button-alignment {
+    @apply inline-flex text-right pt-5 pb-2 float-right
 }
 
 /* transition */

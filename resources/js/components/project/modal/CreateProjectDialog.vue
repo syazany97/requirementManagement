@@ -37,7 +37,7 @@
             :reduce="title => title.id"
         ></vue-select>
 
-        <div class="inline-flex text-right pt-4 float-right">
+        <div class="modal-button-alignment">
             <button @click="dialog = false" class="btn btn-tertiary pr-3">
                 <span>Cancel</span>
             </button>

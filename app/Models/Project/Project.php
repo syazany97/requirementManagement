@@ -12,6 +12,8 @@ class Project extends Model
 {
     use SoftDeletes;
 
+    protected $availableRelations = ['requirements', 'modules', 'user'];
+
     protected $fillable = ['name', 'description', 'project_status_id', 'uuid'];
 
     public function modules()

@@ -56432,7 +56432,7 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
-              _c("div", { staticClass: "inline-flex text-right pt-4" }, [
+              _c("div", { staticClass: "modal-button-alignment" }, [
                 _c(
                   "button",
                   {
@@ -56792,7 +56792,7 @@ var render = function() {
           }
         }),
         _vm._v(" "),
-        _c("div", { staticClass: "inline-flex text-right pt-4 float-right" }, [
+        _c("div", { staticClass: "modal-button-alignment" }, [
           _c(
             "button",
             {
@@ -57282,7 +57282,7 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("div", { staticClass: "inline-flex text-right pt-4 pb-5" }, [
+          _c("div", { staticClass: "modal-button-alignment" }, [
             _c(
               "button",
               {

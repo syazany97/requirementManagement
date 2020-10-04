@@ -3570,7 +3570,7 @@ video {
 /* BUTTON SECTION */
 
 .btn {
-  padding: 0.4rem 0.8rem;
+  padding: 0.4rem 0.6rem;
   font-weight: 500;
   font-size: 0.875rem;
   align-items: center;
@@ -3936,6 +3936,14 @@ video {
 
 .default-dialog-size {
   /*@apply sm:w-full md:w-1/4*/
+}
+
+.modal-button-alignment {
+  display: inline-flex;
+  text-align: right;
+  padding-top: 1.25rem;
+  padding-bottom: 0.5rem;
+  float: right;
 }
 
 /* transition */

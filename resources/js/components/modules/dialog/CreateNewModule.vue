@@ -37,7 +37,7 @@
                            v-model="moduleName"
                            id="moduleName" type="text" placeholder="Name">
 
-                    <div class="inline-flex text-right pt-4">
+                    <div class="modal-button-alignment">
                         <button @click="$modal.hide('moduleDialog')" class="btn btn-tertiary pr-3">
                             <span>Cancel</span>
                         </button>
