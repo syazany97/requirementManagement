@@ -25,7 +25,7 @@
                                        @close-requirement-dialog="closeRequirementDialog()" ></create-requirement-dialog>
         </modal>
 
-        <modal name="moduleDialog">
+        <modal :shiftY="0.2" name="moduleDialog" height="auto">
             <div class="container mx-auto py-2 overflow-y-auto">
                 <h1 class="default-dialog-title">Create new module</h1>
                 <hr>

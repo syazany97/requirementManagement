@@ -52,14 +52,16 @@
                             project
                         </button>
 
+                        <!-- Create Project Modal -->
                         <modal name="modalProjectDialog" class="sm:w-full md:w-1/4" :adaptive="true" :scrollable="true"
                                height="auto">
                             <create-project-dialog></create-project-dialog>
                         </modal>
+                        <!-- End create project modal -->
 
+                        <!-- Delete confirmation modal -->
                         <delete-confirmation-dialog object-type="Project" @delete="deleteProject"></delete-confirmation-dialog>
-
-
+                        <!-- End delete confirmation modal -->
 
                         <default-transition>
 

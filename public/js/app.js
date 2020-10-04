@@ -4249,6 +4249,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 
@@ -56344,79 +56346,83 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("modal", { attrs: { name: "moduleDialog" } }, [
-        _c("div", { staticClass: "container mx-auto py-2 overflow-y-auto" }, [
-          _c("h1", { staticClass: "default-dialog-title" }, [
-            _vm._v("Create new module")
-          ]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("div", { staticClass: "bg-white-100 px-4" }, [
-            _c(
-              "label",
-              { staticClass: "primary-label", attrs: { for: "moduleName" } },
-              [_vm._v("Module")]
-            ),
+      _c(
+        "modal",
+        { attrs: { shiftY: 0.2, name: "moduleDialog", height: "auto" } },
+        [
+          _c("div", { staticClass: "container mx-auto py-2 overflow-y-auto" }, [
+            _c("h1", { staticClass: "default-dialog-title" }, [
+              _vm._v("Create new module")
+            ]),
             _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.moduleName,
-                  expression: "moduleName"
-                }
-              ],
-              staticClass: "primary-input",
-              attrs: { id: "moduleName", type: "text", placeholder: "Name" },
-              domProps: { value: _vm.moduleName },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.moduleName = $event.target.value
-                }
-              }
-            }),
+            _c("hr"),
             _vm._v(" "),
-            _c("div", { staticClass: "inline-flex text-right pt-4" }, [
+            _c("div", { staticClass: "bg-white-100 px-4" }, [
               _c(
-                "button",
-                {
-                  staticClass: "btn btn-tertiary pr-3",
-                  on: {
-                    click: function($event) {
-                      return _vm.$modal.hide("moduleDialog")
-                    }
-                  }
-                },
-                [_c("span", [_vm._v("Cancel")])]
+                "label",
+                { staticClass: "primary-label", attrs: { for: "moduleName" } },
+                [_vm._v("Module")]
               ),
               _vm._v(" "),
-              _c("div", { staticClass: "divider" }),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  on: {
-                    click: function($event) {
-                      return _vm.addModule()
-                    }
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.moduleName,
+                    expression: "moduleName"
                   }
-                },
-                [
-                  _c("span", [
-                    _vm._v(_vm._s(_vm.adding ? "Creating" : "Create"))
-                  ])
-                ]
-              )
+                ],
+                staticClass: "primary-input",
+                attrs: { id: "moduleName", type: "text", placeholder: "Name" },
+                domProps: { value: _vm.moduleName },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.moduleName = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "inline-flex text-right pt-4" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-tertiary pr-3",
+                    on: {
+                      click: function($event) {
+                        return _vm.$modal.hide("moduleDialog")
+                      }
+                    }
+                  },
+                  [_c("span", [_vm._v("Cancel")])]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "divider" }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    on: {
+                      click: function($event) {
+                        return _vm.addModule()
+                      }
+                    }
+                  },
+                  [
+                    _c("span", [
+                      _vm._v(_vm._s(_vm.adding ? "Creating" : "Create"))
+                    ])
+                  ]
+                )
+              ])
             ])
           ])
-        ])
-      ])
+        ]
+      )
     ],
     1
   )
