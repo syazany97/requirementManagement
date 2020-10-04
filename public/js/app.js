@@ -58191,7 +58191,8 @@ var render = function() {
                       staticClass: "btn btn-primary float-right",
                       on: {
                         click: function($event) {
-                          return _vm.$modal.show("modalProjectDialog")
+                          _vm.hideAllDropdowns()
+                          _vm.$modal.show("modalProjectDialog")
                         }
                       }
                     },
@@ -58225,47 +58226,59 @@ var render = function() {
                         name: "confirmationDialog",
                         adaptive: true,
                         scrollable: true,
-                        height: "auto"
+                        shiftY: 0.3,
+                        height: "auto",
+                        width: "620px"
                       }
                     },
                     [
-                      _c("div", { staticClass: "card" }, [
-                        _c("h1", { staticClass: "default-dialog-title" }, [
-                          _vm._v("Add requirement")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", [
-                          _vm._v(
-                            "Are you sure you want to permanently delete this project? This cannot be undone"
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "inline-flex text-right pt-4 pb-5" },
-                          [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-tertiary pr-3",
-                                on: { click: function($event) {} }
-                              },
-                              [_c("span", [_vm._v("Cancel")])]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "divider" }),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-primary",
-                                on: { click: function($event) {} }
-                              },
-                              [_c("span", [_vm._v("Delete project")])]
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "container md:mx-auto sm:w-full py-2 overflow-y-auto"
+                        },
+                        [
+                          _c("h1", { staticClass: "default-dialog-title" }, [
+                            _vm._v("Delete project")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "px-4" }, [
+                            _vm._v(
+                              "Are you sure you want to permanently delete this project? This cannot be undone"
                             )
-                          ]
-                        )
-                      ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "inline-flex text-right px-4 pt-4 pb-5 float-right"
+                            },
+                            [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-tertiary pr-3",
+                                  on: { click: function($event) {} }
+                                },
+                                [_c("span", [_vm._v("Cancel")])]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "divider" }),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-primary",
+                                  on: { click: function($event) {} }
+                                },
+                                [_c("span", [_vm._v("Delete project")])]
+                              )
+                            ]
+                          )
+                        ]
+                      )
                     ]
                   ),
                   _vm._v(" "),

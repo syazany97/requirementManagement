@@ -48,7 +48,7 @@
 <!--                                                        <polyline points="6 9 12 15 18 9"/>-->
 <!--                                                    </svg>-->
 <!--                                                </button>-->
-                        <button @click="$modal.show('modalProjectDialog')" class="btn btn-primary float-right">Add
+                        <button @click="hideAllDropdowns(); $modal.show('modalProjectDialog')" class="btn btn-primary float-right">Add
                             project
                         </button>
 
@@ -58,11 +58,11 @@
                         </modal>
 
                         <modal name="confirmationDialog" class="sm:w-full md:w-1/4" :adaptive="true" :scrollable="true"
-                               height="auto">
-                            <div class="card">
-                                <h1 class="default-dialog-title">Add requirement</h1>
-                                <span>Are you sure you want to permanently delete this project? This cannot be undone</span>
-                                <div class="inline-flex text-right pt-4 pb-5">
+                               :shiftY="0.3" height="auto" width="620px">
+                            <div class="container md:mx-auto sm:w-full py-2 overflow-y-auto">
+                                <h1 class="default-dialog-title">Delete project</h1>
+                                <span class="px-4">Are you sure you want to permanently delete this project? This cannot be undone</span>
+                                <div class="inline-flex text-right px-4 pt-4 pb-5 float-right">
                                     <button @click="" class="btn btn-tertiary pr-3">
                                         <span>Cancel</span>
                                     </button>
