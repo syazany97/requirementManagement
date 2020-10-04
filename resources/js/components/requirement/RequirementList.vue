@@ -31,8 +31,8 @@
             <span class="icon" slot="addTreeNodeIcon">📂</span>
             <span class="icon" slot="addLeafNodeIcon">＋</span>
             <span class="icon" slot="editNodeIcon">📃</span>
-            <span class="icon" slot="delNodeIcon">✂</span>
-            <span class="icon" slot="leafNodeIcon">🍃</span>
+<!--            <span class="icon" slot="delNodeIcon">Edit</span>-->
+            <span class="icon" slot="leafNodeIcon"></span>
             <span class="icon" slot="treeNodeIcon">📂</span>
         </vue-tree-list>
 

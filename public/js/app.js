@@ -4612,6 +4612,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -56808,7 +56826,7 @@ var render = function() {
       _c(
         "label",
         { staticClass: "primary-label", attrs: { for: "search-requirement" } },
-        [_vm._v("\n        Search requirement and module\n    ")]
+        [_vm._v("\n            Search requirement and module\n        ")]
       ),
       _vm._v(" "),
       _c("input", {
@@ -56858,11 +56876,11 @@ var render = function() {
                 return [
                   _c("span", [
                     _vm._v(
-                      "\n      " +
+                      "\n          " +
                         _vm._s(slotProps.model.numbering) +
                         " " +
                         _vm._s(slotProps.model.name) +
-                        "\n    "
+                        "\n        "
                     )
                   ])
                 ]
@@ -56902,25 +56920,11 @@ var render = function() {
             [_vm._v("📃")]
           ),
           _vm._v(" "),
-          _c(
-            "span",
-            {
-              staticClass: "icon",
-              attrs: { slot: "delNodeIcon" },
-              slot: "delNodeIcon"
-            },
-            [_vm._v("✂")]
-          ),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
-              staticClass: "icon",
-              attrs: { slot: "leafNodeIcon" },
-              slot: "leafNodeIcon"
-            },
-            [_vm._v("🍃")]
-          ),
+          _c("span", {
+            staticClass: "icon",
+            attrs: { slot: "leafNodeIcon" },
+            slot: "leafNodeIcon"
+          }),
           _vm._v(" "),
           _c(
             "span",
@@ -56934,7 +56938,7 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("pre", [_vm._v("  " + _vm._s(_vm.newTree) + "\n")])
+      _c("pre", [_vm._v("      " + _vm._s(_vm.newTree) + "\n    ")])
     ],
     1
   )
@@ -58550,7 +58554,7 @@ var render = function() {
                         _c(
                           "button",
                           {
-                            staticClass: "btn-dropdown",
+                            staticClass: "btn-dropdown px-2 focus:outline-none",
                             on: {
                               click: function($event) {
                                 $event.stopPropagation()
@@ -58833,7 +58837,7 @@ var render = function() {
           _c(
             "label",
             { staticClass: "primary-label", attrs: { for: "test-case-title" } },
-            [_vm._v("\n        Title\n    ")]
+            [_vm._v("\n            Title\n        ")]
           ),
           _vm._v(" "),
           _c("input", {
@@ -58868,7 +58872,7 @@ var render = function() {
               staticClass: "primary-label",
               attrs: { for: "test-case-description" }
             },
-            [_vm._v("\n        Description\n    ")]
+            [_vm._v("\n            Description\n        ")]
           ),
           _vm._v(" "),
           _c("quill-editor", {
@@ -58889,7 +58893,7 @@ var render = function() {
               staticClass: "primary-label",
               attrs: { for: "test-case-preconditions" }
             },
-            [_vm._v("\n        Preconditions\n    ")]
+            [_vm._v("\n            Preconditions\n        ")]
           ),
           _vm._v(" "),
           _c("textarea", {
@@ -59182,17 +59186,17 @@ var render = function() {
             "div",
             { staticClass: "pt-5" },
             [
-              _c(
-                "ul",
-                { staticClass: "nav nav-pills" },
-                _vm._l(_vm.items, function(tab) {
-                  return _c("li", { staticClass: "nav-item" }, [
-                    _c(
+              _c("nav", { staticClass: "px-1 pt-2" }, [
+                _c(
+                  "div",
+                  { staticClass: "-mb-px flex justify-left" },
+                  _vm._l(_vm.items, function(tab) {
+                    return _c(
                       "a",
                       {
+                        staticClass: "tab",
                         class:
-                          "nav-link " +
-                          (_vm.currentTab === tab.props.is ? "active" : ""),
+                          _vm.currentTab === tab.props.is ? "active-tab" : "",
                         attrs: { href: "#" },
                         on: {
                           click: function($event) {
@@ -59201,36 +59205,35 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v(_vm._s(tab.tab))]
+                      [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(tab.tab) +
+                            "\n                    "
+                        )
+                      ]
                     )
-                  ])
-                }),
-                0
-              ),
+                  }),
+                  0
+                )
+              ]),
               _vm._v(" "),
               _vm._l(_vm.items, function(tab) {
                 return _c(
                   "div",
                   { key: tab.props.is },
                   [
-                    _c(
-                      "component",
-                      _vm._b(
+                    _c(tab.props, {
+                      directives: [
                         {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.currentTab === tab.props.is,
-                              expression: "currentTab === tab.props.is"
-                            }
-                          ]
-                        },
-                        "component",
-                        tab.props,
-                        false
-                      )
-                    )
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.currentTab === tab.props.is,
+                          expression: "currentTab === tab.props.is"
+                        }
+                      ],
+                      tag: "component"
+                    })
                   ],
                   1
                 )

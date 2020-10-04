@@ -129,7 +129,7 @@
                     <td class="default-row">
                         <!--                                								<button class="border-opacity-100 hover:bg-red hover:border-grey-300 rounded">-->
                         <button @click.stop="showDropdown(index)"
-                                class="btn-dropdown">
+                                class="btn-dropdown px-2 focus:outline-none">
                             <svg viewBox="0 0 20 20" fill="currentColor" class="dots-horizontal w-6 h-6 px-1">
                                 <path
                                     d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
