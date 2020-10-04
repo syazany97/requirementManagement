@@ -1,6 +1,6 @@
 <template>
 
-    <modal name="confirmationDialog" class="sm:w-full md:w-1/4" :adaptive="true" :scrollable="true"
+    <modal name="deleteConfirmationDialog" class="sm:w-full md:w-1/4" :adaptive="true" :scrollable="true"
            :shiftY="0.3" height="auto" width="620px">
         <div class="container md:mx-auto sm:w-full py-2 overflow-y-auto">
             <h1 class="default-dialog-title">Delete {{ type }}</h1>

@@ -2180,10 +2180,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TopBar",
   data: function data() {
@@ -2732,6 +2728,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3157,6 +3160,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -3166,7 +3170,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CreateRequirementDialog",
   props: {
-    requirementDialog: Boolean
+    requirementDialog: Boolean,
+    requirementProp: {
+      type: Object,
+      "default": function _default() {}
+    }
   },
   components: {
     quillEditor: vue_quill_editor__WEBPACK_IMPORTED_MODULE_6__["quillEditor"]
@@ -3202,6 +3210,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   created: function created() {
+    if (this.requirementProp !== null && this.requirementProp !== undefined) {
+      this.setRequirement();
+    }
+
     this.fetchUsers();
     this.fetchRequirementStatuses();
   },
@@ -3261,6 +3273,38 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee, null, [[0, 9, 12, 15]]);
+      }))();
+    },
+    setRequirement: function setRequirement() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return _repositories_requirementRepository__WEBPACK_IMPORTED_MODULE_1__["default"].find(_this2.requirementProp.id);
+
+              case 3:
+                response = _context2.sent;
+                _this2.requirement = response.data.data;
+                _context2.next = 10;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+                console.log('error', _context2.t0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 7]]);
       }))();
     },
     closeDialog: function closeDialog() {
@@ -4347,21 +4391,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _this2.fetchProjects();
 
               case 6:
+                _this2.$modal.hide('deleteConfirmationDialog');
+
                 console.log('delete project', response);
-                _context2.next = 12;
+                _context2.next = 13;
                 break;
 
-              case 9:
-                _context2.prev = 9;
+              case 10:
+                _context2.prev = 10;
                 _context2.t0 = _context2["catch"](0);
                 console.log('error', _context2.t0);
 
-              case 12:
+              case 13:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 9]]);
+        }, _callee2, null, [[0, 10]]);
       }))();
     },
     showDropdown: function showDropdown(projectIndex) {
@@ -55999,30 +56045,10 @@ var render = function() {
                                       "a",
                                       {
                                         staticClass:
-                                          "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
+                                          "block w-full text-left px-4 py-2 text-md leading-5 hover:bg-gray-100\n                                                        hover:text-gray-900 text-color-purple focus:outline-none font-medium focus:bg-gray-100 focus:text-gray-900",
                                         attrs: { href: "#", role: "menuitem" }
                                       },
-                                      [_vm._v("Account settings")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass:
-                                          "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
-                                        attrs: { href: "#", role: "menuitem" }
-                                      },
-                                      [_vm._v("Support")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass:
-                                          "block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
-                                        attrs: { href: "#", role: "menuitem" }
-                                      },
-                                      [_vm._v("License")]
+                                      [_vm._v("Profile")]
                                     ),
                                     _vm._v(" "),
                                     _c(
@@ -56046,7 +56072,7 @@ var render = function() {
                                           "button",
                                           {
                                             staticClass:
-                                              "block w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
+                                              "block w-full text-left px-4 py-2 text-md leading-5 hover:bg-gray-100\n                                                        hover:text-gray-900 text-color-purple focus:outline-none font-medium focus:bg-gray-100 focus:text-gray-900",
                                             attrs: {
                                               type: "submit",
                                               role: "menuitem"
@@ -56197,7 +56223,7 @@ var render = function() {
     {
       staticClass: "sm:w-full md:w-1/4",
       attrs: {
-        name: "confirmationDialog",
+        name: "deleteConfirmationDialog",
         adaptive: true,
         scrollable: true,
         shiftY: 0.3,
@@ -56924,12 +56950,6 @@ var render = function() {
             [_vm._v("📃")]
           ),
           _vm._v(" "),
-          _c("span", {
-            staticClass: "icon",
-            attrs: { slot: "leafNodeIcon" },
-            slot: "leafNodeIcon"
-          }),
-          _vm._v(" "),
           _c(
             "span",
             {
@@ -56938,8 +56958,13 @@ var render = function() {
               slot: "treeNodeIcon"
             },
             [_vm._v("📂")]
-          )
-        ]
+          ),
+          _vm._v(" "),
+          _c("template", { slot: "test" }, [_c("button", [_vm._v("TESt")])]),
+          _vm._v(" "),
+          _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Edit")])
+        ],
+        2
       ),
       _vm._v(" "),
       _c("pre", [_vm._v("      " + _vm._s(_vm.newTree) + "\n    ")])
@@ -58648,7 +58673,7 @@ var render = function() {
                                                     project.id
                                                   _vm.hideAllDropdowns()
                                                   _vm.$modal.show(
-                                                    "confirmationDialog"
+                                                    "deleteConfirmationDialog"
                                                   )
                                                 }
                                               }

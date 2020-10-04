@@ -3584,6 +3584,10 @@ video {
   color: #fff;
 }
 
+.text-color-purple {
+  color: rgb(84, 105, 212);
+}
+
 .btn-icon {
   padding-left: 0.3rem;
 }

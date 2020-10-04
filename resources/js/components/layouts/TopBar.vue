@@ -92,18 +92,14 @@
                                         <div class="py-1" role="menu" aria-orientation="vertical"
                                              aria-labelledby="options-menu">
                                             <a href="#"
-                                               class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
-                                               role="menuitem">Account settings</a>
-                                            <a href="#"
-                                               class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
-                                               role="menuitem">Support</a>
-                                            <a href="#"
-                                               class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
-                                               role="menuitem">License</a>
+                                               class="block w-full text-left px-4 py-2 text-md leading-5 hover:bg-gray-100
+                                                        hover:text-gray-900 text-color-purple focus:outline-none font-medium focus:bg-gray-100 focus:text-gray-900"
+                                               role="menuitem">Profile</a>
                                             <form method="POST" action="/logout">
                                                 <input type="hidden" name="_token" :value="csrf">
                                                 <button type="submit"
-                                                        class="block w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                                                        class="block w-full text-left px-4 py-2 text-md leading-5 hover:bg-gray-100
+                                                        hover:text-gray-900 text-color-purple focus:outline-none font-medium focus:bg-gray-100 focus:text-gray-900"
                                                         role="menuitem">
                                                     Sign out
                                                 </button>

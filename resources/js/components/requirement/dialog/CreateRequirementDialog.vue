@@ -31,7 +31,8 @@
                 Hours to complete
             </label>
 
-            <input v-model="requirement.hours_to_complete" type="number" class="primary-input" name="hours_to_complete" id="hours_to_complete">
+            <input v-model="requirement.hours_to_complete" type="number" class="primary-input" name="hours_to_complete"
+                   id="hours_to_complete">
 
 
             <label class="primary-label" for="grid-module-id">
@@ -112,7 +113,12 @@ import {quillEditor} from 'vue-quill-editor'
 export default {
     name: "CreateRequirementDialog",
     props: {
-        requirementDialog: Boolean
+        requirementDialog: Boolean,
+        requirementProp: {
+            type: Object,
+            default: () => {
+            }
+        }
     },
     components: {
         quillEditor
@@ -126,7 +132,7 @@ export default {
                 requirement_status_id: null,
                 requirement_priority_id: null,
                 module_id: null,
-                hours_to_complete : 1
+                hours_to_complete: 1
             },
             addingRequirement: false
         }
@@ -147,6 +153,9 @@ export default {
         },
     },
     created() {
+        if (this.requirementProp !== null && this.requirementProp !== undefined) {
+            this.setRequirement();
+        }
         this.fetchUsers();
         this.fetchRequirementStatuses();
     },
@@ -178,6 +187,17 @@ export default {
             } finally {
                 this.addingRequirement = false;
             }
+        },
+        async setRequirement() {
+          try {
+              const response = await requirementRepository.find(this.requirementProp.id);
+              this.requirement = response.data.data;
+
+          } catch(e) {
+              console.log('error', e);
+          }
+
+
         },
         closeDialog() {
             this.requirement.name = "";

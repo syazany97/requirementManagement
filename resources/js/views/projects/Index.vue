@@ -148,7 +148,7 @@
                                            class="block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100
                                            hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0"
                                            role="menuitem">Account settings</a>
-                                        <a @click.stop="currentProjectId = project.id; hideAllDropdowns(); $modal.show('confirmationDialog');" href="#"
+                                        <a @click.stop="currentProjectId = project.id; hideAllDropdowns(); $modal.show('deleteConfirmationDialog');" href="#"
                                            class="block px-4 py-2 text-sm leading-5 text-red-700
                                            font-medium
                                            hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
@@ -261,6 +261,7 @@ export default {
             try {
                 const response = await projectRepository.delete(this.currentProjectId);
                 await this.fetchProjects();
+                this.$modal.hide('deleteConfirmationDialog');
                 console.log('delete project', response);
             } catch (e) {
                 console.log('error', e);

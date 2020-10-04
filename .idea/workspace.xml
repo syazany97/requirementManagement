@@ -20,7 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58239c8f-5f70-4482-9e45-1dcb473cf0d8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/addOn.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/addOn.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/TopBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/TopBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/modal/DeleteConfirmationDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/modal/DeleteConfirmationDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/requirement/RequirementList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/requirement/RequirementList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/requirement/dialog/CreateRequirementDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/requirement/dialog/CreateRequirementDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/projects/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/projects/Index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +208,7 @@
       <option name="presentableId" value="Default" />
       <updated>1601729188027</updated>
       <workItem from="1601729189263" duration="8142000" />
-      <workItem from="1601779964712" duration="5865000" />
+      <workItem from="1601779964712" duration="10137000" />
     </task>
     <servers />
   </component>
@@ -228,9 +236,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="668" y="237" width="583" height="566" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601783897613" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601785873512">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601796047253">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601785873512" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601796047253" />
   </component>
 </project>
