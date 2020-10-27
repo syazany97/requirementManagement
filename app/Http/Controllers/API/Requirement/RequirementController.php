@@ -16,6 +16,8 @@ class RequirementController extends Controller
     {
         $requirement = $module->requirements()->create($request->validated());
 
+        if (!$requirement instanceof Requirement) return null;
+
         if (!empty($request->validated()['assignees'])) {
             foreach ($request->validated()['assignees'] as $assignee) {
                 $requirement->assignees()->attach(['assignee_id' => $assignee]);
@@ -37,6 +39,10 @@ class RequirementController extends Controller
 
     public function destroy(Requirement $requirement)
     {
-        $requirement->delete();
+        try {
+            $requirement->delete();
+        } catch (\Exception $e) {
+            return $e;
+        }
     }
 }

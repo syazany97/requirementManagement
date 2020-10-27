@@ -27,6 +27,7 @@ class RequirementCreateRequest extends FormRequest
             'name' => ['required'],
             'description' => ['required'],
 //            'numbering' => ['required'],
+            'hours_to_complete' => ['required', 'numeric'],
             'assignees' => ['array', 'present'],
             'assignees.id' => ['exists:users,id'],
             'requirement_priority_id' => ['required', 'exists:requirement_priorities,id'],

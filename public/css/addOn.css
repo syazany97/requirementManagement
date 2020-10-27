@@ -1,5 +1,12 @@
+
+/* BUTTON SECTION */
 .btn {
-   @apply font-medium py-1 px-4 rounded inline-flex items-center text-sm
+    padding: 0.3rem 0.6rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    align-items: center;
+    display: inline-flex;
+    border-radius: 0.25rem;
 }
 
 .btn-primary {
@@ -11,33 +18,57 @@
     rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
-    @apply .btn text-white ;
+    color: #fff;
+}
+
+.text-color-purple {
+    color : rgb(84, 105, 212);
+}
+
+.btn-icon {
+    padding-left : 0.3rem;
 }
 
 .btn-primary:hover {
-    @apply bg-blue-700 .btn
+    background-color: #2b6cb0;
 }
 
 .btn-secondary {
-    @apply bg-gray-300 text-gray-800 .btn
+    @apply bg-gray-300 text-gray-800
 }
 
 .btn-secondary:hover {
     @apply bg-gray-400
 }
 
+.btn-disabled {
+    @apply opacity-50 cursor-not-allowed
+}
+
 .btn-tertiary {
-    @apply text-gray-800 .btn
+    @apply text-gray-800
 }
 
 .btn-tertiary:hover {
     @apply bg-gray-400
 }
 
+.btn-dropdown {
+    @apply  border-transparent rounded border
+}
+
+.btn-dropdown:hover {
+    @apply bg-white border-gray-400
+}
+
+/* BUTTON ENDS */
+
+/* INPUT AND FORM */
+
 .primary-input {
     @apply appearance-none hidden border block w-full bg-gray-100
-    text-gray-700 border rounded py-1 border-gray-400
-    px-4 leading-tight
+    text-gray-800 border rounded py-1 border-gray-400
+    px-4 py-2 leading-tight
 }
 
 .primary-input:focus {
@@ -48,22 +79,28 @@
     @apply bg-gray-200
 }
 
+
 .primary-label {
-    @apply block tracking-wide text-gray-700 text-sm font-medium mb-2 pt-4 text-left
+    @apply block tracking-wide text-black text-sm font-medium mb-2 pt-5 text-left
 }
 
 .primary-text-area {
-    @apply resize border rounded
+    @apply resize border rounded border leading-normal w-full h-24 py-2 px-3
 }
 
 .primary-text-area:focus {
     @apply shadow-outline outline-none py-2
 }
 
+.primary-rich-text {
+    min-height : 200px;
+    @apply rounded
+}
+
 .description {
     float: left;
     width: 100%;
-    height: auto;
+    /*height: auto;*/
 }
 
 .text-input {
@@ -85,11 +122,14 @@
     @apply bg-white
 }
 
+/* INPUT AND FORM ENDS */
+
 .divider {
-    width:3px;
+    width:5px;
     height:auto;
     display:inline-block;
 }
+
 
 .primary-tabs {
     font-size: 0.9rem;
@@ -127,11 +167,30 @@
 }
 
 .tab {
-    @apply no-underline text-gray-700 border-b-2 border-transparent tracking-wide font-bold text-xs py-3 mr-8
+    border-bottom-width: 3px;
+    @apply no-underline text-gray-700 border-transparent tracking-wide font-semibold py-3 mr-8
+}
+
+@screen sm {
+    .tab {
+        @apply text-lg
+    }
+}
+
+@screen md {
+    .tab {
+        font-size: 1.125rem;
+    }
+}
+
+@screen lg {
+    .tab {
+        font-size: 0.875rem;
+    }
 }
 
 .active-tab {
-    @apply .tab text-purple-700 border-purple-700
+    @apply text-purple-700 border-purple-700
 }
 
 .tab:hover {
@@ -150,8 +209,8 @@
  @apply bg-gray-100
 }
 
-.h1 {
-    @apply text-3xl py-4 border-b font-bold mb-10
+h1 {
+    @apply text-2xl py-4 border-b font-bold border-none
 }
 
 /* table */
@@ -161,6 +220,38 @@
 
 .default-header {
     @apply bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs
+}
+
+/*TODO : set rounded rich text area by uncomment border-radius*/
+.ql-container.ql-snow {
+    border: none;
+    /*border-radius: 5px;*/
+    height: 150px;
+}
+
+.default-dialog-title {
+    @apply font-medium px-4
+}
+
+/* dialog */
+.default-dialog-size {
+    /*@apply sm:w-full md:w-1/4*/
+}
+
+.modal-button-alignment {
+    @apply inline-flex text-right pt-5 pb-2 float-right
+}
+
+.contextual-popover-content {
+    right: 20px;
+    position : absolute;
+    /*margin-top : 0.5rem;*/
+    width : 14rem;
+    background-color: white;
+    --bg-opacity: 1;
+    border-radius : 0.375rem;
+    z-index : 20;
+    box-shadow : 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 /* transition */

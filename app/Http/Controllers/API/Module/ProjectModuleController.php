@@ -15,18 +15,16 @@ class ProjectModuleController extends Controller
 {
     public function index(Project $project)
     {
-        return ModuleResource::collection(Module::completeInformation($project->id)->get());
+        return ModuleResource::collection(Module::where('project_id', $project->id)
+            ->completeInformation()
+            ->get());
     }
 
     public function store(Project $project, ModuleCreateRequest $request)
     {
         $latestModule = $project->modules->sortByDesc('numbering')->first();
 
-        if($latestModule) {
-            $numbering = intval($latestModule->numbering) + 1;
-        } else {
-            $numbering = 1.0;
-        }
+        $numbering = $latestModule ? intval($latestModule->numbering) + 1 : 1.0;
 
         return new ModuleResource($project->modules()->create(array_merge($request->validated(),
             ['numbering' => $numbering])));
@@ -40,6 +38,7 @@ class ProjectModuleController extends Controller
     public function update(ModuleUpdateRequest $request, Module $module)
     {
         $module->update($request->validated());
+
         return new ModuleResource($module);
     }
 

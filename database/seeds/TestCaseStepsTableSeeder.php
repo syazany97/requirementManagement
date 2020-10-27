@@ -26,7 +26,7 @@ class TestCaseStepsTableSeeder extends Seeder
             $testCase = [
                 'requirement_id' => $requirementsId[$i],
                 'user_id' => $usersId->random(),
-                'title' => $faker->text(),
+                'title' => 'Test Case : Allow to set log in page',
                 'preconditions' => $faker->text(),
                 'description' => $faker->realText(),
                 'execution_date' => now(),
@@ -50,6 +50,7 @@ class TestCaseStepsTableSeeder extends Seeder
                 $step = [
                     'test_case_id' => $testCaseId[$i],
                     'description' => $faker->realText(),
+                    'order' => $j + 1,
                     'expected_result' => $faker->realText(),
                     'input' => $faker->realText(),
                     'is_passed' => $boolean->random(),

@@ -28,7 +28,7 @@ class TestCase extends Model
 
     public function steps()
     {
-        return $this->hasMany(TestCaseSteps::class, 'test_case_id');
+        return $this->hasMany(TestCaseStep::class, 'test_case_id');
     }
 
     public function user()

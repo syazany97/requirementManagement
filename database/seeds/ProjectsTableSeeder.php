@@ -21,14 +21,12 @@ class ProjectsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $usersId = User::pluck('id')->toArray();
-
         for ($i = 0; $i < 3; $i++) {
             Project::create([
                 'name' => $faker->catchPhrase,
                 'uuid' => Str::uuid()->toString(),
                 'description' => $faker->realText,
-                'user_id' => $usersId[rand(0, count($usersId) - 1)],
+                'user_id' => 1,
                 'project_status_id' => ProjectStatus::first()->id]);
         }
     }

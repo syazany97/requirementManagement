@@ -1,94 +1,100 @@
 <template>
-    <div class="container mx-auto px-4 py-4 overflow-y-auto">
+    <div class="container mx-auto py-2 overflow-y-auto">
 
-        <h1 class="headline text-left">Create new project</h1>
+        <div class="py-2">
+            <span class="default-dialog-title">Create new project</span>
+        </div>
 
-        <label class="primary-label" for="projectName">
-            Name
-        </label>
+        <hr>
 
-        <input class="primary-input"
-               v-model="projectName"
-               id="projectName" name="projectName"
-               type="text" placeholder="Name">
+        <div class="bg-white px-4">
+            <label class="primary-label" for="projectName">
+                Name
+            </label>
 
-        <label class="primary-label" for="projectDescription">
-            Description
-        </label>
+            <input class="primary-input"
+                   v-model="projectName"
+                   id="projectName" name="projectName"
+                   type="text" placeholder="Name">
 
-        <input class="primary-input"
-               v-model="projectDescription"
-               id="projectDescription" name="projectDescription"
-               type="text" placeholder="Description">
+            <label class="primary-label" for="projectDescription">
+                Description
+            </label>
 
-        <label class="primary-label" for="projectStatus">
-            Project Status
-        </label>
+            <input class="primary-input"
+                   v-model="projectDescription"
+                   id="projectDescription" name="projectDescription"
+                   type="text" placeholder="Description">
 
-        <vue-select
-            v-model="projectStatusId"
-            name="projectStatus"
-            id="projectStatus"
-            :options="projectStatuses"
-            label="title"
-            :reduce="title => title.id"
-        ></vue-select>
+            <label class="primary-label" for="projectStatus">
+                Project Status
+            </label>
 
-        <div class="inline-flex text-right pt-4">
-            <button @click="dialog = false" class="btn-tertiary pr-3">
-                <span>Cancel</span>
-            </button>
-            <div class="divider"></div>
-            <button @click="createProject()" class="btn-primary">
-                <span>Create</span>
-            </button>
+            <vue-select
+                v-model="projectStatusId"
+                name="projectStatus"
+                id="projectStatus"
+                :options="projectStatuses"
+                label="title"
+                :reduce="title => title.id"
+            ></vue-select>
+
+            <div class="modal-button-alignment">
+                <button @click="dialog = false" class="btn btn-tertiary pr-3">
+                    <span>Cancel</span>
+                </button>
+                <div class="divider"></div>
+                <button @click="createProject()" class="btn btn-primary">
+                    <span>Create</span>
+                </button>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-    import projectRepository from "../../../repositories/projectRepository";
+import projectRepository from "../../../repositories/projectRepository";
 
-    export default {
-        name: "CreateProjectDialog",
-        data() {
-            return {
-                valid: true,
-                projectName: "",
-                projectDescription: "",
-                projectStatusId: "",
-                projectStatuses: []
-            }
+export default {
+    name: "CreateProjectDialog",
+    data() {
+        return {
+            valid: true,
+            projectName: "",
+            projectDescription: "",
+            projectStatusId: "",
+            projectStatuses: []
+        }
+    },
+    created() {
+        this.fetchProjectStatuses()
+    },
+    methods: {
+        createProject() {
+            projectRepository.store({
+                name: this.projectName,
+                description: this.projectDescription,
+                project_status_id: this.projectStatusId
+            }).then(res => {
+                this.$emit('fetch-projects', 'fetchProjects');
+                this.projectName = "";
+                this.projectStatusId = "";
+                this.projectDescription = "";
+                const payload = {
+                    variant: "success",
+                    message: "Project Created"
+                };
+                this.$store.commit("notification/showNotification", payload);
+            }).catch(err => {
+                console.log(err.response.data.errors);
+            })
         },
-        created() {
-            this.fetchProjectStatuses()
-        },
-        methods: {
-            createProject() {
-                projectRepository.store({
-                    name: this.projectName,
-                    description: this.projectDescription,
-                    project_status_id: this.projectStatusId
-                }).then(res => {
-                    this.$emit('fetch-projects', 'fetchProjects');
-                    this.projectName = "";
-                    this.projectStatusId = "";
-                    this.projectDescription = "";
-                    const payload = {
-                        variant: "success",
-                        message: "Project Created"
-                    };
-                    this.$store.commit("notification/showNotification", payload);
-                }).catch(err => {
-                    console.log(err.response.data.errors);
-                })
-            },
-            async fetchProjectStatuses() {
-                const response = await projectRepository.getProjectStatuses();
-                this.projectStatuses = response.data;
-            }
-        },
-    }
+        async fetchProjectStatuses() {
+            const response = await projectRepository.getProjectStatuses();
+            this.projectStatuses = response.data;
+        }
+    },
+}
 </script>
 
 <style scoped>

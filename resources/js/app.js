@@ -4,10 +4,7 @@ import VueToast from "vue-toast-notification";
 import {routes} from "./routes";
 import VueRouter from "vue-router";
 import Vuex from "vuex";
-// import Vuetify from 'vuetify/lib';
-// import Vuetify from "vuetify";
 import VModal from 'vue-js-modal'
-// import 'vuetify/dist/vuetify.min.css';
 import notification from "./vuex-modules/notification";
 import VueTreeList from 'vue-tree-list';
 import requirement from "./vuex-modules/requirement";

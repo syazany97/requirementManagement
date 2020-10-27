@@ -23,6 +23,7 @@ class RequirementResource extends JsonResource
             'type' => Str::singular($this->getTable()),
             'description' => $this->description,
             'priority_id' => $this->requirement_priority_id,
+            'hours_to_complete' => $this->hours_to_complete,
             'priority' => $this->whenLoaded('priority'),
             'name' => $this->name,
             'module_id' => $this->module_id,

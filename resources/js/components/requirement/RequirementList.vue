@@ -31,9 +31,16 @@
             <span class="icon" slot="addTreeNodeIcon">📂</span>
             <span class="icon" slot="addLeafNodeIcon">＋</span>
             <span class="icon" slot="editNodeIcon">📃</span>
-            <span class="icon" slot="delNodeIcon">✂</span>
-            <span class="icon" slot="leafNodeIcon">🍃</span>
+<!--            <span class="icon" slot="delNodeIcon">Edit</span>-->
+<!--            <span class="icon" slot="leafNodeIcon"></span>-->
             <span class="icon" slot="treeNodeIcon">📂</span>
+<!--            <template v-slot:editNodeIcon="slotProps">-->
+<!--                <button class="btn btn-primary">Edit</button>-->
+<!--            </template>-->
+            <template slot="test">
+                <button>TESt</button>
+            </template>
+            <button class="btn btn-primary">Edit</button>
         </vue-tree-list>
 
 
@@ -125,6 +132,12 @@ export default {
 
                     if (result.type === 'module') result.isLeaf = false;
 
+                    result.addTreeNodeDisabled = true;
+                    result.addLeafNodeDisable = true;
+                    result.addLeafNodeDisabled = true;
+                    // result.editNodeDisabled = true;
+                    result.delNodeDisabled = true;
+
                     let currentKey = keysMap[key] || key; // if the key is in keysMap use the replacement, if not use the original key
 
                     result[currentKey] = _.isObject(value) ? replaceKeysDeep(value, keysMap) : value;
@@ -150,7 +163,7 @@ export default {
 
         onClick(params) {
             if (params.type === 'requirement') {
-                console.log(this.$route);
+                console.log('node', params);
                 history.replaceState(
                     {requirement: params.id},
                     null,

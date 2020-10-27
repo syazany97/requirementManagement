@@ -1,6 +1,5 @@
 <template>
-    <div v-if="histories.length">
-        <h1>Histories List</h1>
+    <div class="pt-3" v-if="histories.length">
         <div v-for="history in histories" v-bind:key="history.id">
             <span>{{ history.description }}</span>
             <span>{{ get(history, 'user', "") }}</span>

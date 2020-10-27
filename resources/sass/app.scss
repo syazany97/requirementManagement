@@ -11,9 +11,13 @@
 
 
 //@import '~vuetify/dist/vuetify';
-
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.snow.css';
+@import '~quill/dist/quill.bubble.css';
 @import "~tailwindcss/utilities";
 @import "~vue-select/src/scss/vue-select.scss";
+
+
 // Bootstrap
 //@import '~bootstrap/scss/bootstrap';
 

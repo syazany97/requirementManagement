@@ -1,11 +1,13 @@
 <template>
-    <div class="container mx-auto py-2 overflow-y-auto">
+    <div class="container md:mx-auto sm:w-full py-2 overflow-y-auto">
 
-        <h1 class="headline text-left font-medium px-4 py-4">Create new requirement</h1>
+        <div class="py-4">
+            <span class="default-dialog-title">Add requirement</span>
+        </div>
 
         <hr>
 
-        <div class="bg-white-100 px-4">
+        <div class="bg-white px-4">
 
             <label class="primary-label" for="grid-name">
                 Name
@@ -20,12 +22,20 @@
             </label>
 
             <vue-select :options="priorities"
-                        class="bg-gray-100"
+                        class="primary-select"
                         v-model="requirement.requirement_priority_id"
                         id="grid-priority"
                         label="name"
                         :reduce="name => name.id">
             </vue-select>
+
+            <label class="primary-label" for="hours_to_complete">
+                Hours to complete
+            </label>
+
+            <input v-model="requirement.hours_to_complete" type="number" class="primary-input" name="hours_to_complete"
+                   id="hours_to_complete">
+
 
             <label class="primary-label" for="grid-module-id">
                 Under which module
@@ -34,6 +44,7 @@
             <vue-select
                 v-model="requirement.module_id"
                 id="grid-module-id"
+                class="primary-select"
                 :options="modules"
                 label="name"
                 :reduce="name => name.id"
@@ -46,6 +57,7 @@
             <vue-select
                 v-model="requirement.requirement_status_id"
                 :options="statuses"
+                class="primary-select"
                 label="name"
                 :reduce="name => name.id"
                 id="grid-status"
@@ -56,13 +68,12 @@
                 Description
             </label>
 
-            <div class="description">
-                <quill-editor id="grid-description"
-                              v-model="requirement.description"
-                              class="primary-text-area text-input">
+            <quill-editor id="grid-description"
+                          height="200"
+                          v-model="requirement.description"
+                          class="primary-rich-text">
 
-                </quill-editor>
-            </div>
+            </quill-editor>
 
             <label class="primary-label" for="grid-assignees">
                 Assignees
@@ -71,18 +82,19 @@
             <vue-select
                 v-model="requirement.assignees"
                 id="grid-assignees"
+                class="primary-select"
                 :options="users"
                 label="name"
                 :reduce="name => name.id"
                 multiple
             ></vue-select>
 
-            <div class="inline-flex text-right pt-4">
-                <button @click="closeDialog()" class="btn-tertiary pr-3">
+            <div class="modal-button-alignment">
+                <button @click="closeDialog()" class="btn btn-tertiary pr-3">
                     <span>Cancel</span>
                 </button>
                 <div class="divider"></div>
-                <button @click="addRequirement()" class="btn-primary">
+                <button @click="addRequirement()" class="btn btn-primary">
                     <span>{{ addingRequirement ? 'Creating' : 'Create' }}</span>
                 </button>
             </div>
@@ -103,7 +115,12 @@ import {quillEditor} from 'vue-quill-editor'
 export default {
     name: "CreateRequirementDialog",
     props: {
-        requirementDialog: Boolean
+        requirementDialog: Boolean,
+        requirementProp: {
+            type: Object,
+            default: () => {
+            }
+        }
     },
     components: {
         quillEditor
@@ -117,6 +134,7 @@ export default {
                 requirement_status_id: null,
                 requirement_priority_id: null,
                 module_id: null,
+                hours_to_complete: 1
             },
             addingRequirement: false
         }
@@ -137,6 +155,9 @@ export default {
         },
     },
     created() {
+        if (this.requirementProp !== null && this.requirementProp !== undefined) {
+            this.setRequirement();
+        }
         this.fetchUsers();
         this.fetchRequirementStatuses();
     },
@@ -169,6 +190,17 @@ export default {
                 this.addingRequirement = false;
             }
         },
+        async setRequirement() {
+            try {
+                const response = await requirementRepository.find(this.requirementProp.id);
+                this.requirement = response.data.data;
+
+            } catch (e) {
+                console.log('error', e);
+            }
+
+
+        },
         closeDialog() {
             this.requirement.name = "";
             this.requirement.description = "";
@@ -176,7 +208,7 @@ export default {
             this.requirement.requirement_status_id = null;
             this.requirement.requirement_priority_id = null;
             this.requirement.module_id = null;
-            this.$emit('update:requirementDialog', false)
+            this.$emit('close-requirement-dialog')
         }
     },
 }
