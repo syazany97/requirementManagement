@@ -1,5 +1,5 @@
 <template>
-    <div v-click-outside="hideAllDropdowns" class="container mx-auto py-6 px-4">
+    <div class="container mx-auto py-6 px-4">
         <h1>Projects</h1>
         <hr>
         <!--        <div class="flex pt-2">-->
@@ -126,10 +126,10 @@
                                                                 >{{ project.created_at | formatDateTime }}</span>
                     </td>
 
-                    <td class="default-row">
+                    <td  v-click-outside="hideAllDropdowns" class="default-row">
                         <!--                                								<button class="border-opacity-100 hover:bg-red hover:border-grey-300 rounded">-->
                         <button @click.stop="showDropdown(index)"
-                                class="btn-dropdown px-2 focus:outline-none">
+                                class="btn-dropdown px-1 focus:outline-none">
                             <svg viewBox="0 0 20 20" fill="currentColor" class="dots-horizontal w-6 h-6 px-1">
                                 <path
                                     d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
@@ -139,11 +139,10 @@
 
                         <default-transition>
                             <div v-if="isOpen[index]"
-                                 class="absolute cross-origin-top-right mt-2 w-56 bg-white rounded-md shadow-xl z-20">
-                                <div class="ContextualPopover-arrow"></div>
+                                 class="contextual-popover-content cross-origin-top-right">
+<!--                                <div class="ContextualPopover-arrow"></div>-->
                                 <div class="rounded-md bg-white bg-opacity-0 shadow-xs">
-                                    <div class="py-1" role="menu" aria-orientation="vertical"
-                                         aria-labelledby="options-menu">
+                                    <div class="py-1" role="menu" aria-orientation="vertical"aria-labelledby="options-menu">
                                         <a href="#"
                                            class="block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100
                                            hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0"
@@ -298,8 +297,11 @@ export default {
 .ContextualPopover-arrow {
     z-index: 1;
     width: 21px;
-    height: 21px;
-    margin: -7px;
+    left : 205px;
+    position:relative;
+    height: 10px;
+    border-top: none;
+    margin: -9px;
     background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMSIgaGVpZ2h0PSI5Ij48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiM4ODk4QUEiIGZpbGwtb3BhY2l0eT0iLjEiIGQ9Ik0xIDkuMDkyaDE5bC02LjQwMi02Ljc0Yy0xLjcxNy0xLjgwNi00LjQ4NS0xLjgtNi4xOTYgMEwxIDkuMDkzek0yMC4zNDIgOGwtNi4wMi02LjMzNmMtMi4xMDgtMi4yMi01LjUzOC0yLjIxOC03LjY0NSAwTC42NTggOGgxOS42ODR6Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTcuNDAyIDIuMzUzYzEuNzExLTEuODAxIDQuNDgtMS44MDcgNi4xOTYgMEwyMCA5LjA5M0gxbDYuNDAyLTYuNzR6Ii8+PC9nPjwvc3ZnPg==) no-repeat 50%;
 }
 </style>

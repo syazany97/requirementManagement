@@ -21,12 +21,14 @@
 
         <modal name="requirementDialog" class="sm:w-full md:w-1/4" :adaptive="true" :scrollable="true" height="auto">
             <create-requirement-dialog :requirement-dialog.sync="requirementDialog"
-                                       @close-requirement-dialog="closeRequirementDialog()" ></create-requirement-dialog>
+                                       @close-requirement-dialog="closeRequirementDialog()"></create-requirement-dialog>
         </modal>
 
         <modal :shiftY="0.2" name="moduleDialog" height="auto">
             <div class="container mx-auto py-2 overflow-y-auto">
-                <h1 class="default-dialog-title">Create new module</h1>
+                <div class="py-2">
+                    <span class="default-dialog-title">Create new module</span>
+                </div>
                 <hr>
                 <div class="bg-white-100 px-4">
 

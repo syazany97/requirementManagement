@@ -20,9 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58239c8f-5f70-4482-9e45-1dcb473cf0d8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/requirementManagement.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/requirementManagement.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/TestCaseStepsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/TestCaseStepsTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/addOn.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/addOn.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/requirement/RequirementList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/requirement/RequirementList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/TopBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/TopBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/modules/dialog/CreateNewModule.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/modules/dialog/CreateNewModule.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/project/modal/CreateProjectDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/project/modal/CreateProjectDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/requirement/dialog/CreateRequirementDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/requirement/dialog/CreateRequirementDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/testCase/tabs/TestCaseDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/testCase/tabs/TestCaseDetails.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/projects/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/projects/Index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/views/testCase/Create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/testCase/Create.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -179,6 +188,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -186,7 +196,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -205,7 +215,14 @@
       <updated>1601729188027</updated>
       <workItem from="1601729189263" duration="8142000" />
       <workItem from="1601779964712" duration="13000000" />
-      <workItem from="1601804211016" duration="4508000" />
+      <workItem from="1601804211016" duration="8064000" />
+      <workItem from="1601827725109" duration="929000" />
+      <workItem from="1601869974381" duration="619000" />
+      <workItem from="1602511302733" duration="3144000" />
+      <workItem from="1602569193876" duration="293000" />
+      <workItem from="1602759765251" duration="3743000" />
+      <workItem from="1602819164226" duration="591000" />
+      <workItem from="1603166610122" duration="1675000" />
     </task>
     <servers />
   </component>
@@ -225,10 +242,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1601785861350">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1602819758206">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1601785861350" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602819758206" />
     <state x="728" y="226" key="NewPhpClassDialog" timestamp="1601798332875">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -237,17 +254,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="439" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601798230547" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1601798294666">
+    <state x="461" y="165" key="SettingsEditor" timestamp="1602513810778">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1601798294666" />
-    <state x="668" y="237" width="583" height="566" key="find.popup" timestamp="1601783897613">
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1602513810778" />
+    <state width="247" height="198" key="ShowFilterAction_Filter_Popup" timestamp="1602760274800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="668" y="237" width="583" height="566" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601783897613" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601809443039">
+    <state width="247" height="198" key="ShowFilterAction_Filter_Popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602760274800" />
+    <state x="668" y="237" width="583" height="566" key="find.popup" timestamp="1603170104558">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601809443039" />
+    <state x="668" y="237" width="583" height="566" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1603170104558" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1603170607600">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1603170607600" />
   </component>
 </project>

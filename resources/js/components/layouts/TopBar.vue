@@ -1,6 +1,6 @@
 <template>
     <nav class="bg-white fixed top-0 shadow-lg w-full">
-        <div v-click-outside="hideDropDown" class="px-4 mx-auto">
+        <div class="px-4 mx-auto">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
                     <div class="justify-center hover:text-blue-500 hover:bg-blue-100 rounded-full p-2 text-center">
@@ -75,7 +75,7 @@
                             </svg>
                         </button>
 
-                        <div class="relative ml-2">
+                        <div  v-click-outside="hideDropDown"  class="relative ml-2">
                             <button @click="isOpen = !isOpen"
                                 class="p-1 flex hover:text-blue-500 hover:bg-blue-100  text-gray-700 border-2 border-transparent items-center max-w-xs text-sm rounded-full focus:outline-none"
                                 id="user-menu" aria-label="User menu" aria-haspopup="true">
@@ -87,18 +87,18 @@
                             </button>
 
                             <default-transition>
-                                <div v-if="isOpen" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg">
+                                <div  v-if="isOpen" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg">
                                     <div class="rounded-md bg-white shadow-xs">
                                         <div class="py-1" role="menu" aria-orientation="vertical"
                                              aria-labelledby="options-menu">
                                             <a href="#"
-                                               class="block w-full text-left px-4 py-2 text-md leading-5 hover:bg-gray-100
+                                               class="block w-full text-left px-4 py-2 text-sm leading-5 hover:bg-gray-100
                                                         hover:text-gray-900 text-color-purple focus:outline-none font-medium focus:bg-gray-100 focus:text-gray-900"
                                                role="menuitem">Profile</a>
                                             <form method="POST" action="/logout">
                                                 <input type="hidden" name="_token" :value="csrf">
                                                 <button type="submit"
-                                                        class="block w-full text-left px-4 py-2 text-md leading-5 hover:bg-gray-100
+                                                        class="block w-full text-left px-4 py-2 text-sm leading-5 hover:bg-gray-100
                                                         hover:text-gray-900 text-color-purple focus:outline-none font-medium focus:bg-gray-100 focus:text-gray-900"
                                                         role="menuitem">
                                                     Sign out

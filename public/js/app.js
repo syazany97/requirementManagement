@@ -2366,6 +2366,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2537,6 +2539,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
 //
 //
 //
@@ -3060,6 +3064,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
 //
 //
 //
@@ -3888,13 +3894,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TestCaseDetails",
   data: function data() {
     return {
       testCases: [],
-      headings: ['No', 'Title', 'User', 'Created', 'Action']
+      headings: ['No', 'Title', 'User', 'Created', 'Action'],
+      isOpen: []
     };
   },
   created: function created() {
@@ -3929,7 +3963,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 response = _context.sent;
                 _this.testCases = response.data.data;
 
-              case 4:
+                _this.testCases.forEach(function (x) {
+                  return _this.isOpen.push(false);
+                });
+
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -3943,6 +3981,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         params: {
           requirement: this.$store.getters['requirement/currentRequirement'].id
         }
+      });
+    },
+    showDropdown: function showDropdown(testIndex) {
+      var _this2 = this;
+
+      this.isOpen.forEach(function (x, index) {
+        if (index !== testIndex) {
+          _this2.isOpen.splice(index, 1, false);
+        }
+      });
+      this.isOpen.splice(testIndex, 1, !this.isOpen[testIndex]);
+    },
+    hideAllDropdowns: function hideAllDropdowns() {
+      var _this3 = this;
+
+      this.isOpen.forEach(function (x, index) {
+        _this3.isOpen.splice(index, 1, false);
       });
     }
   }
@@ -4098,7 +4153,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
 //
 //
 //
@@ -4581,6 +4635,12 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -11402,7 +11462,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".ContextualPopover-arrow[data-v-befd39c8] {\n  z-index: 1;\n  width: 21px;\n  height: 21px;\n  margin: -7px;\n  background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMSIgaGVpZ2h0PSI5Ij48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiM4ODk4QUEiIGZpbGwtb3BhY2l0eT0iLjEiIGQ9Ik0xIDkuMDkyaDE5bC02LjQwMi02Ljc0Yy0xLjcxNy0xLjgwNi00LjQ4NS0xLjgtNi4xOTYgMEwxIDkuMDkzek0yMC4zNDIgOGwtNi4wMi02LjMzNmMtMi4xMDgtMi4yMi01LjUzOC0yLjIxOC03LjY0NSAwTC42NTggOGgxOS42ODR6Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTcuNDAyIDIuMzUzYzEuNzExLTEuODAxIDQuNDgtMS44MDcgNi4xOTYgMEwyMCA5LjA5M0gxbDYuNDAyLTYuNzR6Ii8+PC9nPjwvc3ZnPg==) no-repeat 50%;\n}\n", ""]);
+exports.push([module.i, ".ContextualPopover-arrow[data-v-befd39c8] {\n  z-index: 1;\n  width: 21px;\n  left : 205px;\n  position:relative;\n  height: 10px;\n  border-top: none;\n  margin: -9px;\n  background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMSIgaGVpZ2h0PSI5Ij48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiM4ODk4QUEiIGZpbGwtb3BhY2l0eT0iLjEiIGQ9Ik0xIDkuMDkyaDE5bC02LjQwMi02Ljc0Yy0xLjcxNy0xLjgwNi00LjQ4NS0xLjgtNi4xOTYgMEwxIDkuMDkzek0yMC4zNDIgOGwtNi4wMi02LjMzNmMtMi4xMDgtMi4yMi01LjUzOC0yLjIxOC03LjY0NSAwTC42NTggOGgxOS42ODR6Ii8+PHBhdGggZmlsbD0iI0ZGRiIgZD0iTTcuNDAyIDIuMzUzYzEuNzExLTEuODAxIDQuNDgtMS44MDcgNi4xOTYgMEwyMCA5LjA5M0gxbDYuNDAyLTYuNzR6Ii8+PC9nPjwvc3ZnPg==) no-repeat 50%;\n}\n", ""]);
 
 // exports
 
@@ -55881,36 +55941,126 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("nav", { staticClass: "bg-white fixed top-0 shadow-lg w-full" }, [
-    _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "click-outside",
-            rawName: "v-click-outside",
-            value: _vm.hideDropDown,
-            expression: "hideDropDown"
-          }
-        ],
-        staticClass: "px-4 mx-auto"
-      },
-      [
-        _c("div", { staticClass: "flex items-center justify-between h-16" }, [
-          _c("div", { staticClass: "flex items-center" }, [
+    _c("div", { staticClass: "px-4 mx-auto" }, [
+      _c("div", { staticClass: "flex items-center justify-between h-16" }, [
+        _c("div", { staticClass: "flex items-center" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "justify-center hover:text-blue-500 hover:bg-blue-100 rounded-full p-2 text-center"
+            },
+            [
+              _c(
+                "svg",
+                {
+                  staticClass: "w-4 h-4 mx-auto",
+                  attrs: {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    fill: "currentColor",
+                    viewBox: "0 0 477.867 477.867"
+                  }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      "fill-rule": "evenodd",
+                      d:
+                        "M119.467 0h-102.4C7.641 0 0 7.641 0 17.067v102.4c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067v-102.4C136.533 7.641 128.892 0 119.467 0zM102.4 102.4H34.133V34.133H102.4V102.4zM290.133 0h-102.4c-9.426 0-17.067 7.641-17.067 17.067v102.4c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067v-102.4C307.2 7.641 299.559 0 290.133 0zm-17.066 102.4H204.8V34.133h68.267V102.4zM460.8 0H358.4c-9.426 0-17.067 7.641-17.067 17.067v102.4c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067v-102.4C477.867 7.641 470.226 0 460.8 0zm-17.067 102.4h-68.267V34.133h68.267V102.4zM119.467 170.667h-102.4C7.641 170.667 0 178.308 0 187.733v102.4c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067v-102.4c-.001-9.425-7.642-17.066-17.067-17.066zm-17.067 102.4H34.133V204.8H102.4v68.267zM290.133 170.667h-102.4c-9.426 0-17.067 7.641-17.067 17.067v102.4c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067v-102.4c0-9.426-7.641-17.067-17.067-17.067zm-17.066 102.4H204.8V204.8h68.267v68.267zM460.8 170.667H358.4c-9.426 0-17.067 7.641-17.067 17.067v102.4c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067v-102.4c0-9.426-7.641-17.067-17.067-17.067zm-17.067 102.4h-68.267V204.8h68.267v68.267zM119.467 341.333h-102.4C7.641 341.333 0 348.974 0 358.4v102.4c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067V358.4c-.001-9.426-7.642-17.067-17.067-17.067zm-17.067 102.4H34.133v-68.267H102.4v68.267zM290.133 341.333h-102.4c-9.426 0-17.067 7.641-17.067 17.067v102.4c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067V358.4c0-9.426-7.641-17.067-17.067-17.067zm-17.066 102.4H204.8v-68.267h68.267v68.267zM460.8 341.333H358.4c-9.426 0-17.067 7.641-17.067 17.067v102.4c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067V358.4c0-9.426-7.641-17.067-17.067-17.067zm-17.067 102.4h-68.267v-68.267h68.267v68.267z"
+                    }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _vm._m(0)
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "hidden md:block" }, [
+          _c("div", { staticClass: "flex items-center ml-4 md:ml-6" }, [
+            _c("input", {
+              staticClass: "search-textfield",
+              attrs: { type: "text", placeholder: "Search ..." }
+            }),
+            _vm._v(" "),
             _c(
-              "div",
+              "button",
               {
                 staticClass:
-                  "justify-center hover:text-blue-500 hover:bg-blue-100 rounded-full p-2 text-center"
+                  "p-1 ml-2 hover:text-blue-500 text-gray-700 border-2 border-transparent rounded-full hover:bg-blue-100 focus:outline-none",
+                attrs: { "aria-label": "Notifications" }
               },
               [
                 _c(
                   "svg",
                   {
-                    staticClass: "w-4 h-4 mx-auto",
+                    staticClass: "w-5 h-5",
                     attrs: {
-                      xmlns: "http://www.w3.org/2000/svg",
                       fill: "currentColor",
+                      viewBox: "0 0 511.156 511.156",
+                      xmlns: "http://www.w3.org/2000/svg"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        "fill-rule": "evenodd",
+                        d:
+                          "M184.904 465.044c11.999 27.127 39.154 46.112 70.674 46.112s58.674-18.985 70.674-46.112zM255.573 48.836c20.8 0 40.772 3.67 59.306 10.389v-2.283C314.879 25.544 289.335 0 257.938 0h-4.719c-31.398 0-56.942 25.544-56.942 56.942v2.254c18.524-6.699 38.49-10.36 59.296-10.36zM442.747 435.044H68.409c-7.082 0-13.569-4.776-15.042-11.704-1.458-6.859 1.668-13.629 8.01-16.559 1.505-.976 12.833-8.897 24.174-32.862 20.829-44.01 25.201-106.005 25.201-150.263 0-79.855 64.967-144.82 144.821-144.82 79.665 0 144.512 64.652 144.82 144.245.007.191.011.383.011.575 0 44.258 4.372 106.253 25.201 150.263 11.341 23.965 22.668 31.887 24.174 32.862 6.342 2.93 9.469 9.699 8.01 16.559-1.473 6.927-7.959 11.704-15.042 11.704zm7.2-28.157h.01z"
+                      }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass:
+                  "p-1 ml-2 hover:text-blue-500 text-gray-700 border-2 border-transparent rounded-full hover:bg-blue-100 focus:outline-none",
+                attrs: { "aria-label": "Notifications" }
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "w-5 h-5",
+                    attrs: {
+                      fill: "currentColor",
+                      viewBox: "0 0 512 512",
+                      xmlns: "http://www.w3.org/2000/svg"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        "fill-rule": "evenodd",
+                        d:
+                          "M256 0C114.836 0 0 114.836 0 256s114.836 256 256 256 256-114.836 256-256S397.164 0 256 0zm0 405.332c-11.777 0-21.332-9.555-21.332-21.332s9.555-21.332 21.332-21.332 21.332 9.555 21.332 21.332-9.555 21.332-21.332 21.332zm33.77-135.637c-7.551 3.477-12.438 11.094-12.438 19.395v9.578c0 11.773-9.535 21.332-21.332 21.332s-21.332-9.559-21.332-21.332v-9.578c0-24.899 14.633-47.723 37.227-58.156 21.738-10.004 37.437-36.567 37.437-49.602C309.332 151.937 285.418 128 256 128s-53.332 23.937-53.332 53.332c0 11.777-9.54 21.336-21.336 21.336S160 193.109 160 181.332c0-52.926 43.07-96 96-96s96 43.074 96 96c0 28.824-25.004 71.191-62.23 88.363zm0 0"
+                      }
+                    })
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass:
+                  "p-1 ml-2 hover:text-blue-500 text-gray-700 border-2 border-transparent rounded-full hover:bg-blue-100 focus:outline-none",
+                attrs: { "aria-label": "Notifications" }
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "w-5 h-5",
+                    attrs: {
+                      fill: "currentColor",
+                      xmlns: "http://www.w3.org/2000/svg",
                       viewBox: "0 0 477.867 477.867"
                     }
                   },
@@ -55919,7 +56069,7 @@ var render = function() {
                       attrs: {
                         "fill-rule": "evenodd",
                         d:
-                          "M119.467 0h-102.4C7.641 0 0 7.641 0 17.067v102.4c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067v-102.4C136.533 7.641 128.892 0 119.467 0zM102.4 102.4H34.133V34.133H102.4V102.4zM290.133 0h-102.4c-9.426 0-17.067 7.641-17.067 17.067v102.4c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067v-102.4C307.2 7.641 299.559 0 290.133 0zm-17.066 102.4H204.8V34.133h68.267V102.4zM460.8 0H358.4c-9.426 0-17.067 7.641-17.067 17.067v102.4c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067v-102.4C477.867 7.641 470.226 0 460.8 0zm-17.067 102.4h-68.267V34.133h68.267V102.4zM119.467 170.667h-102.4C7.641 170.667 0 178.308 0 187.733v102.4c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067v-102.4c-.001-9.425-7.642-17.066-17.067-17.066zm-17.067 102.4H34.133V204.8H102.4v68.267zM290.133 170.667h-102.4c-9.426 0-17.067 7.641-17.067 17.067v102.4c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067v-102.4c0-9.426-7.641-17.067-17.067-17.067zm-17.066 102.4H204.8V204.8h68.267v68.267zM460.8 170.667H358.4c-9.426 0-17.067 7.641-17.067 17.067v102.4c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067v-102.4c0-9.426-7.641-17.067-17.067-17.067zm-17.067 102.4h-68.267V204.8h68.267v68.267zM119.467 341.333h-102.4C7.641 341.333 0 348.974 0 358.4v102.4c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067V358.4c-.001-9.426-7.642-17.067-17.067-17.067zm-17.067 102.4H34.133v-68.267H102.4v68.267zM290.133 341.333h-102.4c-9.426 0-17.067 7.641-17.067 17.067v102.4c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067V358.4c0-9.426-7.641-17.067-17.067-17.067zm-17.066 102.4H204.8v-68.267h68.267v68.267zM460.8 341.333H358.4c-9.426 0-17.067 7.641-17.067 17.067v102.4c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067V358.4c0-9.426-7.641-17.067-17.067-17.067zm-17.067 102.4h-68.267v-68.267h68.267v68.267z"
+                          "M460.8 170.667h-28.894a203.036 203.036 0 00-8.226-19.934l20.48-20.48c6.663-6.664 6.663-17.468 0-24.132l-72.482-72.346c-6.665-6.663-17.468-6.663-24.132 0l-20.48 20.48a206.392 206.392 0 00-19.866-8.294V17.067C307.2 7.641 299.559 0 290.133 0h-102.4c-9.426 0-17.067 7.641-17.067 17.067v28.894a206.34 206.34 0 00-19.951 8.226l-20.48-20.48c-6.665-6.662-17.468-6.662-24.132 0l-72.329 72.482c-6.663 6.664-6.663 17.468 0 24.132l20.48 20.48a202.631 202.631 0 00-8.294 19.866H17.067C7.641 170.667 0 178.308 0 187.733v102.4c0 9.426 7.641 17.067 17.067 17.067h28.894a202.79 202.79 0 008.226 19.934l-20.48 20.48c-6.662 6.665-6.662 17.468 0 24.132l72.414 72.414c6.665 6.662 17.468 6.662 24.132 0l20.48-20.48a206.65 206.65 0 0019.934 8.226V460.8c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067v-28.894a206.34 206.34 0 0019.951-8.226l20.48 20.48c6.665 6.662 17.468 6.662 24.132 0l72.414-72.414c6.662-6.664 6.662-17.468 0-24.132l-20.48-20.48a202.67 202.67 0 008.209-19.934H460.8c9.426 0 17.067-7.641 17.067-17.067v-102.4c0-9.425-7.641-17.066-17.067-17.066zM238.933 358.4c-65.98 0-119.467-53.487-119.467-119.467s53.487-119.467 119.467-119.467S358.4 172.954 358.4 238.933c-.075 65.949-53.518 119.392-119.467 119.467z"
                       }
                     })
                   ]
@@ -55927,235 +56077,141 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _vm._m(0)
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "hidden md:block" }, [
-            _c("div", { staticClass: "flex items-center ml-4 md:ml-6" }, [
-              _c("input", {
-                staticClass: "search-textfield",
-                attrs: { type: "text", placeholder: "Search ..." }
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "p-1 ml-2 hover:text-blue-500 text-gray-700 border-2 border-transparent rounded-full hover:bg-blue-100 focus:outline-none",
-                  attrs: { "aria-label": "Notifications" }
-                },
-                [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "w-5 h-5",
-                      attrs: {
-                        fill: "currentColor",
-                        viewBox: "0 0 511.156 511.156",
-                        xmlns: "http://www.w3.org/2000/svg"
-                      }
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "click-outside",
+                    rawName: "v-click-outside",
+                    value: _vm.hideDropDown,
+                    expression: "hideDropDown"
+                  }
+                ],
+                staticClass: "relative ml-2"
+              },
+              [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "p-1 flex hover:text-blue-500 hover:bg-blue-100  text-gray-700 border-2 border-transparent items-center max-w-xs text-sm rounded-full focus:outline-none",
+                    attrs: {
+                      id: "user-menu",
+                      "aria-label": "User menu",
+                      "aria-haspopup": "true"
                     },
-                    [
-                      _c("path", {
-                        attrs: {
-                          "fill-rule": "evenodd",
-                          d:
-                            "M184.904 465.044c11.999 27.127 39.154 46.112 70.674 46.112s58.674-18.985 70.674-46.112zM255.573 48.836c20.8 0 40.772 3.67 59.306 10.389v-2.283C314.879 25.544 289.335 0 257.938 0h-4.719c-31.398 0-56.942 25.544-56.942 56.942v2.254c18.524-6.699 38.49-10.36 59.296-10.36zM442.747 435.044H68.409c-7.082 0-13.569-4.776-15.042-11.704-1.458-6.859 1.668-13.629 8.01-16.559 1.505-.976 12.833-8.897 24.174-32.862 20.829-44.01 25.201-106.005 25.201-150.263 0-79.855 64.967-144.82 144.821-144.82 79.665 0 144.512 64.652 144.82 144.245.007.191.011.383.011.575 0 44.258 4.372 106.253 25.201 150.263 11.341 23.965 22.668 31.887 24.174 32.862 6.342 2.93 9.469 9.699 8.01 16.559-1.473 6.927-7.959 11.704-15.042 11.704zm7.2-28.157h.01z"
-                        }
-                      })
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "p-1 ml-2 hover:text-blue-500 text-gray-700 border-2 border-transparent rounded-full hover:bg-blue-100 focus:outline-none",
-                  attrs: { "aria-label": "Notifications" }
-                },
-                [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "w-5 h-5",
-                      attrs: {
-                        fill: "currentColor",
-                        viewBox: "0 0 512 512",
-                        xmlns: "http://www.w3.org/2000/svg"
+                    on: {
+                      click: function($event) {
+                        _vm.isOpen = !_vm.isOpen
                       }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          "fill-rule": "evenodd",
-                          d:
-                            "M256 0C114.836 0 0 114.836 0 256s114.836 256 256 256 256-114.836 256-256S397.164 0 256 0zm0 405.332c-11.777 0-21.332-9.555-21.332-21.332s9.555-21.332 21.332-21.332 21.332 9.555 21.332 21.332-9.555 21.332-21.332 21.332zm33.77-135.637c-7.551 3.477-12.438 11.094-12.438 19.395v9.578c0 11.773-9.535 21.332-21.332 21.332s-21.332-9.559-21.332-21.332v-9.578c0-24.899 14.633-47.723 37.227-58.156 21.738-10.004 37.437-36.567 37.437-49.602C309.332 151.937 285.418 128 256 128s-53.332 23.937-53.332 53.332c0 11.777-9.54 21.336-21.336 21.336S160 193.109 160 181.332c0-52.926 43.07-96 96-96s96 43.074 96 96c0 28.824-25.004 71.191-62.23 88.363zm0 0"
-                        }
-                      })
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "p-1 ml-2 hover:text-blue-500 text-gray-700 border-2 border-transparent rounded-full hover:bg-blue-100 focus:outline-none",
-                  attrs: { "aria-label": "Notifications" }
-                },
-                [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "w-5 h-5",
-                      attrs: {
-                        fill: "currentColor",
-                        xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 477.867 477.867"
-                      }
-                    },
-                    [
-                      _c("path", {
-                        attrs: {
-                          "fill-rule": "evenodd",
-                          d:
-                            "M460.8 170.667h-28.894a203.036 203.036 0 00-8.226-19.934l20.48-20.48c6.663-6.664 6.663-17.468 0-24.132l-72.482-72.346c-6.665-6.663-17.468-6.663-24.132 0l-20.48 20.48a206.392 206.392 0 00-19.866-8.294V17.067C307.2 7.641 299.559 0 290.133 0h-102.4c-9.426 0-17.067 7.641-17.067 17.067v28.894a206.34 206.34 0 00-19.951 8.226l-20.48-20.48c-6.665-6.662-17.468-6.662-24.132 0l-72.329 72.482c-6.663 6.664-6.663 17.468 0 24.132l20.48 20.48a202.631 202.631 0 00-8.294 19.866H17.067C7.641 170.667 0 178.308 0 187.733v102.4c0 9.426 7.641 17.067 17.067 17.067h28.894a202.79 202.79 0 008.226 19.934l-20.48 20.48c-6.662 6.665-6.662 17.468 0 24.132l72.414 72.414c6.665 6.662 17.468 6.662 24.132 0l20.48-20.48a206.65 206.65 0 0019.934 8.226V460.8c0 9.426 7.641 17.067 17.067 17.067h102.4c9.426 0 17.067-7.641 17.067-17.067v-28.894a206.34 206.34 0 0019.951-8.226l20.48 20.48c6.665 6.662 17.468 6.662 24.132 0l72.414-72.414c6.662-6.664 6.662-17.468 0-24.132l-20.48-20.48a202.67 202.67 0 008.209-19.934H460.8c9.426 0 17.067-7.641 17.067-17.067v-102.4c0-9.425-7.641-17.066-17.067-17.066zM238.933 358.4c-65.98 0-119.467-53.487-119.467-119.467s53.487-119.467 119.467-119.467S358.4 172.954 358.4 238.933c-.075 65.949-53.518 119.392-119.467 119.467z"
-                        }
-                      })
-                    ]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "relative ml-2" },
-                [
-                  _c(
-                    "button",
-                    {
-                      staticClass:
-                        "p-1 flex hover:text-blue-500 hover:bg-blue-100  text-gray-700 border-2 border-transparent items-center max-w-xs text-sm rounded-full focus:outline-none",
-                      attrs: {
-                        id: "user-menu",
-                        "aria-label": "User menu",
-                        "aria-haspopup": "true"
+                    }
+                  },
+                  [
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "w-5 h-5",
+                        attrs: { viewBox: "0 0 20 20", fill: "currentColor" }
                       },
-                      on: {
-                        click: function($event) {
-                          _vm.isOpen = !_vm.isOpen
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "svg",
+                      [
+                        _c("path", {
+                          attrs: {
+                            "fill-rule": "evenodd",
+                            d:
+                              "M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z",
+                            "clip-rule": "evenodd"
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("default-transition", [
+                  _vm.isOpen
+                    ? _c(
+                        "div",
                         {
-                          staticClass: "w-5 h-5",
-                          attrs: { viewBox: "0 0 20 20", fill: "currentColor" }
+                          staticClass:
+                            "origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg"
                         },
                         [
-                          _c("path", {
-                            attrs: {
-                              "fill-rule": "evenodd",
-                              d:
-                                "M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z",
-                              "clip-rule": "evenodd"
-                            }
-                          })
+                          _c(
+                            "div",
+                            { staticClass: "rounded-md bg-white shadow-xs" },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "py-1",
+                                  attrs: {
+                                    role: "menu",
+                                    "aria-orientation": "vertical",
+                                    "aria-labelledby": "options-menu"
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass:
+                                        "block w-full text-left px-4 py-2 text-sm leading-5 hover:bg-gray-100\n                                                        hover:text-gray-900 text-color-purple focus:outline-none font-medium focus:bg-gray-100 focus:text-gray-900",
+                                      attrs: { href: "#", role: "menuitem" }
+                                    },
+                                    [_vm._v("Profile")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "form",
+                                    {
+                                      attrs: {
+                                        method: "POST",
+                                        action: "/logout"
+                                      }
+                                    },
+                                    [
+                                      _c("input", {
+                                        attrs: {
+                                          type: "hidden",
+                                          name: "_token"
+                                        },
+                                        domProps: { value: _vm.csrf }
+                                      }),
+                                      _vm._v(" "),
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "block w-full text-left px-4 py-2 text-sm leading-5 hover:bg-gray-100\n                                                        hover:text-gray-900 text-color-purple focus:outline-none font-medium focus:bg-gray-100 focus:text-gray-900",
+                                          attrs: {
+                                            type: "submit",
+                                            role: "menuitem"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                                    Sign out\n                                                "
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
                         ]
                       )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("default-transition", [
-                    _vm.isOpen
-                      ? _c(
-                          "div",
-                          {
-                            staticClass:
-                              "origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg"
-                          },
-                          [
-                            _c(
-                              "div",
-                              { staticClass: "rounded-md bg-white shadow-xs" },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "py-1",
-                                    attrs: {
-                                      role: "menu",
-                                      "aria-orientation": "vertical",
-                                      "aria-labelledby": "options-menu"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass:
-                                          "block w-full text-left px-4 py-2 text-md leading-5 hover:bg-gray-100\n                                                        hover:text-gray-900 text-color-purple focus:outline-none font-medium focus:bg-gray-100 focus:text-gray-900",
-                                        attrs: { href: "#", role: "menuitem" }
-                                      },
-                                      [_vm._v("Profile")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "form",
-                                      {
-                                        attrs: {
-                                          method: "POST",
-                                          action: "/logout"
-                                        }
-                                      },
-                                      [
-                                        _c("input", {
-                                          attrs: {
-                                            type: "hidden",
-                                            name: "_token"
-                                          },
-                                          domProps: { value: _vm.csrf }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass:
-                                              "block w-full text-left px-4 py-2 text-md leading-5 hover:bg-gray-100\n                                                        hover:text-gray-900 text-color-purple focus:outline-none font-medium focus:bg-gray-100 focus:text-gray-900",
-                                            attrs: {
-                                              type: "submit",
-                                              role: "menuitem"
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                                                    Sign out\n                                                "
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
-                          ]
-                        )
-                      : _vm._e()
-                  ])
-                ],
-                1
-              )
-            ])
+                    : _vm._e()
+                ])
+              ],
+              1
+            )
           ])
         ])
-      ]
-    )
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -56452,8 +56508,10 @@ var render = function() {
         { attrs: { shiftY: 0.2, name: "moduleDialog", height: "auto" } },
         [
           _c("div", { staticClass: "container mx-auto py-2 overflow-y-auto" }, [
-            _c("h1", { staticClass: "default-dialog-title" }, [
-              _vm._v("Create new module")
+            _c("div", { staticClass: "py-2" }, [
+              _c("span", { staticClass: "default-dialog-title" }, [
+                _vm._v("Create new module")
+              ])
             ]),
             _vm._v(" "),
             _c("hr"),
@@ -56743,9 +56801,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container mx-auto py-2 overflow-y-auto" }, [
-    _c("h1", { staticClass: "default-dialog-title" }, [
-      _vm._v("Create new project")
-    ]),
+    _vm._m(0),
     _vm._v(" "),
     _c("hr"),
     _vm._v(" "),
@@ -56756,7 +56812,7 @@ var render = function() {
         _c(
           "label",
           { staticClass: "primary-label", attrs: { for: "projectName" } },
-          [_vm._v("\n        Name\n    ")]
+          [_vm._v("\n            Name\n        ")]
         ),
         _vm._v(" "),
         _c("input", {
@@ -56792,7 +56848,7 @@ var render = function() {
             staticClass: "primary-label",
             attrs: { for: "projectDescription" }
           },
-          [_vm._v("\n        Description\n    ")]
+          [_vm._v("\n            Description\n        ")]
         ),
         _vm._v(" "),
         _c("input", {
@@ -56825,7 +56881,7 @@ var render = function() {
         _c(
           "label",
           { staticClass: "primary-label", attrs: { for: "projectStatus" } },
-          [_vm._v("\n        Project Status\n    ")]
+          [_vm._v("\n            Project Status\n        ")]
         ),
         _vm._v(" "),
         _c("vue-select", {
@@ -56881,7 +56937,18 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "py-2" }, [
+      _c("span", { staticClass: "default-dialog-title" }, [
+        _vm._v("Create new project")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -57132,9 +57199,7 @@ var render = function() {
     "div",
     { staticClass: "container md:mx-auto sm:w-full py-2 overflow-y-auto" },
     [
-      _c("h1", { staticClass: "default-dialog-title" }, [
-        _vm._v("Add requirement")
-      ]),
+      _vm._m(0),
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
@@ -57374,7 +57439,18 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "py-4" }, [
+      _c("span", { staticClass: "default-dialog-title" }, [
+        _vm._v("Add requirement")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -57927,7 +58003,7 @@ var render = function() {
                     "td",
                     {
                       staticClass: "default-row",
-                      domProps: { innerHTML: _vm._s(test.description) }
+                      domProps: { innerHTML: _vm._s(test.title) }
                     },
                     [_vm._v("a")]
                   ),
@@ -57942,22 +58018,98 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "td",
-                    { staticClass: "default-row" },
+                    {
+                      directives: [
+                        {
+                          name: "click-outside",
+                          rawName: "v-click-outside",
+                          value: _vm.hideAllDropdowns,
+                          expression: "hideAllDropdowns"
+                        }
+                      ],
+                      staticClass: "default-row"
+                    },
                     [
                       _c(
-                        "router-link",
+                        "button",
                         {
-                          staticClass: "btn btn-primary",
-                          attrs: {
-                            to: {
-                              name: "test-case.edit",
-                              params: { testCase: test.id }
-                            },
-                            tag: "button"
+                          staticClass: "btn-dropdown px-1 focus:outline-none",
+                          on: {
+                            click: function($event) {
+                              $event.stopPropagation()
+                              return _vm.showDropdown(index)
+                            }
                           }
                         },
-                        [_vm._v("View\n                ")]
-                      )
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass: "dots-horizontal w-6 h-6 px-1",
+                              attrs: {
+                                viewBox: "0 0 20 20",
+                                fill: "currentColor"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d:
+                                    "M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("default-transition", [
+                        _vm.isOpen[index]
+                          ? _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "contextual-popover-content cross-origin-top-right"
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "rounded-md bg-white bg-opacity-0 shadow-xs"
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "py-1",
+                                        attrs: {
+                                          role: "menu",
+                                          "aria-orientation": "vertical",
+                                          "aria-labelledby": "options-menu"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100\n                                           hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0",
+                                            attrs: {
+                                              href: "#",
+                                              role: "menuitem"
+                                            }
+                                          },
+                                          [_vm._v("Account settings")]
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          : _vm._e()
+                      ])
                     ],
                     1
                   )
@@ -58321,504 +58473,482 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      directives: [
-        {
-          name: "click-outside",
-          rawName: "v-click-outside",
-          value: _vm.hideAllDropdowns,
-          expression: "hideAllDropdowns"
-        }
-      ],
-      staticClass: "container mx-auto py-6 px-4"
-    },
-    [
-      _c("h1", [_vm._v("Projects")]),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "mb-4 flex justify-between items-center mt-2" },
-        [
-          _c("div", { staticClass: "flex-1 pr-4" }, [
-            _c("div", { staticClass: "relative md:w-1/3" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.search,
-                    expression: "search"
-                  }
-                ],
-                staticClass:
-                  "w-full pl-10 pr-4 py-2 rounded-lg shadow focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-                attrs: { type: "text", placeholder: "Search..." },
-                domProps: { value: _vm.search },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.search = $event.target.value
-                  }
+  return _c("div", { staticClass: "container mx-auto py-6 px-4" }, [
+    _c("h1", [_vm._v("Projects")]),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c("div", { staticClass: "mb-4 flex justify-between items-center mt-2" }, [
+      _c("div", { staticClass: "flex-1 pr-4" }, [
+        _c("div", { staticClass: "relative md:w-1/3" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.search,
+                expression: "search"
+              }
+            ],
+            staticClass:
+              "w-full pl-10 pr-4 py-2 rounded-lg shadow focus:outline-none focus:shadow-outline text-gray-600 font-medium",
+            attrs: { type: "text", placeholder: "Search..." },
+            domProps: { value: _vm.search },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
                 }
-              }),
-              _vm._v(" "),
+                _vm.search = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "absolute top-0 left-0 inline-flex items-center p-2"
+            },
+            [
               _c(
-                "div",
+                "svg",
                 {
-                  staticClass:
-                    "absolute top-0 left-0 inline-flex items-center p-2"
+                  staticClass: "w-6 h-6 text-gray-400",
+                  attrs: {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    viewBox: "0 0 24 24",
+                    "stroke-width": "2",
+                    stroke: "currentColor",
+                    fill: "none",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
+                  }
                 },
                 [
-                  _c(
-                    "svg",
-                    {
-                      staticClass: "w-6 h-6 text-gray-400",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        viewBox: "0 0 24 24",
-                        "stroke-width": "2",
-                        stroke: "currentColor",
-                        fill: "none",
-                        "stroke-linecap": "round",
-                        "stroke-linejoin": "round"
-                      }
-                    },
-                    [
-                      _c("rect", {
-                        attrs: {
-                          x: "0",
-                          y: "0",
-                          width: "24",
-                          height: "24",
-                          stroke: "none"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("circle", { attrs: { cx: "10", cy: "10", r: "7" } }),
-                      _vm._v(" "),
-                      _c("line", {
-                        attrs: { x1: "21", y1: "21", x2: "15", y2: "15" }
-                      })
-                    ]
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _c("div", { staticClass: "shadow rounded-lg flex" }, [
-              _c(
-                "div",
-                { staticClass: "relative" },
-                [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary float-right",
-                      on: {
-                        click: function($event) {
-                          _vm.hideAllDropdowns()
-                          _vm.$modal.show("modalProjectDialog")
-                        }
-                      }
-                    },
-                    [
-                      _vm._v(
-                        "Add\n                            project\n                        "
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "modal",
-                    {
-                      staticClass: "sm:w-full md:w-1/4",
-                      attrs: {
-                        name: "modalProjectDialog",
-                        adaptive: true,
-                        scrollable: true,
-                        height: "auto"
-                      }
-                    },
-                    [_c("create-project-dialog")],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("delete-confirmation-dialog", {
-                    attrs: { "object-type": "Project" },
-                    on: { delete: _vm.deleteProject }
+                  _c("rect", {
+                    attrs: {
+                      x: "0",
+                      y: "0",
+                      width: "24",
+                      height: "24",
+                      stroke: "none"
+                    }
                   }),
                   _vm._v(" "),
-                  _c("default-transition", [
-                    _vm.showHeading
-                      ? _c(
-                          "div",
+                  _c("circle", { attrs: { cx: "10", cy: "10", r: "7" } }),
+                  _vm._v(" "),
+                  _c("line", {
+                    attrs: { x1: "21", y1: "21", x2: "15", y2: "15" }
+                  })
+                ]
+              )
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c("div", { staticClass: "shadow rounded-lg flex" }, [
+          _c(
+            "div",
+            { staticClass: "relative" },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary float-right",
+                  on: {
+                    click: function($event) {
+                      _vm.hideAllDropdowns()
+                      _vm.$modal.show("modalProjectDialog")
+                    }
+                  }
+                },
+                [
+                  _vm._v(
+                    "Add\n                            project\n                        "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "modal",
+                {
+                  staticClass: "sm:w-full md:w-1/4",
+                  attrs: {
+                    name: "modalProjectDialog",
+                    adaptive: true,
+                    scrollable: true,
+                    height: "auto"
+                  }
+                },
+                [_c("create-project-dialog")],
+                1
+              ),
+              _vm._v(" "),
+              _c("delete-confirmation-dialog", {
+                attrs: { "object-type": "Project" },
+                on: { delete: _vm.deleteProject }
+              }),
+              _vm._v(" "),
+              _c("default-transition", [
+                _vm.showHeading
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "z-40 absolute top-0 right-0 w-40 bg-white rounded-lg shadow-lg mt-12 -mr-1 block py-1 overflow-hidden"
+                      },
+                      _vm._l(_vm.headings, function(heading) {
+                        return _c(
+                          "label",
                           {
                             staticClass:
-                              "z-40 absolute top-0 right-0 w-40 bg-white rounded-lg shadow-lg mt-12 -mr-1 block py-1 overflow-hidden"
+                              "flex justify-start items-center text-truncate hover:bg-gray-100 px-4 py-2"
                           },
-                          _vm._l(_vm.headings, function(heading) {
-                            return _c(
-                              "label",
+                          [
+                            _c("div", { staticClass: "text-teal-600 mr-3" }, [
+                              _c("input", {
+                                staticClass:
+                                  "form-checkbox focus:outline-none focus:shadow-outline",
+                                attrs: { type: "checkbox", checked: "" },
+                                on: { click: function($event) {} }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "select-none text-gray-700" },
+                              [_vm._v(_vm._s(heading))]
+                            )
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  : _vm._e()
+              ])
+            ],
+            1
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "container mx-auto" }, [
+      _c(
+        "table",
+        {
+          staticClass:
+            "border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative"
+        },
+        [
+          _c("thead", [
+            _c(
+              "tr",
+              { staticClass: "text-left" },
+              [
+                _c(
+                  "th",
+                  {
+                    staticClass:
+                      "py-2 px-3 sticky top-0 border-b border-gray-200 bg-gray-100"
+                  },
+                  [
+                    _c(
+                      "label",
+                      {
+                        staticClass:
+                          "text-teal-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer"
+                      },
+                      [
+                        _c("input", {
+                          staticClass:
+                            "form-checkbox focus:outline-none focus:shadow-outline",
+                          attrs: { type: "checkbox" },
+                          on: {
+                            click: function($event) {
+                              return _vm.selectAllCheckbox($event)
+                            }
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.headings, function(heading) {
+                  return _c("th", { staticClass: "default-header" }, [
+                    _vm._v(_vm._s(heading) + "\n                    ")
+                  ])
+                })
+              ],
+              2
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.projects, function(project, index) {
+              return _c(
+                "tr",
+                {
+                  key: project.id,
+                  staticClass: "cursor-pointer hover:bg-gray-200",
+                  on: {
+                    click: function($event) {
+                      return _vm.viewProject(project.id)
+                    }
+                  }
+                },
+                [
+                  _c("td", { staticClass: "default-row" }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "text-gray-700 px-6 py-3 flex items-center"
+                      },
+                      [_vm._v(_vm._s(project.id))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "default-row" }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "text-gray-700 px-6 py-3 flex items-center"
+                      },
+                      [_vm._v(_vm._s(project.name))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "default-row" }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "text-gray-700 px-6 py-3 flex items-center"
+                      },
+                      [_vm._v(_vm._s(project.modules_count))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "default-row" }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "text-gray-700 px-6 py-3 flex items-center"
+                      },
+                      [_vm._v(_vm._s(_vm.get(project, "owner.name", null)))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "default-row" }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "text-gray-700 px-6 py-3 flex items-center"
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(_vm._f("formatDateTime")(project.created_at))
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      directives: [
+                        {
+                          name: "click-outside",
+                          rawName: "v-click-outside",
+                          value: _vm.hideAllDropdowns,
+                          expression: "hideAllDropdowns"
+                        }
+                      ],
+                      staticClass: "default-row"
+                    },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn-dropdown px-1 focus:outline-none",
+                          on: {
+                            click: function($event) {
+                              $event.stopPropagation()
+                              return _vm.showDropdown(index)
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass: "dots-horizontal w-6 h-6 px-1",
+                              attrs: {
+                                viewBox: "0 0 20 20",
+                                fill: "currentColor"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d:
+                                    "M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("default-transition", [
+                        _vm.isOpen[index]
+                          ? _c(
+                              "div",
                               {
                                 staticClass:
-                                  "flex justify-start items-center text-truncate hover:bg-gray-100 px-4 py-2"
+                                  "contextual-popover-content cross-origin-top-right"
                               },
                               [
                                 _c(
                                   "div",
-                                  { staticClass: "text-teal-600 mr-3" },
+                                  {
+                                    staticClass:
+                                      "rounded-md bg-white bg-opacity-0 shadow-xs"
+                                  },
                                   [
-                                    _c("input", {
-                                      staticClass:
-                                        "form-checkbox focus:outline-none focus:shadow-outline",
-                                      attrs: { type: "checkbox", checked: "" },
-                                      on: { click: function($event) {} }
-                                    })
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "py-1",
+                                        attrs: {
+                                          role: "menu",
+                                          "aria-orientation": "vertical",
+                                          "aria-labelledby": "options-menu"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100\n                                           hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0",
+                                            attrs: {
+                                              href: "#",
+                                              role: "menuitem"
+                                            }
+                                          },
+                                          [_vm._v("Account settings")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "block px-4 py-2 text-sm leading-5 text-red-700\n                                           font-medium\n                                           hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
+                                            attrs: {
+                                              href: "#",
+                                              role: "menuitem"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                $event.stopPropagation()
+                                                _vm.currentProjectId =
+                                                  project.id
+                                                _vm.hideAllDropdowns()
+                                                _vm.$modal.show(
+                                                  "deleteConfirmationDialog"
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("Delete this project")]
+                                        )
+                                      ]
+                                    )
                                   ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "select-none text-gray-700" },
-                                  [_vm._v(_vm._s(heading))]
                                 )
                               ]
                             )
-                          }),
-                          0
-                        )
-                      : _vm._e()
-                  ])
-                ],
-                1
+                          : _vm._e()
+                      ])
+                    ],
+                    1
+                  )
+                ]
               )
-            ])
-          ])
+            }),
+            0
+          )
         ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "container mx-auto" }, [
-        _c(
-          "table",
+      )
+    ]),
+    _vm._v(" "),
+    _vm.pagination.meta !== null
+      ? _c(
+          "div",
           {
             staticClass:
-              "border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative"
+              "hidden sm:flex-1 sm:flex sm:items-center sm:justify-between pt-3"
           },
           [
-            _c("thead", [
-              _c(
-                "tr",
-                { staticClass: "text-left" },
-                [
-                  _c(
-                    "th",
-                    {
-                      staticClass:
-                        "py-2 px-3 sticky top-0 border-b border-gray-200 bg-gray-100"
-                    },
-                    [
-                      _c(
-                        "label",
-                        {
-                          staticClass:
-                            "text-teal-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer"
-                        },
-                        [
-                          _c("input", {
-                            staticClass:
-                              "form-checkbox focus:outline-none focus:shadow-outline",
-                            attrs: { type: "checkbox" },
-                            on: {
-                              click: function($event) {
-                                return _vm.selectAllCheckbox($event)
-                              }
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _vm._l(_vm.headings, function(heading) {
-                    return _c("th", { staticClass: "default-header" }, [
-                      _vm._v(_vm._s(heading) + "\n                    ")
-                    ])
-                  })
-                ],
-                2
-              )
+            _c("div", [
+              _c("p", { staticClass: "text-sm leading-5 text-gray-700" }, [
+                _vm._v("\n                    Showing\n                    "),
+                _c("span", { staticClass: "font-medium" }, [
+                  _vm._v(_vm._s(_vm.pagination.meta.from))
+                ]),
+                _vm._v("\n                    to\n                    "),
+                _c("span", { staticClass: "font-medium" }, [
+                  _vm._v(_vm._s(this.pagination.meta.to))
+                ]),
+                _vm._v("\n                    of\n                    "),
+                _c("span", { staticClass: "font-medium" }, [
+                  _vm._v(_vm._s(_vm.pagination.meta.total))
+                ]),
+                _vm._v("\n                    results\n                ")
+              ])
             ]),
             _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.projects, function(project, index) {
-                return _c(
-                  "tr",
-                  {
-                    key: project.id,
-                    staticClass: "cursor-pointer hover:bg-gray-200",
-                    on: {
-                      click: function($event) {
-                        return _vm.viewProject(project.id)
-                      }
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-tertiary border border-gray-400",
+                  class:
+                    _vm.pagination.links.prev === null ? "btn-disabled" : "",
+                  on: {
+                    click: function($event) {
+                      return _vm.fetchProjects(_vm.pagination.links.prev)
                     }
-                  },
-                  [
-                    _c("td", { staticClass: "default-row" }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass:
-                            "text-gray-700 px-6 py-3 flex items-center"
-                        },
-                        [_vm._v(_vm._s(project.id))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "default-row" }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass:
-                            "text-gray-700 px-6 py-3 flex items-center"
-                        },
-                        [_vm._v(_vm._s(project.name))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "default-row" }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass:
-                            "text-gray-700 px-6 py-3 flex items-center"
-                        },
-                        [_vm._v(_vm._s(project.modules_count))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "default-row" }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass:
-                            "text-gray-700 px-6 py-3 flex items-center"
-                        },
-                        [_vm._v(_vm._s(_vm.get(project, "owner.name", null)))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "default-row" }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass:
-                            "text-gray-700 px-6 py-3 flex items-center"
-                        },
-                        [
-                          _vm._v(
-                            _vm._s(_vm._f("formatDateTime")(project.created_at))
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      { staticClass: "default-row" },
-                      [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn-dropdown px-2 focus:outline-none",
-                            on: {
-                              click: function($event) {
-                                $event.stopPropagation()
-                                return _vm.showDropdown(index)
-                              }
-                            }
-                          },
-                          [
-                            _c(
-                              "svg",
-                              {
-                                staticClass: "dots-horizontal w-6 h-6 px-1",
-                                attrs: {
-                                  viewBox: "0 0 20 20",
-                                  fill: "currentColor"
-                                }
-                              },
-                              [
-                                _c("path", {
-                                  attrs: {
-                                    d:
-                                      "M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"
-                                  }
-                                })
-                              ]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("default-transition", [
-                          _vm.isOpen[index]
-                            ? _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "absolute cross-origin-top-right mt-2 w-56 bg-white rounded-md shadow-xl z-20"
-                                },
-                                [
-                                  _c("div", {
-                                    staticClass: "ContextualPopover-arrow"
-                                  }),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "rounded-md bg-white bg-opacity-0 shadow-xs"
-                                    },
-                                    [
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass: "py-1",
-                                          attrs: {
-                                            role: "menu",
-                                            "aria-orientation": "vertical",
-                                            "aria-labelledby": "options-menu"
-                                          }
-                                        },
-                                        [
-                                          _c(
-                                            "a",
-                                            {
-                                              staticClass:
-                                                "block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100\n                                           hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0",
-                                              attrs: {
-                                                href: "#",
-                                                role: "menuitem"
-                                              }
-                                            },
-                                            [_vm._v("Account settings")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "a",
-                                            {
-                                              staticClass:
-                                                "block px-4 py-2 text-sm leading-5 text-red-700\n                                           font-medium\n                                           hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900",
-                                              attrs: {
-                                                href: "#",
-                                                role: "menuitem"
-                                              },
-                                              on: {
-                                                click: function($event) {
-                                                  $event.stopPropagation()
-                                                  _vm.currentProjectId =
-                                                    project.id
-                                                  _vm.hideAllDropdowns()
-                                                  _vm.$modal.show(
-                                                    "deleteConfirmationDialog"
-                                                  )
-                                                }
-                                              }
-                                            },
-                                            [_vm._v("Delete this project")]
-                                          )
-                                        ]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            : _vm._e()
-                        ])
-                      ],
-                      1
-                    )
-                  ]
-                )
-              }),
-              0
-            )
+                  }
+                },
+                [_vm._v("Previous\n                ")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "divider" }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-tertiary border border-gray-400",
+                  class:
+                    _vm.pagination.links.next === null ? "btn-disabled" : "",
+                  on: {
+                    click: function($event) {
+                      return _vm.fetchProjects(_vm.pagination.links.next)
+                    }
+                  }
+                },
+                [_vm._v("Next\n                ")]
+              )
+            ])
           ]
         )
-      ]),
-      _vm._v(" "),
-      _vm.pagination.meta !== null
-        ? _c(
-            "div",
-            {
-              staticClass:
-                "hidden sm:flex-1 sm:flex sm:items-center sm:justify-between pt-3"
-            },
-            [
-              _c("div", [
-                _c("p", { staticClass: "text-sm leading-5 text-gray-700" }, [
-                  _vm._v("\n                    Showing\n                    "),
-                  _c("span", { staticClass: "font-medium" }, [
-                    _vm._v(_vm._s(_vm.pagination.meta.from))
-                  ]),
-                  _vm._v("\n                    to\n                    "),
-                  _c("span", { staticClass: "font-medium" }, [
-                    _vm._v(_vm._s(this.pagination.meta.to))
-                  ]),
-                  _vm._v("\n                    of\n                    "),
-                  _c("span", { staticClass: "font-medium" }, [
-                    _vm._v(_vm._s(_vm.pagination.meta.total))
-                  ]),
-                  _vm._v("\n                    results\n                ")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-tertiary border border-gray-400",
-                    class:
-                      _vm.pagination.links.prev === null ? "btn-disabled" : "",
-                    on: {
-                      click: function($event) {
-                        return _vm.fetchProjects(_vm.pagination.links.prev)
-                      }
-                    }
-                  },
-                  [_vm._v("Previous\n                ")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "divider" }),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-tertiary border border-gray-400",
-                    class:
-                      _vm.pagination.links.next === null ? "btn-disabled" : "",
-                    on: {
-                      click: function($event) {
-                        return _vm.fetchProjects(_vm.pagination.links.next)
-                      }
-                    }
-                  },
-                  [_vm._v("Next\n                ")]
-                )
-              ])
-            ]
-          )
-        : _vm._e()
-    ]
-  )
+      : _vm._e()
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -58913,7 +59043,7 @@ var render = function() {
             ? _c(
                 "button",
                 {
-                  staticClass: "btn btn-primary mt-2",
+                  staticClass: "btn btn-primary mt-2 text-right",
                   on: {
                     click: function($event) {
                       return _vm.submitTestCase()
@@ -58924,10 +59054,12 @@ var render = function() {
               )
             : _vm._e(),
           _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
           _c(
             "label",
             { staticClass: "primary-label", attrs: { for: "test-case-title" } },
-            [_vm._v("\n            Title\n        ")]
+            [_vm._v("\n        Title\n    ")]
           ),
           _vm._v(" "),
           _c("input", {
@@ -58962,7 +59094,7 @@ var render = function() {
               staticClass: "primary-label",
               attrs: { for: "test-case-description" }
             },
-            [_vm._v("\n            Description\n        ")]
+            [_vm._v("\n        Description\n    ")]
           ),
           _vm._v(" "),
           _c("quill-editor", {
@@ -58983,7 +59115,7 @@ var render = function() {
               staticClass: "primary-label",
               attrs: { for: "test-case-preconditions" }
             },
-            [_vm._v("\n            Preconditions\n        ")]
+            [_vm._v("\n        Preconditions\n    ")]
           ),
           _vm._v(" "),
           _c("textarea", {
@@ -59297,9 +59429,9 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                        " +
+                          "\n                    " +
                             _vm._s(tab.tab) +
-                            "\n                    "
+                            "\n                "
                         )
                       ]
                     )

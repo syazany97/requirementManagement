@@ -1,7 +1,9 @@
 <template>
     <div class="container md:mx-auto sm:w-full py-2 overflow-y-auto">
 
-        <h1 class="default-dialog-title">Add requirement</h1>
+        <div class="py-4">
+            <span class="default-dialog-title">Add requirement</span>
+        </div>
 
         <hr>
 
@@ -189,13 +191,13 @@ export default {
             }
         },
         async setRequirement() {
-          try {
-              const response = await requirementRepository.find(this.requirementProp.id);
-              this.requirement = response.data.data;
+            try {
+                const response = await requirementRepository.find(this.requirementProp.id);
+                this.requirement = response.data.data;
 
-          } catch(e) {
-              console.log('error', e);
-          }
+            } catch (e) {
+                console.log('error', e);
+            }
 
 
         },

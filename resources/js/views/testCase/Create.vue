@@ -2,7 +2,11 @@
     <div class="container mx-auto px-4" style="padding-bottom: 250px" v-if="requirement.id !== null && dataLoaded">
         <h1 class="h1">{{ requirement.name }}</h1>
 
-        <button v-if="steps.length" class="btn btn-primary mt-2" @click="submitTestCase()">Submit</button>
+        <button v-if="steps.length" class="btn btn-primary mt-2 text-right" @click="submitTestCase()">Submit</button>
+
+        <hr>
+
+
 
         <label class="primary-label" for="test-case-title">
             Title
@@ -106,28 +110,30 @@
 
         <div class="pt-5">
 
-<!--            <ul class="nav nav-pills">-->
-<!--                <li v-for="tab in items" class="nav-item">-->
-<!--                    <a :class="'nav-link ' +  (currentTab === tab.props.is ? 'active' : '')"-->
-<!--                       href="#" @click.prevent="currentTab = tab.props.is">{{ tab.tab }}</a>-->
-<!--                </li>-->
-<!--            </ul>-->
+            <!--            <ul class="nav nav-pills">-->
+            <!--                <li v-for="tab in items" class="nav-item">-->
+            <!--                    <a :class="'nav-link ' +  (currentTab === tab.props.is ? 'active' : '')"-->
+            <!--                       href="#" @click.prevent="currentTab = tab.props.is">{{ tab.tab }}</a>-->
+            <!--                </li>-->
+            <!--            </ul>-->
 
-<!--            <div v-for="tab in items" v-bind:key="tab.props.is">-->
-<!--                <component v-show="currentTab === tab.props.is" v-bind="tab.props"></component>-->
-<!--            </div>-->
+            <!--            <div v-for="tab in items" v-bind:key="tab.props.is">-->
+            <!--                <component v-show="currentTab === tab.props.is" v-bind="tab.props"></component>-->
+            <!--            </div>-->
 
             <nav class="px-1 pt-2">
                 <div class="-mb-px flex justify-left">
-                    <a v-for="tab in items" class="tab" :class="currentTab === tab.props.is ? 'active-tab' : ''" href="#" @click.prevent="currentTab= tab.props.is">
-                        {{tab.tab}}
+                    <a v-for="tab in items" class="tab" :class="currentTab === tab.props.is ? 'active-tab' : ''"
+                       href="#" @click.prevent="currentTab= tab.props.is">
+                        {{ tab.tab }}
                     </a>
                 </div>
             </nav>
 
             <div v-for="tab in items" v-bind:key="tab.props.is">
                 <keep-alive>
-                    <component v-show="currentTab === tab.props.is" v-bind="tab.props"  v-bind:is="tab.props.is"></component>
+                    <component v-show="currentTab === tab.props.is" v-bind="tab.props"
+                               v-bind:is="tab.props.is"></component>
                 </keep-alive>
             </div>
 
@@ -175,7 +181,7 @@ export default {
                 description: "",
                 preconditions: ""
             },
-            items: [ {
+            items: [{
                 tab: 'Comments',
                 props: {
                     'test-case': this.testCase,
