@@ -1,55 +1,64 @@
 <template>
-    <div class="container mx-auto py-2 overflow-y-auto">
+        <div class="container mx-auto py-2 overflow-y-auto">
 
-        <div class="py-2">
-            <span class="default-dialog-title">Create new project</span>
-        </div>
+            <div class="py-2">
+                <span class="default-dialog-title">{{ updateProject ? 'Update project' : 'Create new project' }}</span>
+            </div>
 
-        <hr>
+            <hr>
 
-        <div class="bg-white px-4">
-            <label class="primary-label" for="projectName">
-                Name
-            </label>
+            <div class="bg-white px-4">
+                <label class="primary-label" for="projectName">
+                    Name
+                </label>
 
-            <input class="primary-input"
-                   v-model="projectName"
-                   id="projectName" name="projectName"
-                   type="text" placeholder="Name">
+                <input class="primary-input"
+                       v-model="projectName"
+                       id="projectName" name="projectName"
+                       type="text" placeholder="Name">
 
-            <label class="primary-label" for="projectDescription">
-                Description
-            </label>
+                <p v-if="errors.hasOwnProperty('name')" class="error-message">
+                    {{ errors.name[0] }}</p>
 
-            <input class="primary-input"
-                   v-model="projectDescription"
-                   id="projectDescription" name="projectDescription"
-                   type="text" placeholder="Description">
+                <label class="primary-label" for="projectDescription">
+                    Description
+                </label>
 
-            <label class="primary-label" for="projectStatus">
-                Project Status
-            </label>
+                <textarea class="primary-input"
+                          v-model="projectDescription"
+                          id="projectDescription" name="projectDescription"
+                          type="text" placeholder="Description" ></textarea>
 
-            <vue-select
-                v-model="projectStatusId"
-                name="projectStatus"
-                id="projectStatus"
-                :options="projectStatuses"
-                label="title"
-                :reduce="title => title.id"
-            ></vue-select>
+                <p v-if="errors.hasOwnProperty('description')" class="error-message">
+                    {{ errors.description[0] }}</p>
 
-            <div class="modal-button-alignment">
-                <button @click="dialog = false" class="btn btn-tertiary pr-3">
-                    <span>Cancel</span>
-                </button>
-                <div class="divider"></div>
-                <button @click="createProject()" class="btn btn-primary">
-                    <span>Create</span>
-                </button>
+                <label class="primary-label" for="projectStatus">
+                    Project Status
+                </label>
+
+                <vue-select
+                    v-model="projectStatusId"
+                    name="projectStatus"
+                    id="projectStatus"
+                    :options="projectStatuses"
+                    label="title"
+                    :reduce="title => title.id"
+                ></vue-select>
+
+                <p v-if="errors.hasOwnProperty('project_status_id')" class="error-message">
+                    {{ errors.project_status_id[0] }}</p>
+
+                <div class="modal-button-alignment">
+                    <button @click="closeDialog" class="btn btn-tertiary pr-3">
+                        <span>Cancel</span>
+                    </button>
+                    <div class="divider"></div>
+                    <button @click="createProject()" class="btn btn-primary">
+                        <span>{{ updateProject ? 'Update' : 'Create' }}</span>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
@@ -57,37 +66,64 @@ import projectRepository from "../../../repositories/projectRepository";
 
 export default {
     name: "CreateProjectDialog",
+    props: {
+        updateProject: {
+            type: Boolean,
+            default: false
+        },
+        project: {
+            type: Object
+        }
+    },
     data() {
         return {
+            // TODO : fix removal of id when update to signal is update mode
             valid: true,
-            projectName: "",
-            projectDescription: "",
-            projectStatusId: "",
-            projectStatuses: []
+            projectName: this.project.hasOwnProperty('name') ? this.project.name : "",
+            projectDescription: this.project.hasOwnProperty('description') ? this.project.description : "",
+            projectStatusId:  this.project.hasOwnProperty('project_status_id') ? this.project.project_status_id : "",
+            projectStatuses: [],
+            errors: []
         }
     },
     created() {
+        console.log('create project', this.project);
         this.fetchProjectStatuses()
     },
     methods: {
-        createProject() {
-            projectRepository.store({
-                name: this.projectName,
-                description: this.projectDescription,
-                project_status_id: this.projectStatusId
-            }).then(res => {
-                this.$emit('fetch-projects', 'fetchProjects');
+        async createProject() {
+            try {
+                const payload = {
+                    name: this.projectName,
+                    description: this.projectDescription,
+                    project_status_id: this.projectStatusId
+                };
+
+                if (this.updateProject) {
+                    projectRepository.update(this.project.id, payload);
+                } else {
+                    projectRepository.store(payload);
+                }
+
+                this.$emit('fetch-projects');
                 this.projectName = "";
                 this.projectStatusId = "";
                 this.projectDescription = "";
-                const payload = {
+                this.$store.commit("notification/showNotification", {
                     variant: "success",
-                    message: "Project Created"
-                };
-                this.$store.commit("notification/showNotification", payload);
-            }).catch(err => {
-                console.log(err.response.data.errors);
-            })
+                    message: "Project " + (this.updateProject ? 'Updated' : 'Created')
+                });
+                this.$emit('reset-project');
+                this.closeDialog();
+
+            } catch (err) {
+                if (err.response.status === 422) {
+                    this.errors = err.response.data.errors;
+                }
+            }
+        },
+        closeDialog() {
+            this.$modal.hide('modalProjectDialog');
         },
         async fetchProjectStatuses() {
             const response = await projectRepository.getProjectStatuses();

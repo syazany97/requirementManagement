@@ -3596,6 +3596,10 @@ video {
   background-color: #2b6cb0;
 }
 
+.btn-danger {
+  color: white;
+}
+
 .btn-secondary {
   --bg-opacity: 1;
   background-color: #e2e8f0;
@@ -3954,6 +3958,11 @@ h1 {
   border-radius: 0.375rem;
   z-index: 20;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.error-message {
+  color: #f56565;
+  font-size: 0.875rem;
 }
 
 /* transition */

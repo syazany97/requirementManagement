@@ -7,7 +7,6 @@
         <hr>
 
 
-
         <label class="primary-label" for="test-case-title">
             Title
         </label>
@@ -121,20 +120,22 @@
             <!--                <component v-show="currentTab === tab.props.is" v-bind="tab.props"></component>-->
             <!--            </div>-->
 
-            <nav class="px-1 pt-2">
-                <div class="-mb-px flex justify-left">
-                    <a v-for="tab in items" class="tab" :class="currentTab === tab.props.is ? 'active-tab' : ''"
-                       href="#" @click.prevent="currentTab= tab.props.is">
-                        {{ tab.tab }}
-                    </a>
-                </div>
-            </nav>
+            <div v-if="$route.name !== 'test-case.create'">
+                <nav class="px-1 pt-2">
+                    <div class="-mb-px flex justify-left">
+                        <a v-for="tab in items" class="tab" :class="currentTab === tab.props.is ? 'active-tab' : ''"
+                           href="#" @click.prevent="currentTab= tab.props.is">
+                            {{ tab.tab }}
+                        </a>
+                    </div>
+                </nav>
 
-            <div v-for="tab in items" v-bind:key="tab.props.is">
-                <keep-alive>
-                    <component v-show="currentTab === tab.props.is" v-bind="tab.props"
-                               v-bind:is="tab.props.is"></component>
-                </keep-alive>
+                <div v-for="tab in items" v-bind:key="tab.props.is">
+                    <keep-alive>
+                        <component v-show="currentTab === tab.props.is" v-bind="tab.props"
+                                   v-bind:is="tab.props.is"></component>
+                    </keep-alive>
+                </div>
             </div>
 
         </div>
@@ -185,6 +186,7 @@ export default {
                 tab: 'Comments',
                 props: {
                     'test-case': this.testCase,
+                    'requirement': this.requirement,
                     'is': 'comment-list',
                     'repository-type': 'test-case'
                 }

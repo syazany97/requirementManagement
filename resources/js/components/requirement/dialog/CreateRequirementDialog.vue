@@ -184,6 +184,7 @@ export default {
                 await this.$store.dispatch('requirement/setRequirementList',
                     {project_id: this.$route.params.project});
                 this.closeDialog();
+                this.$store.commit("notification/showNotification", {variant : "success", message : "Requirement added"});
             } catch (e) {
                 console.log(e);
             } finally {

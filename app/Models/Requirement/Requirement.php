@@ -6,6 +6,7 @@ use App\Models\Comment\Comment;
 use App\Models\Module;
 use App\Models\TestCase\TestCase;
 use App\QueryBuilder\RequirementQueryBuilder;
+use App\Traits\HasHistories;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -15,7 +16,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Requirement extends Model implements HasMedia
 {
-    use InteractsWithMedia, LogsActivity, SoftDeletes;
+    use InteractsWithMedia, LogsActivity, SoftDeletes, HasHistories;
 
     protected $fillable = ['name', 'module_id', 'description', 'description',
         'requirement_priority_id', 'requirement_status_id', 'numbering', 'module_id',
@@ -23,6 +24,8 @@ class Requirement extends Model implements HasMedia
     ];
 
     protected static $logFillable = true;
+
+    protected static $logOnlyDirty = true;
 
     public function module()
     {

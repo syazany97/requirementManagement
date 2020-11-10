@@ -1,17 +1,21 @@
 <template>
 
-    <modal name="deleteConfirmationDialog" class="sm:w-full md:w-1/4" :adaptive="true" :scrollable="true"
-           :shiftY="0.3" height="auto" width="620px">
-        <div class="container md:mx-auto sm:w-full py-2 overflow-y-auto">
-            <h1 class="default-dialog-title">Delete {{ type }}</h1>
-            <span class="px-4">Are you sure you want to permanently delete this {{ type }}? This cannot be undone</span>
+    <modal name="deleteConfirmationDialog" class="sm:w-full md:w-1/6" :adaptive="true" :scrollable="true"
+           :shiftY="0.3" height="auto" width="400px">
+        <div class="container md:mx-auto sm:w-full  py-2 overflow-y-auto">
+            <p class="default-dialog-title mt-2">Delete {{ type }}</p>
+            <div class="mt-2">
+                <p class="px-4">Are you sure you want to permanently delete this {{
+                        type
+                    }}? This cannot be undone</p>
+            </div>
             <div class="inline-flex text-right px-4 pt-4 pb-5 float-right">
-                <button @click="$modal.hide('confirmationDialog')" class="btn btn-tertiary pr-3">
+                <button @click="$modal.hide('deleteConfirmationDialog')" class="btn btn-tertiary pr-3">
                     <span>Cancel</span>
                 </button>
                 <div class="divider"></div>
-                <button @click="deleteObject" class="btn btn-primary">
-                    <span>Delete {{ type }}</span>
+                <button @click="deleteObject" class="btn btn-danger bg-red-700">
+                    Delete {{ type }}
                 </button>
             </div>
         </div>
@@ -28,15 +32,16 @@ export default {
             default: 'Project'
         }
     },
-    computed : {
-      type() {
-          return this.objectType.toLowerCase();
-      }
+    computed: {
+        type() {
+            return this.objectType.toLowerCase();
+        }
     },
     name: "DeleteConfirmationDialog",
-    methods : {
+    methods: {
         deleteObject() {
             this.$emit('delete');
+            this.$store.commit("notification/showNotification", {variant : 'error', message : this.objectType + ' deleted'});
         }
     }
 }

@@ -30,37 +30,39 @@
             <div>
                 <div class="shadow rounded-lg flex">
                     <div class="relative">
-<!--                                                <button @click.prevent="showHeading = !showHeading"-->
-<!--                                                        class="rounded-lg inline-flex items-center bg-white hover:text-blue-500 focus:outline-none focus:shadow-outline text-gray-500 font-semibold py-2 px-2 md:px-4">-->
-<!--                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 md:hidden"-->
-<!--                                                         viewBox="0 0 24 24"-->
-<!--                                                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"-->
-<!--                                                         stroke-linejoin="round">-->
-<!--                                                        <rect x="0" y="0" width="24" height="24" stroke="none"></rect>-->
-<!--                                                        <path-->
-<!--                                                            d="M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5"/>-->
-<!--                                                    </svg>-->
-<!--                                                    <span class="hidden md:block">Display</span>-->
-<!--                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" width="24" height="24"-->
-<!--                                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"-->
-<!--                                                         stroke-linecap="round" stroke-linejoin="round">-->
-<!--                                                        <rect x="0" y="0" width="24" height="24" stroke="none"></rect>-->
-<!--                                                        <polyline points="6 9 12 15 18 9"/>-->
-<!--                                                    </svg>-->
-<!--                                                </button>-->
-                        <button @click="hideAllDropdowns(); $modal.show('modalProjectDialog')" class="btn btn-primary float-right">Add
-                            project
+                        <!--                                                <button @click.prevent="showHeading = !showHeading"-->
+                        <!--                                                        class="rounded-lg inline-flex items-center bg-white hover:text-blue-500 focus:outline-none focus:shadow-outline text-gray-500 font-semibold py-2 px-2 md:px-4">-->
+                        <!--                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 md:hidden"-->
+                        <!--                                                         viewBox="0 0 24 24"-->
+                        <!--                                                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"-->
+                        <!--                                                         stroke-linejoin="round">-->
+                        <!--                                                        <rect x="0" y="0" width="24" height="24" stroke="none"></rect>-->
+                        <!--                                                        <path-->
+                        <!--                                                            d="M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5"/>-->
+                        <!--                                                    </svg>-->
+                        <!--                                                    <span class="hidden md:block">Display</span>-->
+                        <!--                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" width="24" height="24"-->
+                        <!--                                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"-->
+                        <!--                                                         stroke-linecap="round" stroke-linejoin="round">-->
+                        <!--                                                        <rect x="0" y="0" width="24" height="24" stroke="none"></rect>-->
+                        <!--                                                        <polyline points="6 9 12 15 18 9"/>-->
+                        <!--                                                    </svg>-->
+                        <!--                                                </button>-->
+                        <button @click="updatingProject = {}; hideAllDropdowns(); $modal.show('modalProjectDialog')"
+                                class="btn btn-primary float-right">Add project
                         </button>
 
                         <!-- Create Project Modal -->
-                        <modal name="modalProjectDialog" class="sm:w-full md:w-1/4" :adaptive="true" :scrollable="true"
+                        <modal name="modalProjectDialog" :shift-y="0.2" class="sm:w-full md:w-1/4" :adaptive="true" :scrollable="true"
                                height="auto">
-                            <create-project-dialog></create-project-dialog>
+                        <create-project-dialog @fetch-projects="fetchProjects" :project="updatingProject"
+                                               :update-project="updatingProject.id !== null"></create-project-dialog>
                         </modal>
                         <!-- End create project modal -->
 
                         <!-- Delete confirmation modal -->
-                        <delete-confirmation-dialog object-type="Project" @delete="deleteProject"></delete-confirmation-dialog>
+                        <delete-confirmation-dialog object-type="Project"
+                                                    @delete="deleteProject"></delete-confirmation-dialog>
                         <!-- End delete confirmation modal -->
 
                         <default-transition>
@@ -126,7 +128,7 @@
                                                                 >{{ project.created_at | formatDateTime }}</span>
                     </td>
 
-                    <td  v-click-outside="hideAllDropdowns" class="default-row">
+                    <td v-click-outside="hideAllDropdowns" class="default-row">
                         <!--                                								<button class="border-opacity-100 hover:bg-red hover:border-grey-300 rounded">-->
                         <button @click.stop="showDropdown(index)"
                                 class="btn-dropdown px-1 focus:outline-none">
@@ -140,14 +142,20 @@
                         <default-transition>
                             <div v-if="isOpen[index]"
                                  class="contextual-popover-content cross-origin-top-right">
-<!--                                <div class="ContextualPopover-arrow"></div>-->
+                                <!--                                <div class="ContextualPopover-arrow"></div>-->
                                 <div class="rounded-md bg-white bg-opacity-0 shadow-xs">
-                                    <div class="py-1" role="menu" aria-orientation="vertical"aria-labelledby="options-menu">
+                                    <div class="py-1" role="menu" aria-orientation="vertical"
+                                         aria-labelledby="options-menu">
                                         <a href="#"
                                            class="block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100
                                            hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0"
                                            role="menuitem">Account settings</a>
-                                        <a @click.stop="currentProjectId = project.id; hideAllDropdowns(); $modal.show('deleteConfirmationDialog');" href="#"
+                                        <a @click.stop="updateProject(project)"
+                                           class="block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100
+                                           hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0"
+                                           role="menuitem">Edit</a>
+                                        <a @click.stop="currentProjectId = project.id; hideAllDropdowns(); $modal.show('deleteConfirmationDialog');"
+                                           href="#"
                                            class="block px-4 py-2 text-sm leading-5 text-red-700
                                            font-medium
                                            hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
@@ -221,7 +229,13 @@ export default {
                 'Created',
                 ''
             ],
-            currentProjectId : null,
+            updatingProject: {
+                id: null,
+                name: "",
+                description: "",
+                project_status_id: null
+            },
+            currentProjectId: null,
             showHeading: false,
             pagination: {
                 links: null,
@@ -244,7 +258,7 @@ export default {
         async fetchProjects(link = null) {
             const url = link === null ? this.url + ('?q=' + this.search) : link;
             const response = await axios.get(url);
-            console.log(response.data);
+            console.log('fetch projects in index page', response.data);
             this.projects = response.data.data;
             this.pagination.links = response.data.links;
             this.pagination.meta = response.data.meta;
@@ -287,6 +301,12 @@ export default {
                     project: projectId
                 }
             });
+        },
+        updateProject(project) {
+            console.log('update project', project);
+            this.updatingProject = project;
+            this.hideAllDropdowns();
+            this.$modal.show('modalProjectDialog');
         }
     }
 }
@@ -297,8 +317,8 @@ export default {
 .ContextualPopover-arrow {
     z-index: 1;
     width: 21px;
-    left : 205px;
-    position:relative;
+    left: 205px;
+    position: relative;
     height: 10px;
     border-top: none;
     margin: -9px;

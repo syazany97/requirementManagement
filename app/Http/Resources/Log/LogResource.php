@@ -20,9 +20,9 @@ class LogResource extends JsonResource
         $modal = $this->getClassBaseName($this->subject_type);
 
         return [
-            'user' => optional(User::find($this->causer_id))->name,
+            'causer' => $this->causer,
             'description' => $this->description === 'created' ?
-                sprintf('Created this %s', $modal) :
+                sprintf('created this %s', $modal) :
                 $this->formatUpdatedInformation($modal, $this->properties['attributes']),
             'properties' => $this->properties,
             'created_at' => $this->created_at,

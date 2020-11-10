@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\History\RequirementHistoryController;
 use App\Http\Controllers\API\Module\ProjectModuleController;
 use App\Http\Controllers\API\Project\ProjectController;
 use App\Http\Controllers\API\Project\ProjectStatusController;
@@ -75,5 +76,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::any('requirement-priorities', RequirementPriorityController::class);
 
     Route::patch('requirements/{requirement}/update-parent-id', UpdateRequirementParentIdController::class);
+
+    Route::get('requirements/{requirement}/histories', RequirementHistoryController::class);
+
 });
 
