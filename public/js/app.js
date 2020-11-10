@@ -3858,6 +3858,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -58878,6 +58880,10 @@ var render = function() {
       _vm._v(
         _vm._s(_vm.requirement.numbering) + " " + _vm._s(_vm.requirement.name)
       )
+    ]),
+    _vm._v(" "),
+    _c("button", { staticClass: "btn btn-primary" }, [
+      _vm._v("Edit requirement")
     ]),
     _vm._v(" "),
     _vm.lists.length

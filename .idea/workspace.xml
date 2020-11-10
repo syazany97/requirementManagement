@@ -20,32 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58239c8f-5f70-4482-9e45-1dcb473cf0d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Traits/HasHistories.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/repositories/history/requirementHistoryRepository.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Log/LogResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Log/LogResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/Project/ProjectResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/Project/ProjectResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Requirement/Requirement.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Requirement/Requirement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/addOn.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/addOn.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/telescope/app-dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/telescope/app-dark.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/telescope/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/telescope/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/telescope/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/telescope/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/telescope/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/telescope/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/ToastNotification.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/ToastNotification.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/modal/DeleteConfirmationDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/modal/DeleteConfirmationDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/project/modal/CreateProjectDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/project/modal/CreateProjectDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/requirement/ShowRequirement.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/requirement/ShowRequirement.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/requirement/dialog/CreateRequirementDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/requirement/dialog/CreateRequirementDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/requirement/sections/CommentList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/requirement/sections/CommentList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/requirement/tabs/RequirementHistory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/requirement/tabs/RequirementHistory.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/repositories/projectRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/repositories/projectRepository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/projects/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/projects/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/testCase/Create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/testCase/Create.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/requirement/tabs/RequirementDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/requirement/tabs/RequirementDetails.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,7 +229,7 @@
       <workItem from="1604821791347" duration="2121000" />
       <workItem from="1604999678743" duration="2706000" />
       <workItem from="1605008693010" duration="3857000" />
-      <workItem from="1605015719850" duration="3739000" />
+      <workItem from="1605015719850" duration="5101000" />
     </task>
     <servers />
   </component>
@@ -300,9 +277,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="668" y="237" width="583" height="566" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605017851300" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605017822799">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605021066778">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605017822799" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605021066778" />
   </component>
 </project>
