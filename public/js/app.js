@@ -2896,13 +2896,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       console.log(params);
     },
     onClick: function onClick(params) {
-      if (params.type === 'requirement') {
-        console.log('node', params);
-        history.replaceState({
-          requirement: params.id
-        }, null, '?requirement=' + params.id);
-        this.$store.commit('requirement/setRequirement', params);
-      }
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (!(params.type === 'requirement')) {
+                  _context.next = 5;
+                  break;
+                }
+
+                console.log('node', params);
+
+                _this.$store.commit('requirement/setRequirement', params);
+
+                _context.next = 5;
+                return _this.$store.dispatch('requirement/updateQueryParam');
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
     },
     addNode: function addNode() {
       console.log('add node');
@@ -2968,41 +2987,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       console.log('ON DROP BEFORE', params);
     },
     updateModuleAfterDrop: function updateModuleAfterDrop(payload) {
-      var _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_3__["default"].update(payload.id, payload);
-
-              case 3:
-                _context.next = 5;
-                return _this.$store.dispatch('requirement/setRequirementList', {
-                  project_id: _this.projectId
-                });
-
-              case 5:
-                _context.next = 10;
-                break;
-
-              case 7:
-                _context.prev = 7;
-                _context.t0 = _context["catch"](0);
-                console.log(_context.t0);
-
-              case 10:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, null, [[0, 7]]);
-      }))();
-    },
-    updateRequirementAfterDrop: function updateRequirementAfterDrop(payload) {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
@@ -3010,33 +2994,68 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                payload.module_id = payload.parent_id;
-                delete payload.parent_id;
-                _context2.prev = 2;
-                _context2.next = 5;
-                return _repositories_requirementRepository__WEBPACK_IMPORTED_MODULE_4__["default"].updateParentId(payload.id, payload);
+                _context2.prev = 0;
+                _context2.next = 3;
+                return _repositories_moduleRepository__WEBPACK_IMPORTED_MODULE_3__["default"].update(payload.id, payload);
 
-              case 5:
-                _context2.next = 7;
+              case 3:
+                _context2.next = 5;
                 return _this2.$store.dispatch('requirement/setRequirementList', {
                   project_id: _this2.projectId
                 });
 
-              case 7:
-                _context2.next = 12;
+              case 5:
+                _context2.next = 10;
                 break;
 
-              case 9:
-                _context2.prev = 9;
-                _context2.t0 = _context2["catch"](2);
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
                 console.log(_context2.t0);
 
-              case 12:
+              case 10:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[2, 9]]);
+        }, _callee2, null, [[0, 7]]);
+      }))();
+    },
+    updateRequirementAfterDrop: function updateRequirementAfterDrop(payload) {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                payload.module_id = payload.parent_id;
+                delete payload.parent_id;
+                _context3.prev = 2;
+                _context3.next = 5;
+                return _repositories_requirementRepository__WEBPACK_IMPORTED_MODULE_4__["default"].updateParentId(payload.id, payload);
+
+              case 5:
+                _context3.next = 7;
+                return _this3.$store.dispatch('requirement/setRequirementList', {
+                  project_id: _this3.projectId
+                });
+
+              case 7:
+                _context3.next = 12;
+                break;
+
+              case 9:
+                _context3.prev = 9;
+                _context3.t0 = _context3["catch"](2);
+                console.log(_context3.t0);
+
+              case 12:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[2, 9]]);
       }))();
     }
   }
@@ -3080,24 +3099,7 @@ var qs = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      tab: null,
-      items: [{
-        tab: 'Requirement',
-        component: 'requirement-details',
-        props: {}
-      }, {
-        tab: 'Test Case',
-        component: 'test-case-details',
-        props: {}
-      }, {
-        tab: 'History',
-        component: 'requirement-history',
-        props: {
-          objectId: null,
-          historyType: 'requirement'
-        }
-      }],
-      currentTab: 'requirement-details'
+      tab: null
     };
   },
   created: function created() {
@@ -3105,17 +3107,34 @@ var qs = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
   },
   watch: {
     requirement: function requirement() {
-      var tabIndex = this.items.findIndex(function (x) {
+      var tabIndex = this.tabs.findIndex(function (x) {
         return x.tab === 'History';
       });
       if (tabIndex === -1) return;
-      this.items[tabIndex].props.objectId = this.requirement.id;
-      this.items.splice(tabIndex, 1, this.items[tabIndex]);
+      this.tabs[tabIndex].props.objectId = this.requirement.id;
+      this.tabs.splice(tabIndex, 1, this.tabs[tabIndex]);
     }
   },
   computed: {
     requirement: function requirement() {
       return this.$store.getters['requirement/currentRequirement'];
+    },
+    tabs: {
+      get: function get() {
+        return this.$store.getters['requirement/tabs'];
+      },
+      set: function set(value) {
+        return this.$store.commit('requirement/tabs', value);
+      }
+    },
+    currentTab: {
+      get: function get() {
+        return this.$store.getters['requirement/currentTab'];
+      },
+      set: function set(value) {
+        this.$store.commit('requirement/currentTab', value);
+        this.$store.dispatch('requirement/updateQueryParam');
+      }
     }
   },
   methods: {
@@ -4809,17 +4828,32 @@ var qs = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
       }))();
     },
     setQueryParameter: function setQueryParameter() {
-      if (this.$route.query.requirement) {
-        // if there is a query parameter on url then set display it
-        this.$store.dispatch('requirement/setRequirement', this.$route.query.requirement);
-      }
+      var _this2 = this;
 
-      var queryString = window.location.search;
-      var urlParams = new URLSearchParams(queryString);
-      console.log({
-        urlParams: urlParams
-      });
-      console.log('qs', qs.parse(window.location.search));
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                if (!_this2.$route.query.requirement) {
+                  _context2.next = 5;
+                  break;
+                }
+
+                _context2.next = 3;
+                return _this2.$store.dispatch('requirement/setRequirement', _this2.$route.query.requirement);
+
+              case 3:
+                _context2.next = 5;
+                return _this2.$store.dispatch('requirement/updateQueryParam');
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
     }
   }
 });
@@ -58250,7 +58284,7 @@ var render = function() {
             _c(
               "div",
               { staticClass: "-mb-px flex justify-left" },
-              _vm._l(_vm.items, function(tab) {
+              _vm._l(_vm.tabs, function(tab) {
                 return _c(
                   "a",
                   {
@@ -58275,7 +58309,7 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._l(_vm.items, function(tab) {
+          _vm._l(_vm.tabs, function(tab) {
             return _c(
               "div",
               { key: tab.component },
@@ -79387,6 +79421,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+var qs = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
+
 var state = function state() {
   return {
     currentRequirement: {
@@ -79398,7 +79434,25 @@ var state = function state() {
     requirementList: [],
     statuses: [],
     priorities: [],
-    filteredRequirementList: []
+    filteredRequirementList: [],
+    tabs: [{
+      tab: 'Requirement',
+      component: 'requirement-details',
+      props: {}
+    }, {
+      tab: 'Test Case',
+      component: 'test-case-details',
+      props: {}
+    }, {
+      tab: 'History',
+      component: 'requirement-history',
+      props: {
+        objectId: null,
+        historyType: 'requirement'
+      }
+    }],
+    currentTab: 'requirement-details',
+    firstLoad: true
   };
 }; // getters
 
@@ -79418,12 +79472,21 @@ var getters = {
   },
   priorities: function priorities(state) {
     return state.priorities;
+  },
+  tabs: function tabs(state) {
+    return state.tabs;
+  },
+  currentTab: function currentTab(state) {
+    return state.currentTab;
+  },
+  firstLoad: function firstLoad(state) {
+    return state.firstLoad;
   }
 }; // mutations
 
 var mutations = {
   setRequirement: function setRequirement(state, payload) {
-    state.currentRequirement = payload; // Vue.set(state, 'currentRequirement', payload);
+    state.currentRequirement = payload;
   },
   setRequirementList: function setRequirementList(state, payload) {
     Vue.set(state, 'requirementList', payload);
@@ -79438,6 +79501,15 @@ var mutations = {
     state.filteredRequirementList = _.filter(state.filteredRequirementList, {
       'name': payload
     });
+  },
+  tabs: function tabs(state, payload) {
+    state.tabs = payload;
+  },
+  currentTab: function currentTab(state, payload) {
+    state.currentTab = payload;
+  },
+  firstLoad: function firstLoad(state, payload) {
+    state.firstLoad = payload;
   }
 };
 var actions = {
@@ -79453,10 +79525,9 @@ var actions = {
 
             case 2:
               response = _context.sent;
-              console.log('data', response.data.data);
               state.commit('setRequirementList', response.data.data);
 
-            case 5:
+            case 4:
             case "end":
               return _context.stop();
           }
@@ -79528,6 +79599,34 @@ var actions = {
           }
         }
       }, _callee4);
+    }))();
+  },
+  updateQueryParam: function updateQueryParam(state) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+      var queryString, query;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              queryString = qs.parse(location.search.split('?')[1]);
+              query = "";
+
+              if (state.state.firstLoad && queryString.hasOwnProperty('tab')) {
+                console.log('firstLoad');
+                state.commit('currentTab', queryString.tab);
+              }
+
+              query += "requirement=".concat(state.state.currentRequirement.id);
+              query += "&tab=".concat(state.state.currentTab);
+              state.commit('firstLoad', false);
+              history.pushState({}, "", "?" + query);
+
+            case 7:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5);
     }))();
   }
 };

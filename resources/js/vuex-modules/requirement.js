@@ -4,6 +4,8 @@ import requirementStatusRepository from "../repositories/requirementStatusReposi
 import requirementPriorities from "../repositories/requirementPriorities";
 import requirementRepository from "../repositories/requirementRepository";
 
+const qs = require('qs');
+
 const state = () => ({
     currentRequirement: {
         id: null,
@@ -14,7 +16,25 @@ const state = () => ({
     requirementList: [],
     statuses: [],
     priorities: [],
-    filteredRequirementList: []
+    filteredRequirementList: [],
+    tabs: [
+        {
+            tab: 'Requirement', component: 'requirement-details', props: {}
+        },
+        {
+            tab: 'Test Case', component: 'test-case-details', props: {}
+        },
+        {
+            tab: 'History',
+            component: 'requirement-history',
+            props: {
+                objectId: null,
+                historyType: 'requirement'
+            }
+        }
+    ],
+    currentTab: 'requirement-details',
+    firstLoad: true
 });
 
 // getters
@@ -33,14 +53,22 @@ const getters = {
     },
     priorities: (state) => {
         return state.priorities
-    }
+    },
+    tabs: (state) => {
+        return state.tabs
+    },
+    currentTab: (state) => {
+        return state.currentTab
+    },
+    firstLoad: (state) => {
+        return state.firstLoad
+    },
 };
 
 // mutations
 const mutations = {
     setRequirement: (state, payload) => {
         state.currentRequirement = payload;
-        // Vue.set(state, 'currentRequirement', payload);
     },
     setRequirementList: (state, payload) => {
         Vue.set(state, 'requirementList', payload);
@@ -53,13 +81,21 @@ const mutations = {
     },
     setFilteredRequirementList: (state, payload) => {
         state.filteredRequirementList = _.filter(state.filteredRequirementList, {'name': payload});
-    }
+    },
+    tabs: (state, payload) => {
+        state.tabs = payload;
+    },
+    currentTab: (state, payload) => {
+        state.currentTab = payload;
+    },
+    firstLoad: (state, payload) => {
+        state.firstLoad = payload;
+    },
 };
 
 const actions = {
     async setRequirementList(state, payload) {
         const response = await moduleRepository.all(payload.project_id);
-        console.log('data', response.data.data);
         state.commit('setRequirementList', response.data.data);
     },
     async setRequirementStatuses(state, payload) {
@@ -73,6 +109,30 @@ const actions = {
     async setRequirement(state, requirementId) {
         const response = await requirementRepository.find(requirementId);
         state.commit('setRequirement', response.data.data);
+    },
+    async updateQueryParam(state) {
+
+        let queryString = qs.parse(location.search.split('?')[1]);
+
+        let query = "";
+
+        if (state.state.firstLoad && queryString.hasOwnProperty('tab')) {
+            console.log('firstLoad');
+            state.commit('currentTab', queryString.tab);
+        }
+
+        query += `requirement=${state.state.currentRequirement.id}`;
+
+        query += `&tab=${state.state.currentTab}`;
+
+        state.commit('firstLoad', false);
+
+        history.pushState(
+            {},
+            "",
+            "?" + query
+        );
+
     }
 }
 

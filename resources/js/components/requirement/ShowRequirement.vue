@@ -5,14 +5,14 @@
     >
         <nav class="px-1 pt-2">
             <div class="-mb-px flex justify-left">
-                <a v-for="tab in items" class="tab" :class="currentTab === tab.component ? 'active-tab' : ''" href="#"
+                <a v-for="tab in tabs" class="tab" :class="currentTab === tab.component ? 'active-tab' : ''" href="#"
                    @click.prevent="currentTab= tab.component">
                     {{ tab.tab }}
                 </a>
             </div>
         </nav>
 
-        <div v-for="tab in items" v-bind:key="tab.component">
+        <div v-for="tab in tabs" v-bind:key="tab.component">
             <component v-show="currentTab === tab.component" v-bind:is="tab.component"
                        v-bind="{...tab.props}"></component>
         </div>
@@ -25,24 +25,7 @@ const qs = require('qs');
 export default {
     data() {
         return {
-            tab: null,
-            items: [
-                {
-                    tab: 'Requirement', component: 'requirement-details', props: {}
-                },
-                {
-                    tab: 'Test Case', component: 'test-case-details', props: {}
-                },
-                {
-                    tab: 'History',
-                    component: 'requirement-history',
-                    props: {
-                        objectId: null,
-                        historyType: 'requirement'
-                    }
-                }
-            ],
-            currentTab: 'requirement-details'
+            tab: null
         }
     },
     created() {
@@ -50,18 +33,35 @@ export default {
     },
     watch: {
         requirement() {
-            let tabIndex = this.items.findIndex(x => x.tab === 'History');
+            const tabIndex = this.tabs.findIndex(x => x.tab === 'History');
 
             if (tabIndex === -1) return;
 
-            this.items[tabIndex].props.objectId = this.requirement.id;
+            this.tabs[tabIndex].props.objectId = this.requirement.id;
 
-            this.items.splice(tabIndex, 1, this.items[tabIndex]);
+            this.tabs.splice(tabIndex, 1, this.tabs[tabIndex]);
         }
     },
     computed: {
         requirement() {
             return this.$store.getters['requirement/currentRequirement']
+        },
+        tabs: {
+            get() {
+                return this.$store.getters['requirement/tabs']
+            },
+            set(value) {
+                return this.$store.commit('requirement/tabs', value);
+            }
+        },
+        currentTab: {
+            get() {
+                return this.$store.getters['requirement/currentTab'];
+            },
+            set(value) {
+                this.$store.commit('requirement/currentTab', value);
+                this.$store.dispatch('requirement/updateQueryParam');
+            }
         }
     },
     methods: {

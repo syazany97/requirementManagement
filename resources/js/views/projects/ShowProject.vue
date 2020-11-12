@@ -64,20 +64,12 @@ export default {
             const response = await projectRepository.find(this.projectId);
             this.project = response.data.data;
         },
-        setQueryParameter() {
+        async setQueryParameter() {
             if (this.$route.query.requirement) {
                 // if there is a query parameter on url then set display it
-                this.$store.dispatch('requirement/setRequirement', this.$route.query.requirement);
+                await this.$store.dispatch('requirement/setRequirement', this.$route.query.requirement);
+                await this.$store.dispatch('requirement/updateQueryParam');
             }
-
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
-
-            console.log({urlParams});
-            console.log('qs', qs.parse(window.location.search));
-
-
-
         }
     }
 }

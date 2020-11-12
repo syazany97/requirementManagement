@@ -161,15 +161,11 @@ export default {
             console.log(params)
         },
 
-        onClick(params) {
+        async onClick(params) {
             if (params.type === 'requirement') {
                 console.log('node', params);
-                history.replaceState(
-                    {requirement: params.id},
-                    null,
-                    '?requirement=' + params.id
-                )
                 this.$store.commit('requirement/setRequirement', params);
+                await this.$store.dispatch('requirement/updateQueryParam');
             }
         },
 
