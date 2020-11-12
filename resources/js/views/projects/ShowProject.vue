@@ -35,6 +35,8 @@ import moduleRepository from "../../repositories/moduleRepository";
 import RequirementList from "../../components/requirement/RequirementList";
 import ShowRequirement from "../../components/requirement/ShowRequirement";
 
+const qs = require('qs');
+
 export default {
     name: "Show",
     components: {RequirementList, ShowRequirement},
@@ -67,6 +69,15 @@ export default {
                 // if there is a query parameter on url then set display it
                 this.$store.dispatch('requirement/setRequirement', this.$route.query.requirement);
             }
+
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+
+            console.log({urlParams});
+            console.log('qs', qs.parse(window.location.search));
+
+
+
         }
     }
 }

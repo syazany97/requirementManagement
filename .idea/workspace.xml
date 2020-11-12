@@ -21,8 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="58239c8f-5f70-4482-9e45-1dcb473cf0d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/requirement/tabs/RequirementDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/requirement/tabs/RequirementDetails.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/projects/ShowProject.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/projects/ShowProject.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +178,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../crm-backend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -229,7 +228,9 @@
       <workItem from="1604821791347" duration="2121000" />
       <workItem from="1604999678743" duration="2706000" />
       <workItem from="1605008693010" duration="3857000" />
-      <workItem from="1605015719850" duration="5101000" />
+      <workItem from="1605015719850" duration="5810000" />
+      <workItem from="1605030053616" duration="283000" />
+      <workItem from="1605160887448" duration="959000" />
     </task>
     <servers />
   </component>
@@ -253,10 +254,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="161" key="#Plugins/0.0.1920.1040@0.0.1920.1040" timestamp="1604320029903" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1605001317378">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1605030338118">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605001317378" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605030338118" />
     <state x="728" y="226" key="NewPhpClassDialog" timestamp="1605001251201">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -265,10 +266,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="439" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601798230547" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1605019284995">
+    <state x="461" y="165" key="SettingsEditor" timestamp="1605030064594">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605019284995" />
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605030064594" />
     <state width="247" height="198" key="ShowFilterAction_Filter_Popup" timestamp="1602760274800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -277,9 +278,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="668" y="237" width="583" height="566" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605017851300" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605021066778">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605161023934">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605021066778" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605161023934" />
   </component>
 </project>

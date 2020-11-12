@@ -4754,6 +4754,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
+var qs = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Show",
   components: {
@@ -4810,6 +4813,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         // if there is a query parameter on url then set display it
         this.$store.dispatch('requirement/setRequirement', this.$route.query.requirement);
       }
+
+      var queryString = window.location.search;
+      var urlParams = new URLSearchParams(queryString);
+      console.log({
+        urlParams: urlParams
+      });
+      console.log('qs', qs.parse(window.location.search));
     }
   }
 });
