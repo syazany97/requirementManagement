@@ -105,7 +105,6 @@ export default {
                 password: this.password
             }).then(res => {
                 this.$router.push({name: 'project.index'});
-
             })
                 .catch(err => {
                     console.log(err);

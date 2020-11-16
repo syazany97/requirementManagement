@@ -111,7 +111,6 @@ const actions = {
         state.commit('setRequirement', response.data.data);
     },
     async updateQueryParam(state) {
-
         let queryString = qs.parse(location.search.split('?')[1]);
 
         let query = "";
