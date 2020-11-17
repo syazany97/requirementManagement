@@ -2203,9 +2203,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layouts/buttons/DefaultButton.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layouts/buttons/PrimaryButton.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layouts/buttons/DefaultButton.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layouts/buttons/PrimaryButton.vue?vue&type=script&lang=js& ***!
   \****************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2228,10 +2228,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     icon: {
-      type: 'String'
+      type: String,
+      "default": ''
+    },
+    title: {
+      type: String,
+      required: false,
+      "default": 'Add something'
+    },
+    btnClass: {
+      type: String,
+      "default": ''
+    },
+    btnType: {
+      type: String,
+      "default": 'primary'
     }
   },
-  name: "DefaultButton",
+  computed: {
+    hasIcon: function hasIcon() {
+      return this.icon !== '';
+    },
+    type: function type() {
+      return 'btn-' + this.btnType;
+    }
+  },
+  name: "PrimaryButton",
   methods: {
     click: function click() {
       this.$emit('click');
@@ -4348,6 +4370,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helper */ "./resources/js/helper.js");
 /* harmony import */ var _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../repositories/projectRepository */ "./resources/js/repositories/projectRepository.js");
 /* harmony import */ var _components_layouts_modal_DeleteConfirmationDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/layouts/modal/DeleteConfirmationDialog */ "./resources/js/components/layouts/modal/DeleteConfirmationDialog.vue");
+/* harmony import */ var _components_layouts_buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/layouts/buttons/PrimaryButton */ "./resources/js/components/layouts/buttons/PrimaryButton.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -4566,9 +4589,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Index.vue",
   components: {
+    PrimaryButton: _components_layouts_buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_5__["default"],
     DeleteConfirmationDialog: _components_layouts_modal_DeleteConfirmationDialog__WEBPACK_IMPORTED_MODULE_4__["default"],
     CreateProjectDialog: _components_project_modal_CreateProjectDialog__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
@@ -4606,6 +4631,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }, 1000)
   },
   methods: {
+    test: function test() {
+      console.log('test');
+    },
     fetchProjects: function fetchProjects() {
       var _arguments = arguments,
           _this = this;
@@ -4874,7 +4902,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _repositories_requirement_requirementTestCaseRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../repositories/requirement/requirementTestCaseRepository */ "./resources/js/repositories/requirement/requirementTestCaseRepository.js");
 /* harmony import */ var vue_quill_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-quill-editor */ "./node_modules/vue-quill-editor/dist/vue-quill-editor.js");
 /* harmony import */ var vue_quill_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_quill_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_layouts_buttons_DefaultButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/layouts/buttons/DefaultButton */ "./resources/js/components/layouts/buttons/DefaultButton.vue");
+/* harmony import */ var _components_layouts_buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/layouts/buttons/PrimaryButton */ "./resources/js/components/layouts/buttons/PrimaryButton.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -5043,7 +5071,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   components: {
-    DefaultButton: _components_layouts_buttons_DefaultButton__WEBPACK_IMPORTED_MODULE_3__["default"],
+    PrimaryButton: _components_layouts_buttons_PrimaryButton__WEBPACK_IMPORTED_MODULE_3__["default"],
     quillEditor: vue_quill_editor__WEBPACK_IMPORTED_MODULE_2__["quillEditor"]
   },
   data: function data() {
@@ -11710,7 +11738,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "@-webkit-keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n.loader {\n  border-right-color: transparent;\n  -webkit-animation: loader-rotate 1s linear infinite;\n          animation: loader-rotate 1s linear infinite;\n}\n\n", ""]);
+exports.push([module.i, "@-webkit-keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n.loader {\n  border-right-color: transparent;\n  -webkit-animation: loader-rotate 1s linear infinite;\n          animation: loader-rotate 1s linear infinite;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -57395,9 +57423,9 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layouts/buttons/DefaultButton.vue?vue&type=template&id=7447dde4&scoped=true&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layouts/buttons/PrimaryButton.vue?vue&type=template&id=6df9cf36&scoped=true&":
 /*!********************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layouts/buttons/DefaultButton.vue?vue&type=template&id=7447dde4&scoped=true& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layouts/buttons/PrimaryButton.vue?vue&type=template&id=6df9cf36&scoped=true& ***!
   \********************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -57413,33 +57441,35 @@ var render = function() {
   return _c(
     "button",
     {
-      staticClass:
-        "p-1 ml-2 hover:text-blue-500 text-gray-700 border-2 border-transparent rounded-full hover:bg-blue-100 focus:outline-none",
-      attrs: { "aria-label": "Remove" }
+      class: "btn " + _vm.type + " " + _vm.btnClass,
+      attrs: { "aria-label": "Remove" },
+      on: { click: _vm.click }
     },
     [
-      _c(
-        "svg",
-        {
-          staticClass: "w-6 h-6",
-          attrs: {
-            fill: "currentColor",
-            stroke: "currentColor",
-            viewBox: "0 0 24 24",
-            xmlns: "http://www.w3.org/2000/svg"
-          }
-        },
-        [
-          _c("path", {
-            attrs: {
-              "stroke-linecap": "round",
-              "stroke-linejoin": "round",
-              "stroke-width": "2",
-              d: _vm.icon ? _vm.icon : "M12 6v6m0 0v6m0-6h6m-6 0H6"
-            }
-          })
-        ]
-      ),
+      _vm.hasIcon
+        ? _c(
+            "svg",
+            {
+              staticClass: "w-6 h-6",
+              attrs: {
+                fill: "currentColor",
+                stroke: "currentColor",
+                viewBox: "0 0 24 24",
+                xmlns: "http://www.w3.org/2000/svg"
+              }
+            },
+            [
+              _c("path", {
+                attrs: {
+                  "stroke-linecap": "round",
+                  "stroke-linejoin": "round",
+                  "stroke-width": "2",
+                  d: _vm.icon ? _vm.icon : "M12 6v6m0 0v6m0-6h6m-6 0H6"
+                }
+              })
+            ]
+          )
+        : _vm._e(),
       _vm._v(" "),
       _vm._t("default")
     ],
@@ -59735,9 +59765,13 @@ var render = function() {
             { staticClass: "relative" },
             [
               _c(
-                "button",
+                "primary-button",
                 {
-                  staticClass: "btn btn-primary float-right",
+                  attrs: {
+                    "btn-class": "float-right",
+                    "btn-type": "primary",
+                    icon: "M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  },
                   on: {
                     click: function($event) {
                       _vm.updatingProject = {}
@@ -59746,7 +59780,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Add project\n                    ")]
+                [_vm._v("Add project")]
               ),
               _vm._v(" "),
               _c(
@@ -77267,7 +77301,7 @@ var map = {
 	"./components/history/HistoriesList.vue": "./resources/js/components/history/HistoriesList.vue",
 	"./components/layouts/ToastNotification.vue": "./resources/js/components/layouts/ToastNotification.vue",
 	"./components/layouts/TopBar.vue": "./resources/js/components/layouts/TopBar.vue",
-	"./components/layouts/buttons/DefaultButton.vue": "./resources/js/components/layouts/buttons/DefaultButton.vue",
+	"./components/layouts/buttons/PrimaryButton.vue": "./resources/js/components/layouts/buttons/PrimaryButton.vue",
 	"./components/layouts/modal/DeleteConfirmationDialog.vue": "./resources/js/components/layouts/modal/DeleteConfirmationDialog.vue",
 	"./components/modules/dialog/CreateNewModule.vue": "./resources/js/components/modules/dialog/CreateNewModule.vue",
 	"./components/modules/dialog/TestDialog.vue": "./resources/js/components/modules/dialog/TestDialog.vue",
@@ -77762,17 +77796,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/layouts/buttons/DefaultButton.vue":
+/***/ "./resources/js/components/layouts/buttons/PrimaryButton.vue":
 /*!*******************************************************************!*\
-  !*** ./resources/js/components/layouts/buttons/DefaultButton.vue ***!
+  !*** ./resources/js/components/layouts/buttons/PrimaryButton.vue ***!
   \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _DefaultButton_vue_vue_type_template_id_7447dde4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DefaultButton.vue?vue&type=template&id=7447dde4&scoped=true& */ "./resources/js/components/layouts/buttons/DefaultButton.vue?vue&type=template&id=7447dde4&scoped=true&");
-/* harmony import */ var _DefaultButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DefaultButton.vue?vue&type=script&lang=js& */ "./resources/js/components/layouts/buttons/DefaultButton.vue?vue&type=script&lang=js&");
+/* harmony import */ var _PrimaryButton_vue_vue_type_template_id_6df9cf36_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PrimaryButton.vue?vue&type=template&id=6df9cf36&scoped=true& */ "./resources/js/components/layouts/buttons/PrimaryButton.vue?vue&type=template&id=6df9cf36&scoped=true&");
+/* harmony import */ var _PrimaryButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PrimaryButton.vue?vue&type=script&lang=js& */ "./resources/js/components/layouts/buttons/PrimaryButton.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -77782,50 +77816,50 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _DefaultButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _DefaultButton_vue_vue_type_template_id_7447dde4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _DefaultButton_vue_vue_type_template_id_7447dde4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _PrimaryButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PrimaryButton_vue_vue_type_template_id_6df9cf36_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PrimaryButton_vue_vue_type_template_id_6df9cf36_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "7447dde4",
+  "6df9cf36",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/layouts/buttons/DefaultButton.vue"
+component.options.__file = "resources/js/components/layouts/buttons/PrimaryButton.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/layouts/buttons/DefaultButton.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/components/layouts/buttons/PrimaryButton.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************!*\
-  !*** ./resources/js/components/layouts/buttons/DefaultButton.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/components/layouts/buttons/PrimaryButton.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./DefaultButton.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layouts/buttons/DefaultButton.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PrimaryButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./PrimaryButton.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layouts/buttons/PrimaryButton.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PrimaryButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/layouts/buttons/DefaultButton.vue?vue&type=template&id=7447dde4&scoped=true&":
+/***/ "./resources/js/components/layouts/buttons/PrimaryButton.vue?vue&type=template&id=6df9cf36&scoped=true&":
 /*!**************************************************************************************************************!*\
-  !*** ./resources/js/components/layouts/buttons/DefaultButton.vue?vue&type=template&id=7447dde4&scoped=true& ***!
+  !*** ./resources/js/components/layouts/buttons/PrimaryButton.vue?vue&type=template&id=6df9cf36&scoped=true& ***!
   \**************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultButton_vue_vue_type_template_id_7447dde4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./DefaultButton.vue?vue&type=template&id=7447dde4&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layouts/buttons/DefaultButton.vue?vue&type=template&id=7447dde4&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultButton_vue_vue_type_template_id_7447dde4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrimaryButton_vue_vue_type_template_id_6df9cf36_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./PrimaryButton.vue?vue&type=template&id=6df9cf36&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layouts/buttons/PrimaryButton.vue?vue&type=template&id=6df9cf36&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrimaryButton_vue_vue_type_template_id_6df9cf36_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DefaultButton_vue_vue_type_template_id_7447dde4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PrimaryButton_vue_vue_type_template_id_6df9cf36_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

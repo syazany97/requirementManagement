@@ -48,9 +48,9 @@
                         <!--                                                        <polyline points="6 9 12 15 18 9"/>-->
                         <!--                                                    </svg>-->
                         <!--                                                </button>-->
-                        <button @click="updatingProject = {}; hideAllDropdowns(); $modal.show('modalProjectDialog')"
-                                class="btn btn-primary float-right">Add project
-                        </button>
+
+                        <primary-button @click="updatingProject = {}; hideAllDropdowns(); $modal.show('modalProjectDialog')"
+                                        btn-class="float-right" btn-type="primary" icon="M12 6v6m0 0v6m0-6h6m-6 0H6">Add project</primary-button>
 
                         <!-- Create Project Modal -->
                         <modal name="modalProjectDialog" :shift-y="0.2" class="sm:w-full md:w-1/4" :adaptive="true" :scrollable="true"
@@ -211,10 +211,11 @@ import CreateProjectDialog from "../../components/project/modal/CreateProjectDia
 import {debounce} from "../../helper";
 import projectRepository from "../../repositories/projectRepository";
 import DeleteConfirmationDialog from "../../components/layouts/modal/DeleteConfirmationDialog";
+import PrimaryButton from "../../components/layouts/buttons/PrimaryButton";
 
 export default {
     name: "Index.vue",
-    components: {DeleteConfirmationDialog, CreateProjectDialog},
+    components: {PrimaryButton, DeleteConfirmationDialog, CreateProjectDialog},
     data() {
         return {
             projects: [],
@@ -255,6 +256,9 @@ export default {
         }, 1000)
     },
     methods: {
+        test()  {
+          console.log('test');
+        },
         async fetchProjects(link = null) {
             const url = link === null ? this.url + ('?q=' + this.search) : link;
             const response = await axios.get(url);

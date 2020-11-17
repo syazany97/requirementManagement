@@ -147,8 +147,7 @@
 <script>
 import requirementTestCaseRepository from "../../repositories/requirement/requirementTestCaseRepository";
 import {quillEditor} from 'vue-quill-editor'
-import DefaultButton from "../../components/layouts/buttons/DefaultButton";
-
+import PrimaryButton from "../../components/layouts/buttons/PrimaryButton";
 export default {
     name: "Create.vue",
     created() {
@@ -162,7 +161,7 @@ export default {
         }
     },
     components: {
-        DefaultButton,
+        PrimaryButton,
         quillEditor
     },
     data() {
