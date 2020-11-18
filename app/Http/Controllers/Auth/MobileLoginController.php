@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class MobileLoginController extends Controller
 {
@@ -18,7 +21,7 @@ class MobileLoginController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        if (! $user instanceof User || ! Hash::check($request->password, $user->password)) {
+        if (!$user instanceof User || !Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],
             ]);
@@ -29,6 +32,13 @@ class MobileLoginController extends Controller
 
     public function logout()
     {
-        auth()->user()->tokens()->delete();
+        $user = User::find(auth()->user()->id);
+
+        if (!$user instanceof User) return;
+
+        $user->tokens()->delete();
+
+        return response()->json('Token deleted', 200);
+
     }
 }

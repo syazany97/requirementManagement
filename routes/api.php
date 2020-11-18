@@ -13,6 +13,8 @@ use App\Http\Controllers\API\Requirement\RequirementTestCaseController;
 use App\Http\Controllers\API\TestCase\TestCaseCommentController;
 use App\Http\Controllers\API\TestCase\TestCaseLogController;
 use App\Http\Controllers\API\User\UserController;
+use App\Http\Controllers\Auth\MobileLoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Requirement\UpdateRequirementParentIdController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,9 +34,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Route::middleware(['auth:sanctum'])->group(function () {
-Route::middleware([])->group(function () {
+Route::post('mobile-login', [MobileLoginController::class, 'login'])->name('mobile.login');
+Route::post('mobile-register', [RegisterController::class, 'register'])->name('mobile.register');
 
+Route::middleware(['auth:sanctum'])->group(function () {
+//Route::middleware([])->group(function () {
+
+    Route::post('mobile-logout', [MobileLoginController::class, 'logout'])->name('mobile.logout');
     // projects
     Route::apiResource('projects', ProjectController::class);
 

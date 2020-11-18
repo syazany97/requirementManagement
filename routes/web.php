@@ -10,8 +10,6 @@ Route::get('/login', function () {
 
 Auth::routes();
 
-
-
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index');
 });

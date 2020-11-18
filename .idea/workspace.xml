@@ -21,11 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="58239c8f-5f70-4482-9e45-1dcb473cf0d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/buttons/DefaultButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/buttons/PrimaryButton.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/projects/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/projects/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/testCase/Create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/testCase/Create.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/MobileLoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/MobileLoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +203,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../new-react-native" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -268,7 +266,9 @@
       <workItem from="1605575188507" duration="282000" />
       <workItem from="1605610888683" duration="599000" />
       <workItem from="1605614926391" duration="96000" />
-      <workItem from="1605621068033" duration="2360000" />
+      <workItem from="1605621068033" duration="2659000" />
+      <workItem from="1605667999539" duration="2733000" />
+      <workItem from="1605678271047" duration="4385000" />
     </task>
     <servers />
   </component>
@@ -292,10 +292,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="161" key="#Plugins/0.0.1920.1040@0.0.1920.1040" timestamp="1604320029903" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1605615022226">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1605678317092">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605615022226" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605678317092" />
     <state x="728" y="226" key="NewPhpClassDialog" timestamp="1605001251201">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -312,13 +312,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="247" height="198" key="ShowFilterAction_Filter_Popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602760274800" />
-    <state x="668" y="237" width="583" height="566" key="find.popup" timestamp="1605623091197">
+    <state x="668" y="237" width="583" height="566" key="find.popup" timestamp="1605668252567">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="668" y="237" width="583" height="566" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605623091197" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605621123995">
+    <state x="668" y="237" width="583" height="566" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605668252567" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605668585739">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605621123995" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605668585739" />
   </component>
 </project>
