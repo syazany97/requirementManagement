@@ -20,10 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58239c8f-5f70-4482-9e45-1dcb473cf0d8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/components/layouts/table/PrimaryTable.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/MobileLoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/MobileLoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/history/HistoriesList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/history/HistoriesList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/requirement/tabs/RequirementHistory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/requirement/tabs/RequirementHistory.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +42,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -268,7 +273,12 @@
       <workItem from="1605614926391" duration="96000" />
       <workItem from="1605621068033" duration="2659000" />
       <workItem from="1605667999539" duration="2733000" />
-      <workItem from="1605678271047" duration="4385000" />
+      <workItem from="1605678271047" duration="5175000" />
+      <workItem from="1605689764577" duration="1851000" />
+      <workItem from="1605704858478" duration="724000" />
+      <workItem from="1605748089713" duration="580000" />
+      <workItem from="1606016294939" duration="2030000" />
+      <workItem from="1606022615828" duration="3026000" />
     </task>
     <servers />
   </component>
@@ -292,10 +302,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="161" key="#Plugins/0.0.1920.1040@0.0.1920.1040" timestamp="1604320029903" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1605678317092">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1606023217368">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605678317092" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606023217368" />
     <state x="728" y="226" key="NewPhpClassDialog" timestamp="1605001251201">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -316,9 +326,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="668" y="237" width="583" height="566" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605668252567" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605668585739">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1606019002080">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605668585739" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606019002080" />
   </component>
 </project>

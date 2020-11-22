@@ -32,13 +32,12 @@ class MobileLoginController extends Controller
 
     public function logout()
     {
-        $user = User::find(auth()->user()->id);
+        $user = User::findOrFail(auth()->user()->id);
 
-        if (!$user instanceof User) return;
+        if (!$user instanceof User) return null;
 
         $user->tokens()->delete();
 
         return response()->json('Token deleted', 200);
-
     }
 }

@@ -1,16 +1,35 @@
 <template>
     <!--<h1>Requirement History</h1>-->
     <div>
-        <span v-for="history in histories" :key="history.id">{{ history.causer.name + ' ' + history.description }}</span>
-
+<!--        <span v-for="history in histories" :key="history.id">{{ history.causer.name + ' ' + history.description }}</span>-->
+        <primary-table :headings="headings">
+            <tr v-for="(history, index) in histories" :key="history.id">
+                <td class="default-row">
+                    <span class="text-gray-700 px-6 py-4 flex items-center">
+                        {{index}}
+                    </span>
+                </td>
+                <td class="default-row">
+                    <span class="text-gray-700 px-6 py-4 flex items-center">
+                        {{history.causer.name + ' ' + history.description}}
+                    </span>
+                </td>
+                <td class="default-row">
+                    <span class="text-gray-700 px-6 py-4 flex items-center">
+                        {{history.causer.name + ' ' + history.description}}
+                    </span>
+                </td>
+            </tr>
+        </primary-table>
     </div>
 </template>
 
 <script>
 import requirementHistoryRepository from "../../../repositories/history/requirementHistoryRepository";
-
+import PrimaryTable from "../../layouts/table/PrimaryTable";
 export default {
     name: "RequirementHistory",
+    components: {PrimaryTable},
     props: {
         historyType: {
             type: String,
@@ -23,7 +42,8 @@ export default {
     },
     data() {
         return {
-            histories: []
+            histories: [],
+            headings : ['description', 'time']
         }
     },
     created() {

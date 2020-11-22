@@ -38,7 +38,6 @@ Route::post('mobile-login', [MobileLoginController::class, 'login'])->name('mobi
 Route::post('mobile-register', [RegisterController::class, 'register'])->name('mobile.register');
 
 Route::middleware(['auth:sanctum'])->group(function () {
-//Route::middleware([])->group(function () {
 
     Route::post('mobile-logout', [MobileLoginController::class, 'logout'])->name('mobile.logout');
     // projects
@@ -69,7 +68,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::resource('requirements.test-cases', RequirementTestCaseController::class)
         ->shallow()
         ->parameters([
-            'requirements' => 'requirement', 'test-cases' => 'testCase'
+            'requirements' => 'requirement',
+            'test-cases' => 'testCase'
         ]);
 
     Route::resource('test-cases.comments', TestCaseCommentController::class)->only([
