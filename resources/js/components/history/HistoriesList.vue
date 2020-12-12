@@ -1,15 +1,15 @@
 <template>
     <div class="pt-3" v-if="histories.length">
-<!--        <div v-for="history in histories" v-bind:key="history.id">-->
-<!--            <span>{{ history.description }}</span>-->
-<!--            <span>{{ get(history, 'user', "") }}</span>-->
-<!--        </div>-->
+        <!--        <div v-for="history in histories" v-bind:key="history.id">-->
+        <!--            <span>{{ history.description }}</span>-->
+        <!--            <span>{{ get(history, 'user', "") }}</span>-->
+        <!--        </div>-->
 
         <primary-table :headings="headings">
             <tr v-for="history in histories" :key="history.id">
                 <td class="default-row">
                     <span class="text-gray-700 px-6 py-4 flex items-center">
-                        {{history.description}}
+                        {{ history.description }}
                     </span>
                 </td>
             </tr>
@@ -34,7 +34,7 @@ export default {
         return {
             testCaseId: this.$route.params.testCase,
             histories: [],
-            headings : ['description']
+            headings: ['description']
         }
     },
     created() {
@@ -44,7 +44,6 @@ export default {
         async fetchLogs() {
             const response = await testCaseLogRepository.all(this.testCaseId);
             this.histories = response.data.data;
-            console.log(response);
         },
         get(key, attributes, defaultValue) {
             return _.get(key, attributes, defaultValue);

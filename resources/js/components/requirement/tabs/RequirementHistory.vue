@@ -62,7 +62,6 @@ export default {
             if (this.historyType === 'requirement') {
                 const response = await requirementHistoryRepository.all(this.objectId);
                 this.histories = response.data.data;
-                console.log('histories', this.histories);
             }
         },
         dayjs(val) {

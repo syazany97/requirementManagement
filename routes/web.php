@@ -8,14 +8,15 @@ Route::get('/login', function () {
     return view('layouts.app');
 });
 
-Auth::routes();
+require __DIR__ . '/auth.php';
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', 'HomeController@index');
+    Route::get('/home', 'HomeController@index')->name('dashboard');
 });
 
 Route::get('{any}', function () {
     return view('layouts.app');
 })->where('any', '.*')
     ->middleware('auth:sanctum');
+
 

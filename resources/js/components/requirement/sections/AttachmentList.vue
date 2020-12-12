@@ -62,10 +62,7 @@
             },
             async fetchAttachments() {
                 const response = await requirementAttachmentRepository.all(this.requirement.id);
-
                 this.attachments = response.data.data;
-
-                console.log(this.attachments);
             }
         }
     }

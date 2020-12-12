@@ -31,12 +31,12 @@
             <span class="icon" slot="addTreeNodeIcon">📂</span>
             <span class="icon" slot="addLeafNodeIcon">＋</span>
             <span class="icon" slot="editNodeIcon">📃</span>
-<!--            <span class="icon" slot="delNodeIcon">Edit</span>-->
-<!--            <span class="icon" slot="leafNodeIcon"></span>-->
+            <!--            <span class="icon" slot="delNodeIcon">Edit</span>-->
+            <!--            <span class="icon" slot="leafNodeIcon"></span>-->
             <span class="icon" slot="treeNodeIcon">📂</span>
-<!--            <template v-slot:editNodeIcon="slotProps">-->
-<!--                <button class="btn btn-primary">Edit</button>-->
-<!--            </template>-->
+            <!--            <template v-slot:editNodeIcon="slotProps">-->
+            <!--                <button class="btn btn-primary">Edit</button>-->
+            <!--            </template>-->
             <template slot="test">
                 <button>TESt</button>
             </template>
@@ -90,9 +90,6 @@ export default {
 
                 let data = _.filter(JSON.parse(JSON.stringify(this.$store.getters['requirement/requirementList'])),
                     {'name': this.searchRequirement});
-
-                console.log('data', data);
-                console.log('search requirement', this.searchRequirement);
 
                 // this.data = new Tree(_.filter(this.$store.getters['requirement/currentRequirement'],
                 //     {'name': this.searchRequirement}));
@@ -148,7 +145,6 @@ export default {
         },
 
         onDel(node) {
-            console.log(node)
             node.remove()
         },
 
@@ -157,13 +153,11 @@ export default {
         },
 
         onAddNode(params) {
-            console.log('on add node');
-            console.log(params)
+
         },
 
         async onClick(params) {
             if (params.type === 'requirement') {
-                console.log('node', params);
                 this.$store.commit('requirement/setRequirement', params);
                 await this.$store.dispatch('requirement/updateQueryParam');
             }
@@ -216,12 +210,11 @@ export default {
                     this.updateModuleAfterDrop(payload);
             }
 
-            console.log('ON DROP', params);
         },
 
         onDropAfter(params) {
             // this.updateModuleAfterDrop(params);
-            console.log('ON DROP AFTER', params);
+            // console.log('ON DROP AFTER', params);
         },
 
         onDropBefore(params) {
@@ -234,7 +227,7 @@ export default {
                 name: params.node.name,
                 parent_id: parent_id
             });
-            console.log('ON DROP BEFORE', params);
+            // console.log('ON DROP BEFORE', params);
         },
 
         async updateModuleAfterDrop(payload) {

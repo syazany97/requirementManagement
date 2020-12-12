@@ -1,54 +1,42 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-{{--    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">--}}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
-<body>
-<div id="app">
+
+<body class="font-sans antialiased">
+<div class="min-h-screen" id="app">
     @guest
         @yield('content')
     @endguest
+
     @auth
-        @csrf
-{{--        @include('layouts.topBar')--}}
-        <top-bar></top-bar>
-        <toast-notification></toast-notification>
-        <div class="pt-16 flex">
-            <div class="flex-1">
+        <header>
+            <top-bar></top-bar>
+            <toast-notification></toast-notification>
+        </header>
+
+        <main>
+            <div class="pt-16 flex">
                 <router-view :key="$route.fullPath"></router-view>
             </div>
-        </div>
-
-
-
-
+        </main>
     @endauth
-
 </div>
 </body>
+
 </html>
-{{--<script>--}}
-{{--    import TopBar from "../../js/components/layouts/TopBar";--}}
-{{--    export default {--}}
-{{--        components: {TopBar}--}}
-{{--    }--}}
-{{--</script>--}}

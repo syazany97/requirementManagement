@@ -119,7 +119,6 @@ export default {
                 this.repository = testCaseCommentRepository;
                 this.params = this.testCase;
             }
-            console.log('this params', this.testCase);
             const response = await this.repository.all(this.params.id);
             this.comments = response.data.data;
             this.commentsLoaded = true;

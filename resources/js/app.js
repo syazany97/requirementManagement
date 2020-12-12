@@ -22,6 +22,7 @@ Vue.component('vue-select', vSelect);
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 dayjs.extend(LocalizedFormat);
+import 'vue-select/dist/vue-select.css';
 
 const router = new VueRouter({
     mode: 'history',

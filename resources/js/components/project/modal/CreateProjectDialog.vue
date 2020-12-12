@@ -79,15 +79,14 @@ export default {
         return {
             // TODO : fix removal of id when update to signal is update mode
             valid: true,
-            projectName: this.project.hasOwnProperty('name') ? this.project.name : "",
-            projectDescription: this.project.hasOwnProperty('description') ? this.project.description : "",
-            projectStatusId:  this.project.hasOwnProperty('project_status_id') ? this.project.project_status_id : "",
+            projectName: this.updateProject ? this.project.name : "",
+            projectDescription: this.updateProject ? this.project.description : "",
+            projectStatusId:  this.updateProject ? this.project.project_status_id : "",
             projectStatuses: [],
             errors: []
         }
     },
     created() {
-        console.log('create project', this.project);
         this.fetchProjectStatuses()
     },
     methods: {
@@ -105,7 +104,6 @@ export default {
                     projectRepository.store(payload);
                 }
 
-                this.$emit('fetch-projects');
                 this.projectName = "";
                 this.projectStatusId = "";
                 this.projectDescription = "";
@@ -113,9 +111,9 @@ export default {
                     variant: "success",
                     message: "Project " + (this.updateProject ? 'Updated' : 'Created')
                 });
+                this.$emit('fetch-projects');
                 this.$emit('reset-project');
                 this.closeDialog();
-
             } catch (err) {
                 if (err.response.status === 422) {
                     this.errors = err.response.data.errors;

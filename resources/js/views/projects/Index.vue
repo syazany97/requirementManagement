@@ -49,14 +49,17 @@
                         <!--                                                    </svg>-->
                         <!--                                                </button>-->
 
-                        <primary-button @click="updatingProject = {}; hideAllDropdowns(); $modal.show('modalProjectDialog')"
-                                        btn-class="float-right" btn-type="primary" icon="M12 6v6m0 0v6m0-6h6m-6 0H6">Add project</primary-button>
+                        <primary-button
+                            @click="updateProject = false; hideAllDropdowns(); $modal.show('modalProjectDialog')"
+                            btn-class="float-right" btn-type="primary" icon="M12 6v6m0 0v6m0-6h6m-6 0H6">Add project
+                        </primary-button>
 
                         <!-- Create Project Modal -->
-                        <modal name="modalProjectDialog" :shift-y="0.2" class="sm:w-full md:w-1/4" :adaptive="true" :scrollable="true"
+                        <modal name="modalProjectDialog" :shift-y="0.2" class="sm:w-full md:w-1/4" :adaptive="true"
+                               :scrollable="true"
                                height="auto">
-                        <create-project-dialog @fetch-projects="fetchProjects" :project="updatingProject"
-                                               :update-project="updatingProject.id !== null"></create-project-dialog>
+                            <create-project-dialog @fetch-projects="fetchProjects" :project="updatingProject"
+                                                   :update-project="updateProject"></create-project-dialog>
                         </modal>
                         <!-- End create project modal -->
 
@@ -150,7 +153,7 @@
                                            class="block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100
                                            hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0"
                                            role="menuitem">Account settings</a>
-                                        <a @click.stop="updateProject(project)"
+                                        <a @click.stop="updateProject = true; updateThisProject(project)"
                                            class="block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100
                                            hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0"
                                            role="menuitem">Edit</a>
@@ -242,6 +245,7 @@ export default {
                 links: null,
                 meta: null
             },
+            updateProject : false,
             url: '/api/projects',
             search: "",
             isOpen: []
@@ -256,13 +260,12 @@ export default {
         }, 1000)
     },
     methods: {
-        test()  {
-          console.log('test');
+        test() {
+            console.log('test');
         },
         async fetchProjects(link = null) {
             const url = link === null ? this.url + ('?q=' + this.search) : link;
             const response = await axios.get(url);
-            console.log('fetch projects in index page', response.data);
             this.projects = response.data.data;
             this.pagination.links = response.data.links;
             this.pagination.meta = response.data.meta;
@@ -279,7 +282,6 @@ export default {
                 const response = await projectRepository.delete(this.currentProjectId);
                 await this.fetchProjects();
                 this.$modal.hide('deleteConfirmationDialog');
-                console.log('delete project', response);
             } catch (e) {
                 console.log('error', e);
             }
@@ -306,8 +308,7 @@ export default {
                 }
             });
         },
-        updateProject(project) {
-            console.log('update project', project);
+        updateThisProject(project) {
             this.updatingProject = project;
             this.hideAllDropdowns();
             this.$modal.show('modalProjectDialog');

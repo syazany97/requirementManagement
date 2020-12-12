@@ -13,7 +13,6 @@ import 'vue-toast-notification/dist/theme-sugar.css';
         },
         watch: {
             showNotification: function () {
-            console.log('test');
                 this.$toast.open({
                     type: this.$store.getters["notification/variant"],
                     message: this.$store.getters["notification/message"],
