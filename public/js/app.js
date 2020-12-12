@@ -4052,6 +4052,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _repositories_history_requirementHistoryRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../repositories/history/requirementHistoryRepository */ "./resources/js/repositories/history/requirementHistoryRepository.js");
 /* harmony import */ var _layouts_table_PrimaryTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../layouts/table/PrimaryTable */ "./resources/js/components/layouts/table/PrimaryTable.vue");
+/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! dayjs */ "./node_modules/dayjs/dayjs.min.js");
+/* harmony import */ var dayjs__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(dayjs__WEBPACK_IMPORTED_MODULE_3__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -4084,6 +4086,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4153,6 +4156,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    dayjs: function dayjs(val) {
+      return dayjs__WEBPACK_IMPORTED_MODULE_3___default()(val);
     }
   }
 });
@@ -11750,7 +11756,7 @@ function isnan (val) {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.bubble.css":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.bubble.css?33be":
 /*!**********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/quill/dist/quill.bubble.css ***!
   \**********************************************************************************************************************************/
@@ -11769,7 +11775,7 @@ exports.push([module.i, "/*!\n * Quill Editor v1.3.7\n * https://quilljs.com/\n 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.core.css":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.core.css?af45":
 /*!********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/quill/dist/quill.core.css ***!
   \********************************************************************************************************************************/
@@ -11788,7 +11794,7 @@ exports.push([module.i, "/*!\n * Quill Editor v1.3.7\n * https://quilljs.com/\n 
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.snow.css":
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.snow.css?48b9":
 /*!********************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/quill/dist/quill.snow.css ***!
   \********************************************************************************************************************************/
@@ -43841,7 +43847,7 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./quill.bubble.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.bubble.css");
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./quill.bubble.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.bubble.css?33be");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -43871,7 +43877,7 @@ if(false) {}
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./quill.core.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.core.css");
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./quill.core.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.core.css?af45");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -55469,7 +55475,7 @@ module.exports = __webpack_require__(63);
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./quill.snow.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.snow.css");
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./quill.snow.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/quill/dist/quill.snow.css?48b9");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -59358,7 +59364,7 @@ var render = function() {
                 [
                   _vm._v(
                     "\n                        " +
-                      _vm._s(history.causer.name + " " + history.description) +
+                      _vm._s(_vm.dayjs(history.created_at)) +
                       "\n                    "
                   )
                 ]

@@ -9,6 +9,7 @@ use App\Models\Requirement\RequirementStatus;
 use App\User;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class ProjectsTableSeeder extends Seeder
@@ -21,13 +22,22 @@ class ProjectsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 3; $i++) {
-            Project::create([
+        $projects = [];
+        $statusId = ProjectStatus::first()->id;
+
+        for ($i = 0; $i < 40; $i++) {
+            $project = [
                 'name' => $faker->catchPhrase,
                 'uuid' => Str::uuid()->toString(),
                 'description' => $faker->realText,
                 'user_id' => 1,
-                'project_status_id' => ProjectStatus::first()->id]);
+                'project_status_id' => $statusId,
+                'created_at' => now(),
+                'updated_at' => now()
+            ];
+            array_push($projects, $project);
         }
+
+        DB::table("projects")->insert($projects);
     }
 }

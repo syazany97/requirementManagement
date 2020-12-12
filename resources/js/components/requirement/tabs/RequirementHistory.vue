@@ -16,7 +16,7 @@
                 </td>
                 <td class="default-row">
                     <span class="text-gray-700 px-6 py-4 flex items-center">
-                        {{history.causer.name + ' ' + history.description}}
+                        {{dayjs(history.created_at)}}
                     </span>
                 </td>
             </tr>
@@ -27,6 +27,7 @@
 <script>
 import requirementHistoryRepository from "../../../repositories/history/requirementHistoryRepository";
 import PrimaryTable from "../../layouts/table/PrimaryTable";
+import dayjs from "dayjs";
 export default {
     name: "RequirementHistory",
     components: {PrimaryTable},
@@ -63,6 +64,9 @@ export default {
                 this.histories = response.data.data;
                 console.log('histories', this.histories);
             }
+        },
+        dayjs(val) {
+            return dayjs(val);
         }
     }
 }

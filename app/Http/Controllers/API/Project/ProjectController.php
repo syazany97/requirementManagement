@@ -17,11 +17,12 @@ class ProjectController extends Controller
     public function index(Request $request)
     {
         $search = $request->has('q') ? $request->q : null;
+        $perPage = $request->has('per_page') ? (int) $request->per_page : 20;
 
         return ProjectResource::collection(
             Project::index($search)
 //                ->where('user_id', auth()->user()->id)
-                ->paginate(20)
+                ->paginate($perPage)
                 ->appends(['q' => $search])
         );
     }

@@ -20,15 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58239c8f-5f70-4482-9e45-1dcb473cf0d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/layouts/table/PrimaryTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/requirementManagement.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/requirementManagement.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/MobileLoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/MobileLoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/Project/ProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/Project/ProjectController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/ProjectsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/ProjectsTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/history/HistoriesList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/history/HistoriesList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/requirement/tabs/RequirementHistory.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/requirement/tabs/RequirementHistory.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +121,6 @@
       <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
       <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
       <path value="$PROJECT_DIR$/vendor/opis/closure" />
-      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
@@ -136,7 +140,6 @@
       <path value="$PROJECT_DIR$/vendor/psy/psysh" />
       <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
-      <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
       <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
       <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
       <path value="$PROJECT_DIR$/vendor/facade/flare-client-php" />
@@ -170,7 +173,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
       <path value="$PROJECT_DIR$/vendor/symfony/process" />
       <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
@@ -198,6 +200,8 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/code-unit" />
       <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
       <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/vendor/league/oauth1-client" />
+      <path value="$PROJECT_DIR$/vendor/laravel/socialite" />
     </include_path>
   </component>
   <component name="ProjectId" id="1iMtFdYKFzfBj8O3BLWwbJgUglQ" />
@@ -208,7 +212,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../new-react-native" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../personal-website" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -216,7 +220,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="Laravel.SettingsForm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -278,7 +282,29 @@
       <workItem from="1605704858478" duration="724000" />
       <workItem from="1605748089713" duration="580000" />
       <workItem from="1606016294939" duration="2030000" />
-      <workItem from="1606022615828" duration="3026000" />
+      <workItem from="1606022615828" duration="4422000" />
+      <workItem from="1606038968285" duration="624000" />
+      <workItem from="1606040068293" duration="1314000" />
+      <workItem from="1606212276092" duration="1368000" />
+      <workItem from="1606222369549" duration="607000" />
+      <workItem from="1606291684077" duration="604000" />
+      <workItem from="1606300493964" duration="1246000" />
+      <workItem from="1606305866595" duration="1806000" />
+      <workItem from="1606353446763" duration="8000" />
+      <workItem from="1606388705551" duration="1911000" />
+      <workItem from="1606396071028" duration="2167000" />
+      <workItem from="1606443335303" duration="45000" />
+      <workItem from="1606443394924" duration="2459000" />
+      <workItem from="1606644903098" duration="763000" />
+      <workItem from="1607160391998" duration="1904000" />
+      <workItem from="1607417451017" duration="807000" />
+      <workItem from="1607436930192" duration="637000" />
+      <workItem from="1607568360344" duration="1015000" />
+      <workItem from="1607604572888" duration="481000" />
+      <workItem from="1607605215108" duration="33000" />
+      <workItem from="1607614744762" duration="1106000" />
+      <workItem from="1607653857349" duration="7000" />
+      <workItem from="1607773910763" duration="1337000" />
     </task>
     <servers />
   </component>
@@ -302,10 +328,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="161" key="#Plugins/0.0.1920.1040@0.0.1920.1040" timestamp="1604320029903" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1606023217368">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1607774795859">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606023217368" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607774795859" />
     <state x="728" y="226" key="NewPhpClassDialog" timestamp="1605001251201">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -314,21 +340,21 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="439" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601798230547" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1605030064594">
+    <state x="461" y="165" key="SettingsEditor" timestamp="1606443374752">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605030064594" />
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1606443374752" />
     <state width="247" height="198" key="ShowFilterAction_Filter_Popup" timestamp="1602760274800">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="247" height="198" key="ShowFilterAction_Filter_Popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602760274800" />
-    <state x="668" y="237" width="583" height="566" key="find.popup" timestamp="1605668252567">
+    <state x="668" y="237" width="583" height="566" key="find.popup" timestamp="1607775262854">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="668" y="237" width="583" height="566" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605668252567" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1606019002080">
+    <state x="668" y="237" width="583" height="566" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607775262854" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1607775213971">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606019002080" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607775213971" />
   </component>
 </project>
