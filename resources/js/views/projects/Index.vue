@@ -149,10 +149,6 @@
                                 <div class="rounded-md bg-white bg-opacity-0 shadow-xs">
                                     <div class="py-1" role="menu" aria-orientation="vertical"
                                          aria-labelledby="options-menu">
-                                        <a href="#"
-                                           class="block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100
-                                           hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0"
-                                           role="menuitem">Account settings</a>
                                         <a @click.stop="updateProject = true; updateThisProject(project)"
                                            class="block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100
                                            hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0"

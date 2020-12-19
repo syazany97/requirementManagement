@@ -1,9 +1,6 @@
 <template>
     <div>
-
         <h6 class="text-black text-xl pt-4 font-medium">{{ requirement.numbering }} {{ requirement.name }}</h6>
-
-        <button class="btn btn-primary">Edit requirement</button>
 
         <div v-if="lists.length" class="flex">
             <div v-for="(list, index) in lists" v-bind:key="index" class="flex-1 pl-1 mr-16">

@@ -96,6 +96,7 @@ export default {
             try {
                 await this.repository.store(this.params.id, {details: this.comment});
                 this.comment = "";
+                this.showCommentTextField = false;
                 await this.fetchComments();
             } catch (e) {
                 console.log(e);

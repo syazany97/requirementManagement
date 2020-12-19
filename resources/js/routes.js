@@ -6,7 +6,7 @@ export const routes = [
       component: require ('./views/auth/Login.vue').default
     },
     {
-        path: '/projects',
+        path: '/',
         name: 'project.index',
         component: require('./views/projects/Index.vue').default
     },
