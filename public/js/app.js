@@ -4844,12 +4844,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
@@ -58193,7 +58187,7 @@ var render = function() {
       _c(
         "label",
         { staticClass: "primary-label", attrs: { for: "search-requirement" } },
-        [_vm._v("\n        Search requirement and module\n    ")]
+        [_vm._v("\n            Search requirement and module\n        ")]
       ),
       _vm._v(" "),
       _c("input", {
@@ -58243,11 +58237,11 @@ var render = function() {
                 return [
                   _c("span", [
                     _vm._v(
-                      "\n      " +
+                      "\n          " +
                         _vm._s(slotProps.model.numbering) +
                         " " +
                         _vm._s(slotProps.model.name) +
-                        "\n    "
+                        "\n        "
                     )
                   ])
                 ]
@@ -58302,9 +58296,7 @@ var render = function() {
           _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Edit")])
         ],
         2
-      ),
-      _vm._v(" "),
-      _c("pre", [_vm._v("  " + _vm._s(_vm.newTree) + "\n")])
+      )
     ],
     1
   )

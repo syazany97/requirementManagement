@@ -10,12 +10,6 @@
         </div>
         <hr>
 
-
-        <!-- create new module dialog -->
-        <!--        <div class="text-right pb-2 mt-2">-->
-
-        <!--        </div>-->
-        <!-- // create new module dialog -->
         <div class="md:flex mb-4" v-if="modules.length">
             <div class="flex-none w-1/3 px-5">
                 <requirement-list></requirement-list>

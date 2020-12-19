@@ -44,9 +44,9 @@
         </vue-tree-list>
 
 
-        <pre>
-      {{ newTree }}
-    </pre>
+<!--        <pre>-->
+<!--      {{ newTree }}-->
+<!--    </pre>-->
 
     </div>
 </template>
@@ -155,12 +155,12 @@ export default {
         },
 
         getNewTree() {
-            var vm = this
+            let vm = this
 
             function _dfs(oldNode) {
-                var newNode = {}
+                let newNode = {}
 
-                for (var k in oldNode) {
+                for (let k in oldNode) {
                     if (k !== 'children' && k !== 'parent') {
                         newNode[k] = oldNode[k]
                     }
@@ -168,7 +168,7 @@ export default {
 
                 if (oldNode.children && oldNode.children.length > 0) {
                     newNode.children = []
-                    for (var i = 0, len = oldNode.children.length; i < len; i++) {
+                    for (let i = 0, len = oldNode.children.length; i < len; i++) {
                         newNode.children.push(_dfs(oldNode.children[i]))
                     }
                 }
