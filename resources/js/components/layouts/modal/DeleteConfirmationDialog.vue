@@ -41,7 +41,7 @@ export default {
     methods: {
         deleteObject() {
             this.$emit('delete');
-            this.$store.commit("notification/showNotification", {variant : 'error', message : this.objectType + ' deleted'});
+            this.$store.commit("notification/showNotification", {variant : 'success', message : this.objectType + ' deleted'});
         }
     }
 }

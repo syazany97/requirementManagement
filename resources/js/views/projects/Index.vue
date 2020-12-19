@@ -58,7 +58,7 @@
                         <modal name="modalProjectDialog" :shift-y="0.2" class="sm:w-full md:w-1/4" :adaptive="true"
                                :scrollable="true"
                                height="auto">
-                            <create-project-dialog @fetch-projects="fetchProjects" :project="updatingProject"
+                            <create-project-dialog @fetchProjects="fetchProjects()" :project="updatingProject"
                                                    :update-project="updateProject"></create-project-dialog>
                         </modal>
                         <!-- End create project modal -->
@@ -241,7 +241,7 @@ export default {
                 links: null,
                 meta: null
             },
-            updateProject : false,
+            updateProject: false,
             url: '/api/projects',
             search: "",
             isOpen: []
@@ -256,9 +256,6 @@ export default {
         }, 1000)
     },
     methods: {
-        test() {
-            console.log('test');
-        },
         async fetchProjects(link = null) {
             const url = link === null ? this.url + ('?q=' + this.search) : link;
             const response = await axios.get(url);
@@ -278,6 +275,7 @@ export default {
                 const response = await projectRepository.delete(this.currentProjectId);
                 await this.fetchProjects();
                 this.$modal.hide('deleteConfirmationDialog');
+                await this.fetchProjects();
             } catch (e) {
                 console.log('error', e);
             }

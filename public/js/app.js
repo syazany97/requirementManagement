@@ -2294,7 +2294,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteObject: function deleteObject() {
       this.$emit('delete');
       this.$store.commit("notification/showNotification", {
-        variant: 'error',
+        variant: 'success',
         message: this.objectType + ' deleted'
       });
     }
@@ -2707,45 +2707,52 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                try {
-                  payload = {
-                    name: _this.projectName,
-                    description: _this.projectDescription,
-                    project_status_id: _this.projectStatusId
-                  };
+                _context.prev = 0;
+                payload = {
+                  name: _this.projectName,
+                  description: _this.projectDescription,
+                  project_status_id: _this.projectStatusId
+                };
 
-                  if (_this.updateProject) {
-                    _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_1__["default"].update(_this.project.id, payload);
-                  } else {
-                    _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_1__["default"].store(payload);
-                  }
-
-                  _this.projectName = "";
-                  _this.projectStatusId = "";
-                  _this.projectDescription = "";
-
-                  _this.$store.commit("notification/showNotification", {
-                    variant: "success",
-                    message: "Project " + (_this.updateProject ? 'Updated' : 'Created')
-                  });
-
-                  _this.$emit('fetch-projects');
-
-                  _this.$emit('reset-project');
-
-                  _this.closeDialog();
-                } catch (err) {
-                  if (err.response.status === 422) {
-                    _this.errors = err.response.data.errors;
-                  }
+                if (_this.updateProject) {
+                  _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_1__["default"].update(_this.project.id, payload);
+                } else {
+                  _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_1__["default"].store(payload);
                 }
 
-              case 1:
+                _this.projectName = "";
+                _this.projectStatusId = "";
+                _this.projectDescription = "";
+                _context.next = 8;
+                return _this.$emit('fetchProjects');
+
+              case 8:
+                _this.$store.commit("notification/showNotification", {
+                  variant: "success",
+                  message: "Project " + (_this.updateProject ? 'Updated' : 'Created')
+                });
+
+                _this.$emit('reset-project');
+
+                _this.closeDialog();
+
+                _context.next = 16;
+                break;
+
+              case 13:
+                _context.prev = 13;
+                _context.t0 = _context["catch"](0);
+
+                if (_context.t0.response.status === 422) {
+                  _this.errors = _context.t0.response.data.errors;
+                }
+
+              case 16:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee);
+        }, _callee, null, [[0, 13]]);
       }))();
     },
     closeDialog: function closeDialog() {
@@ -4679,9 +4686,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }, 1000)
   },
   methods: {
-    test: function test() {
-      console.log('test');
-    },
     fetchProjects: function fetchProjects() {
       var _arguments = arguments,
           _this = this;
@@ -4739,20 +4743,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 6:
                 _this2.$modal.hide('deleteConfirmationDialog');
 
-                _context2.next = 12;
-                break;
+                _context2.next = 9;
+                return _this2.fetchProjects();
 
               case 9:
-                _context2.prev = 9;
+                _context2.next = 14;
+                break;
+
+              case 11:
+                _context2.prev = 11;
                 _context2.t0 = _context2["catch"](0);
                 console.log('error', _context2.t0);
 
-              case 12:
+              case 14:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 9]]);
+        }, _callee2, null, [[0, 11]]);
       }))();
     },
     showDropdown: function showDropdown(projectIndex) {
@@ -11802,7 +11810,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "@-webkit-keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n.loader {\n  border-right-color: transparent;\n  -webkit-animation: loader-rotate 1s linear infinite;\n          animation: loader-rotate 1s linear infinite;\n}\n\n", ""]);
+exports.push([module.i, "@-webkit-keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n@keyframes loader-rotate {\n0% {\n    transform: rotate(0);\n}\n100% {\n    transform: rotate(360deg);\n}\n}\n.loader {\n  border-right-color: transparent;\n  -webkit-animation: loader-rotate 1s linear infinite;\n          animation: loader-rotate 1s linear infinite;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -59866,7 +59874,11 @@ var render = function() {
                       project: _vm.updatingProject,
                       "update-project": _vm.updateProject
                     },
-                    on: { "fetch-projects": _vm.fetchProjects }
+                    on: {
+                      fetchProjects: function($event) {
+                        return _vm.fetchProjects()
+                      }
+                    }
                   })
                 ],
                 1

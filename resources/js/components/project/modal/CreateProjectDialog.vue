@@ -107,11 +107,11 @@ export default {
                 this.projectName = "";
                 this.projectStatusId = "";
                 this.projectDescription = "";
+                await this.$emit('fetchProjects');
                 this.$store.commit("notification/showNotification", {
                     variant: "success",
                     message: "Project " + (this.updateProject ? 'Updated' : 'Created')
                 });
-                this.$emit('fetch-projects');
                 this.$emit('reset-project');
                 this.closeDialog();
             } catch (err) {
