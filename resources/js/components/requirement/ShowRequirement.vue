@@ -1,6 +1,6 @@
 <template>
     <div
-        v-if="requirement.id !== null"
+        v-if="currentRequirement.id !== null"
         class="pa-2"
     >
         <nav class="px-1 pt-2">
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
 const qs = require('qs');
 export default {
     data() {
@@ -43,9 +44,9 @@ export default {
         }
     },
     computed: {
-        requirement() {
-            return this.$store.getters['requirement/currentRequirement']
-        },
+        ...mapGetters('requirement', [
+            'currentRequirement', 'requirementList'
+        ]),
         tabs: {
             get() {
                 return this.$store.getters['requirement/tabs']
@@ -71,7 +72,7 @@ export default {
             if (!parameters.hasOwnProperty('requirement')) return;
 
             this.$store.commit('requirement/setRequirement',
-                this.$store.getters['requirement/requirementList']
+                this.requirementList
                     .map(x => x.requirements)
                     .flat(1)
                     .find(a => a.id === parseInt(parameters.requirement))

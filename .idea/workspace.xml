@@ -21,9 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="58239c8f-5f70-4482-9e45-1dcb473cf0d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/requirement/RequirementList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/requirement/RequirementList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/requirement/ShowRequirement.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/requirement/ShowRequirement.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/requirement/dialog/CreateRequirementDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/requirement/dialog/CreateRequirementDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/helper.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/helper.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,12 +57,20 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="redirect_fix" />
-                    <option name="lastUsedInstant" value="1607775383" />
+                    <option name="branchName" value="search_requirement_module" />
+                    <option name="lastUsedInstant" value="1608340360" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="master" />
-                    <option name="lastUsedInstant" value="1605492574" />
+                    <option name="lastUsedInstant" value="1608340240" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="socialite_integration" />
+                    <option name="lastUsedInstant" value="1607837074" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="redirect_fix" />
+                    <option name="lastUsedInstant" value="1607775383" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="after_laravel_8_upgrade" />
@@ -210,7 +220,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../smartAt" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../personal-website" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -303,6 +313,11 @@
       <workItem from="1607614744762" duration="1106000" />
       <workItem from="1607653857349" duration="7000" />
       <workItem from="1607773910763" duration="8169000" />
+      <workItem from="1607788796758" duration="2690000" />
+      <workItem from="1608177417221" duration="635000" />
+      <workItem from="1608295807168" duration="699000" />
+      <workItem from="1608337696720" duration="4828000" />
+      <workItem from="1608343261538" duration="729000" />
     </task>
     <servers />
   </component>
@@ -320,39 +335,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="552" y="161" key="#Plugins" timestamp="1604320029903">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="552" y="161" key="#Plugins/0.0.1920.1040@0.0.1920.1040" timestamp="1604320029903" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1607785066598">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607785066598" />
-    <state x="728" y="226" key="NewPhpClassDialog" timestamp="1605001251201">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="728" y="226" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605001251201" />
-    <state x="794" y="439" key="NewPhpFileDialog" timestamp="1601798230547">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="794" y="439" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601798230547" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1606443374752">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1606443374752" />
-    <state width="247" height="198" key="ShowFilterAction_Filter_Popup" timestamp="1602760274800">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="247" height="198" key="ShowFilterAction_Filter_Popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602760274800" />
-    <state x="668" y="237" width="583" height="566" key="find.popup" timestamp="1607781740143">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="668" y="237" width="583" height="566" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607781740143" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1607783366793">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607783366793" />
   </component>
 </project>

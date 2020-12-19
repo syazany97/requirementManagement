@@ -18,7 +18,7 @@
             @drop="onDrop"
             @drop-before="onDropBefore"
             @drop-after="onDropAfter"
-            :model="data"
+            :model="treeListData"
             default-tree-node-name="new module"
             default-leaf-node-name="new requirement"
             v-bind:default-expanded="false"
@@ -59,10 +59,7 @@ import requirementRepository from "../../repositories/requirementRepository";
 
 export default {
     name: "RequirementList",
-    components: {CreateNewModule},
-    created() {
-        this.setModules();
-    },
+    components: {CreateNewModule, VueTreeList},
     data() {
         return {
             data: [],
@@ -78,44 +75,26 @@ export default {
             // so we need to listen for changes and then retrieve the new requirement list
             // if it changes
             return this.$store.getters['requirement/requirementList'];
-        }
-    },
-    watch: {
-        requirementList() {
-            this.setModules();
         },
-        searchRequirement() {
-            if (this.searchRequirement === "") this.setModules();
-            else {
-
-                let data = _.filter(JSON.parse(JSON.stringify(this.$store.getters['requirement/requirementList'])),
-                    {'name': this.searchRequirement});
-
-                // this.data = new Tree(_.filter(this.$store.getters['requirement/currentRequirement'],
-                //     {'name': this.searchRequirement}));
-            }
-        }
-    },
-    methods: {
-        setModules() {
-            let requirementList = JSON.parse(JSON.stringify(this.$store.getters['requirement/requirementList']))
+        treeListData() {
+            const requirementList = this.requirementList
                 .map(element => {
                     return {
                         id: element.id,
                         name: element.name,
-                        children: element.modules.concat(element.requirements),
+                        children: element.modules.concat(this.searchRequirement !== '' ?
+                            element.requirements.filter(x => x.name.toLowerCase().indexOf(this.searchRequirement.toLowerCase()) > -1) :
+                            element.requirements),
                         type: element.type,
                         parent_id: element.parent_id,
                         numbering: element.numbering,
                         created_at: element.created_at,
                         updated_at: element.created_at
                     }
-                });
+                })
+                .filter(x => x.name.toLowerCase().indexOf(this.searchRequirement.toLowerCase()) > -1 || x.children.length);
 
-            // requirement under parent module doesnt work when we change the key
-            // for requirements/modules to children since both of them will replace each other
-            // solution is to merge them under the same key and then replace the key into children
-            this.data = new Tree(replaceKeysDeep(
+            return new Tree(replaceKeysDeep(
                 requirementList, {}))
 
             function replaceKeysDeep(obj, keysMap) { // keysMap = { oldKey1: newKey1, oldKey2: newKey2, etc...
@@ -141,9 +120,14 @@ export default {
                     // if the key is an object run it through the inner function - replaceKeys
                 });
             }
-
-        },
-
+        }
+    },
+    watch: {
+        // treeListData() {
+        //     console.log('tree list data', this.treeListData);
+        // }
+    },
+    methods: {
         onDel(node) {
             node.remove()
         },
@@ -165,7 +149,7 @@ export default {
 
         addNode() {
             console.log('add node');
-            var node = new TreeNode({name: 'new node', isLeaf: false})
+            let node = new TreeNode({name: 'new node', isLeaf: false})
             if (!this.data.children) this.data.children = []
             this.data.addChildren(node)
         },

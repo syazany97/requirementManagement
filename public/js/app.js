@@ -2901,10 +2901,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RequirementList",
   components: {
-    CreateNewModule: _modules_dialog_CreateNewModule__WEBPACK_IMPORTED_MODULE_2__["default"]
-  },
-  created: function created() {
-    this.setModules();
+    CreateNewModule: _modules_dialog_CreateNewModule__WEBPACK_IMPORTED_MODULE_2__["default"],
+    VueTreeList: vue_tree_list__WEBPACK_IMPORTED_MODULE_1__["VueTreeList"]
   },
   data: function data() {
     return {
@@ -2921,40 +2919,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       // so we need to listen for changes and then retrieve the new requirement list
       // if it changes
       return this.$store.getters['requirement/requirementList'];
-    }
-  },
-  watch: {
-    requirementList: function requirementList() {
-      this.setModules();
     },
-    searchRequirement: function searchRequirement() {
-      if (this.searchRequirement === "") this.setModules();else {
-        var data = _.filter(JSON.parse(JSON.stringify(this.$store.getters['requirement/requirementList'])), {
-          'name': this.searchRequirement
-        }); // this.data = new Tree(_.filter(this.$store.getters['requirement/currentRequirement'],
-        //     {'name': this.searchRequirement}));
+    treeListData: function treeListData() {
+      var _this = this;
 
-      }
-    }
-  },
-  methods: {
-    setModules: function setModules() {
-      var requirementList = JSON.parse(JSON.stringify(this.$store.getters['requirement/requirementList'])).map(function (element) {
+      var requirementList = this.requirementList.map(function (element) {
         return {
           id: element.id,
           name: element.name,
-          children: element.modules.concat(element.requirements),
+          children: element.modules.concat(_this.searchRequirement !== '' ? element.requirements.filter(function (x) {
+            return x.name.toLowerCase().indexOf(_this.searchRequirement.toLowerCase()) > -1;
+          }) : element.requirements),
           type: element.type,
           parent_id: element.parent_id,
           numbering: element.numbering,
           created_at: element.created_at,
           updated_at: element.created_at
         };
-      }); // requirement under parent module doesnt work when we change the key
-      // for requirements/modules to children since both of them will replace each other
-      // solution is to merge them under the same key and then replace the key into children
-
-      this.data = new vue_tree_list__WEBPACK_IMPORTED_MODULE_1__["Tree"](replaceKeysDeep(requirementList, {}));
+      }).filter(function (x) {
+        return x.name.toLowerCase().indexOf(_this.searchRequirement.toLowerCase()) > -1 || x.children.length;
+      });
+      return new vue_tree_list__WEBPACK_IMPORTED_MODULE_1__["Tree"](replaceKeysDeep(requirementList, {}));
 
       function replaceKeysDeep(obj, keysMap) {
         // keysMap = { oldKey1: newKey1, oldKey2: newKey2, etc...
@@ -2976,7 +2961,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           result[currentKey] = _.isObject(value) ? replaceKeysDeep(value, keysMap) : value; // if the key is an object run it through the inner function - replaceKeys
         });
       }
-    },
+    }
+  },
+  watch: {// treeListData() {
+    //     console.log('tree list data', this.treeListData);
+    // }
+  },
+  methods: {
     onDel: function onDel(node) {
       node.remove();
     },
@@ -2985,7 +2976,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     onAddNode: function onAddNode(params) {},
     onClick: function onClick(params) {
-      var _this = this;
+      var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -2997,10 +2988,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
                 }
 
-                _this.$store.commit('requirement/setRequirement', params);
+                _this2.$store.commit('requirement/setRequirement', params);
 
                 _context.next = 4;
-                return _this.$store.dispatch('requirement/updateQueryParam');
+                return _this2.$store.dispatch('requirement/updateQueryParam');
 
               case 4:
               case "end":
@@ -3070,7 +3061,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }); // console.log('ON DROP BEFORE', params);
     },
     updateModuleAfterDrop: function updateModuleAfterDrop(payload) {
-      var _this2 = this;
+      var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
@@ -3083,8 +3074,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 _context2.next = 5;
-                return _this2.$store.dispatch('requirement/setRequirementList', {
-                  project_id: _this2.projectId
+                return _this3.$store.dispatch('requirement/setRequirementList', {
+                  project_id: _this3.projectId
                 });
 
               case 5:
@@ -3105,7 +3096,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     updateRequirementAfterDrop: function updateRequirementAfterDrop(payload) {
-      var _this3 = this;
+      var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
@@ -3120,8 +3111,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
                 _context3.next = 7;
-                return _this3.$store.dispatch('requirement/setRequirementList', {
-                  project_id: _this3.projectId
+                return _this4.$store.dispatch('requirement/setRequirementList', {
+                  project_id: _this4.projectId
                 });
 
               case 7:
@@ -3155,6 +3146,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -3177,6 +3175,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
+
 var qs = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3198,10 +3198,7 @@ var qs = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
       this.tabs.splice(tabIndex, 1, this.tabs[tabIndex]);
     }
   },
-  computed: {
-    requirement: function requirement() {
-      return this.$store.getters['requirement/currentRequirement'];
-    },
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('requirement', ['currentRequirement', 'requirementList'])), {}, {
     tabs: {
       get: function get() {
         return this.$store.getters['requirement/tabs'];
@@ -3219,12 +3216,12 @@ var qs = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
         this.$store.dispatch('requirement/updateQueryParam');
       }
     }
-  },
+  }),
   methods: {
     setRequirement: function setRequirement() {
       var parameters = qs.parse(location.search.split('?')[1]);
       if (!parameters.hasOwnProperty('requirement')) return;
-      this.$store.commit('requirement/setRequirement', this.$store.getters['requirement/requirementList'].map(function (x) {
+      this.$store.commit('requirement/setRequirement', this.requirementList.map(function (x) {
         return x.requirements;
       }).flat(1).find(function (a) {
         return a.id === parseInt(parameters.requirement);
@@ -3246,17 +3243,18 @@ var qs = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _repositories_requirementRepository__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../repositories/requirementRepository */ "./resources/js/repositories/requirementRepository.js");
-/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
-/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var quill_dist_quill_core_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! quill/dist/quill.core.css */ "./node_modules/quill/dist/quill.core.css");
-/* harmony import */ var quill_dist_quill_core_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(quill_dist_quill_core_css__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var quill_dist_quill_snow_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! quill/dist/quill.snow.css */ "./node_modules/quill/dist/quill.snow.css");
-/* harmony import */ var quill_dist_quill_snow_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(quill_dist_quill_snow_css__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var quill_dist_quill_bubble_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! quill/dist/quill.bubble.css */ "./node_modules/quill/dist/quill.bubble.css");
-/* harmony import */ var quill_dist_quill_bubble_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(quill_dist_quill_bubble_css__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var vue_quill_editor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-quill-editor */ "./node_modules/vue-quill-editor/dist/vue-quill-editor.js");
-/* harmony import */ var vue_quill_editor__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_quill_editor__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../helper */ "./resources/js/helper.js");
+/* harmony import */ var _repositories_requirementRepository__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../repositories/requirementRepository */ "./resources/js/repositories/requirementRepository.js");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var quill_dist_quill_core_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! quill/dist/quill.core.css */ "./node_modules/quill/dist/quill.core.css");
+/* harmony import */ var quill_dist_quill_core_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(quill_dist_quill_core_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var quill_dist_quill_snow_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! quill/dist/quill.snow.css */ "./node_modules/quill/dist/quill.snow.css");
+/* harmony import */ var quill_dist_quill_snow_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(quill_dist_quill_snow_css__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var quill_dist_quill_bubble_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! quill/dist/quill.bubble.css */ "./node_modules/quill/dist/quill.bubble.css");
+/* harmony import */ var quill_dist_quill_bubble_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(quill_dist_quill_bubble_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var vue_quill_editor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-quill-editor */ "./node_modules/vue-quill-editor/dist/vue-quill-editor.js");
+/* harmony import */ var vue_quill_editor__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vue_quill_editor__WEBPACK_IMPORTED_MODULE_7__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -3368,6 +3366,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+
 
 
 
@@ -3384,7 +3384,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   components: {
-    quillEditor: vue_quill_editor__WEBPACK_IMPORTED_MODULE_6__["quillEditor"]
+    quillEditor: vue_quill_editor__WEBPACK_IMPORTED_MODULE_7__["quillEditor"]
   },
   data: function data() {
     return {
@@ -3397,6 +3397,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         module_id: null,
         hours_to_complete: 1
       },
+      editorOptions: _helper__WEBPACK_IMPORTED_MODULE_1__["editorOptions"],
       addingRequirement: false
     };
   },
@@ -3450,7 +3451,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 0;
                 _this.addingRequirement = true;
                 _context.next = 4;
-                return _repositories_requirementRepository__WEBPACK_IMPORTED_MODULE_1__["default"].store(_this.requirement.module_id, _this.requirement);
+                return _repositories_requirementRepository__WEBPACK_IMPORTED_MODULE_2__["default"].store(_this.requirement.module_id, _this.requirement);
 
               case 4:
                 _context.next = 6;
@@ -3498,7 +3499,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return _repositories_requirementRepository__WEBPACK_IMPORTED_MODULE_1__["default"].find(_this2.requirementProp.id);
+                return _repositories_requirementRepository__WEBPACK_IMPORTED_MODULE_2__["default"].find(_this2.requirementProp.id);
 
               case 3:
                 response = _context2.sent;
@@ -58402,7 +58403,7 @@ var render = function() {
         "vue-tree-list",
         {
           attrs: {
-            model: _vm.data,
+            model: _vm.treeListData,
             "default-tree-node-name": "new module",
             "default-leaf-node-name": "new requirement",
             "default-expanded": false
@@ -58511,7 +58512,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.requirement.id !== null
+  return _vm.currentRequirement.id !== null
     ? _c(
         "div",
         { staticClass: "pa-2" },
@@ -58769,7 +58770,11 @@ var render = function() {
           _vm._v(" "),
           _c("quill-editor", {
             staticClass: "primary-rich-text",
-            attrs: { id: "grid-description", height: "200" },
+            attrs: {
+              id: "grid-description",
+              height: "200",
+              options: _vm.editorOptions
+            },
             model: {
               value: _vm.requirement.description,
               callback: function($$v) {
@@ -79081,13 +79086,13 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************!*\
   !*** ./resources/js/helper.js ***!
   \********************************/
-/*! exports provided: debounce, QUILL_OPTIONS */
+/*! exports provided: debounce, editorOptions */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "debounce", function() { return debounce; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QUILL_OPTIONS", function() { return QUILL_OPTIONS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "editorOptions", function() { return editorOptions; });
 var debounce = function debounce(fn, delay) {
   var timeoutID = null;
   return function () {
@@ -79099,7 +79104,50 @@ var debounce = function debounce(fn, delay) {
     }, delay);
   };
 };
-var QUILL_OPTIONS = {};
+var toolbarOptions = [['bold', 'italic', 'underline', 'strike'], ['blockquote', 'code-block'], [{
+  'header': 1
+}, {
+  'header': 2
+}], [{
+  'list': 'ordered'
+}, {
+  'list': 'bullet'
+}], [{
+  'script': 'sub'
+}, {
+  'script': 'super'
+}], [{
+  'indent': '-1'
+}, {
+  'indent': '+1'
+}], [{
+  'direction': 'rtl'
+}], [{
+  'size': ['small', false, 'large', 'huge']
+}], [{
+  'header': [1, 2, 3, 4, 5, 6, false]
+}], [{
+  'color': []
+}, {
+  'background': []
+}], [{
+  'font': []
+}], [{
+  'align': []
+}], // ['link', 'image', 'video'],
+['link'], ['clean']];
+var editorOptions = {
+  modules: {
+    toolbar: {
+      container: toolbarOptions
+    },
+    history: {
+      delay: 1000,
+      maxStack: 50,
+      userOnly: false
+    }
+  }
+};
 
 /***/ }),
 

@@ -71,6 +71,7 @@
             <quill-editor id="grid-description"
                           height="200"
                           v-model="requirement.description"
+                          :options="editorOptions"
                           class="primary-rich-text">
 
             </quill-editor>
@@ -104,6 +105,7 @@
 </template>
 
 <script>
+import {editorOptions} from "../../../helper";
 
 import requirementRepository from "../../../repositories/requirementRepository";
 import vSelect from 'vue-select';
@@ -136,6 +138,7 @@ export default {
                 module_id: null,
                 hours_to_complete: 1
             },
+            editorOptions,
             addingRequirement: false
         }
     },
