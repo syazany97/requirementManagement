@@ -2809,6 +2809,12 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2882,29 +2888,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   computed: {
-    requirementList: function requirementList() {
-      // vue tree list wont change if we use the computed property for this data
-      // so we need to listen for changes and then retrieve the new requirement list
-      // if it changes
-      return this.$store.getters['requirement/requirementList'];
-    },
     treeListData: function treeListData() {
       var _this = this;
 
-      var requirementList = this.requirementList.map(function (element) {
-        return {
-          id: element.id,
-          name: element.name,
+      var requirementList = this.$store.getters['requirement/requirementList'].map(function (element) {
+        return _objectSpread(_objectSpread({}, element), {}, {
           children: element.modules.concat(_this.searchRequirement !== '' ? element.requirements.filter(function (x) {
             return x.name.toLowerCase().indexOf(_this.searchRequirement.toLowerCase()) > -1;
-          }) : element.requirements),
-          type: element.type,
-          parent_id: element.parent_id,
-          numbering: element.numbering,
-          created_at: element.created_at,
-          updated_at: element.created_at
-        };
-      }).filter(function (x) {
+          }) : element.requirements)
+        });
+      }) // only show if search || requirement title (children) matches the search keyword
+      .filter(function (x) {
         return x.name.toLowerCase().indexOf(_this.searchRequirement.toLowerCase()) > -1 || x.children.length;
       });
       return new vue_tree_list__WEBPACK_IMPORTED_MODULE_1__["Tree"](replaceKeysDeep(requirementList, {}));

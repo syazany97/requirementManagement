@@ -70,28 +70,17 @@ export default {
         }
     },
     computed: {
-        requirementList() {
-            // vue tree list wont change if we use the computed property for this data
-            // so we need to listen for changes and then retrieve the new requirement list
-            // if it changes
-            return this.$store.getters['requirement/requirementList'];
-        },
         treeListData() {
-            const requirementList = this.requirementList
+            let requirementList = this.$store.getters['requirement/requirementList']
                 .map(element => {
                     return {
-                        id: element.id,
-                        name: element.name,
+                        ... element,
                         children: element.modules.concat(this.searchRequirement !== '' ?
-                            element.requirements.filter(x => x.name.toLowerCase().indexOf(this.searchRequirement.toLowerCase()) > -1) :
-                            element.requirements),
-                        type: element.type,
-                        parent_id: element.parent_id,
-                        numbering: element.numbering,
-                        created_at: element.created_at,
-                        updated_at: element.created_at
+                                element.requirements.filter(x => x.name.toLowerCase().indexOf(this.searchRequirement.toLowerCase()) > -1) :
+                                element.requirements),
                     }
                 })
+                // only show if search || requirement title (children) matches the search keyword
                 .filter(x => x.name.toLowerCase().indexOf(this.searchRequirement.toLowerCase()) > -1 || x.children.length);
 
             return new Tree(replaceKeysDeep(
