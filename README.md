@@ -23,3 +23,8 @@
 5. run `npm run dev`
 6. run `php artisan migrate`
 7. And you should be done
+
+## Live url 
+https://requirement.syazany.com
+
+You can try it using the link above
