@@ -13,10 +13,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UsersTableSeeder::class,
-            ProjectsTableSeeder::class,
-            ModulesTableSeeder::class,
-            CommentsTableSeeder::class,
-            TestCaseStepsTableSeeder::class
+//            ProjectsTableSeeder::class,
+//            ModulesTableSeeder::class,
+//            CommentsTableSeeder::class,
+//            TestCaseStepsTableSeeder::class
         ]);
     }
 }

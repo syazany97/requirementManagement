@@ -20,16 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58239c8f-5f70-4482-9e45-1dcb473cf0d8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Services/DeleteDemoUsersAction.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Module.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Module.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Project/Project.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Project/Project.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Requirement/Requirement.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Requirement/Requirement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Observers/ProjectObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/ProjectObserver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/TestCase/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/TestCase/TestCase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/telescope/app-dark.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/telescope/app-dark.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/telescope/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/telescope/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/telescope/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/telescope/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/telescope/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/telescope/mix-manifest.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -341,7 +339,7 @@
       <workItem from="1610762405992" duration="819000" />
       <workItem from="1611285107489" duration="1673000" />
       <workItem from="1611386768437" duration="1684000" />
-      <workItem from="1611388482642" duration="8127000" />
+      <workItem from="1611388482642" duration="11886000" />
     </task>
     <servers />
   </component>

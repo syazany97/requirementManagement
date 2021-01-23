@@ -72,7 +72,7 @@ class Project extends Model
 
     public function collaborators()
     {
-//        return $this->belongsToMany(User::class, 'user_id', ProjectUserRole::class);
+        return $this->belongsToMany(User::class, 'user_id', ProjectUserRole::class);
     }
 
     public function scopeIndex($query, $search = null)
