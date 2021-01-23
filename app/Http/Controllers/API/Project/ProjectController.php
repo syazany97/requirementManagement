@@ -21,7 +21,7 @@ class ProjectController extends Controller
 
         return ProjectResource::collection(
             Project::index($search)
-//                ->where('user_id', auth()->user()->id)
+                ->where('user_id', auth()->user()->id)
                 ->paginate($perPage)
                 ->appends(['q' => $search])
         );

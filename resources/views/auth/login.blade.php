@@ -16,14 +16,15 @@
                         </label>
                         <input
                             class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                            type='email' name="email" id="email" required>
+                            type='email' value="{{isset($email)  ? $email : ''}}" name="email" id="email" required>
+
                     </div>
                     <div class="w-full md:w-full px-3 mb-6">
                         <label class="block tracking-wide text-gray-700 text-sm font-medium mb-2"
                                for='password'>Password</label>
                         <input
                             class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                            type='password' name='password' id='password' required>
+                            type='password' value="{{isset($password) ? $password : ''}}" name='password' id='password' required>
                     </div>
                     <div class="w-full flex items-center justify-between px-3 mb-3 ">
                         <label for="remember" class="flex items-center w-1/2">
