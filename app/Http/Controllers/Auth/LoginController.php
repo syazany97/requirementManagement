@@ -55,6 +55,7 @@ class LoginController extends Controller
                     'name' => $name,
                     'email' => $name . '@gmail.com',
                     'password' => Hash::make($password),
+                    'is_demo' => true
                 ]);
                 $email = $user->email;
             }

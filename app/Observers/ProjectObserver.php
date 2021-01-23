@@ -26,9 +26,9 @@ class ProjectObserver
 
     public function deleting(Project $project)
     {
-        $project->requirements()->delete();
-
-        $project->modules()->delete();
+//        $project->requirements()->delete();
+//
+//        $project->modules()->delete();
     }
 
     public function deleted(Project $project)

@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Module extends Model
 {
-    use SoftDeletes;
     protected $fillable = ['name', 'numbering', 'parent_id', 'uuid'];
 
     public function project()
@@ -26,7 +25,7 @@ class Module extends Model
     {
         return $this->hasMany(self::class, 'parent_id')
             ->with('children')
-            ->orderBy('numbering', 'asc');
+            ->orderBy('numbering');
     }
 
     public function scopeCompleteInformation($query)

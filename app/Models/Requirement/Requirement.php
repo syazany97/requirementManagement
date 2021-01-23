@@ -16,7 +16,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Requirement extends Model implements HasMedia
 {
-    use InteractsWithMedia, LogsActivity, SoftDeletes, HasHistories;
+    use InteractsWithMedia, LogsActivity, HasHistories;
 
     protected $fillable = ['name', 'module_id', 'description', 'description',
         'requirement_priority_id', 'requirement_status_id', 'numbering', 'module_id',
