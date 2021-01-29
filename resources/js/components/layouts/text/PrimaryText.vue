@@ -26,8 +26,7 @@ export default {
         },
         placeholder: {
             type: String,
-            default: '',
-            required : true
+            default: ''
         },
         name: {
             type: String,

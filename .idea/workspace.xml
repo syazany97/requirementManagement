@@ -20,15 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58239c8f-5f70-4482-9e45-1dcb473cf0d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/layouts/ErrorMessage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/layouts/text/PrimaryText.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/vuex-modules/error.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/layouts/text/PrimarySelect.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/modules/dialog/CreateNewModule.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/modules/dialog/CreateNewModule.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/ErrorMessage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/ErrorMessage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/text/PrimaryText.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/text/PrimaryText.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/project/modal/CreateProjectDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/project/modal/CreateProjectDialog.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/requirement/dialog/CreateRequirementDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/requirement/dialog/CreateRequirementDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/repositories/comment/commentRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/repositories/comment/commentRepository.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -351,7 +349,8 @@
       <workItem from="1611388482642" duration="11886000" />
       <workItem from="1611461591859" duration="18000" />
       <workItem from="1611479931761" duration="1253000" />
-      <workItem from="1611912164457" duration="6971000" />
+      <workItem from="1611912164457" duration="7950000" />
+      <workItem from="1611926714720" duration="1676000" />
     </task>
     <servers />
   </component>

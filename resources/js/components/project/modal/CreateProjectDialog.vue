@@ -8,25 +8,29 @@
             <hr>
 
             <div class="bg-white px-4">
-                <label class="primary-label" for="projectName">
+                <label class="primary-label" for="name">
                     Name
                 </label>
 
                 <input class="primary-input"
-                       v-model="projectName"
-                       id="projectName" name="projectName"
+                       v-model="name"
+                       id="name" name="name"
                        type="text" placeholder="Name">
+
+                <primary-text   v-model="name"
+                                id="name" name="name"
+                                type="text" placeholder="Name"/>
 
                 <p v-if="errors.hasOwnProperty('name')" class="error-message">
                     {{ errors.name[0] }}</p>
 
-                <label class="primary-label" for="projectDescription">
+                <label class="primary-label" for="description">
                     Description
                 </label>
 
                 <textarea class="primary-input"
-                          v-model="projectDescription"
-                          id="projectDescription" name="projectDescription"
+                          v-model="description"
+                          id="description" name="description"
                           type="text" placeholder="Description" ></textarea>
 
                 <p v-if="errors.hasOwnProperty('description')" class="error-message">
@@ -63,9 +67,11 @@
 
 <script>
 import projectRepository from "../../../repositories/projectRepository";
+import PrimaryText from "../../layouts/text/PrimaryText";
 
 export default {
     name: "CreateProjectDialog",
+    components: {PrimaryText},
     props: {
         updateProject: {
             type: Boolean,
@@ -79,8 +85,8 @@ export default {
         return {
             // TODO : fix removal of id when update to signal is update mode
             valid: true,
-            projectName: this.updateProject ? this.project.name : "",
-            projectDescription: this.updateProject ? this.project.description : "",
+            name: this.updateProject ? this.project.name : "",
+            description: this.updateProject ? this.project.description : "",
             projectStatusId:  this.updateProject ? this.project.project_status_id : "",
             projectStatuses: [],
             errors: []
@@ -93,8 +99,8 @@ export default {
         async createProject() {
             try {
                 const payload = {
-                    name: this.projectName,
-                    description: this.projectDescription,
+                    name: this.name,
+                    description: this.description,
                     project_status_id: this.projectStatusId
                 };
 
@@ -104,9 +110,9 @@ export default {
                     projectRepository.store(payload);
                 }
 
-                this.projectName = "";
+                this.name = "";
                 this.projectStatusId = "";
-                this.projectDescription = "";
+                this.description = "";
                 await this.$emit('fetchProjects');
                 this.$store.commit("notification/showNotification", {
                     variant: "success",

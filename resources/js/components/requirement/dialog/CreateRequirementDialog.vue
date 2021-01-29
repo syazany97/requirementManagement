@@ -12,7 +12,7 @@
                 Name
             </label>
 
-            <primary-text placeholder="Requirement A" id="name" v-model="requirement.name"/>
+            <primary-text placeholder="Requirement A" name="name" id="name" v-model="requirement.name"/>
 
             <label class="primary-label" for="grid-priority">
                 Priority
@@ -26,24 +26,30 @@
                         :reduce="name => name.id">
             </vue-select>
 
+            <error-message name="requirement_priority_id" />
+
             <label class="primary-label" for="requirement.hours_to_complete">
                 Hours to complete
             </label>
 
-            <primary-text id="requirement.hours_to_complete" v-model="requirement.hours_to_complete" type="number" name="requirement.hours_to_complete"/>
+            <primary-text id="requirement.hours_to_complete" v-model="requirement.hours_to_complete" type="number"
+                          name="hours_to_complete"/>
 
-            <label class="primary-label" for="grid-module-id">
+            <label class="primary-label" for="module_id">
                 Under which module
             </label>
 
             <vue-select
                 v-model="requirement.module_id"
-                id="grid-module-id"
+                id="module_id"
                 class="primary-select"
                 :options="modules"
                 label="name"
+                required
                 :reduce="name => name.id"
             ></vue-select>
+
+            <error-message name="module_id" />
 
             <label class="primary-label" for="grid-status">
                 Status
@@ -58,18 +64,20 @@
                 id="grid-status"
             ></vue-select>
 
+            <error-message name="requirement_status_id" />
 
-            <label class="primary-label" for="grid-description">
+            <label class="primary-label" for="description">
                 Description
             </label>
 
-            <quill-editor id="grid-description"
+            <quill-editor id="description"
                           height="200"
                           v-model="requirement.description"
                           :options="editorOptions"
                           class="primary-rich-text">
-
             </quill-editor>
+
+            <error-message name="description" />
 
             <label class="primary-label" for="grid-assignees">
                 Assignees
@@ -109,6 +117,7 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import {quillEditor} from 'vue-quill-editor'
 import PrimaryText from "../../layouts/text/PrimaryText";
+import ErrorMessage from "../../layouts/ErrorMessage";
 
 export default {
     name: "CreateRequirementDialog",
@@ -121,6 +130,7 @@ export default {
         }
     },
     components: {
+        ErrorMessage,
         PrimaryText,
         quillEditor
     },
@@ -145,7 +155,7 @@ export default {
         },
         modules() {
             return this.$store.getters['requirement/requirementList']
-                .filter(element => element.parent_id === null);
+                .filter(x => x.parent_id === null);
         },
         statuses() {
             return this.$store.getters['requirement/statuses'];
@@ -168,7 +178,6 @@ export default {
             }
         },
         fetchRequirementStatuses() {
-
             if (!this.$store.getters['requirement/statuses'].length) {
                 this.$store.dispatch('requirement/setRequirementStatuses');
             }
@@ -179,12 +188,15 @@ export default {
         },
         async addRequirement() {
             try {
+                if (!this.requirement.module_id) {
+                   return this.$store.commit('error/errors', {module_id: ['Please select a module']});
+                }
                 this.addingRequirement = true;
                 await requirementRepository.store(this.requirement.module_id, this.requirement);
                 await this.$store.dispatch('requirement/setRequirementList',
                     {project_id: this.$route.params.project});
                 this.closeDialog();
-                this.$store.commit("notification/showNotification", {variant : "success", message : "Requirement added"});
+                this.$store.commit("notification/showNotification", {variant: "success", message: "Requirement added"});
             } catch (e) {
                 console.log(e);
             } finally {
@@ -199,10 +211,8 @@ export default {
             } catch (e) {
                 console.log('error', e);
             }
-
-
         },
-        closeDialog() {
+        closeDialog() {i
             this.requirement.name = "";
             this.requirement.description = "";
             this.requirement.assignees = [];

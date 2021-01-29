@@ -4,13 +4,14 @@
 
 <script>
 import {mapGetters} from "vuex";
-import {get} from 'lodash';
+
 
 export default {
     props: {
         name: {
             type: String,
-            default: ''
+            default: '',
+            required: true
         }
     },
     computed: {
@@ -20,7 +21,13 @@ export default {
             ]
         ),
         findError() {
-            return _.get(this.errors, name, []);
+            const errors = _.get(this.errors, this.name, []);
+
+            if (errors.length) {
+                return errors.map(x => x.replace(' id ', ' '));
+            }
+
+            return [];
         }
     },
     name: "ErrorMessage"
