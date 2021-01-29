@@ -34,9 +34,7 @@
 
                     <label class="primary-label" for="moduleName">Module</label>
 
-                    <input class="primary-input"
-                           v-model="moduleName"
-                           id="moduleName" type="text" placeholder="Name">
+                    <primary-text v-model="moduleName" name="name" id="moduleName" placeholder="Name"/>
 
                     <div class="modal-button-alignment">
                         <button @click="$modal.hide('moduleDialog')" class="btn btn-tertiary pr-3">
@@ -60,9 +58,11 @@
 <script>
 import moduleRepository from "../../../repositories/moduleRepository";
 import CreateRequirementDialog from "../../requirement/dialog/CreateRequirementDialog";
+import {mapGetters} from "vuex";
+import PrimaryText from "../../layouts/text/PrimaryText";
 
 export default {
-    components: {CreateRequirementDialog},
+    components: {PrimaryText, CreateRequirementDialog},
     props: {
         module: {
             type: Object,

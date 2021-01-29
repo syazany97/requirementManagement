@@ -8,14 +8,11 @@
         <hr>
 
         <div class="bg-white px-4">
-
-            <label class="primary-label" for="grid-name">
+            <label class="primary-label" for="name">
                 Name
             </label>
 
-            <input class="primary-input"
-                   v-model="requirement.name"
-                   id="grid-name" type="text" placeholder="Requirement A">
+            <primary-text placeholder="Requirement A" id="name" v-model="requirement.name"/>
 
             <label class="primary-label" for="grid-priority">
                 Priority
@@ -29,13 +26,11 @@
                         :reduce="name => name.id">
             </vue-select>
 
-            <label class="primary-label" for="hours_to_complete">
+            <label class="primary-label" for="requirement.hours_to_complete">
                 Hours to complete
             </label>
 
-            <input v-model="requirement.hours_to_complete" type="number" class="primary-input" name="hours_to_complete"
-                   id="hours_to_complete">
-
+            <primary-text id="requirement.hours_to_complete" v-model="requirement.hours_to_complete" type="number" name="requirement.hours_to_complete"/>
 
             <label class="primary-label" for="grid-module-id">
                 Under which module
@@ -113,6 +108,7 @@ import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import {quillEditor} from 'vue-quill-editor'
+import PrimaryText from "../../layouts/text/PrimaryText";
 
 export default {
     name: "CreateRequirementDialog",
@@ -125,6 +121,7 @@ export default {
         }
     },
     components: {
+        PrimaryText,
         quillEditor
     },
     data() {

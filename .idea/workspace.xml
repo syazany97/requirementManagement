@@ -20,14 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58239c8f-5f70-4482-9e45-1dcb473cf0d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Services/DeleteDemoUsersAction.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/layouts/ErrorMessage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/layouts/text/PrimaryText.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/vuex-modules/error.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Project/Project.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Project/Project.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Requirement/Requirement.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Requirement/Requirement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/TestCase/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/TestCase/TestCase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/modules/dialog/CreateNewModule.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/modules/dialog/CreateNewModule.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/requirement/dialog/CreateRequirementDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/requirement/dialog/CreateRequirementDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/repositories/comment/commentRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/repositories/comment/commentRepository.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,6 +221,14 @@
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
+      <path value="$PROJECT_DIR$/vendor/spatie/backtrace" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-ray" />
+      <path value="$PROJECT_DIR$/vendor/spatie/macroable" />
+      <path value="$PROJECT_DIR$/vendor/spatie/ray" />
+      <path value="$PROJECT_DIR$/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/vendor/zbateson/mail-mime-parser" />
+      <path value="$PROJECT_DIR$/vendor/zbateson/mb-wrapper" />
+      <path value="$PROJECT_DIR$/vendor/zbateson/stream-decorators" />
     </include_path>
   </component>
   <component name="ProjectId" id="1iMtFdYKFzfBj8O3BLWwbJgUglQ" />
@@ -230,7 +239,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../interview-case-study" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -238,7 +247,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -340,6 +349,9 @@
       <workItem from="1611285107489" duration="1673000" />
       <workItem from="1611386768437" duration="1684000" />
       <workItem from="1611388482642" duration="11886000" />
+      <workItem from="1611461591859" duration="18000" />
+      <workItem from="1611479931761" duration="1253000" />
+      <workItem from="1611912164457" duration="6971000" />
     </task>
     <servers />
   </component>

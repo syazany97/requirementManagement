@@ -10,7 +10,7 @@ import VueTreeList from 'vue-tree-list';
 import requirement from "./vuex-modules/requirement";
 import user from "./vuex-modules/user";
 import vSelect from 'vue-select'
-
+import error from "./vuex-modules/error";
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -31,11 +31,12 @@ const router = new VueRouter({
     linkExactActiveClass: 'active'
 })
 
-const store = new Vuex.Store({
+export const store = new Vuex.Store({
     modules: {
-        notification: notification,
-        requirement: requirement,
-        user: user
+        notification,
+        requirement,
+        user,
+        error
     }
 });
 
