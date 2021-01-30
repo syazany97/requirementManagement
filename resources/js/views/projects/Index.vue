@@ -56,7 +56,7 @@
 
                         <!-- Create Project Modal -->
                         <modal name="modalProjectDialog" :shift-y="0.2" class="sm:w-full md:w-1/4" :adaptive="true"
-                               :scrollable="true"
+                               :scrollable="true" @closed="$store.commit('error/setEmptyErrors')"
                                height="auto">
                             <create-project-dialog @fetchProjects="fetchProjects()" :project="updatingProject"
                                                    :update-project="updateProject"></create-project-dialog>
@@ -272,8 +272,7 @@ export default {
         },
         async deleteProject() {
             try {
-                const response = await projectRepository.delete(this.currentProjectId);
-                await this.fetchProjects();
+                await projectRepository.delete(this.currentProjectId);
                 this.$modal.hide('deleteConfirmationDialog');
                 await this.fetchProjects();
             } catch (e) {

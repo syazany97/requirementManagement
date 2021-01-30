@@ -3,9 +3,10 @@ import {store} from "../app";
 window.axios = require('axios');
 
 axios.interceptors.response.use(
-    res => res,
+    res => {
+        return res;
+    },
     err => {
-        console.log({err});
         if (err.response.status === 422) {
             store.commit('error/errors', err.response.data.errors)
         }
@@ -28,6 +29,9 @@ const getters = {
 const mutations = {
     errors: (state, payload) => {
         state.errors = payload;
+    },
+    setEmptyErrors: (state) => {
+        state.errors = {};
     }
 };
 

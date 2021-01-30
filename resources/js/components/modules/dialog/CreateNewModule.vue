@@ -13,7 +13,7 @@
                                        @close-requirement-dialog="closeRequirementDialog()"></create-requirement-dialog>
         </modal>
 
-        <modal :shiftY="0.2" name="moduleDialog" height="auto">
+        <modal :shiftY="0.2" name="moduleDialog" @closed="$store.commit('error/setEmptyErrors')" height="auto">
             <div class="container mx-auto py-2 overflow-y-auto">
                 <div class="py-2">
                     <span class="default-dialog-title">Create new module</span>
