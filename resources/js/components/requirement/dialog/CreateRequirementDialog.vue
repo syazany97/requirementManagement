@@ -118,6 +118,7 @@ import 'quill/dist/quill.bubble.css'
 import {quillEditor} from 'vue-quill-editor'
 import PrimaryText from "../../layouts/text/PrimaryText";
 import ErrorMessage from "../../layouts/ErrorMessage";
+import {mapGetters} from "vuex";
 
 export default {
     name: "CreateRequirementDialog",
@@ -125,8 +126,7 @@ export default {
         requirementDialog: Boolean,
         requirementProp: {
             type: Object,
-            default: () => {
-            }
+            default: () => {}
         }
     },
     components: {
@@ -150,19 +150,17 @@ export default {
         }
     },
     computed: {
+        ...mapGetters(
+            'requirement', [
+                'requirementList', 'statuses', 'priorities'
+            ]
+        ),
         users() {
             return this.$store.getters['user/users'];
         },
         modules() {
-            return this.$store.getters['requirement/requirementList']
-                .filter(x => x.parent_id === null);
-        },
-        statuses() {
-            return this.$store.getters['requirement/statuses'];
-        },
-        priorities() {
-            return this.$store.getters['requirement/priorities'];
-        },
+            return this.requirementList.filter(x => x.parent_id === null);
+        }
     },
     created() {
         if (this.requirementProp !== null && this.requirementProp !== undefined) {
@@ -173,16 +171,16 @@ export default {
     },
     methods: {
         fetchUsers() {
-            if (!this.$store.getters['users']) {
+            if (!this.users.length) {
                 this.$store.dispatch('user/setUsers');
             }
         },
         fetchRequirementStatuses() {
-            if (!this.$store.getters['requirement/statuses'].length) {
+            if (!this.statuses.length) {
                 this.$store.dispatch('requirement/setRequirementStatuses');
             }
 
-            if (!this.$store.getters['requirement/priorities'].length) {
+            if (!this.priorities.length) {
                 this.$store.dispatch('requirement/setPriorities');
             }
         },
@@ -212,7 +210,7 @@ export default {
                 console.log('error', e);
             }
         },
-        closeDialog() {i
+        closeDialog() {
             this.requirement.name = "";
             this.requirement.description = "";
             this.requirement.assignees = [];

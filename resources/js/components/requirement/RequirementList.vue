@@ -44,9 +44,9 @@
         </vue-tree-list>
 
 
-<!--        <pre>-->
-<!--      {{ newTree }}-->
-<!--    </pre>-->
+        <!--        <pre>-->
+        <!--      {{ newTree }}-->
+        <!--    </pre>-->
 
     </div>
 </template>
@@ -74,10 +74,10 @@ export default {
             let requirementList = this.$store.getters['requirement/requirementList']
                 .map(element => {
                     return {
-                        ... element,
+                        ...element,
                         children: element.modules.concat(this.searchRequirement !== '' ?
-                                element.requirements.filter(x => x.name.toLowerCase().indexOf(this.searchRequirement.toLowerCase()) > -1) :
-                                element.requirements),
+                            element.requirements.filter(x => x.name.toLowerCase().indexOf(this.searchRequirement.toLowerCase()) > -1) :
+                            element.requirements),
                     }
                 })
                 // only show if search || requirement title (children) matches the search keyword
@@ -110,11 +110,6 @@ export default {
                 });
             }
         }
-    },
-    watch: {
-        // treeListData() {
-        //     console.log('tree list data', this.treeListData);
-        // }
     },
     methods: {
         onDel(node) {

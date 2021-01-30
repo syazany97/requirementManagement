@@ -12,29 +12,16 @@
                     Name
                 </label>
 
-                <input class="primary-input"
-                       v-model="name"
-                       id="name" name="name"
-                       type="text" placeholder="Name">
-
-                <primary-text   v-model="name"
+                <primary-text  v-model="name"
                                 id="name" name="name"
                                 type="text" placeholder="Name"/>
-
-                <p v-if="errors.hasOwnProperty('name')" class="error-message">
-                    {{ errors.name[0] }}</p>
 
                 <label class="primary-label" for="description">
                     Description
                 </label>
 
-                <textarea class="primary-input"
-                          v-model="description"
-                          id="description" name="description"
-                          type="text" placeholder="Description" ></textarea>
-
-                <p v-if="errors.hasOwnProperty('description')" class="error-message">
-                    {{ errors.description[0] }}</p>
+                <primary-text-area v-model="description"  id="description" name="description"
+                                    type="text" placeholder="Description" />
 
                 <label class="primary-label" for="projectStatus">
                     Project Status
@@ -49,8 +36,7 @@
                     :reduce="title => title.id"
                 ></vue-select>
 
-                <p v-if="errors.hasOwnProperty('project_status_id')" class="error-message">
-                    {{ errors.project_status_id[0] }}</p>
+                <error-message name="project_status_id"/>
 
                 <div class="modal-button-alignment">
                     <button @click="closeDialog" class="btn btn-tertiary pr-3">
@@ -68,10 +54,12 @@
 <script>
 import projectRepository from "../../../repositories/projectRepository";
 import PrimaryText from "../../layouts/text/PrimaryText";
+import ErrorMessage from "../../layouts/ErrorMessage";
+import PrimaryTextArea from "../../layouts/text/PrimaryTextArea";
 
 export default {
     name: "CreateProjectDialog",
-    components: {PrimaryText},
+    components: {PrimaryTextArea, ErrorMessage, PrimaryText},
     props: {
         updateProject: {
             type: Boolean,
@@ -105,9 +93,9 @@ export default {
                 };
 
                 if (this.updateProject) {
-                    projectRepository.update(this.project.id, payload);
+                    await projectRepository.update(this.project.id, payload);
                 } else {
-                    projectRepository.store(payload);
+                    await projectRepository.store(payload);
                 }
 
                 this.name = "";
@@ -121,9 +109,7 @@ export default {
                 this.$emit('reset-project');
                 this.closeDialog();
             } catch (err) {
-                if (err.response.status === 422) {
-                    this.errors = err.response.data.errors;
-                }
+                console.log({err});
             }
         },
         closeDialog() {

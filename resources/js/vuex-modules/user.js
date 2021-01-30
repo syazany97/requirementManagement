@@ -22,7 +22,6 @@ const mutations = {
 const actions = {
     async setUsers(state, payload) {
         const response = await userRepository.all();
-        console.log(response.data);
         state.commit('setUsers', response.data.data);
     }
 }

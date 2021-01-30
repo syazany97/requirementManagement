@@ -29,7 +29,7 @@ export default {
         },
         btnType : {
             type : String,
-            default : 'primary'
+            default : 'secondary'
         }
     },
     computed: {
@@ -40,7 +40,7 @@ export default {
             return 'btn-' + this.btnType
         }
     },
-    name: "PrimaryButton",
+    name: "SecondaryButton",
 
     methods: {
         handleClick() {

@@ -1,10 +1,11 @@
 <template>
     <div>
-        <input class="primary-input"
-               :class="className"
-               :value="value"
-               @input="handleTextChange"
-               :id="id" :type="inputType" :placeholder="placeholder">
+        <textarea class="primary-input"
+          :value="value"
+          :id="id" :name="name"
+          :placeholder="placeholder">
+              </textarea>
+
         <error-message :name="name"/>
     </div>
 </template>
@@ -19,11 +20,11 @@ export default {
         id: {
             type: String,
             default: '',
-            required : true
+            required: true
         },
-        inputType : {
-            type : String,
-            default : 'text'
+        inputType: {
+            type: String,
+            default: 'text'
         },
         placeholder: {
             type: String,
@@ -32,15 +33,15 @@ export default {
         name: {
             type: String,
             default: '',
-            required : true
+            required: true
         },
-        className : {
-            type : String,
-            default : ''
+        className: {
+            type: String,
+            default: ''
         },
-        value : {
-            type : String | Number,
-            default : ''
+        value: {
+            type: String | Number,
+            default: ''
         }
     },
     computed: {
@@ -50,7 +51,7 @@ export default {
             ]
         ),
     },
-    name: "PrimaryText",
+    name: "PrimaryTextArea",
     methods: {
         handleTextChange(e) {
             this.$emit('input', e.target.value);

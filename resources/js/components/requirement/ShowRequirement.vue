@@ -71,12 +71,12 @@ export default {
 
             if (!parameters.hasOwnProperty('requirement')) return;
 
-            this.$store.commit('requirement/setRequirement',
-                this.requirementList
-                    .map(x => x.requirements)
-                    .flat(1)
-                    .find(a => a.id === parseInt(parameters.requirement))
-            );
+            // this.$store.commit('requirement/setRequirement',
+            //     this.requirementList
+            //         .map(x => x.requirements)
+            //         .flat(1)
+            //         .find(a => a.id === parseInt(parameters.requirement))
+            // );
         }
     }
 

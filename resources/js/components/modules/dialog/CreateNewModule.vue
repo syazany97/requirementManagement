@@ -1,23 +1,12 @@
 <template>
     <div class="mt-6">
-        <button @click="$modal.show('moduleDialog')"
-                class="btn btn-primary">
-            <svg fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd"
-                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                      clip-rule="evenodd"></path>
-            </svg>
+        <primary-button @click="$modal.show('moduleDialog')" icon="M12 6v6m0 0v6m0-6h6m-6 0H6">
             <span>Add module</span>
-        </button>
+        </primary-button>
 
-        <button @click.stop="$modal.show('requirementDialog')" class="btn btn-secondary">
-            <svg fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd"
-                      d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                      clip-rule="evenodd"></path>
-            </svg>
+        <secondary-button @click="$modal.show('requirementDialog')" icon="M12 6v6m0 0v6m0-6h6m-6 0H6">
             <span>Add requirement</span>
-        </button>
+        </secondary-button>
 
         <modal name="requirementDialog" class="sm:w-full md:w-1/4" :adaptive="true" :scrollable="true" height="auto">
             <create-requirement-dialog :requirement-dialog.sync="requirementDialog"
@@ -60,9 +49,11 @@ import moduleRepository from "../../../repositories/moduleRepository";
 import CreateRequirementDialog from "../../requirement/dialog/CreateRequirementDialog";
 import {mapGetters} from "vuex";
 import PrimaryText from "../../layouts/text/PrimaryText";
+import PrimaryButton from "../../layouts/buttons/PrimaryButton";
+import SecondaryButton from "../../layouts/buttons/SecondaryButton";
 
 export default {
-    components: {PrimaryText, CreateRequirementDialog},
+    components: {SecondaryButton, PrimaryButton, PrimaryText, CreateRequirementDialog},
     props: {
         module: {
             type: Object,
