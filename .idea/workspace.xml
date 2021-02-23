@@ -20,9 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58239c8f-5f70-4482-9e45-1dcb473cf0d8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/components/layouts/table/TableRow.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/Module/ProjectModuleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/Module/ProjectModuleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/Requirement/RequirementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/Requirement/RequirementController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/ErrorMessage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/ErrorMessage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/repositories/comment/commentRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/repositories/comment/commentRepository.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/views/projects/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/projects/Index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/vuex-modules/error.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/vuex-modules/error.js" afterDir="false" />
     </list>
@@ -235,7 +240,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../interview-case-study" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -243,7 +248,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -349,7 +354,24 @@
       <workItem from="1611479931761" duration="1253000" />
       <workItem from="1611912164457" duration="7950000" />
       <workItem from="1611926714720" duration="2559000" />
-      <workItem from="1611967680113" duration="10614000" />
+      <workItem from="1611967680113" duration="15492000" />
+      <workItem from="1612061581488" duration="10000" />
+      <workItem from="1612097541248" duration="1227000" />
+      <workItem from="1612867140896" duration="989000" />
+      <workItem from="1612922797678" duration="26000" />
+      <workItem from="1612949186444" duration="1207000" />
+      <workItem from="1612954754140" duration="178000" />
+      <workItem from="1613369498660" duration="615000" />
+      <workItem from="1613382822825" duration="628000" />
+      <workItem from="1613437845784" duration="630000" />
+      <workItem from="1613454184583" duration="801000" />
+      <workItem from="1613467301020" duration="1057000" />
+      <workItem from="1613475403903" duration="120000" />
+      <workItem from="1613878923736" duration="843000" />
+      <workItem from="1613883279209" duration="603000" />
+      <workItem from="1613904863128" duration="700000" />
+      <workItem from="1613975295371" duration="3016000" />
+      <workItem from="1614088210627" duration="187000" />
     </task>
     <servers />
   </component>

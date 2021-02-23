@@ -7,9 +7,18 @@ axios.interceptors.response.use(
         return res;
     },
     err => {
-        if (err.response.status === 422) {
+        if (err.response.status === 422 || err.response.status === 400) {
             store.commit('error/errors', err.response.data.errors)
         }
+
+        if (err.response.status === 403) {
+            location.replace('/');
+        }
+
+        if (err.response.status === 401) {
+            location.replace('/login');
+        }
+
         throw err;
     }
 );

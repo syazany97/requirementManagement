@@ -115,21 +115,22 @@
                     <td class="default-row">
                         <span class="text-gray-700 px-6 py-3 flex items-center">{{ project.id }}</span>
                     </td>
-                    <td class="default-row">
+										<table-row>
                         <span class="text-gray-700 px-6 py-3 flex items-center">{{ project.name }}</span>
-                    </td>
-                    <td class="default-row">
-                                								<span class="text-gray-700 px-6 py-3 flex items-center"
-                                                                >{{ project.modules_count }}</span>
-                    </td>
-                    <td class="default-row">
-                                								<span class="text-gray-700 px-6 py-3 flex items-center"
-                                                                >{{ get(project, 'owner.name', null) }}</span>
-                    </td>
-                    <td class="default-row">
+										</table-row>
+                   	<table-row>
+											<span class="text-gray-700 px-6 py-3 flex items-center">{{ project.modules_count }}
+											</span>
+										</table-row>
+                    <table-row>
+											<span class="text-gray-700 px-6 py-3 flex items-center">{{ get(project, 'owner.name', null) }}
+										</span>
+										</table-row>
+                    <table-row>
+
                                 								<span class="text-gray-700 px-6 py-3 flex items-center"
                                                                 >{{ project.created_at | formatDateTime }}</span>
-                    </td>
+										</table-row>
 
                     <td v-click-outside="hideAllDropdowns" class="default-row">
                         <!--                                								<button class="border-opacity-100 hover:bg-red hover:border-grey-300 rounded">-->
@@ -211,10 +212,11 @@ import {debounce} from "../../helper";
 import projectRepository from "../../repositories/projectRepository";
 import DeleteConfirmationDialog from "../../components/layouts/modal/DeleteConfirmationDialog";
 import PrimaryButton from "../../components/layouts/buttons/PrimaryButton";
+import TableRow from "../../components/layouts/table/TableRow";
 
 export default {
     name: "Index.vue",
-    components: {PrimaryButton, DeleteConfirmationDialog, CreateProjectDialog},
+    components: {TableRow, PrimaryButton, DeleteConfirmationDialog, CreateProjectDialog},
     data() {
         return {
             projects: [],

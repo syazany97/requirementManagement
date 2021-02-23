@@ -76,7 +76,7 @@ export default {
     },
     methods: {
         async addModule() {
-            try {
+            try {f
                 this.adding = true;
                 await moduleRepository.store(this.$route.params.project, {
                     name: this.moduleName
