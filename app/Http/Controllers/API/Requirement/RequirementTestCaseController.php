@@ -15,9 +15,7 @@ class RequirementTestCaseController extends Controller
 {
     public function index(Requirement $requirement)
     {
-        $testCases = TestCase::with(['user'])
-            ->where('requirement_id', $requirement->id)
-            ->get();
+        $testCases = $requirement->testCases()->with(['user'])->get();
 
         return TestCaseResource::collection($testCases);
     }
