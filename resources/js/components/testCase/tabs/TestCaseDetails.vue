@@ -24,7 +24,7 @@
             <tbody>
             <tr v-for="(test, index) in testCases" v-bind:key="test.id" :class="index % 0 === 0 ? 'bg-gray-100' : ''">
                 <td class="default-row">{{ index + 1 }}</td>
-                <td class="default-row" v-html="test.title">a</td>
+                <td class="default-row" v-html="test.title"></td>
                 <td class="default-row">{{ test.user.name }}</td>
                 <td class="default-row">{{ test.created_at | formatDateTime }}</td>
                 <td v-click-outside="hideAllDropdowns" class="default-row">
@@ -39,11 +39,10 @@
                         <div v-if="isOpen[index]"
                              class="contextual-popover-content cross-origin-top-right">
                             <div class="rounded-md bg-white bg-opacity-0 shadow-xs">
-                                <div class="py-1" role="menu" aria-orientation="vertical"aria-labelledby="options-menu">
+                                <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                                     <a href="#"
                                        class="block font-medium px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100
-                                           hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0"
-                                       role="menuitem">Account settings</a>
+                                           hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 bg-opacity-0" role="menuitem">Account settings</a>
 <!--                                    <a @click.stop="currentProjectId = project.id; hideAllDropdowns(); $modal.show('deleteConfirmationDialog');" href="#"-->
 <!--                                       class="block px-4 py-2 text-sm leading-5 text-red-700-->
 <!--                                           font-medium-->

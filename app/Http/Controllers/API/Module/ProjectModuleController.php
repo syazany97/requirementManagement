@@ -15,9 +15,7 @@ class ProjectModuleController extends Controller
 {
     public function index(Project $project)
     {
-        return ModuleResource::collection(Module::where('project_id', $project->id)
-            ->completeInformation()
-            ->get());
+        return ModuleResource::colelction($project->modules()->completeInformation()->get());
     }
 
     public function store(Project $project, ModuleCreateRequest $request)
@@ -39,7 +37,7 @@ class ProjectModuleController extends Controller
     {
         $module->update($request->validated());
 
-        return new ModuleResource($module);
+        return new ModuleResource($module->fresh());
     }
 
     public function destroy(Module $module)

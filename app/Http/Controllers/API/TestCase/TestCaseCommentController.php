@@ -12,10 +12,8 @@ class TestCaseCommentController extends Controller
 {
     public function index(TestCase $testCase)
     {
-        $comments = Comment::where('commentable_type', TestCase::class)
-            ->where('commentable_id', $testCase->id)
-            ->with(['user'])
-            ->get();
+        $comments = $testCase->comments()->with(['user'])->get();
+
         return CommentResource::collection($comments);
     }
 
