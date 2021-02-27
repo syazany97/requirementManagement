@@ -14,8 +14,7 @@ import error from "./vuex-modules/error";
 require('./bootstrap');
 
 window.Vue = require('vue');
-
-[VueRouter, dayjs, Vuex, VueToast, VueTreeList, VModal].forEach((x) => Vue.use(x));
+[VueRouter, dayjs, Vuex, VueTreeList, VueToast, VModal].forEach((x) => Vue.use(x));
 
 Vue.component('vue-select', vSelect);
 

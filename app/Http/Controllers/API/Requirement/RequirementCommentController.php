@@ -14,7 +14,7 @@ class RequirementCommentController extends Controller
 {
     public function index(Requirement $requirement)
     {
-        return CommentResource::collection(Comment::show($requirement)->get());
+          return CommentResource::collection($requirement->comments()->with(['user'])->get());
     }
 
     public function store(Requirement $requirement, CommentCreateRequest $request)

@@ -34,7 +34,7 @@ class RequirementController extends Controller
 
     public function update(RequirementCreateRequest $request, Requirement $requirement)
     {
-        return new RequirementResource($requirement->update($request->validated()));
+        return new RequirementResource(tap($requirement)->update($request->validated()));
     }
 
     public function destroy(Requirement $requirement)

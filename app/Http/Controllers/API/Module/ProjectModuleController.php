@@ -15,7 +15,7 @@ class ProjectModuleController extends Controller
 {
     public function index(Project $project)
     {
-        return ModuleResource::colelction($project->modules()->completeInformation()->get());
+        return ModuleResource::collection($project->modules()->completeInformation()->get());
     }
 
     public function store(Project $project, ModuleCreateRequest $request)

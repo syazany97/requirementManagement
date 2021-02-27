@@ -7,18 +7,17 @@ use App\Http\Requests\Comment\CommentCreateRequest;
 use App\Http\Resources\CommentResource;
 use App\Models\Comment\Comment;
 use App\Models\TestCase\TestCase;
+use PHPUnit\Util\Test;
 
 class TestCaseCommentController extends Controller
 {
     public function index(TestCase $testCase)
     {
-        $comments = $testCase->comments()->with(['user'])->get();
-
-        return CommentResource::collection($comments);
+        return CommentResource::collection($testCase->comments()->with(['user'])->get());
     }
 
     public function store(CommentCreateRequest $request, TestCase $testCase)
     {
-        $testCase->comments()->create($request->validated());
+        return $testCase->comments()->create($request->validated());
     }
 }

@@ -15,37 +15,27 @@ class RequirementTestCaseController extends Controller
 {
     public function index(Requirement $requirement)
     {
-        $testCases = $requirement->testCases()->with(['user'])->get();
-
-        return TestCaseResource::collection($testCases);
+        return TestCaseResource::collection($requirement->testCases()->with(['user'])->get());
     }
 
     public function store(TestCaseCreateRequest $request, Requirement $requirement)
     {
-        $testCase = $requirement->testCases()
-            ->create(array_merge($request->validated()['test_case'], ['user_id' => auth()->user()->id]));
+        $testCase = $requirement->testCases()->create(array_merge($request->validated()['test_case'], ['user_id' => auth()->user()->id]));
 
-        $testSteps = collect($request->validated()['steps'])->map(function ($item) use ($testCase) {
-            return [
-                'description' => $item['description'],
-                'input' => $item['input'],
-                'expected_result' => $item['expected_result'],
-                'is_passed' => $item['is_passed'],
-                'comment' => $item['comment'],
-                'test_case_id' => $testCase->id,
-                'created_at' => now(),
-                'updated_at' => now()
-            ];
-        })->values()->all();
+        if (!$testCase instanceof TestCase) return null;
 
-        DB::table('test_case_steps')->insert($testSteps);
+        if (!empty($request->validated()['steps'])) {
+            foreach ($request->validated()['steps'] as $step) {
+                $testCase->steps()->create($step);
+            }
+        }
 
         return new TestCaseResource($testCase);
     }
 
     public function show(Request $request, $testCase)
     {
-        $with = $request->has('with') ? explode(',', $request->with) : [];
+        $with = $request->has('with') && !empty($request->with) ? explode(',', $request->with) : [];
 
         return new TestCaseResource(TestCase::with($with)->findOrFail($testCase));
     }
@@ -54,15 +44,18 @@ class RequirementTestCaseController extends Controller
     {
         $testCase->update($request->validated()['test_case']);
 
+        if (!$request->has('steps')) return $testCase;
+
+        $steps = TestCaseStep::whereIn('id', collect($request->validated()['steps'])->pluck('id'))->get();
+
         // TODO : delete steps that was deleted
-        if ($request->has('steps')) {
-            foreach ($request->validated()['steps'] as $step) {
-                if (!isset($step['id'])) {
-                    $testCase->steps()->create($step);
-                } else {
-                    $instance = TestCaseStep::findOrFail($step['id']);
-                    $instance->update($step);
-                }
+        foreach ($request->validated()['steps'] as $step) {
+            if (!isset($step['id'])) {
+                $testCase->steps()->create($step);
+            } else {
+                $instance = $steps->firstWhere('id', $step['id']);
+                if (!$instance instanceof TestCaseStep) return null;
+                $instance->update($step);
             }
         }
     }
