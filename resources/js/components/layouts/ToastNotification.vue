@@ -5,21 +5,25 @@
 <script>
 // import 'vue-toast-notification/dist/theme-default.css';
 import 'vue-toast-notification/dist/theme-sugar.css';
+import {mapGetters} from "vuex";
     export default {
+        name : 'ToastNotification',
         computed: {
-            showNotification() {
-                return this.$store.getters["notification/show"];
-            }
+            ...mapGetters(
+                'notification', [
+                    'variant', 'message', 'duration', 'show'
+                ]
+            ),
         },
-        watch: {
-            showNotification: function () {
-                this.$toast.open({
-                    type: this.$store.getters["notification/variant"],
-                    message: this.$store.getters["notification/message"],
+        watch : {
+            show() {
+                return this.$toast.open({
+                    type: this.variant,
+                    message: this.message,
                     position: "top",
-                    duration: this.$store.getters["notification/duration"]
+                    duration: this.duration
                 });
-            },
-        },
+            }
+        }
     };
 </script>

@@ -283,18 +283,13 @@ export default {
         },
         showDropdown(projectIndex) {
             this.isOpen.forEach((x, index) => {
-                if (index !== projectIndex) {
-                    this.isOpen.splice(index, 1, false);
-                }
+                this.isOpen.splice(index, 1, index === projectIndex);
             })
-
-            this.isOpen.splice(projectIndex, 1, !this.isOpen[projectIndex]);
         },
         hideAllDropdowns() {
             this.isOpen.forEach((x, index) => {
                 this.isOpen.splice(index, 1, false);
             })
-
         },
         viewProject(projectId) {
             this.$router.push({

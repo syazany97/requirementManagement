@@ -2089,25 +2089,30 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_toast_notification_dist_theme_sugar_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-toast-notification/dist/theme-sugar.css */ "./node_modules/vue-toast-notification/dist/theme-sugar.css");
 /* harmony import */ var vue_toast_notification_dist_theme_sugar_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_toast_notification_dist_theme_sugar_css__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
 //
 // import 'vue-toast-notification/dist/theme-default.css';
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: {
-    showNotification: function showNotification() {
-      return this.$store.getters["notification/show"];
-    }
-  },
+  name: 'ToastNotification',
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])('notification', ['variant', 'message', 'duration', 'show'])),
   watch: {
-    showNotification: function showNotification() {
-      this.$toast.open({
-        type: this.$store.getters["notification/variant"],
-        message: this.$store.getters["notification/message"],
+    show: function show() {
+      return this.$toast.open({
+        type: this.variant,
+        message: this.message,
         position: "top",
-        duration: this.$store.getters["notification/duration"]
+        duration: this.duration
       });
     }
   }
@@ -3019,16 +3024,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _repositories_projectRepository__WEBPACK_IMPORTED_MODULE_1__["default"].store(payload);
 
               case 9:
-                _this.name = "";
-                _this.projectStatusId = "";
-                _this.description = "";
+                _this.name = '';
+                _this.projectStatusId = '';
+                _this.description = '';
                 _context.next = 14;
                 return _this.$emit('fetchProjects');
 
               case 14:
-                _this.$store.commit("notification/showNotification", {
-                  variant: "success",
-                  message: "Project " + (_this.updateProject ? 'Updated' : 'Created')
+                _this.$store.commit('notification/showNotification', {
+                  message: 'Project ' + (_this.updateProject ? 'Updated' : 'Created')
                 });
 
                 _this.$emit('reset-project');
@@ -5074,11 +5078,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this3 = this;
 
       this.isOpen.forEach(function (x, index) {
-        if (index !== projectIndex) {
-          _this3.isOpen.splice(index, 1, false);
-        }
+        _this3.isOpen.splice(index, 1, index === projectIndex);
       });
-      this.isOpen.splice(projectIndex, 1, !this.isOpen[projectIndex]);
     },
     hideAllDropdowns: function hideAllDropdowns() {
       var _this4 = this;
@@ -80603,7 +80604,7 @@ var state = function state() {
   return {
     show: false,
     message: 'Notification',
-    variant: 'danger',
+    variant: 'success',
     duration: 3000,
     dismissable: true
   };
@@ -80628,7 +80629,7 @@ var getters = {
 var mutations = {
   showNotification: function showNotification(state, payload) {
     state.message = payload.message;
-    state.variant = payload.variant;
+    state.variant = payload.hasOwnProperty('variant') ? payload.variant : 'success';
     state.show = !state.show;
   }
 };

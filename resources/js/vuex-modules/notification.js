@@ -3,7 +3,7 @@
 const state = () => ({
     show: false,
     message: 'Notification',
-    variant: 'danger',
+    variant: 'success',
     duration: 3000,
     dismissable: true
 });
@@ -28,7 +28,7 @@ const getters = {
 const mutations = {
     showNotification: (state, payload) => {
         state.message = payload.message;
-        state.variant = payload.variant;
+        state.variant = payload.hasOwnProperty('variant') ? payload.variant : 'success';
         state.show = !state.show;
     }
 };

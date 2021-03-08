@@ -98,13 +98,12 @@ export default {
                     await projectRepository.store(payload);
                 }
 
-                this.name = "";
-                this.projectStatusId = "";
-                this.description = "";
+                this.name =''
+                this.projectStatusId =''
+                this.description =''
                 await this.$emit('fetchProjects');
-                this.$store.commit("notification/showNotification", {
-                    variant: "success",
-                    message: "Project " + (this.updateProject ? 'Updated' : 'Created')
+                this.$store.commit('notification/showNotification', {
+                    message: 'Project ' + (this.updateProject ? 'Updated' : 'Created')
                 });
                 this.$emit('reset-project');
                 this.closeDialog();

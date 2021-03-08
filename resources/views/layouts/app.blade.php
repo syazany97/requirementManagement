@@ -27,7 +27,7 @@
     @auth
         <header>
             <top-bar></top-bar>
-{{--            <toast-notification></toast-notification>--}}
+            <toast-notification></toast-notification>
         </header>
 
         <main>
