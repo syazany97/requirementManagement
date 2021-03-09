@@ -20,8 +20,9 @@ class ProjectController extends Controller
         $perPage = $request->has('per_page') ? (int) $request->per_page : 20;
 
         return ProjectResource::collection(
-            Project::index($search)
-                ->where('user_id', auth()->user()->id)
+            auth()->user()
+                ->projects()
+                ->index($search)
                 ->paginate($perPage)
                 ->appends(['q' => $search])
         );

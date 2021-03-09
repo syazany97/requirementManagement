@@ -22,13 +22,10 @@
     <list default="true" id="58239c8f-5f70-4482-9e45-1dcb473cf0d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/Project/ProjectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/Project/ProjectController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/layouts/ToastNotification.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/layouts/ToastNotification.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/project/modal/CreateProjectDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/project/modal/CreateProjectDialog.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/projects/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/projects/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/vuex-modules/notification.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/vuex-modules/notification.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,12 +215,12 @@
       <path value="$PROJECT_DIR$/vendor/league/oauth1-client" />
       <path value="$PROJECT_DIR$/vendor/laravel/socialite" />
       <path value="$PROJECT_DIR$/vendor/laravel/breeze" />
-      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
-      <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
     </include_path>
   </component>
   <component name="ProjectId" id="1iMtFdYKFzfBj8O3BLWwbJgUglQ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -239,7 +236,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Vue" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -385,6 +382,20 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="531" y="235" key="FileChooserDialogImpl" timestamp="1615275742710">
+      <screen x="0" y="0" width="1500" height="960" />
+    </state>
+    <state x="531" y="235" key="FileChooserDialogImpl/0.0.1500.960@0.0.1500.960" timestamp="1615275742710" />
+    <state x="252" y="125" key="SettingsEditor" timestamp="1615278289095">
+      <screen x="0" y="0" width="1500" height="960" />
+    </state>
+    <state x="252" y="125" key="SettingsEditor/0.0.1500.960@0.0.1500.960" timestamp="1615278289095" />
+    <state x="416" y="209" width="672" height="678" key="search.everywhere.popup" timestamp="1615278197020">
+      <screen x="0" y="0" width="1500" height="960" />
+    </state>
+    <state x="416" y="209" width="672" height="678" key="search.everywhere.popup/0.0.1500.960@0.0.1500.960" timestamp="1615278197020" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
